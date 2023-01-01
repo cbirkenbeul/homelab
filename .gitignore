@@ -1,0 +1,26 @@
+# Folders
+ignore/
+testing/
+
+# Trash
+.DS_Store
+Thumbs.db
+
+# Ansible
+ansible/k3s/roles/xanmanning.k3s
+ansible/k3s/roles/mrlesmithjr.zfs
+
+# Terraform
+terraform/
+
+# Flux update
+bin/flux
+
+# Direnv
+.direnv
+
+# Sops
+.decrypted~*
+
+# Other files
+kubeconfig*
