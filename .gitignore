@@ -12,6 +12,8 @@ ansible/k3s/roles/mrlesmithjr.zfs
 
 # Terraform
 terraform/
+*.tfstate
+*.tfstate.backup
 
 # Flux update
 bin/flux

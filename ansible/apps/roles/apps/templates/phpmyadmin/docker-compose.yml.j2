@@ -1,0 +1,17 @@
+---
+version: '3.7'
+
+services:
+  phpmyadmin:
+    image: phpmyadmin:5.2.0
+    container_name: phpmyadmin
+    restart: unless-stopped
+    environment:
+      PMA_HOST: mysql01.casalani.de
+      PMA_USER: root
+      PMA_PASSWORD: JjhNNNvhf7z3xpzhGWvrPdPiVGvMKw7g
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.phpmyadmin.rule=Host(`phpmyadmin2.casalani.de`)"
+      - "traefik.http.routers.phpmyadmin.entrypoints=web"
+      - "traefik.http.services.phpmyadmin.loadbalancer.server.port=80"

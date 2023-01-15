@@ -1,0 +1,25 @@
+---
+version: '3.7'
+
+services:
+  traefik:
+    image: traefik:v2.9
+    container_name: traefik
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./config:/etc/traefik
+    ports:
+      - "80:80"
+    restart: unless-stopped
+    networks:
+      - traefik_proxy
+      - default
+
+networks:
+  traefik_proxy:
+    external:
+      name: traefik_proxy
+  default:
+    driver: bridge

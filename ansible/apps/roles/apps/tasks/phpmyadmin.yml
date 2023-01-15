@@ -1,0 +1,22 @@
+---
+- name: Create phpmyadmin directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+  loop:
+    - "{{ containers_base_dir }}/apps/phpmyadmin"
+    - "{{ containers_base_dir }}/data/phpmyadmin"
+    - "{{ containers_base_dir }}/data/phpmyadmin/certs"
+
+- block:
+    - name: Create phpmyadmin docker compose file
+      ansible.builtin.template:
+        src: phpmyadmin/docker-compose.yml.j2
+        dest: "{{ containers_base_dir }}/apps/phpmyadmin/docker-compose.yml"
+        mode: 0755
+    - name: Create phpmyadmin systemd service file
+      ansible.builtin.template:
+        src: "docker-compose@.service.j2"
+        dest: "/etc/systemd/system/docker-compose@phpmyadmin.service"
+        mode: 0644
+  notify: Restart phpmyadmin
