@@ -4,4 +4,4 @@
 #
 
 system_base_dir: /home/teqqy
-containers_base_dir: "{{ system_base_dir }}/containers"
+containers_base_dir: "{{ system_base_dir }}"
