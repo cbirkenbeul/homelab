@@ -5,8 +5,6 @@
     state: directory
   loop:
     - "{{ containers_base_dir }}/apps/phpmyadmin"
-    - "{{ containers_base_dir }}/data/phpmyadmin"
-    - "{{ containers_base_dir }}/data/phpmyadmin/certs"
 
 - block:
     - name: Create phpmyadmin docker compose file

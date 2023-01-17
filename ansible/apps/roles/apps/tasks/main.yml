@@ -10,26 +10,22 @@
   tags:
     - always
 
-- import_tasks: node-exporter.yml
-  tags:
-    - node-exporter
-
 - import_tasks: traefik.yml
   tags:
     - traefik
 
-- import_tasks: postgresql.yml
+- import_tasks: phpmyadmin.yml
   tags:
-    - postgresql
+    - phpmyadmin
 
-- import_tasks: mariadb.yml
-  tags:
-    - mariadb
+# - import_tasks: mariadb.yml
+#   tags:
+#     - mariadb
 
-- import_tasks: unifi.yml
-  tags:
-    - unifi
+# - import_tasks: unifi.yml
+#   tags:
+#     - unifi
 
-- import_tasks: docker.yml
-  tags:
-    - docker
+# - import_tasks: docker.yml
+#   tags:
+#     - docker
