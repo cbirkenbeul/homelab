@@ -20,6 +20,14 @@
     enabled: true
     daemon_reload: true
 
+- name: Restart homepage
+  ansible.builtin.systemd:
+    name: "docker-compose@homepage.service"
+    state: restarted
+    enabled: true
+    daemon_reload: true
+
+
 - name: Restart cloudflared
   ansible.builtin.systemd:
     name: "docker-compose@cloudflared.service"

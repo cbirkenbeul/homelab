@@ -22,6 +22,10 @@
   tags:
     - pgadmin
 
+- import_tasks: homepage.yml
+  tags:
+    - homepage
+
 - import_tasks: cloudflared.yml
   tags:
     - cloudflared
