@@ -1,0 +1,20 @@
+---
+- name: Create pgadmin directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+  loop:
+    - "{{ containers_base_dir }}/apps/pgadmin"
+
+- block:
+    - name: Create pgadmin docker compose file
+      ansible.builtin.template:
+        src: pgadmin/docker-compose.yml.j2
+        dest: "{{ containers_base_dir }}/apps/pgadmin/docker-compose.yml"
+        mode: 0755
+    - name: Create pgadmin systemd service file
+      ansible.builtin.template:
+        src: "docker-compose@.service.j2"
+        dest: "/etc/systemd/system/docker-compose@pgadmin.service"
+        mode: 0644
+  notify: Restart pgadmin

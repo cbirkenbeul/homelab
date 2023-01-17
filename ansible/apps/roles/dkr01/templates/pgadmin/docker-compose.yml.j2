@@ -1,0 +1,30 @@
+---
+version: '3'
+
+services:
+  pgadmin:
+    image: docker.io/dpage/pgadmin4:6.18
+    container_name: postgresql-pgadmin
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "{{ SECRET_DFAULT_EMAIL }}"
+      PGADMIN_DEFAULT_PASSWORD: "{{ SECRET_PSQL_PASSWORD }}"
+      PGADMIN_LISTEN_PORT: 12080
+    volumes:
+      - ./data:/var/lib/pgadmin
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.pgadmin.rule=Host(`pgadmin.casalani.de`)"
+      - "traefik.http.routers.pgadmin.entrypoints=web"
+      - "traefik.http.services.pgadmin.loadbalancer.server.port=12080"
+
+    networks:
+      - traefik_proxy
+      - default
+
+networks:
+  traefik_proxy:
+    external:
+      name: traefik_proxy
+  default:
+    driver: bridge

@@ -18,14 +18,10 @@
   tags:
     - phpmyadmin
 
-# - import_tasks: mariadb.yml
-#   tags:
-#     - mariadb
+- import_tasks: pgadmin.yml
+  tags:
+    - pgadmin
 
-# - import_tasks: unifi.yml
-#   tags:
-#     - unifi
-
-# - import_tasks: docker.yml
-#   tags:
-#     - docker
+- import_tasks: cloudflared.yml
+  tags:
+    - cloudflared

@@ -12,3 +12,17 @@
     state: restarted
     enabled: true
     daemon_reload: true
+
+- name: Restart pgadmin
+  ansible.builtin.systemd:
+    name: "docker-compose@pgadmin.service"
+    state: restarted
+    enabled: true
+    daemon_reload: true
+
+- name: Restart cloudflared
+  ansible.builtin.systemd:
+    name: "docker-compose@cloudflared.service"
+    state: restarted
+    enabled: true
+    daemon_reload: true
