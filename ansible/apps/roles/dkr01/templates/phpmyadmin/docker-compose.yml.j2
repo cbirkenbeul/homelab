@@ -11,10 +11,11 @@ services:
       PMA_USER: root
       PMA_PASSWORD: "{{ SECRET_MYSQL_ROOT }}"
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.phpmyadmin.rule=Host(`phpmyadmin2.casalani.de`)"
-      - "traefik.http.routers.phpmyadmin.entrypoints=web"
-      - "traefik.http.services.phpmyadmin.loadbalancer.server.port=80"
+      - traefik.enable=true
+      - traefik.http.routers.phpmyadmin.rule=Host(`phpmyadmin.{{ SECRET_DOMAIN }}`)
+      - traefik.http.routers.phpmyadmin.entrypoints=websecure
+      - traefik.http.routers.phpmyadmin.tls.certresolver=letsencrypt
+      - traefik.http.services.phpmyadmin.loadbalancer.server.port=80
     networks:
       - traefik_proxy
       - default

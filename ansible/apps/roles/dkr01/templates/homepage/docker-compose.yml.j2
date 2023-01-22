@@ -8,10 +8,11 @@ services:
     volumes:
       - ./config:/app/config
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.homepage.rule=Host(`homepage.casalani.de`)"
-      - "traefik.http.routers.homepage.entrypoints=web"
-      - "traefik.http.services.homepage.loadbalancer.server.port=3000"
+      - traefik.enable=true
+      - traefik.http.routers.homepage.rule=Host(`homepage.{{ SECRET_DOMAIN }}`)
+      - traefik.http.routers.homepage.entrypoints=websecure
+      - traefik.http.routers.homepage.tls.certresolver=letsencrypt
+      - traefik.http.services.homepage.loadbalancer.server.port=3000
     networks:
       - homepage
       - traefik_proxy

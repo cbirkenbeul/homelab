@@ -10,11 +10,6 @@
     - "{{ containers_base_dir }}/data/traefik/certs"
 
 - block:
-    - name: Create traefik config file
-      ansible.builtin.template:
-        src: traefik/traefik.toml.j2
-        dest: "{{ containers_base_dir }}/apps/traefik/config/traefik.toml"
-        mode: 0755
     - name: Create traefik docker compose file
       ansible.builtin.template:
         src: traefik/docker-compose.yml.j2
