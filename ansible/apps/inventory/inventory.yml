@@ -1,4 +1,12 @@
 ---
+proxmox:
+  hosts:
+    pve01:
+    pve02:
+    pve03:
+
 docker:
   hosts:
     dkr01:
+    adg01:
+      ansible_user: root

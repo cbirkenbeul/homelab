@@ -1,0 +1,7 @@
+---
+- name: Restart adguard
+  ansible.builtin.systemd:
+    name: "docker-compose@adguard.service"
+    state: restarted
+    enabled: true
+    daemon_reload: true

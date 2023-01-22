@@ -1,0 +1,28 @@
+---
+- name: Create adguard directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+  loop:
+    - "{{ containers_base_dir }}/apps/adguard"
+    - "{{ containers_base_dir }}/config/adguard"
+    - "{{ containers_base_dir }}/data/adguard"
+
+
+- block:
+    - name: Create adguard config file
+      ansible.builtin.template:
+        src: adguard/config/AdGuardHome.yaml.j2
+        dest: "{{ containers_base_dir }}/config/adguard/AdGuardHome.yaml"
+        mode: 0755
+    - name: Create adguard docker compose file
+      ansible.builtin.template:
+        src: adguard/docker-compose.yml.j2
+        dest: "{{ containers_base_dir }}/apps/adguard/docker-compose.yml"
+        mode: 0755
+    - name: Create adguard systemd service file
+      ansible.builtin.template:
+        src: "docker-compose@.service.j2"
+        dest: "/etc/systemd/system/docker-compose@adguard.service"
+        mode: 0644
+  notify: Restart adguard
