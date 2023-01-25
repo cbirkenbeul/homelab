@@ -1,0 +1,21 @@
+---
+- name: Create pgadmin directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+  loop:
+    - "{{ containers_base_dir }}/apps/jellyseerr"
+    - "{{ containers_base_dir }}/data/jellyseerr"
+
+- block:
+    - name: Create jellyseerr docker compose file
+      ansible.builtin.template:
+        src: jellyseerr/docker-compose.yml.j2
+        dest: "{{ containers_base_dir }}/apps/jellyseerr/docker-compose.yml"
+        mode: 0755
+    - name: Create jellyseerr systemd service file
+      ansible.builtin.template:
+        src: "docker-compose@.service.j2"
+        dest: "/etc/systemd/system/docker-compose@jellyseerr.service"
+        mode: 0644
+  notify: Restart jellyseerr

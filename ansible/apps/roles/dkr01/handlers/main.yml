@@ -34,3 +34,10 @@
     state: restarted
     enabled: true
     daemon_reload: true
+
+- name: Restart jellyseerr
+  ansible.builtin.systemd:
+    name: "docker-compose@jellyseerr.service"
+    state: restarted
+    enabled: true
+    daemon_reload: true

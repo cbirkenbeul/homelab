@@ -26,6 +26,11 @@
   tags:
     - homepage
 
+- import_tasks: jellyseerr.yml
+  tags:
+    - jellyseerr
+
+
 - import_tasks: cloudflared.yml
   tags:
     - cloudflared
