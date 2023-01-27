@@ -41,3 +41,10 @@
     state: restarted
     enabled: true
     daemon_reload: true
+
+- name: Restart freshrss
+  ansible.builtin.systemd:
+    name: "docker-compose@freshrss.service"
+    state: restarted
+    enabled: true
+    daemon_reload: true

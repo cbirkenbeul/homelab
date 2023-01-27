@@ -30,6 +30,9 @@
   tags:
     - jellyseerr
 
+- import_tasks: freshrss.yml
+  tags:
+    - freshrss
 
 - import_tasks: cloudflared.yml
   tags:
