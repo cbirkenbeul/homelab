@@ -11,7 +11,7 @@ services:
       PGADMIN_DEFAULT_PASSWORD: "{{ SECRET_PSQL_PASSWORD }}"
       PGADMIN_LISTEN_PORT: 12080
     volumes:
-      - ./data:/var/lib/pgadmin
+      - pgadmin-data:/var/lib/pgadmin
     labels:
       - traefik.enable=true
       - traefik.http.routers.pgadmin.rule=Host(`pgadmin.{{ SECRET_DOMAIN }}`)
@@ -22,6 +22,15 @@ services:
     networks:
       - traefik_proxy
       - default
+
+volumes:
+  pgadmin-data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: "{{ containers_base_dir }}/data/pgadmin"
+
 
 networks:
   traefik_proxy:

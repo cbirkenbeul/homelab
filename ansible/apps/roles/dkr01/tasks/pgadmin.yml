@@ -5,6 +5,7 @@
     state: directory
   loop:
     - "{{ containers_base_dir }}/apps/pgadmin"
+    - "{{ containers_base_dir }}/data/pgadmin"
 
 - block:
     - name: Create pgadmin docker compose file
