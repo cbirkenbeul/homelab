@@ -48,3 +48,10 @@
     state: restarted
     enabled: true
     daemon_reload: true
+
+- name: Restart immich
+  ansible.builtin.systemd:
+    name: "docker-compose@immich.service"
+    state: restarted
+    enabled: true
+    daemon_reload: true
