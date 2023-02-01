@@ -38,6 +38,11 @@
   tags:
     - immich
 
+- import_tasks: ghostfolio.yml
+  tags:
+    - ghostfolio
+
+
 - import_tasks: cloudflared.yml
   tags:
     - cloudflared

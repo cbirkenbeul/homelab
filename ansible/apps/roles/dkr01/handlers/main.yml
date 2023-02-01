@@ -55,3 +55,10 @@
     state: restarted
     enabled: true
     daemon_reload: true
+
+- name: Restart ghostfolio
+  ansible.builtin.systemd:
+    name: "docker-compose@ghostfolio.service"
+    state: restarted
+    enabled: true
+    daemon_reload: true

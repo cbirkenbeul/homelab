@@ -1,0 +1,21 @@
+---
+- name: Create ghostfolio directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+  loop:
+    - "{{ containers_base_dir }}/apps/ghostfolio"
+    - "{{ containers_base_dir }}/data/ghostfolio"
+
+- block:
+    - name: Create ghostfolio docker compose file
+      ansible.builtin.template:
+        src: ghostfolio/docker-compose.yml.j2
+        dest: "{{ containers_base_dir }}/apps/ghostfolio/docker-compose.yml"
+        mode: 0755
+    - name: Create ghostfolio systemd service file
+      ansible.builtin.template:
+        src: "docker-compose@.service.j2"
+        dest: "/etc/systemd/system/docker-compose@ghostfolio.service"
+        mode: 0644
+  notify: Restart ghostfolio
