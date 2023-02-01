@@ -17,13 +17,6 @@
           url: "{{ SECRET_HOMEPAGE_SABNZBD_URL }}"
           key: "{{ SECRET_HOMEPAGE_SABNZBD_KEY }}"
 
-    - radarr-4k:
-        href: "{{ SECRET_HOMEPAGE_RADARR4K_URL }}"
-        widget:
-          type: radarr
-          url: "{{ SECRET_HOMEPAGE_RADARR4K_URL }}"
-          key: "{{ SECRET_HOMEPAGE_RADARR4K_KEY }}"
-
     - radarr:
         href: "{{ SECRET_HOMEPAGE_RADARR_URL }}"
         widget:
@@ -37,6 +30,14 @@
           type: sonarr
           url: "{{ SECRET_HOMEPAGE_SONARR_URL }}"
           key: "{{ SECRET_HOMEPAGE_SONARR_KEY }}"
+
+    - immich:
+        href: "{{ SECRET_HOMEPAGE_IMMICH_URL }}"
+        widget:
+          type: immich
+          url: "{{ SECRET_HOMEPAGE_IMMICH_URL }}"
+          key: "{{ SECRET_HOMEPAGE_IMMICH_KEY }}"
+
 
 - Netzwerk:
     - AdGuard Home:
