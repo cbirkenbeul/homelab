@@ -47,12 +47,5 @@
     "datasourceTemplate": "github-releases",
     "versioningTemplate": "semver"
   }
-],
-"packageRules": [
-  {
-    "description": "Loose versioning for non-semver packages",
-    "matchDatasources": ["docker"],
-    "versioning": "loose"
-  }
 ]
 }
