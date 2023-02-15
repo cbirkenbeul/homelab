@@ -49,9 +49,9 @@
     enabled: true
     daemon_reload: true
 
-- name: Restart immich
+- name: Restart jellyfin
   ansible.builtin.systemd:
-    name: "docker-compose@immich.service"
+    name: "docker-compose@jellyfin.service"
     state: restarted
     enabled: true
     daemon_reload: true

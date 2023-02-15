@@ -1,0 +1,36 @@
+---
+version: '3'
+
+services:
+  jellyfin:
+    image: jellyfin/jellyfin:10.8.9
+    container_name: jellyfin
+    restart: unless-stopped
+    environment:
+      - TZ=Europe/Berlin
+    volumes:
+      - {{ containers_base_dir }}/data/jellyfin/data:/config
+      - {{ containers_base_dir }}/data/jellyfin/cache:/cache
+      - /mnt/media/media:/media
+    devices:
+      - /dev/dri/renderD128:/dev/dri/renderD128
+      - /dev/dri/card0:/dev/dri/card0
+    group_add:
+      - "109"
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.jellyfin.rule=Host(`jellyfin.{{ SECRET_DOMAIN }}`)
+      - traefik.http.routers.jellyfin.entrypoints=websecure
+      - traefik.http.routers.jellyfin.tls.certresolver=letsencrypt
+      - traefik.http.services.jellyfin.loadbalancer.server.port=8096
+
+    networks:
+      - traefik_proxy
+      - default
+
+networks:
+  traefik_proxy:
+    external:
+      name: traefik_proxy
+  default:
+    driver: bridge

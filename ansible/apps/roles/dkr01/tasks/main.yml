@@ -26,6 +26,10 @@
   tags:
     - homepage
 
+- import_tasks: jellyfin.yml
+  tags:
+    - jellyfin
+
 - import_tasks: jellyseerr.yml
   tags:
     - jellyseerr
@@ -34,14 +38,9 @@
   tags:
     - freshrss
 
-- import_tasks: immich.yml
-  tags:
-    - immich
-
 - import_tasks: ghostfolio.yml
   tags:
     - ghostfolio
-
 
 - import_tasks: cloudflared.yml
   tags:
