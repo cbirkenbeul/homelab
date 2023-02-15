@@ -3,5 +3,5 @@
 # SECRET* vars are encrypted with sops
 #
 
-system_base_dir: /home/teqqy
+system_base_dir: /docker
 containers_base_dir: "{{ system_base_dir }}"

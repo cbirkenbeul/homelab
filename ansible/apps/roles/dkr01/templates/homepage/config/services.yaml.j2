@@ -10,20 +10,14 @@
           url: "{{ SECRET_HOMEPAGE_JELLYFIN_URL }}"
           key: "{{ SECRET_HOMEPAGE_JELLYFIN_KEY }}"
 
-    - sabnzbd:
-        href: "{{ SECRET_HOMEPAGE_SABNZBD_URL }}"
-        widget:
-          type: sabnzbd
-          url: "{{ SECRET_HOMEPAGE_SABNZBD_URL }}"
-          key: "{{ SECRET_HOMEPAGE_SABNZBD_KEY }}"
-
+  - 
     - radarr:
         href: "{{ SECRET_HOMEPAGE_RADARR_URL }}"
         widget:
           type: radarr
           url: "{{ SECRET_HOMEPAGE_RADARR_URL }}"
           key: "{{ SECRET_HOMEPAGE_RADARR_KEY }}"
-
+  -
     - sonarr:
         href: "{{ SECRET_HOMEPAGE_SONARR_URL }}"
         widget:
@@ -38,6 +32,12 @@
           url: "{{ SECRET_HOMEPAGE_IMMICH_URL }}"
           key: "{{ SECRET_HOMEPAGE_IMMICH_KEY }}"
 
+    - sabnzbd:
+        href: "{{ SECRET_HOMEPAGE_SABNZBD_URL }}"
+        widget:
+          type: sabnzbd
+          url: "{{ SECRET_HOMEPAGE_SABNZBD_URL }}"
+          key: "{{ SECRET_HOMEPAGE_SABNZBD_KEY }}"
 
 - Netzwerk:
     - AdGuard Home:

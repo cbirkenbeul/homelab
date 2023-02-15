@@ -10,3 +10,4 @@ docker:
     dkr01:
     adg01:
       ansible_user: root
+    nas02:

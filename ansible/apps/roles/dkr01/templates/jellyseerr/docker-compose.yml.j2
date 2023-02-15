@@ -9,7 +9,7 @@ services:
     environment:
       - TZ=Europe/Berlin
     volumes:
-      - {{ containers_base_dir }}/data/jellyseer:/app/config
+      - {{ containers_base_dir }}/data/jellyseerr:/app/config
     labels:
       - traefik.enable=true
       - traefik.http.routers.jellyseerr.rule=Host(`jellyseerr.{{ SECRET_DOMAIN }}`)
