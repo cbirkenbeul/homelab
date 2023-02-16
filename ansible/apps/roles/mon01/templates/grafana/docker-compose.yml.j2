@@ -8,6 +8,7 @@ services:
     restart: unless-stopped
     environment:
       - TZ=Europe/Berlin
+      - GF_PANELS_DISABLE_SANITIZE_HTML=true
     volumes:
       - {{ containers_base_dir }}/data/grafana:/var/lib/grafana
     user: "1000"
