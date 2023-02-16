@@ -76,3 +76,10 @@
     state: restarted
     enabled: true
     daemon_reload: true
+
+- name: Restart prowlarr
+  ansible.builtin.systemd:
+    name: "docker-compose@prowlarr.service"
+    state: restarted
+    enabled: true
+    daemon_reload: true

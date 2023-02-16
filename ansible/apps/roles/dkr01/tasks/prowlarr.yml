@@ -1,0 +1,22 @@
+---
+- name: Create prowlarr directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+  loop:
+    - "{{ containers_base_dir }}/apps/prowlarr"
+    - "{{ containers_base_dir }}/data/prowlarr"
+    - "{{ backup_base_dir }}/prowlarr"
+
+- block:
+    - name: Create prowlarr docker compose file
+      ansible.builtin.template:
+        src: prowlarr/docker-compose.yml.j2
+        dest: "{{ containers_base_dir }}/apps/prowlarr/docker-compose.yml"
+        mode: 0755
+    - name: Create prowlarr systemd service file
+      ansible.builtin.template:
+        src: "docker-compose@.service.j2"
+        dest: "/etc/systemd/system/docker-compose@prowlarr.service"
+        mode: 0644
+  notify: Restart prowlarr

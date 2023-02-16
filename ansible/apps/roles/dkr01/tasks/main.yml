@@ -53,3 +53,7 @@
 - import_tasks: recyclarr.yml
   tags:
     - recyclarr
+
+- import_tasks: prowlarr.yml
+  tags:
+    - prowlarr
