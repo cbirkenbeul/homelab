@@ -5,3 +5,10 @@
     state: restarted
     enabled: true
     daemon_reload: true
+
+- name: Restart node-exporter
+  ansible.builtin.systemd:
+    name: "docker-compose@node-exporter.service"
+    state: restarted
+    enabled: true
+    daemon_reload: true

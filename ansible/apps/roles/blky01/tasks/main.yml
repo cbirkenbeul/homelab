@@ -13,3 +13,7 @@
 - import_tasks: blocky.yml
   tags:
     - blocky
+
+- import_tasks: node-exporter.yml
+  tags:
+    - node-exporter
