@@ -1,0 +1,22 @@
+---
+- name: Create sabnzbd directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+  loop:
+    - "{{ containers_base_dir }}/apps/sabnzbd"
+    - "{{ containers_base_dir }}/data/sabnzbd"
+    - "{{ backup_base_dir }}/sabnzbd"
+
+- block:
+    - name: Create sabnzbd docker compose file
+      ansible.builtin.template:
+        src: sabnzbd/docker-compose.yml.j2
+        dest: "{{ containers_base_dir }}/apps/sabnzbd/docker-compose.yml"
+        mode: 0755
+    - name: Create sabnzbd systemd service file
+      ansible.builtin.template:
+        src: "docker-compose@.service.j2"
+        dest: "/etc/systemd/system/docker-compose@sabnzbd.service"
+        mode: 0644
+  notify: Restart sabnzbd

@@ -1,0 +1,22 @@
+---
+- name: Create radarr directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+  loop:
+    - "{{ containers_base_dir }}/apps/radarr"
+    - "{{ containers_base_dir }}/data/radarr"
+    - "{{ backup_base_dir }}/radarr"
+
+- block:
+    - name: Create radarr docker compose file
+      ansible.builtin.template:
+        src: radarr/docker-compose.yml.j2
+        dest: "{{ containers_base_dir }}/apps/radarr/docker-compose.yml"
+        mode: 0755
+    - name: Create radarr systemd service file
+      ansible.builtin.template:
+        src: "docker-compose@.service.j2"
+        dest: "/etc/systemd/system/docker-compose@radarr.service"
+        mode: 0644
+  notify: Restart radarr

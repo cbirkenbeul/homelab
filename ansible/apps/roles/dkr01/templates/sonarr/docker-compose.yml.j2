@@ -1,0 +1,30 @@
+---
+version: '3'
+
+services:
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:3.0.9
+    container_name: sonarr
+    restart: unless-stopped
+    environment:
+      - TZ=Europe/Berlin
+    volumes:
+      - {{ containers_base_dir }}/data/sonarr:/config
+      - {{ backup_base_dir }}/sonarr:/config/Backups
+      - /mnt/media:/media
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.sonarr.rule=Host(`sonarr.{{ SECRET_DOMAIN }}`)
+      - traefik.http.routers.sonarr.entrypoints=websecure
+      - traefik.http.routers.sonarr.tls.certresolver=letsencrypt
+      - traefik.http.services.sonarr.loadbalancer.server.port=8989
+    networks:
+      - traefik_proxy
+      - default
+
+networks:
+  traefik_proxy:
+      name: traefik_proxy
+      external: true
+  default:
+    driver: bridge

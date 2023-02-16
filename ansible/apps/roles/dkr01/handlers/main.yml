@@ -83,3 +83,24 @@
     state: restarted
     enabled: true
     daemon_reload: true
+
+- name: Restart radarr
+  ansible.builtin.systemd:
+    name: "docker-compose@radarr.service"
+    state: restarted
+    enabled: true
+    daemon_reload: true
+
+- name: Restart sonarr
+  ansible.builtin.systemd:
+    name: "docker-compose@sonarr.service"
+    state: restarted
+    enabled: true
+    daemon_reload: true
+
+- name: Restart sabnzbd
+  ansible.builtin.systemd:
+    name: "docker-compose@sabnzbd.service"
+    state: restarted
+    enabled: true
+    daemon_reload: true

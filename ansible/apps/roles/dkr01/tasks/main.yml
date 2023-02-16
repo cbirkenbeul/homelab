@@ -57,3 +57,15 @@
 - import_tasks: prowlarr.yml
   tags:
     - prowlarr
+
+- import_tasks: radarr.yml
+  tags:
+    - radarr
+
+- import_tasks: sonarr.yml
+  tags:
+    - sonarr
+
+- import_tasks: sabnzbd.yml
+  tags:
+    - sabnzbd
