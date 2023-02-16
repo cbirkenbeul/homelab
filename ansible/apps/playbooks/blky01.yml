@@ -1,6 +1,6 @@
 ---
 - hosts:
-    - adg01
+    - blky01
   become: true
   gather_facts: true
   any_errors_fatal: true
@@ -11,6 +11,6 @@
   roles:
     - role: geerlingguy.pip
     - role: geerlingguy.docker
-    - role: adguard
+    - role: blky01
       tags:
-        - adguard
+        - blky01

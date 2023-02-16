@@ -1,7 +1,7 @@
 ---
-- name: Restart adguard
+- name: Restart blocky
   ansible.builtin.systemd:
-    name: "docker-compose@adguard.service"
+    name: "docker-compose@blocky.service"
     state: restarted
     enabled: true
     daemon_reload: true

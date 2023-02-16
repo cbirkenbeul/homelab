@@ -10,6 +10,6 @@
   tags:
     - always
 
-- import_tasks: adguard.yml
+- import_tasks: blocky.yml
   tags:
-    - adguard
+    - blocky

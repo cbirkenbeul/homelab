@@ -8,6 +8,6 @@ proxmox:
 docker:
   hosts:
     dkr01:
-    adg01:
-      ansible_user: root
+    blky01:
+      ansible_user: ubuntu
     nas02:
