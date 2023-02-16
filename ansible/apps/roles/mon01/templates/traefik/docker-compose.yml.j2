@@ -1,0 +1,51 @@
+---
+version: '3.7'
+
+services:
+  traefik:
+    image: traefik:v2.9
+    container_name: traefik
+    restart: unless-stopped
+    environment:
+      CF_API_EMAIL: "{{ SECRET_CLOUDFLARE_EMAIL }}"
+      CF_API_KEY: "{{ SECRET_CLOUDFLARE_APIKEY }}"
+    networks:
+      - traefik_proxy
+      - default
+    command:
+      - --api=true
+      - --api.dashboard=true
+      - --api.insecure=true
+      - --providers.docker=true
+      - --providers.docker.exposedbydefault=false
+      - --providers.docker.network=traefik_proxy
+      - --entrypoints.web.address=:80
+      - --entrypoints.websecure.address=:443
+      - --certificatesresolvers.letsencrypt.acme.email={{ SECRET_CLOUDFLARE_EMAIL }}
+      - --certificatesresolvers.letsencrypt.acme.storage=/certs/acme.json
+      - --certificatesresolvers.letsencrypt.acme.caserver=https://acme-v02.api.letsencrypt.org/directory
+      - --certificatesResolvers.letsencrypt.acme.dnschallenge=true
+      - --certificatesResolvers.letsencrypt.acme.dnschallenge.provider=cloudflare
+      - --certificatesResolvers.letsencrypt.acme.dnschallenge.resolvers=1.1.1.1:53,8.8.8.8:53
+      - --serverstransport.insecureskipverify=true
+      - --log.level=INFO
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - {{ containers_base_dir }}/data/traefik/certs:/certs
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.dashboard.rule=Host(`traefik-mon01.{{ SECRET_DOMAIN }}`)
+      - traefik.http.routers.dashboard.entrypoints=websecure
+      - traefik.http.routers.dashboard.tls.certresolver=letsencrypt
+      - traefik.http.routers.dashboard.service=api@internal
+      - traefik.http.services.dashboard.loadbalancer.server.port=8080
+
+networks:
+  traefik_proxy:
+    name: traefik_proxy
+    external: true
+  default:
+    driver: bridge

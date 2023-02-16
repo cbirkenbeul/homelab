@@ -1,0 +1,29 @@
+---
+version: '3'
+
+services:
+  blocky:
+    image: grafana/grafana:9.3.6
+    container_name: grafana
+    restart: unless-stopped
+    environment:
+      - TZ=Europe/Berlin
+    volumes:
+      - {{ containers_base_dir }}/data/grafana:/var/lib/grafana
+    user: "1000"
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.grafana.rule=Host(`grafana.{{ SECRET_DOMAIN }}`)
+      - traefik.http.routers.grafana.entrypoints=websecure
+      - traefik.http.routers.grafana.tls.certresolver=letsencrypt
+      - traefik.http.services.grafana.loadbalancer.server.port=3000
+    networks:
+      - traefik_proxy
+      - default
+
+networks:
+  traefik_proxy:
+    name: traefik_proxy
+    external: true
+  default:
+    driver: bridge

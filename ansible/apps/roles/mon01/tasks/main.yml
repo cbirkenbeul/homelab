@@ -1,0 +1,19 @@
+---
+- name: Create default directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+  loop:
+    - "{{ containers_base_dir }}/apps"
+    - "{{ containers_base_dir }}/config"
+    - "{{ containers_base_dir }}/data"
+  tags:
+    - always
+
+- import_tasks: traefik.yml
+  tags:
+    - traefik
+
+- import_tasks: grafana.yml
+  tags:
+    - grafana

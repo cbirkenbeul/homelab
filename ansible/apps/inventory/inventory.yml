@@ -10,4 +10,4 @@ docker:
     dkr01:
     blky01:
       ansible_user: ubuntu
-    nas02:
+    mon01:

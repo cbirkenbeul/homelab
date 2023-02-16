@@ -1,0 +1,14 @@
+---
+- name: Restart traefik
+  ansible.builtin.systemd:
+    name: "docker-compose@traefik.service"
+    state: restarted
+    enabled: true
+    daemon_reload: true
+
+- name: Restart grafana
+  ansible.builtin.systemd:
+    name: "docker-compose@grafana.service"
+    state: restarted
+    enabled: true
+    daemon_reload: true
