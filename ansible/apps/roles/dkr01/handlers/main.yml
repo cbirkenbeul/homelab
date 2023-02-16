@@ -69,3 +69,10 @@
     state: restarted
     enabled: true
     daemon_reload: true
+
+- name: Restart recyclarr
+  ansible.builtin.systemd:
+    name: "docker-compose@recyclarr.service"
+    state: restarted
+    enabled: true
+    daemon_reload: true

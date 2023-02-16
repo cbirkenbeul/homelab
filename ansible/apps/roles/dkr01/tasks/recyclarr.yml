@@ -1,0 +1,26 @@
+---
+- name: Create recyclarr directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+  loop:
+    - "{{ containers_base_dir }}/apps/recyclarr"
+    - "{{ containers_base_dir }}/config/recyclarr"
+
+- block:
+    - name: Create recyclarr config file
+      ansible.builtin.template:
+        src: recyclarr/config/recyclarr.yml.j2
+        dest: "{{ containers_base_dir }}/config/recyclarr/recyclarr.yml.j2"
+        mode: 0755
+    - name: Create recyclarr docker compose file
+      ansible.builtin.template:
+        src: recyclarr/docker-compose.yml.j2
+        dest: "{{ containers_base_dir }}/apps/recyclarr/docker-compose.yml"
+        mode: 0755
+    - name: Create recyclarr systemd service file
+      ansible.builtin.template:
+        src: "docker-compose@.service.j2"
+        dest: "/etc/systemd/system/docker-compose@recyclarr.service"
+        mode: 0644
+  notify: Restart recyclarr
