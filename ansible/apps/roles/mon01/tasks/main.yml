@@ -17,3 +17,7 @@
 - import_tasks: grafana.yml
   tags:
     - grafana
+
+- import_tasks: prometheus.yml
+  tags:
+    - prometheus

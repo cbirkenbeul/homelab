@@ -12,3 +12,10 @@
     state: restarted
     enabled: true
     daemon_reload: true
+
+- name: Restart prometheus
+  ansible.builtin.systemd:
+    name: "docker-compose@prometheus.service"
+    state: restarted
+    enabled: true
+    daemon_reload: true

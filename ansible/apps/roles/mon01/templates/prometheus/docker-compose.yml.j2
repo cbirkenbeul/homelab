@@ -1,0 +1,14 @@
+---
+version: '3'
+
+services:
+  blocky:
+    image: prom/prometheus:v2.42.0
+    container_name: prometheus
+    restart: unless-stopped
+    environment:
+      - TZ=Europe/Berlin
+    volumes:
+      - {{ containers_base_dir }}/config/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - 9090:9090
