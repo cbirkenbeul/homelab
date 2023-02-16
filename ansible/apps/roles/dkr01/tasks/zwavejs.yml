@@ -1,0 +1,21 @@
+---
+- name: Create zwavejs directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+  loop:
+    - "{{ containers_base_dir }}/apps/zwavejs"
+    - "{{ containers_base_dir }}/config/zwavejs"
+
+- block:
+    - name: Create zwavejs docker compose file
+      ansible.builtin.template:
+        src: zwavejs/docker-compose.yml.j2
+        dest: "{{ containers_base_dir }}/apps/zwavejs/docker-compose.yml"
+        mode: 0755
+    - name: Create zwavejs systemd service file
+      ansible.builtin.template:
+        src: "docker-compose@.service.j2"
+        dest: "/etc/systemd/system/docker-compose@zwavejs.service"
+        mode: 0644
+  notify: Restart zwavejs

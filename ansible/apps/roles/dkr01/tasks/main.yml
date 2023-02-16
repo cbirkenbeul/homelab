@@ -42,6 +42,10 @@
   tags:
     - ghostfolio
 
+- import_tasks: zwavejs.yml
+  tags:
+    - zwavejs
+
 - import_tasks: cloudflared.yml
   tags:
     - cloudflared

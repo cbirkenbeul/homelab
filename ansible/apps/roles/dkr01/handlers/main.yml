@@ -62,3 +62,10 @@
     state: restarted
     enabled: true
     daemon_reload: true
+
+- name: Restart zwavejs
+  ansible.builtin.systemd:
+    name: "docker-compose@zwavejs.service"
+    state: restarted
+    enabled: true
+    daemon_reload: true
