@@ -18,7 +18,7 @@ services:
       - traefik.http.routers.zwave.rule=Host(`zwave.{{ SECRET_DOMAIN }}`)
       - traefik.http.routers.zwave.entrypoints=websecure
       - traefik.http.routers.zwave.tls.certresolver=letsencrypt
-      - traefik.http.services.zwave.loadbalancer.server.port=80
+      - traefik.http.services.zwave.loadbalancer.server.port=8091
 
     networks:
       - traefik_proxy
