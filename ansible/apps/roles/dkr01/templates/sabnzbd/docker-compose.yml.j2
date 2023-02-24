@@ -9,10 +9,10 @@ services:
     environment:
       - TZ=Europe/Berlin
     volumes:
-      - {{ containers_base_dir }}/data/sabnzbd:/config
-      - {{ backup_base_dir }}/sabnzbd:/config/Backups
+      - /container/data/sabnzbd:/config
+      - /mnt/backup/sabnzbd:/config/Backups
       - /mnt/media:/media
-      - {{ containers_base_dir }}/data/sabnzbd/incomplete:/incomplete-downloads
+      - /container/data/sabnzbd/incomplete:/incomplete-downloads
     labels:
       - traefik.enable=true
       - traefik.http.routers.sabnzbd.rule=Host(`sabnzbd.{{ SECRET_DOMAIN }}`)

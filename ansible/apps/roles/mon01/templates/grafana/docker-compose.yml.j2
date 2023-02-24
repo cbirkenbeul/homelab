@@ -10,7 +10,7 @@ services:
       - TZ=Europe/Berlin
       - GF_PANELS_DISABLE_SANITIZE_HTML=true
     volumes:
-      - {{ containers_base_dir }}/data/grafana:/var/lib/grafana
+      - /container/data/grafana:/var/lib/grafana
     user: "1000"
     labels:
       - traefik.enable=true

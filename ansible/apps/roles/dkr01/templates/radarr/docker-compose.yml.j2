@@ -9,8 +9,8 @@ services:
     environment:
       - TZ=Europe/Berlin
     volumes:
-      - {{ containers_base_dir }}/data/radarr:/config
-      - {{ backup_base_dir }}/radarr:/config/Backups
+      - /container/data/radarr:/config
+      - /mnt/backup/radarr:/config/Backups
       - /mnt/media:/media
     labels:
       - traefik.enable=true

@@ -8,8 +8,8 @@ services:
     environment:
       - TZ=Europe/Berlin
     volumes:
-      - {{ containers_base_dir }}/data/prowlarr:/config
-      - {{ backup_base_dir }}/prowlarr:/config/Backups
+      - /container/data/prowlarr:/config
+      - /mnt/backup/prowlarr:/config/Backups
     labels:
       - traefik.enable=true
       - traefik.http.routers.prowlarr.rule=Host(`prowlarr.{{ SECRET_DOMAIN }}`)

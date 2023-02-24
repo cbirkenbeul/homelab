@@ -9,8 +9,8 @@ services:
     environment:
       - TZ=Europe/Berlin
     volumes:
-      - {{ containers_base_dir }}/data/sonarr:/config
-      - {{ backup_base_dir }}/sonarr:/config/Backups
+      - /container/data/sonarr:/config
+      - /mnt/backup/sonarr:/config/Backups
       - /mnt/media:/media
     labels:
       - traefik.enable=true

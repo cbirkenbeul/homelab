@@ -13,4 +13,4 @@ services:
       - "53:53/udp"
       - "4000:4000/tcp"
     volumes:
-      - {{containers_base_dir}}/config/blocky/config.yml:/app/config.yml
+      - /container/config/blocky/config.yml:/app/config.yml

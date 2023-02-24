@@ -9,6 +9,6 @@ services:
     environment:
       - TZ=Europe/Berlin
     volumes:
-      - {{ containers_base_dir }}/config/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - /container/config/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
     ports:
       - 9090:9090

@@ -4,14 +4,14 @@
     path: "{{ item }}"
     state: directory
   loop:
-    - "{{ containers_base_dir }}/apps/ghostfolio"
-    - "{{ containers_base_dir }}/data/ghostfolio"
+    - "/container/apps/ghostfolio"
+    - "/container/data/ghostfolio"
 
 - block:
     - name: Create ghostfolio docker compose file
       ansible.builtin.template:
         src: ghostfolio/docker-compose.yml.j2
-        dest: "{{ containers_base_dir }}/apps/ghostfolio/docker-compose.yml"
+        dest: "/container/apps/ghostfolio/docker-compose.yml"
         mode: 0755
     - name: Create ghostfolio systemd service file
       ansible.builtin.template:

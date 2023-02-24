@@ -1,7 +1,1 @@
 ---
-#
-# SECRET* vars are encrypted with sops
-#
-
-system_base_dir: /container
-containers_base_dir: "{{ system_base_dir }}"

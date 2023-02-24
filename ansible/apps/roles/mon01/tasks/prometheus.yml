@@ -4,21 +4,21 @@
     path: "{{ item }}"
     state: directory
   loop:
-    - "{{ containers_base_dir }}/apps/prometheus"
-    - "{{ containers_base_dir }}/config/prometheus"
-    - "{{ containers_base_dir }}/data/prometheus"
+    - "/container/apps/prometheus"
+    - "/container/config/prometheus"
+    - "/container/data/prometheus"
 
 
 - block:
     - name: Create prometheus config file
       ansible.builtin.template:
         src: prometheus/config/prometheus.yml.j2
-        dest: "{{ containers_base_dir }}/config/prometheus/prometheus.yml"
+        dest: "/container/config/prometheus/prometheus.yml"
         mode: 0755
     - name: Create prometheus docker compose file
       ansible.builtin.template:
         src: prometheus/docker-compose.yml.j2
-        dest: "{{ containers_base_dir }}/apps/prometheus/docker-compose.yml"
+        dest: "/container/apps/prometheus/docker-compose.yml"
         mode: 0755
     - name: Create prometheus systemd service file
       ansible.builtin.template:

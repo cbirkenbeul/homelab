@@ -4,15 +4,15 @@
     path: "{{ item }}"
     state: directory
   loop:
-    - "{{ containers_base_dir }}/apps/prowlarr"
-    - "{{ containers_base_dir }}/data/prowlarr"
-    - "{{ backup_base_dir }}/prowlarr"
+    - "/container/apps/prowlarr"
+    - "/container/data/prowlarr"
+    - "/mnt/backup/prowlarr"
 
 - block:
     - name: Create prowlarr docker compose file
       ansible.builtin.template:
         src: prowlarr/docker-compose.yml.j2
-        dest: "{{ containers_base_dir }}/apps/prowlarr/docker-compose.yml"
+        dest: "/container/apps/prowlarr/docker-compose.yml"
         mode: 0755
     - name: Create prowlarr systemd service file
       ansible.builtin.template:

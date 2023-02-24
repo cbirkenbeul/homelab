@@ -4,13 +4,13 @@
     path: "{{ item }}"
     state: directory
   loop:
-    - "{{ containers_base_dir }}/apps/phpmyadmin"
+    - "/container/apps/phpmyadmin"
 
 - block:
     - name: Create phpmyadmin docker compose file
       ansible.builtin.template:
         src: phpmyadmin/docker-compose.yml.j2
-        dest: "{{ containers_base_dir }}/apps/phpmyadmin/docker-compose.yml"
+        dest: "/container/apps/phpmyadmin/docker-compose.yml"
         mode: 0755
     - name: Create phpmyadmin systemd service file
       ansible.builtin.template:

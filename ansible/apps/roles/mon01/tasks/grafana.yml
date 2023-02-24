@@ -4,16 +4,16 @@
     path: "{{ item }}"
     state: directory
   loop:
-    - "{{ containers_base_dir }}/apps/grafana"
-    - "{{ containers_base_dir }}/config/grafana"
-    - "{{ containers_base_dir }}/data/grafana"
+    - "/container/apps/grafana"
+    - "/container/config/grafana"
+    - "/container/data/grafana"
 
 
 - block:
     - name: Create grafana docker compose file
       ansible.builtin.template:
         src: grafana/docker-compose.yml.j2
-        dest: "{{ containers_base_dir }}/apps/grafana/docker-compose.yml"
+        dest: "/container/apps/grafana/docker-compose.yml"
         mode: 0755
     - name: Create grafana systemd service file
       ansible.builtin.template:

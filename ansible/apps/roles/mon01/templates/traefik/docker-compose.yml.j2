@@ -33,7 +33,7 @@ services:
       - 80:80
       - 443:443
     volumes:
-      - {{ containers_base_dir }}/data/traefik/certs:/certs
+      - /container/data/traefik/certs:/certs
       - /var/run/docker.sock:/var/run/docker.sock:ro
     labels:
       - traefik.enable=true
