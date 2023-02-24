@@ -9,7 +9,6 @@
           type: jellyfin
           url: "{{ SECRET_HOMEPAGE_JELLYFIN_URL }}"
           key: "{{ SECRET_HOMEPAGE_JELLYFIN_KEY }}"
-
     - radarr:
         href: "{{ SECRET_HOMEPAGE_RADARR_URL }}"
         widget:
@@ -22,14 +21,6 @@
           type: sonarr
           url: "{{ SECRET_HOMEPAGE_SONARR_URL }}"
           key: "{{ SECRET_HOMEPAGE_SONARR_KEY }}"
-
-    - immich:
-        href: "{{ SECRET_HOMEPAGE_IMMICH_URL }}"
-        widget:
-          type: immich
-          url: "{{ SECRET_HOMEPAGE_IMMICH_URL }}"
-          key: "{{ SECRET_HOMEPAGE_IMMICH_KEY }}"
-
     - sabnzbd:
         href: "{{ SECRET_HOMEPAGE_SABNZBD_URL }}"
         widget:
@@ -38,14 +29,6 @@
           key: "{{ SECRET_HOMEPAGE_SABNZBD_KEY }}"
 
 - Netzwerk:
-    - AdGuard Home:
-        href: "{{ SECRET_HOMEPAGE_ADGUARD_URL }}"
-        widget:
-          type: adguard
-          url: "{{ SECRET_HOMEPAGE_ADGUARD_URL }}"
-          username: "{{ SECRET_HOMEPAGE_ADGUARD_USER }}"
-          password: "{{ SECRET_HOMEPAGE_ADGUARD_PASSWORD }}"
-
     - Unifi Controller:
         href: "{{ SECRET_HOMEPAGE_UNIFI_URL }}"
         widget:
@@ -61,3 +44,9 @@
           url: "{{ SECRET_HOMEPAGE_OPNSENSE_URL }}"
           username: "{{ SECRET_HOMEPAGE_OPNSENSE_USER }}"
           password: "{{ SECRET_HOMEPAGE_OPNSENSE_PASSWORD }}"
+
+- Stuff:
+    - Mastodon:
+        widget:
+          type: Mastodon
+          url: https://mastodon.teqqnet.de/@teqqy
