@@ -4,15 +4,15 @@
     path: "{{ item }}"
     state: directory
   loop:
-    - "/container/apps/sabnzbd"
-    - "/container/data/sabnzbd"
+    - "/docker/apps/sabnzbd"
+    - "/docker/data/sabnzbd"
     - "/mnt/backup/sabnzbd"
 
 - block:
     - name: Create sabnzbd docker compose file
       ansible.builtin.template:
         src: sabnzbd/docker-compose.yml.j2
-        dest: "/container/apps/sabnzbd/docker-compose.yml"
+        dest: "/docker/apps/sabnzbd/docker-compose.yml"
         mode: 0755
     - name: Create sabnzbd systemd service file
       ansible.builtin.template:

@@ -4,14 +4,14 @@
     path: "{{ item }}"
     state: directory
   loop:
-    - "/container/apps/zwavejs"
-    - "/container/config/zwavejs"
+    - "/docker/apps/zwavejs"
+    - "/docker/config/zwavejs"
 
 - block:
     - name: Create zwavejs docker compose file
       ansible.builtin.template:
         src: zwavejs/docker-compose.yml.j2
-        dest: "/container/apps/zwavejs/docker-compose.yml"
+        dest: "/docker/apps/zwavejs/docker-compose.yml"
         mode: 0755
     - name: Create zwavejs systemd service file
       ansible.builtin.template:

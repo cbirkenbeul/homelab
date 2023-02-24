@@ -9,7 +9,7 @@ services:
     environment:
       - TZ=Europe/Berlin
     volumes:
-      - /container/data/sonarr:/config
+      - /docker/data/sonarr:/config
       - /mnt/backup/sonarr:/config/Backups
       - /mnt/media:/media
     labels:

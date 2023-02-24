@@ -4,18 +4,18 @@
     path: "{{ item }}"
     state: directory
   loop:
-    - "/container/apps/freshrss"
-    - "/container/data/freshrss"
+    - "/docker/apps/freshrss"
+    - "/docker/data/freshrss"
 
 - block:
     - name: Create freshrss docker compose file
       ansible.builtin.template:
         src: freshrss/docker-compose.yml.j2
-        dest: "/container/apps/freshrss/docker-compose.yml"
-        mode: 0755
+        dest: "/docker/apps/freshrss/docker-compose.yml"
+        mode: '0755'
     - name: Create freshrss systemd service file
       ansible.builtin.template:
         src: "docker-compose@.service.j2"
         dest: "/etc/systemd/system/docker-compose@freshrss.service"
-        mode: 0644
+        mode: '0644'
   notify: Restart freshrss

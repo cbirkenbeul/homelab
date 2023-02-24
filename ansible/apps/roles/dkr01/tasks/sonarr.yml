@@ -4,15 +4,15 @@
     path: "{{ item }}"
     state: directory
   loop:
-    - "/container/apps/sonarr"
-    - "/container/data/sonarr"
+    - "/docker/apps/sonarr"
+    - "/docker/data/sonarr"
     - "/mnt/backup/sonarr"
 
 - block:
     - name: Create sonarr docker compose file
       ansible.builtin.template:
         src: sonarr/docker-compose.yml.j2
-        dest: "/container/apps/sonarr/docker-compose.yml"
+        dest: "/docker/apps/sonarr/docker-compose.yml"
         mode: 0755
     - name: Create sonarr systemd service file
       ansible.builtin.template:

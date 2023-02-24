@@ -9,8 +9,8 @@ services:
       EZ: Europe/Berlin
       CRON_MIN: 1,31
     volumes:
-      - /container/data/freshrss/data:/var/www/FreshRSS/data
-      - /container/data/freshrss/extensions:/var/www/FreshRSS/extensions
+      - /docker/data/freshrss/data:/var/www/FreshRSS/data
+      - /docker/data/freshrss/extensions:/var/www/FreshRSS/extensions
     labels:
       - traefik.enable=true
       - traefik.http.routers.freshrss.rule=Host(`freshrss.{{ SECRET_DOMAIN }}`)

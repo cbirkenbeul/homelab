@@ -12,7 +12,7 @@ services:
     devices:
       - '/dev/ttyACM0:/dev/ttyACM0'
     volumes:
-      - /container/config/zwavejs:/usr/src/app/store
+      - /docker/config/zwavejs:/usr/src/app/store
     labels:
       - traefik.enable=true
       - traefik.http.routers.zwave.rule=Host(`zwave.{{ SECRET_DOMAIN }}`)

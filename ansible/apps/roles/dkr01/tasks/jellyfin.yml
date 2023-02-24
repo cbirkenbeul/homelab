@@ -4,14 +4,14 @@
     path: "{{ item }}"
     state: directory
   loop:
-    - "/container/apps/jellyfin"
-    - "/container/data/jellyfin"
+    - "/docker/apps/jellyfin"
+    - "/docker/data/jellyfin"
 
 - block:
     - name: Create jellyfin docker compose file
       ansible.builtin.template:
         src: jellyfin/docker-compose.yml.j2
-        dest: "/container/apps/jellyfin/docker-compose.yml"
+        dest: "/docker/apps/jellyfin/docker-compose.yml"
         mode: 0755
     - name: Create jellyfin systemd service file
       ansible.builtin.template:

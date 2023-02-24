@@ -4,13 +4,13 @@
     path: "{{ item }}"
     state: directory
   loop:
-    - "/container/apps/node-exporter"
+    - "/docker/apps/node-exporter"
 
 - block:
     - name: Create node-exporter docker compose file
       ansible.builtin.template:
         src: node-exporter/docker-compose.yml.j2
-        dest: "/container/apps/node-exporter/docker-compose.yml"
+        dest: "/docker/apps/node-exporter/docker-compose.yml"
         mode: 0755
     - name: Create node-exporter systemd service file
       ansible.builtin.template:

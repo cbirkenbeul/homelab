@@ -4,9 +4,9 @@
     path: "{{ item }}"
     state: directory
   loop:
-    - "/container/apps"
-    - "/container/config"
-    - "/container/data"
+    - "/docker/apps"
+    - "/docker/config"
+    - "/docker/data"
   tags:
     - always
 

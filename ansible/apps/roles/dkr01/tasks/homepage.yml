@@ -4,39 +4,39 @@
     path: "{{ item }}"
     state: directory
   loop:
-    - "/container/apps/homepage"
-    - "/container/apps/homepage/config"
+    - "/docker/apps/homepage"
+    - "/docker/apps/homepage/config"
 
 - block:
     - name: Create homepage bookmarks config file
       ansible.builtin.template:
         src: homepage/config/bookmarks.yaml.j2
-        dest: "/container/apps/homepage/config/bookmarks.yaml"
+        dest: "/docker/apps/homepage/config/bookmarks.yaml"
         mode: 0755
     - name: Create homepage docker config file
       ansible.builtin.template:
         src: homepage/config/docker.yaml.j2
-        dest: "/container/apps/homepage/config/docker.yaml"
+        dest: "/docker/apps/homepage/config/docker.yaml"
         mode: 0755
     - name: Create homepage services config file
       ansible.builtin.template:
         src: homepage/config/services.yaml.j2
-        dest: "/container/apps/homepage/config/services.yaml"
+        dest: "/docker/apps/homepage/config/services.yaml"
         mode: 0755
     - name: Create homepage settings config file
       ansible.builtin.template:
         src: homepage/config/settings.yaml.j2
-        dest: "/container/apps/homepage/config/settings.yaml"
+        dest: "/docker/apps/homepage/config/settings.yaml"
         mode: 0755
     - name: Create homepage widgets config file
       ansible.builtin.template:
         src: homepage/config/widgets.yaml.j2
-        dest: "/container/apps/homepage/config/widgets.yaml"
+        dest: "/docker/apps/homepage/config/widgets.yaml"
         mode: 0755
     - name: Create homepage docker compose file
       ansible.builtin.template:
         src: homepage/docker-compose.yml.j2
-        dest: "/container/apps/homepage/docker-compose.yml"
+        dest: "/docker/apps/homepage/docker-compose.yml"
         mode: 0755
     - name: Create homepage systemd service file
       ansible.builtin.template:

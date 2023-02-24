@@ -8,7 +8,7 @@ services:
     environment:
       - TZ=Europe/Berlin
     volumes:
-      - /container/data/prowlarr:/config
+      - /docker/data/prowlarr:/config
       - /mnt/backup/prowlarr:/config/Backups
     labels:
       - traefik.enable=true

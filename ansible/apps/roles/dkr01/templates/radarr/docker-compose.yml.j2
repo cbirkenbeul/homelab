@@ -9,7 +9,7 @@ services:
     environment:
       - TZ=Europe/Berlin
     volumes:
-      - /container/data/radarr:/config
+      - /docker/data/radarr:/config
       - /mnt/backup/radarr:/config/Backups
       - /mnt/media:/media
     labels:

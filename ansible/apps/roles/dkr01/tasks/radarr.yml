@@ -4,15 +4,15 @@
     path: "{{ item }}"
     state: directory
   loop:
-    - "/container/apps/radarr"
-    - "/container/data/radarr"
+    - "/docker/apps/radarr"
+    - "/docker/data/radarr"
     - "/mnt/backup/radarr"
 
 - block:
     - name: Create radarr docker compose file
       ansible.builtin.template:
         src: radarr/docker-compose.yml.j2
-        dest: "/container/apps/radarr/docker-compose.yml"
+        dest: "/docker/apps/radarr/docker-compose.yml"
         mode: 0755
     - name: Create radarr systemd service file
       ansible.builtin.template:

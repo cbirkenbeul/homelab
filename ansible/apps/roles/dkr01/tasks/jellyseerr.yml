@@ -4,14 +4,14 @@
     path: "{{ item }}"
     state: directory
   loop:
-    - "/container/apps/jellyseerr"
-    - "/container/data/jellyseerr"
+    - "/docker/apps/jellyseerr"
+    - "/docker/data/jellyseerr"
 
 - block:
     - name: Create jellyseerr docker compose file
       ansible.builtin.template:
         src: jellyseerr/docker-compose.yml.j2
-        dest: "/container/apps/jellyseerr/docker-compose.yml"
+        dest: "/docker/apps/jellyseerr/docker-compose.yml"
         mode: 0755
     - name: Create jellyseerr systemd service file
       ansible.builtin.template:
