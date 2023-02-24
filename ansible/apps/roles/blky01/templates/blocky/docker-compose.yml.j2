@@ -1,5 +1,6 @@
 ---
-version: "2.1"
+version: '3.8'
+
 services:
   blocky:
     image: spx01/blocky:v0.20
@@ -10,6 +11,6 @@ services:
       - "53:53/udp"
       - "4000:4000/tcp"
     environment:
-      - TZ=Europe/Berlin # Optional to synchronize the log timestamp with host
+      - TZ=Europe/Berlin
     volumes:
       - {{ containers_base_dir }}/config/blocky/config.yml:/app/config.yml

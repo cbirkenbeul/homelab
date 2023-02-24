@@ -1,6 +1,5 @@
 ---
-version: '3'
-
+version: '3.7'
 services:
   freshrss:
     image: freshrss/freshrss:1.20.2
@@ -18,11 +17,9 @@ services:
       - traefik.http.routers.freshrss.entrypoints=websecure
       - traefik.http.routers.freshrss.tls.certresolver=letsencrypt
       - traefik.http.services.freshrss.loadbalancer.server.port=80
-
     networks:
       - traefik_proxy
       - default
-
 networks:
   traefik_proxy:
     external:
