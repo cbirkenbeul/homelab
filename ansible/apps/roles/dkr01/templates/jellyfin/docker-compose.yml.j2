@@ -9,8 +9,8 @@ services:
     environment:
       - TZ=Europe/Berlin
     volumes:
-      - {{ containers_base_dir }}/data/jellyfin/data:/config
-      - {{ containers_base_dir }}/data/jellyfin/cache:/cache
+      - {{containers_base_dir}}/data/jellyfin/data:/config
+      - {{containers_base_dir}}/data/jellyfin/cache:/cache
       - /mnt/media/media:/media
     devices:
       - /dev/dri/renderD128:/dev/dri/renderD128
