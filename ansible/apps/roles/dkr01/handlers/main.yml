@@ -97,6 +97,13 @@
     enabled: true
     daemon_reload: true
 
+- name: Restart radarr-anime
+  ansible.builtin.systemd:
+    name: "docker-compose@radarr-anime.service"
+    state: restarted
+    enabled: true
+    daemon_reload: true
+
 - name: Restart sonarr
   ansible.builtin.systemd:
     name: "docker-compose@sonarr.service"

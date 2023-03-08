@@ -66,6 +66,10 @@
   tags:
     - radarr
 
+- import_tasks: radarr-anime.yml
+  tags:
+    - radarr-anime
+
 - import_tasks: sonarr.yml
   tags:
     - sonarr

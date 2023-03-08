@@ -1,0 +1,30 @@
+---
+version: '3'
+
+services:
+  radarr-anime:
+    image: lscr.io/linuxserver/radarr:4.3.2
+    container_name: radarr-anime
+    restart: unless-stopped
+    environment:
+      - TZ=Europe/Berlin
+    volumes:
+      - /docker/data/radarr-anime:/config
+      - /mnt/backup/radarr-anime:/config/Backups
+      - /mnt/media:/media
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.radarr-anime.rule=Host(`radarr-anime.{{ SECRET_DOMAIN }}`)
+      - traefik.http.routers.radarr-anime.entrypoints=websecure
+      - traefik.http.routers.radarr-anime.tls.certresolver=letsencrypt
+      - traefik.http.services.radarr-anime.loadbalancer.server.port=7878
+    networks:
+      - traefik_proxy
+      - default
+
+networks:
+  traefik_proxy:
+      name: traefik_proxy
+      external: true
+  default:
+    driver: bridge

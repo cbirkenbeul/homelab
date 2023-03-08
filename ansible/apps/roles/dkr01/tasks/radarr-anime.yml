@@ -1,0 +1,22 @@
+---
+- name: Create radarr-anime directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+  loop:
+    - "/docker/apps/radarr-anime"
+    - "/docker/data/radarr-anime"
+    - "/mnt/backup/radarr-anime"
+
+- block:
+    - name: Create radarr-anime docker compose file
+      ansible.builtin.template:
+        src: radarr-anime/docker-compose.yml.j2
+        dest: "/docker/apps/radarr-anime/docker-compose.yml"
+        mode: 0755
+    - name: Create radarr-anime systemd service file
+      ansible.builtin.template:
+        src: "docker-compose@.service.j2"
+        dest: "/etc/systemd/system/docker-compose@radarr-anime.service"
+        mode: 0644
+  notify: Restart radarr-anime
