@@ -117,3 +117,10 @@
     state: restarted
     enabled: true
     daemon_reload: true
+
+- name: Restart teslamate
+  ansible.builtin.systemd:
+    name: "docker-compose@teslamate.service"
+    state: restarted
+    enabled: true
+    daemon_reload: true
