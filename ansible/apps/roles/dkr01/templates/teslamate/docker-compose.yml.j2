@@ -11,7 +11,9 @@ services:
       - DATABASE_PASS={{SECRET_TESLAMATE_PASSWORD}}
       - DATABASE_NAME=teslamate
       - DATABASE_HOST={{SECRET_POSTGRES_SERVER}}
-      - DISABLE_MQTT=true
+      - MQTT_HOST=192.168.10.100
+      - MQTT_USERNAME={{SECRET_MQTT_USER}}
+      - MQTT_PASSWORD={{SECRET_MQTT_PASSWORD}}
     volumes:
       - ./docker/data/teslamate:/opt/app/import
     labels:
