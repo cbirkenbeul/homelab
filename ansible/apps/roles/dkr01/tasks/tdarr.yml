@@ -1,0 +1,22 @@
+---
+- name: Create tdarr directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+  loop:
+    - "/docker/apps/tdarr"
+    - "/docker/data/tdarr"
+    - "/docker/config/tdarr"
+
+- block:
+    - name: Create tdarr docker compose file
+      ansible.builtin.template:
+        src: tdarr/docker-compose.yml.j2
+        dest: "/docker/apps/tdarr/docker-compose.yml"
+        mode: '0755'
+    - name: Create tdarr systemd service file
+      ansible.builtin.template:
+        src: "docker-compose@.service.j2"
+        dest: "/etc/systemd/system/docker-compose@tdarr.service"
+        mode: '0644'
+  notify: Restart tdarr

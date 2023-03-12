@@ -81,3 +81,7 @@
 - import_tasks: teslamate.yml
   tags:
     - teslamate
+
+- import_tasks: tdarr.yml
+  tags:
+    - tdarr

@@ -124,3 +124,10 @@
     state: restarted
     enabled: true
     daemon_reload: true
+
+- name: Restart tdarr
+  ansible.builtin.systemd:
+    name: "docker-compose@tdarr.service"
+    state: restarted
+    enabled: true
+    daemon_reload: true
