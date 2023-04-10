@@ -1,0 +1,29 @@
+---
+- name: Create immich directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    mode: "0755"
+  loop:
+    - "/container/apps/immich"
+    - "/container/config/immich"
+    - "/container/data/immich"
+
+
+- block:
+    - name: Create immich config file
+      ansible.builtin.template:
+        src: immich/env.j2
+        dest: "/container/apps/immich/.env"
+        mode: "0755"
+    - name: Create immich docker compose file
+      ansible.builtin.template:
+        src: immich/docker-compose.yml.j2
+        dest: "/container/apps/immich/docker-compose.yml"
+        mode: "0755"
+    - name: Create immich systemd service file
+      ansible.builtin.template:
+        src: "docker-compose@.service.j2"
+        dest: "/etc/systemd/system/docker-compose@immich.service"
+        mode: "0644"
+  notify: Restart immich
