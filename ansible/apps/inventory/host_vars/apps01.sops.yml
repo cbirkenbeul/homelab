@@ -1,0 +1,26 @@
+ansible_become_pass: ENC[AES256_GCM,data:kRoOHNhjeQgd,iv:frCJJCHnDUd29XUjws6xiAvB1TMUQsFX1JchsR9IokU=,tag:Kgr3R2i4gYH7ax1wX4xTRw==,type:str]
+SECRET_DOMAIN: ENC[AES256_GCM,data:UPbrJColhT2ez9M=,iv:IRQouvZkc06SjvR2j1PkMXG0V1wFppIHnVoI/fRCw6k=,tag:t5uNr0+qOPFjPjPLm0QQqw==,type:str]
+SECRET_CLOUDFLARE_EMAIL: ENC[AES256_GCM,data:myjeXpB4HawSCjrb1w==,iv:L/zCQBJUEJGw1kl1wrsPdg3g3a4aCiTM4pFut5UyiCc=,tag:jj1681M1nT9uF1r21x5ffg==,type:str]
+SECRET_CLOUDFLARE_APIKEY: ENC[AES256_GCM,data:ruTDc7rT5+7PXRZqrxFk2svKqk4WjAUKZJQs4vGSCBrgjwmFug==,iv:2viyiwbIDhF8uyg79vNCWkrK5b80MNc3hMnkqnfns3g=,tag:6F+CYvnU6f64AJS9u0XA6Q==,type:str]
+SECRET_DFAULT_EMAIL: ENC[AES256_GCM,data:o7RIf0wsPLvN/IzcQQ==,iv:6QPVK3uR15upWD5DNDlOquRQJXCIYW2ezbFHngtJkLg=,tag:dWQ8It4ITfLBSTvecU3eMQ==,type:str]
+SECRET_MEILI_MASTER_KEY: ENC[AES256_GCM,data:MiU9iCGtcUa14ArkJ8lhrecHXFAA3NlR7yJqZyQwXkhqCKirui3nd1dcBZwBMbGsuj1IPU4NldqimaVpBYoEmA==,iv:q8Lu4AxCPl+SgDCSdv54Et6UdluXwmzkQGlWi72wRt4=,tag:aJe7Rmb5p+nH3Kgn4fziDQ==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1kmnhp30e40u4q54znn8ysz3atvee5k4q9r585y8mzxz9xuuxm37spk5w4w
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA2QkVqeUNSQ25zNEY2Wkhm
+            d1FEamgwZzFETHBBdWxkckROK2NqOXlJbVIwClhLQmZ1NzZEWEFsUnFuWWRpRUdL
+            TDlDcGk2T3IxWjRkTzlzbGNNdkQ1MlUKLS0tIEh0aENpZ0lvY1JPaG1reGpsQWRE
+            OE8yN2xaSVY5WnNwV2ZlRnZEa04zVmsKTEBdVoQJEOmEN+vsXSTTlj6x0tPHSJZh
+            MZbgIdsQW7tOdH8r8fvH1aAhIPRfP05hEyzeOmgwqTGMc6CchYCITQ==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2023-04-12T19:20:25Z"
+    mac: ENC[AES256_GCM,data:wTL+OVO10PZAyzDsdQFS/4F/hf2YotSiZs+IB+dGQh7011NWsT1THxWImH52IlgAIZuY2Z8l9H+IAni1y0T+OKGAATvpDV3Fvmy4C9Q5GjLaID+cYdNu4IsRh3kkqk7WxUjh3PFojIvtb9LK2h6j3GOEhiVYoJ3yBm2iSUMo9JU=,iv:AXWTRgpxj14iTEpXSJWQ/O0/069ZCJKP9JGFWCzizKg=,tag:6ZFy9rbItAzCn6gd56IpLQ==,type:str]
+    pgp: []
+    unencrypted_regex: ^(kind)$
+    version: 3.7.3

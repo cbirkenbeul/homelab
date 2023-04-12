@@ -1,0 +1,27 @@
+---
+- name: Create default directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+  loop:
+    - "/container/apps"
+    - "/container/config"
+    - "/container/data"
+  tags:
+    - always
+
+- import_tasks: system.yml
+  tags:
+    - system
+
+- import_tasks: traefik.yml
+  tags:
+    - traefik
+
+- import_tasks: barassistant.yml
+  tags:
+    - barassistant
+
+- import_tasks: node-exporter.yml
+  tags:
+    - node-exporter

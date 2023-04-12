@@ -7,6 +7,7 @@ proxmox:
 
 docker:
   hosts:
+    apps01:
     dkr01:
     blky01:
       ansible_user: ubuntu
