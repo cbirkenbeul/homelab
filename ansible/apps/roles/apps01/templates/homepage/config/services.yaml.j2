@@ -15,6 +15,18 @@
           type: radarr
           url: "{{ SECRET_HOMEPAGE_RADARR_URL }}"
           key: "{{ SECRET_HOMEPAGE_RADARR_KEY }}"
+    - radarr-4k:
+        href: "{{ SECRET_HOMEPAGE_RADARR4k_URL }}"
+        widget:
+          type: radarr
+          url: "{{ SECRET_HOMEPAGE_RADARR4k_URL }}"
+          key: "{{ SECRET_HOMEPAGE_RADARR4k_KEY }}"
+    - radarr-anime:
+        href: "{{ SECRET_HOMEPAGE_RADARRANIME_URL }}"
+        widget:
+          type: radarr
+          url: "{{ SECRET_HOMEPAGE_RADARRANIME_URL }}"
+          key: "{{ SECRET_HOMEPAGE_RADARRANIME_KEY }}"
     - sonarr:
         href: "{{ SECRET_HOMEPAGE_SONARR_URL }}"
         widget:
@@ -36,7 +48,6 @@
           url: "{{ SECRET_HOMEPAGE_UNIFI_URL }}"
           username: "{{ SECRET_HOMEPAGE_UNIFI_USER }}"
           password: "{{ SECRET_HOMEPAGE_UNIFI_PASSWORD }}"
-
     - opnSense:
         href: "{{ SECRET_HOMEPAGE_OPNSENSE_URL }}"
         widget:
@@ -44,3 +55,12 @@
           url: "{{ SECRET_HOMEPAGE_OPNSENSE_URL }}"
           username: "{{ SECRET_HOMEPAGE_OPNSENSE_USER }}"
           password: "{{ SECRET_HOMEPAGE_OPNSENSE_PASSWORD }}"
+
+- Home:
+    - Paperless-NGX:
+        href: "{{ SECRET_HOMEPAGE_PAPERLESS_URL }}"
+        widget:
+          type: paperlessngx
+          url: {{ SECRET_HOMEPAGE_PAPERLESS_URL }}
+          username: {{ SECRET_HOMEPAGE_PAPERLESS_USER }}
+          password: {{ SECRET_HOMEPAGE_PAPERLESS_PASSWORD }}
