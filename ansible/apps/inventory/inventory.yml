@@ -11,5 +11,6 @@ docker:
     dkr01:
     blky01:
       ansible_user: ubuntu
+    media01:
     mon01:
     immich01:

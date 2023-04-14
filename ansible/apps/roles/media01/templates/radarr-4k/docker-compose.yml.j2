@@ -1,0 +1,30 @@
+---
+version: '3'
+
+services:
+  radarr-4k:
+    image: lscr.io/linuxserver/radarr:4.3.2
+    container_name: radarr-4k
+    restart: unless-stopped
+    environment:
+      - TZ=Europe/Berlin
+    volumes:
+      - /container/data/radarr-4k:/config
+      - /mnt/backup/radarr-4k:/config/Backups
+      - /mnt/media:/media
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.radarr-4k.rule=Host(`radarr-4k.{{ SECRET_DOMAIN }}`)
+      - traefik.http.routers.radarr-4k.entrypoints=websecure
+      - traefik.http.routers.radarr-4k.tls.certresolver=letsencrypt
+      - traefik.http.services.radarr-4k.loadbalancer.server.port=7878
+    networks:
+      - traefik_proxy
+      - default
+
+networks:
+  traefik_proxy:
+      name: traefik_proxy
+      external: true
+  default:
+    driver: bridge

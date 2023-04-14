@@ -1,0 +1,24 @@
+---
+- name: Create radarr-4k directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    mode: "0755"
+  loop:
+    - "/container/apps/radarr-4k"
+    - "/container/config/radarr-4k"
+    - "/container/data/radarr-4k"
+
+
+- block:
+    - name: Create radarr-4k docker compose file
+      ansible.builtin.template:
+        src: radarr-4k/docker-compose.yml.j2
+        dest: "/container/apps/radarr-4k/docker-compose.yml"
+        mode: "0755"
+    - name: Create radarr-4k systemd service file
+      ansible.builtin.template:
+        src: "docker-compose@.service.j2"
+        dest: "/etc/systemd/system/docker-compose@radarr-4k.service"
+        mode: "0644"
+  notify: Restart radarr-4k
