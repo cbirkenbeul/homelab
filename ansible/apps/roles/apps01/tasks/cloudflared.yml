@@ -4,13 +4,13 @@
     path: "{{ item }}"
     state: directory
   loop:
-    - "/docker/apps/cloudflared"
+    - "/container/apps/cloudflared"
 
 - block:
     - name: Create cloudflared docker compose file
       ansible.builtin.template:
         src: cloudflared/docker-compose.yml.j2
-        dest: "/docker/apps/cloudflared/docker-compose.yml"
+        dest: "/container/apps/cloudflared/docker-compose.yml"
         mode: 0755
     - name: Create cloudflared systemd service file
       ansible.builtin.template:

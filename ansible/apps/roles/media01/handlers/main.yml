@@ -6,6 +6,13 @@
     enabled: true
     daemon_reload: true
 
+- name: Restart node-exporter
+  ansible.builtin.systemd:
+    name: "docker-compose@node-exporter.service"
+    state: restarted
+    enabled: true
+    daemon_reload: true
+
 - name: Restart radarr-4k
   ansible.builtin.systemd:
     name: "docker-compose@radarr-4k.service"
@@ -13,9 +20,16 @@
     enabled: true
     daemon_reload: true
 
-- name: Restart node-exporter
+- name: Restart prowlarr
   ansible.builtin.systemd:
-    name: "docker-compose@node-exporter.service"
+    name: "docker-compose@prowlarr.service"
+    state: restarted
+    enabled: true
+    daemon_reload: true
+
+- name: Restart recyclarr
+  ansible.builtin.systemd:
+    name: "docker-compose@recyclarr.service"
     state: restarted
     enabled: true
     daemon_reload: true

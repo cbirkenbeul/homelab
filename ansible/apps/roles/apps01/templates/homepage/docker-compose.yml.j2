@@ -6,7 +6,7 @@ services:
     image: ghcr.io/benphelps/homepage:v0.6.16
     container_name: homepage
     volumes:
-      - ./config:/app/config
+      - /container/config/homepage:/app/config
     labels:
       - traefik.enable=true
       - traefik.http.routers.homepage.rule=Host(`homepage.{{ SECRET_DOMAIN }}`)

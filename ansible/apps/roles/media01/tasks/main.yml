@@ -14,14 +14,23 @@
   tags:
     - system
 
+- import_tasks: node-exporter.yml
+  tags:
+    - node-exporter
+
 - import_tasks: traefik.yml
   tags:
     - traefik
+
+- import_tasks: recyclarr.yml
+  tags:
+    - recyclarr
+
+- import_tasks: prowlarr.yml
+  tags:
+    - prowlarr
 
 - import_tasks: radarr-4k.yml
   tags:
     - radarr-4k
 
-- import_tasks: node-exporter.yml
-  tags:
-    - node-exporter

@@ -14,6 +14,10 @@
   tags:
     - system
 
+- import_tasks: node-exporter.yml
+  tags:
+    - node-exporter
+
 - import_tasks: traefik.yml
   tags:
     - traefik
@@ -22,6 +26,11 @@
   tags:
     - barassistant
 
-- import_tasks: node-exporter.yml
+
+- import_tasks: cloudflared.yml
   tags:
-    - node-exporter
+    - cloudflared
+
+- import_tasks: homepage.yml
+  tags:
+    - homepage
