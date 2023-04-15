@@ -3,6 +3,7 @@
   ansible.builtin.file:
     path: "{{ item }}"
     state: directory
+    mode: "0644"
   loop:
     - "/container/apps"
     - "/container/config"
@@ -10,14 +11,9 @@
   tags:
     - always
 
-- import_tasks: traefik.yml
-  tags:
+- name: Deploy docker apps
+  ansible.builtin.include_tasks: "tasks/{{ item }}.yml"
+  loop:
     - traefik
-
-- import_tasks: grafana.yml
-  tags:
-    - grafana
-
-- import_tasks: prometheus.yml
-  tags:
     - prometheus
+    - grafana
