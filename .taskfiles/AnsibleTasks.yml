@@ -1,0 +1,8 @@
+---
+version: "3"
+
+tasks:
+  mon01:
+    desc: Ansible Playbook for host mon01
+    cmds:
+      - ansible-playbook --inventory ./ansible/apps/inventory/inventory.yml ./ansible/apps/playbooks/mon01.yml --limit mon01

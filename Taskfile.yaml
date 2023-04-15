@@ -8,17 +8,18 @@ vars:
   ANSIBLE_DIR: "{{.PROJECT_DIR}}/provision/ansible"
   TERRAFORM_DIR: "{{.PROJECT_DIR}}/provision/terraform"
 
-dotenv: [".config.env"]
+# dotenv: [".config.env"]
 
 # env:
 #   KUBECONFIG: "~/.kube/config"
 
 includes:
 #   ansible: .taskfiles/AnsibleTasks.yml
-  cluster: .taskfiles/ClusterTasks.yml
+#   cluster: .taskfiles/ClusterTasks.yml
 #   precommit: .taskfiles/PrecommitTasks.yml
 #   terraform: .taskfiles/TerraformTasks.yml
-  snapshot: .taskfiles/SnapshotTasks.yml
+#   snapshot: .taskfiles/SnapshotTasks.yml
+  ansible: .taskfiles/AnsibleTasks.yml
 tasks:
 
   init:
