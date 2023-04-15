@@ -2,12 +2,12 @@
 version: '3'
 
 services:
-  blocky:
+  prometheus:
     image: prom/prometheus:v2.43.0
     container_name: prometheus
     restart: unless-stopped
     environment:
-      - TZ=Europe/Berlin
+      - TZ={{ TZ }}
     volumes:
       - /container/config/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
     ports:

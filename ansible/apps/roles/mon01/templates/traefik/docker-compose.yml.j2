@@ -37,7 +37,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     labels:
       - traefik.enable=true
-      - traefik.http.routers.dashboard.rule=Host(`traefik-mon01.{{ SECRET_DOMAIN }}`)
+      - traefik.http.routers.dashboard.rule=Host(`mon01.{{ SECRET_DOMAIN }}`)
       - traefik.http.routers.dashboard.entrypoints=websecure
       - traefik.http.routers.dashboard.tls.certresolver=letsencrypt
       - traefik.http.routers.dashboard.service=api@internal
