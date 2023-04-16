@@ -1,3 +1,6 @@
 ---
 #docker_dir: /container
 TZ: Europe/Berlin
+packages:
+  - qemu-guest-agent
+  - vim
