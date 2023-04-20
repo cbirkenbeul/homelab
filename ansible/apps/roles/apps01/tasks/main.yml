@@ -1,36 +1,31 @@
 ---
-- name: Create default directories
+- name: Create app directories
   ansible.builtin.file:
     path: "{{ item }}"
     state: directory
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: "0755"
   loop:
-    - "/container/apps"
-    - "/container/config"
-    - "/container/data"
-  tags:
-    - always
+    - "{{ docker_dir }}/node-exporter"
+    - "{{ docker_dir }}/traefik"
+    - "{{ docker_dir }}/jellyseerr"
+    - "{{ docker_dir }}/prowlarr"
+    - "{{ docker_dir }}/radarr"
+    - "{{ docker_dir }}/radarr-4k"
+    - "{{ docker_dir }}/radarr-anime"
+    - "{{ docker_dir }}/recyclarr"
+    - "{{ docker_dir }}/radarr-sonarr"
 
-- import_tasks: system.yml
-  tags:
-    - system
-
-- import_tasks: node-exporter.yml
-  tags:
+- name: Deploy docker apps
+  ansible.builtin.include_tasks: "tasks/{{ item }}.yml"
+  loop:
     - node-exporter
-
-- import_tasks: traefik.yml
-  tags:
     - traefik
-
-- import_tasks: barassistant.yml
-  tags:
-    - barassistant
-
-
-- import_tasks: cloudflared.yml
-  tags:
-    - cloudflared
-
-- import_tasks: homepage.yml
-  tags:
-    - homepage
+    - jellyseerr
+    - prowlarr
+    - radarr
+    - radarr-4k
+    - radarr-anime
+    - recyclarr
+    - sonarr

@@ -1,20 +1,14 @@
 ---
-- name: Create cloudflared directories
-  ansible.builtin.file:
-    path: "{{ item }}"
-    state: directory
-  loop:
-    - "/container/apps/cloudflared"
-
-- block:
-    - name: Create cloudflared docker compose file
-      ansible.builtin.template:
-        src: cloudflared/docker-compose.yml.j2
-        dest: "/container/apps/cloudflared/docker-compose.yml"
-        mode: 0755
-    - name: Create cloudflared systemd service file
-      ansible.builtin.template:
-        src: "docker-compose@.service.j2"
-        dest: "/etc/systemd/system/docker-compose@cloudflared.service"
-        mode: 0644
-  notify: Restart cloudflared
+- name: Create cloudflared container
+  community.docker.docker_container:
+    name: cloudflared
+    image: cloudflare/cloudflared:2023.4.1
+    pull: true
+    state: started
+    recreate: true
+    restart_policy: unless-stopped
+    env:
+      TZ: "{{ TZ }}"
+      TUNNEL_TOKEN: "{{SECRET_CLOUDFLARED_TOKEN}}"
+    networks:
+      - name: homelab
