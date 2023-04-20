@@ -143,6 +143,6 @@
     env:
       TZ: "{{ TZ }}"
     volumes:
-      - {{ docker_dir }}/recylcarr/data:/config
+      - "{{ docker_dir }}/recylcarr/data:/config"
     networks:
       - name: homelab

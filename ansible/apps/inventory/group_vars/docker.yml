@@ -1,5 +1,5 @@
 ---
-#docker_dir: /container
+docker_dir: /container
 TZ: Europe/Berlin
 packages:
   - qemu-guest-agent

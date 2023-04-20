@@ -18,7 +18,7 @@
     env:
       TZ: "{{ TZ }}"
     volumes:
-      - {{ docker_dir }}/prowlarr/data:/config
+      - "{{ docker_dir }}/prowlarr/data:/config"
       - /mnt/backup/prowlarr:/config/Backups
     networks:
       - name: homelab

@@ -18,7 +18,7 @@
     env:
       TZ: "{{ TZ }}"
     volumes:
-      - {{ docker_dir }}/radarr-4k/data:/config
+      - "{{ docker_dir }}/radarr-4k/data:/config"
       - /mnt/backup/radarr-4k:/config/Backups
       - /mnt/media:/media
     networks:
