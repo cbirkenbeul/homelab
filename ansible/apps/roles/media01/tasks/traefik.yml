@@ -74,7 +74,7 @@
       CF_API_KEY: "{{ SECRET_CLOUDFLARE_APIKEY }}"
     labels:
       traefik.enable: "true"
-      traefik.http.routers.dashboard.rule: "Host(`apps02.{{ SECRET_DOMAIN }}`)"
+      traefik.http.routers.dashboard.rule: "Host(`media01.{{ SECRET_DOMAIN }}`)"
       traefik.http.routers.dashboard.entrypoints: "https"
       traefik.http.routers.dashboard.tls.certresolver: "letsencrypt"
       traefik.http.routers.dashboard.service: "api@internal"
