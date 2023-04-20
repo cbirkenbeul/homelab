@@ -23,7 +23,7 @@
     networks:
       - name: homelab
     labels:
-      traefik.enable: true
+      traefik.enable: "true"
       traefik.http.routers.prowlarr.rule: "Host(`prowlarr.{{ SECRET_DOMAIN }}`)"
       traefik.http.routers.prowlarr.entrypoints: "https"
       traefik.http.routers.prowlarr.tls.certresolver: "letsencrypt"
