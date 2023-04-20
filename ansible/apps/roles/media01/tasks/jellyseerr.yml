@@ -10,7 +10,7 @@
 - name: Create jellyseerr container
   community.docker.docker_container:
     name: jellyseerr
-    image: fallenbagel/jellyseerr:1.4.1
+    image: fallenbagel/jellyseerr:1.5.0
     pull: true
     state: started
     recreate: true
