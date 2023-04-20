@@ -1,4 +1,8 @@
 ---
+- import_tasks: docker.yml
+  tags:
+    - docker
+
 - name: Deploy docker apps
   ansible.builtin.include_tasks: "tasks/{{ item }}.yml"
   loop:
