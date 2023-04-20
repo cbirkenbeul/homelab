@@ -1,3 +1,10 @@
+---
+- name: Add "{{ username }}" to docker group
+  ansible.builtin.user:
+    name: "{{ username }}"
+    group: docker
+    append: yes
+
 - name: Create custom docker network
   community.docker.docker_network:
     name: homelab
