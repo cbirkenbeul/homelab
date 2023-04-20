@@ -2,8 +2,6 @@
 proxmox:
   hosts:
     pve01:
-    pve02:
-    pve03:
 
 docker:
   hosts:
@@ -16,3 +14,8 @@ docker:
     media01:
     mon01:
     immich01:
+
+media:
+  hosts:
+    media01:
+    apps01:

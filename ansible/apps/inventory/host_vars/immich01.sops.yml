@@ -1,7 +1,3 @@
-ansible_become_pass: ENC[AES256_GCM,data:RHuwWGROHFRz,iv:zkPbE8BldGCoYBBt0PDUB7yK9UxQGqZr/7R7HPQwyNk=,tag:5yc3i2VFmhfI2l8NUy0w6A==,type:str]
-SECRET_DOMAIN: ENC[AES256_GCM,data:poXKyznSxl3Kt3U=,iv:++KZ8a8caiErF5CrkJSeuvKcuadu6oCN5+u6D9NbNvw=,tag:wk68n6H2y+Vqzfkoh3dVjw==,type:str]
-SECRET_CLOUDFLARE_EMAIL: ENC[AES256_GCM,data:5v0Vnu+qqe+qb72mgQ==,iv:9HbiagzJuvUhYhf8mNdVGm6p0Srwzt3gd1UzaMVa/qY=,tag:CzKPBxaij27LxHzQ19MFSA==,type:str]
-SECRET_CLOUDFLARE_APIKEY: ENC[AES256_GCM,data:b/MPTmGrW2wYO6rc97P1RcFy50rYub7e9eQgywkWQN3QkKaBOw==,iv:u8XZ8TpO1nF9Za+qvHOZD+uMv3ujJFPvyNN3bBnCla4=,tag:sDQZbfBaBrLve0Q9mQKwtQ==,type:str]
 SECRET_IMMICH_POSTGRES_PASSWORD: ENC[AES256_GCM,data:bPh8AjR69ohCYYnxzKJE90K39UyGnwz4JkNLeewvnK9SQm8s1ARx95z+KItk96IB4xMZVS7W1nh7mi7zcy2QuA==,iv:XXmZPmi0yPfi7mqDGDLigFkCW2TkPsiiOpbD50oPx1k=,tag:3dBimh9Dqsz6yWhAcTF90g==,type:str]
 sops:
     kms: []
@@ -18,8 +14,8 @@ sops:
             UDVFUjlGeE5wajBKUlZrcjYvMmtLdHcK305z3OmG7tjoqq1lLARaxEKqq90lE08S
             GT7chEJqt18lKq+O4uR6WskMnqb/6J2LkbefM+3m5bm86BhVRnUPfQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2023-04-10T20:52:07Z"
-    mac: ENC[AES256_GCM,data:j7OCGbSIILIHy3zNR7E0GqbeJ3Ns4qLP9oD6tzPQUnrnpf3DrIlL0s95P3jXe2bjN7vDMlHALYXzSHV/Z9bCTxYrcPuVEdlLBANojwSXN6v/1cenlhdrUTYMe+gmgqTqof38KAXQgBd+j320YDsDw2H32TILzv+6MWPBW5NNTPU=,iv:K0hvhlYoc0EiMXaWjvn7MTOykQYRMn7o8fYvl3HuT8o=,tag:1SlIuW2qze57jC1xRXM0mQ==,type:str]
+    lastmodified: "2023-04-20T10:43:39Z"
+    mac: ENC[AES256_GCM,data:hVCeVbcSRfiqDQ175m3gTq/d2Kq4bDjBJob5lTzgngljGfFT8synYz0ugbXKyKJQEiK04ZaTuuZH4Ok5YT1vNO7hLOMNG4MeMAnP6OdkeqOKSXlbTCNUcbzOFv5NOiPQd99nPrxjpMPZJsvX/xrlB7/G/iTfXJjI4CK7xsGFcPE=,iv:4HRMtYsd1IklFQndkPS+gm7B/kxiEqcvjGtR6SJ307Q=,tag:/ffDbBZj6hiQ9NDyws0BDA==,type:str]
     pgp: []
     unencrypted_regex: ^(kind)$
     version: 3.7.3
