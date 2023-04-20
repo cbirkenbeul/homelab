@@ -1,36 +1,11 @@
 ---
-- name: Create default directories
-  ansible.builtin.file:
-    path: "{{ item }}"
-    state: directory
+- name: Deploy docker apps
+  ansible.builtin.include_tasks: "tasks/{{ item }}.yml"
   loop:
-    - "/container/apps"
-    - "/container/config"
-    - "/container/data"
-  tags:
-    - always
-
-- import_tasks: system.yml
-  tags:
-    - system
-
-- import_tasks: node-exporter.yml
-  tags:
     - node-exporter
-
-- import_tasks: traefik.yml
-  tags:
     - traefik
-
-- import_tasks: recyclarr.yml
-  tags:
+    - prowlarr
+    - radarr-4k
     - recyclarr
 
-- import_tasks: prowlarr.yml
-  tags:
-    - prowlarr
-
-- import_tasks: radarr-4k.yml
-  tags:
-    - radarr-4k
 

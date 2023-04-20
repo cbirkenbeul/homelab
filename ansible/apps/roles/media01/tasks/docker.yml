@@ -1,0 +1,27 @@
+- name: Create custom docker network
+  community.docker.docker_network:
+    name: homelab
+    state: present
+    driver: bridge
+
+- name: Create Docker directory
+  ansible.builtin.file:
+    path: "{{ docker_dir }}"
+    state: directory
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: "0755"
+
+- name: Create app directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: "0755"
+  loop:
+    - "{{ docker_dir }}/node-exporter"
+    - "{{ docker_dir }}/traefik"
+    - "{{ docker_dir }}/prowlarr"
+    - "{{ docker_dir }}/radarr-4k"
+    - "{{ docker_dir }}/recyclarr"

@@ -1,22 +1,31 @@
 ---
-- name: Create prowlarr directories
+- name: Create prowlarr data directory
   ansible.builtin.file:
-    path: "{{ item }}"
+    path: "{{ docker_dir }}/prowlarr/data"
     state: directory
-  loop:
-    - "/container/apps/prowlarr"
-    - "/container/data/prowlarr"
-    - "/mnt/backup/prowlarr"
+    mode: '0755'
+    access_time: preserve
+    modification_time: preserve
 
-- block:
-    - name: Create prowlarr docker compose file
-      ansible.builtin.template:
-        src: prowlarr/docker-compose.yml.j2
-        dest: "/container/apps/prowlarr/docker-compose.yml"
-        mode: 0755
-    - name: Create prowlarr systemd service file
-      ansible.builtin.template:
-        src: "docker-compose@.service.j2"
-        dest: "/etc/systemd/system/docker-compose@prowlarr.service"
-        mode: 0644
-  notify: Restart prowlarr
+- name: Create prowlarr container
+  community.docker.docker_container:
+    name: prowlarr
+    image: lscr.io/linuxserver/prowlarr:latest
+    pull: true
+    state: started
+    recreate: true
+    restart_policy: unless-stopped
+    env:
+      TZ: "{{ TZ }}"
+    volumes:
+      - {{ docker_dir }}/prowlarr/data:/config
+      - /mnt/backup/prowlarr:/config/Backups
+    networks:
+      - name: homelab
+    labels:
+      traefik.enable: true
+      traefik.http.routers.prowlarr.rule: "Host(`prowlarr.{{ SECRET_DOMAIN }}`)"
+      traefik.http.routers.prowlarr.entrypoints: "https"
+      traefik.http.routers.prowlarr.tls.certresolver: "letsencrypt"
+      traefik.http.services.prowlarr.loadbalancer.server.port: "9696"
+

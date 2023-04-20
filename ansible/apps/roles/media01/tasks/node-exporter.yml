@@ -1,20 +1,24 @@
 ---
-- name: Create node-exporter directories
-  ansible.builtin.file:
-    path: "{{ item }}"
-    state: directory
-  loop:
-    - "/container/apps/node-exporter"
-
-- block:
-    - name: Create node-exporter docker compose file
-      ansible.builtin.template:
-        src: node-exporter/docker-compose.yml.j2
-        dest: "/container/apps/node-exporter/docker-compose.yml"
-        mode: 0755
-    - name: Create node-exporter systemd service file
-      ansible.builtin.template:
-        src: "docker-compose@.service.j2"
-        dest: "/etc/systemd/system/docker-compose@node-exporter.service"
-        mode: 0644
-  notify: Restart node-exporter
+- name: Create node-exporter container
+  community.docker.docker_container:
+    name: node-exporter
+    image: quay.io/prometheus/node-exporter:v1.5.0
+    pull: true
+    state: started
+    recreate: true
+    restart_policy: unless-stopped
+    env:
+      TZ: "{{ TZ }}"
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    networks:
+      - name: homelab
+    ports:
+      - 9100:9100
+    command:
+      - '--path.procfs=/host/proc'
+      - '--path.rootfs=/rootfs'
+      - '--path.sysfs=/host/sys'
+      - '--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)'

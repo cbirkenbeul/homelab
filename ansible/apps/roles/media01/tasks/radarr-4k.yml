@@ -1,24 +1,31 @@
 ---
-- name: Create radarr-4k directories
+- name: Create radarr-4k data directory
   ansible.builtin.file:
-    path: "{{ item }}"
+    path: "{{ docker_dir }}/radarr-4k/data"
     state: directory
-    mode: "0755"
-  loop:
-    - "/container/apps/radarr-4k"
-    - "/container/config/radarr-4k"
-    - "/container/data/radarr-4k"
+    mode: '0755'
+    access_time: preserve
+    modification_time: preserve
 
-
-- block:
-    - name: Create radarr-4k docker compose file
-      ansible.builtin.template:
-        src: radarr-4k/docker-compose.yml.j2
-        dest: "/container/apps/radarr-4k/docker-compose.yml"
-        mode: "0755"
-    - name: Create radarr-4k systemd service file
-      ansible.builtin.template:
-        src: "docker-compose@.service.j2"
-        dest: "/etc/systemd/system/docker-compose@radarr-4k.service"
-        mode: "0644"
-  notify: Restart radarr-4k
+- name: Create radarr-4k container
+  community.docker.docker_container:
+    name: radarr-4k
+    image: lscr.io/linuxserver/radarr:4.4.4
+    pull: true
+    state: started
+    recreate: true
+    restart_policy: unless-stopped
+    env:
+      TZ: "{{ TZ }}"
+    volumes:
+      - {{ docker_dir }}/radarr-4k/data:/config
+      - /mnt/backup/radarr-4k:/config/Backups
+      - /mnt/media:/media
+    networks:
+      - name: homelab
+    labels:
+      traefik.enable: true
+      traefik.http.routers.radarr-4k.rule: "Host(`radarr-4k.{{ SECRET_DOMAIN }}`)"
+      traefik.http.routers.radarr-4k.entrypoints: "https"
+      traefik.http.routers.radarr-4k.tls.certresolver: "letsencrypt"
+      traefik.http.services.radarr-4k.loadbalancer.server.port: "7878"
