@@ -1,0 +1,4 @@
+TZ: Europe/Berlin
+packages:
+  - qemu-guest-agent
+  - vim

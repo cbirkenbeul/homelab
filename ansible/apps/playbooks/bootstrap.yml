@@ -1,6 +1,6 @@
 ---
 - hosts:
-    - docker
+    - all
   become: true
   gather_facts: true
   any_errors_fatal: true
@@ -8,7 +8,18 @@
     - name: Pausing for 5 seconds...
       pause:
         seconds: 5
-  roles:
-    - role: geerlingguy.pip
-    - role: geerlingguy.docker
-    - role: bootstrap
+  tasks:
+    - name: Update apt packages
+      ansible.builtin.apt:
+        update_cache: true
+        cache_valid_time: 3600
+        upgrade: full
+
+    - name: Install packages
+      ansible.builtin.package:
+        name: "{{ packages }}"
+        state: present
+
+    - name: Set timezone to "{{ TZ }}"
+      community.general.timezone:
+        name: "{{ TZ }}"

@@ -1,0 +1,33 @@
+---
+- hosts:
+    - docker
+  become: true
+  gather_facts: true
+  any_errors_fatal: true
+  pre_tasks:
+    - name: Pausing for 5 seconds...
+      pause:
+        seconds: 5
+  roles:
+    - role: geerlingguy.pip
+    - role: geerlingguy.docker
+  tasks:
+    - name: Add "{{ username }}" to docker group
+      ansible.builtin.user:
+        name: "{{ username }}"
+        group: docker
+        append: yes
+
+    - name: Create custom docker network
+      community.docker.docker_network:
+        name: homelab
+        state: present
+        driver: bridge
+
+    - name: Create Docker directory
+      ansible.builtin.file:
+        path: "{{ docker_dir }}"
+        state: directory
+        owner: "{{ username }}"
+        group: "{{ username }}"
+        mode: "0755"
