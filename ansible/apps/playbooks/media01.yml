@@ -9,8 +9,6 @@
       pause:
         seconds: 5
   roles:
-    - role: geerlingguy.pip
-    - role: geerlingguy.docker
     - role: media01
       tags:
         - media01

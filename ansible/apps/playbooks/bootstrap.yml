@@ -9,6 +9,6 @@
       pause:
         seconds: 5
   roles:
-    - role: dkr01
-      tags:
-        - dkr01
+    - role: geerlingguy.pip
+    - role: geerlingguy.docker
+    - role: bootstrap
