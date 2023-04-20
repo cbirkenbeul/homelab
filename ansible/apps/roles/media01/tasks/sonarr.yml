@@ -1,0 +1,31 @@
+---
+- name: Create sonarr data directory
+  ansible.builtin.file:
+    path: "{{ docker_dir }}/sonarr/data"
+    state: directory
+    mode: '0755'
+    access_time: preserve
+    modification_time: preserve
+
+- name: Create sonarr container
+  community.docker.docker_container:
+    name: sonarr
+    image: lscr.io/linuxserver/sonarr:3.0.10
+    pull: true
+    state: started
+    recreate: true
+    restart_policy: unless-stopped
+    env:
+      TZ: "{{ TZ }}"
+    volumes:
+      - "{{ docker_dir }}/sonarr/data:/config"
+      - /mnt/backup/sonarr:/config/Backups
+      - /mnt/media:/media
+    networks:
+      - name: homelab
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.sonarr.rule: "Host(`sonarr.{{ SECRET_DOMAIN }}`)"
+      traefik.http.routers.sonarr.entrypoints: "https"
+      traefik.http.routers.sonarr.tls.certresolver: "letsencrypt"
+      traefik.http.services.sonarr.loadbalancer.server.port: "7878"

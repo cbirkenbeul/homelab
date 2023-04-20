@@ -1,0 +1,31 @@
+---
+- name: Create radarr data directory
+  ansible.builtin.file:
+    path: "{{ docker_dir }}/radarr/data"
+    state: directory
+    mode: '0755'
+    access_time: preserve
+    modification_time: preserve
+
+- name: Create radarr container
+  community.docker.docker_container:
+    name: radarr
+    image: lscr.io/linuxserver/radarr:4.4.4
+    pull: true
+    state: started
+    recreate: true
+    restart_policy: unless-stopped
+    env:
+      TZ: "{{ TZ }}"
+    volumes:
+      - "{{ docker_dir }}/radarr/data:/config"
+      - /mnt/backup/radarr:/config/Backups
+      - /mnt/media:/media
+    networks:
+      - name: homelab
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.radarr.rule: "Host(`radarr.{{ SECRET_DOMAIN }}`)"
+      traefik.http.routers.radarr.entrypoints: "https"
+      traefik.http.routers.radarr.tls.certresolver: "letsencrypt"
+      traefik.http.services.radarr.loadbalancer.server.port: "7878"

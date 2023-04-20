@@ -22,6 +22,10 @@
   loop:
     - "{{ docker_dir }}/node-exporter"
     - "{{ docker_dir }}/traefik"
+    - "{{ docker_dir }}/jellyseerr"
     - "{{ docker_dir }}/prowlarr"
+    - "{{ docker_dir }}/radarr"
     - "{{ docker_dir }}/radarr-4k"
+    - "{{ docker_dir }}/radarr-anime"
     - "{{ docker_dir }}/recyclarr"
+    - "{{ docker_dir }}/radarr-sonarr"
