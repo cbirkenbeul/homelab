@@ -28,4 +28,4 @@
       traefik.http.routers.sonarr.rule: "Host(`sonarr.{{ SECRET_DOMAIN }}`)"
       traefik.http.routers.sonarr.entrypoints: "https"
       traefik.http.routers.sonarr.tls.certresolver: "letsencrypt"
-      traefik.http.services.sonarr.loadbalancer.server.port: "7878"
+      traefik.http.services.sonarr.loadbalancer.server.port: "8989"
