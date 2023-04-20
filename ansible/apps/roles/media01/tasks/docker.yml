@@ -16,3 +16,7 @@
     - "{{ docker_dir }}/radarr-anime"
     - "{{ docker_dir }}/recyclarr"
     - "{{ docker_dir }}/radarr-sonarr"
+
+- name: Prune old docker images
+  community.docker.docker_prune:
+    images: true
