@@ -23,3 +23,9 @@
     - name: Set timezone to "{{ TZ }}"
       community.general.timezone:
         name: "{{ TZ }}"
+
+    - name: Install zabbix agent
+      include_role:
+        name: community.zabbix.zabbix_agent
+      vars:
+        zabbix_agent_server: "{{ SECRET_ZABBIX_SERVER }}"
