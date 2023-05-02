@@ -138,7 +138,7 @@
 - name: Deploy homepage with docker container
   community.docker.docker_container:
     name: homepage
-    image: ghcr.io/benphelps/homepage:v0.6.16
+    image: ghcr.io/benphelps/homepage:v0.6.17
     restart_policy: unless-stopped
     state: started
     networks:
