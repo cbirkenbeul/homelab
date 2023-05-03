@@ -13,7 +13,7 @@ docker:
     apps01:
     apps02:
       ansible_host: 192.168.10.232
-#    dkr01:
+    dkr01:
     blky01:
       ansible_user: ubuntu
     dms01:

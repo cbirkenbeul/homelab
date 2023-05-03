@@ -26,17 +26,9 @@
   tags:
     - pgadmin
 
-- import_tasks: homepage.yml
-  tags:
-    - homepage
-
 - import_tasks: jellyfin.yml
   tags:
     - jellyfin
-
-- import_tasks: jellyseerr.yml
-  tags:
-    - jellyseerr
 
 - import_tasks: freshrss.yml
   tags:
@@ -49,34 +41,6 @@
 - import_tasks: zwavejs.yml
   tags:
     - zwavejs
-
-- import_tasks: cloudflared.yml
-  tags:
-    - cloudflared
-
-- import_tasks: recyclarr.yml
-  tags:
-    - recyclarr
-
-- import_tasks: prowlarr.yml
-  tags:
-    - prowlarr
-
-- import_tasks: radarr.yml
-  tags:
-    - radarr
-
-- import_tasks: radarr-anime.yml
-  tags:
-    - radarr-anime
-
-- import_tasks: sonarr.yml
-  tags:
-    - sonarr
-
-- import_tasks: sabnzbd.yml
-  tags:
-    - sabnzbd
 
 - import_tasks: teslamate.yml
   tags:
