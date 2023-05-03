@@ -19,7 +19,6 @@ docker:
     dms01:
     media01:
     mon01:
-    immich01:
 
 media:
   hosts:

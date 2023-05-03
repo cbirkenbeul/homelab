@@ -31,3 +31,7 @@
         owner: "{{ username }}"
         group: "{{ username }}"
         mode: "0755"
+
+    - name: Prune old docker images
+      community.docker.docker_prune:
+        images: true
