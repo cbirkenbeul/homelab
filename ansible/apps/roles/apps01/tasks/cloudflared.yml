@@ -9,6 +9,6 @@
     restart_policy: unless-stopped
     env:
       TZ: "{{ TZ }}"
-      TUNNEL_TOKEN: "{{SECRET_CLOUDFLARED_TOKEN}}"
+      TUNNEL_TOKEN: "{{ SECRET_CLOUDFLARED_TOKEN }}"
     networks:
       - name: homelab

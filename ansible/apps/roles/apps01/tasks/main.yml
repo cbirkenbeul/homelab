@@ -9,13 +9,10 @@
   loop:
     - "{{ docker_dir }}/node-exporter"
     - "{{ docker_dir }}/traefik"
-    - "{{ docker_dir }}/jellyseerr"
-    - "{{ docker_dir }}/prowlarr"
-    - "{{ docker_dir }}/radarr"
-    - "{{ docker_dir }}/radarr-4k"
-    - "{{ docker_dir }}/radarr-anime"
-    - "{{ docker_dir }}/recyclarr"
-    - "{{ docker_dir }}/radarr-sonarr"
+    - "{{ docker_dir }}/barassistant"
+    - "{{ docker_dir }}/cloudflared"
+    - "{{ docker_dir }}/homepage"
+
 
 - name: Deploy docker apps
   ansible.builtin.include_tasks: "tasks/{{ item }}.yml"
@@ -23,9 +20,6 @@
     - node-exporter
     - traefik
     - jellyseerr
-    - prowlarr
-    - radarr
-    - radarr-4k
-    - radarr-anime
-    - recyclarr
-    - sonarr
+    - barassistant
+    - cloudflared
+    - homepage
