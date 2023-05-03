@@ -45,3 +45,7 @@
 - import_tasks: teslamate.yml
   tags:
     - teslamate
+
+- import_tasks: sabnzbd.yml
+  tags:
+    - sabnzbd
