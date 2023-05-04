@@ -1,7 +1,7 @@
 ---
-- name: Create recylcarr data directory
+- name: Create recyclarr data directory
   ansible.builtin.file:
-    path: "{{ docker_dir }}/recylcarr/data"
+    path: "{{ docker_dir }}/recyclarr/data"
     state: directory
     mode: '0755'
     access_time: preserve
@@ -126,15 +126,15 @@
               - e36a0ba1bc902b26ee40818a1d59b8bd # PMTP
               quality_profiles:
                 - name: Ultra-HD
-    dest: "{{ docker_dir }}/recylcarr/data/recyclarr.yml"
+    dest: "{{ docker_dir }}/recyclarr/data/recyclarr.yml"
     mode: '0644'
     owner: "{{ username }}"
     group: "{{ username }}"
 
 
-- name: Create recylcarr container
+- name: Create recyclarr container
   community.docker.docker_container:
-    name: recylcarr
+    name: recyclarr
     image: ghcr.io/recyclarr/recyclarr:4.4.1
     pull: true
     state: started
@@ -143,6 +143,6 @@
     env:
       TZ: "{{ TZ }}"
     volumes:
-      - "{{ docker_dir }}/recylcarr/data:/config"
+      - "{{ docker_dir }}/recyclarr/data:/config"
     networks:
       - name: homelab
