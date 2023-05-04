@@ -19,7 +19,6 @@
   loop:
     - node-exporter
     - traefik
-    - jellyseerr
     - barassistant
     - cloudflared
     - homepage
