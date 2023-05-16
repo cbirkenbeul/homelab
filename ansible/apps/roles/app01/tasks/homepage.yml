@@ -151,6 +151,7 @@
     image: ghcr.io/benphelps/homepage:v0.6.17
     restart_policy: unless-stopped
     state: started
+    recreate: true
     networks:
       - name: homelab
     volumes:
