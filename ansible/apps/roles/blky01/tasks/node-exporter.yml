@@ -11,10 +11,10 @@
       ansible.builtin.template:
         src: node-exporter/docker-compose.yml.j2
         dest: "/container/apps/node-exporter/docker-compose.yml"
-        mode: 0755
+        mode: "0755"
     - name: Create node-exporter systemd service file
       ansible.builtin.template:
         src: "docker-compose@.service.j2"
         dest: "/etc/systemd/system/docker-compose@node-exporter.service"
-        mode: 0644
+        mode: "0644"
   notify: Restart node-exporter

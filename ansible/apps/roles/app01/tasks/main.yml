@@ -24,13 +24,20 @@
     group: "{{ username }}"
     mode: "0755"
 
-- name: Create app directories
-  ansible.builtin.file:
-    path: "{{ item }}"
-    state: directory
-    owner: "{{ username }}"
-    group: "{{ username }}"
-    mode: "0755"
+- name: Deploy docker apps
+  ansible.builtin.include_tasks: "tasks/{{ item }}.yml"
   loop:
-    - "{{ docker_dir }}/node-exporter"
-    - "{{ docker_dir }}/traefik"
+    - node-exporter
+    - traefik
+    - cloudflared
+    - homepage
+
+- name: Cleanup Docker system
+  community.docker.docker_prune:
+    containers: true
+    images: true
+    images_filters:
+      dangling: false
+    networks: true
+    volumes: true
+    builder_cache: true

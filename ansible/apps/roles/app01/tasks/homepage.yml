@@ -1,4 +1,14 @@
 ---
+- name: Create app directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: "0755"
+  loop:
+    - "{{ docker_dir }}/homepage"
+
 - name: Create homepage data directory
   ansible.builtin.file:
     path: "{{ docker_dir }}/homepage/data"
@@ -150,5 +160,4 @@
       traefik.http.routers.homepage.rule: "Host(`homepage.{{ SECRET_DOMAIN }}`)"
       traefik.http.routers.homepage.entrypoints: "https"
       traefik.http.routers.homepage.tls.certresolver: "letsencrypt"
-      traefik.http.routers.homepage.service: "api@internal"
       traefik.http.services.homepage.loadbalancer.server.port: "3000"

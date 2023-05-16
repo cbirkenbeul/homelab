@@ -14,15 +14,15 @@
       ansible.builtin.template:
         src: blocky/config/config.yml.j2
         dest: "/container/config/blocky/config.yml"
-        mode: 0755
+        mode: "0755"
     - name: Create blocky docker compose file
       ansible.builtin.template:
         src: blocky/docker-compose.yml.j2
         dest: "/container/apps/blocky/docker-compose.yml"
-        mode: 0755
+        mode: "0755"
     - name: Create blocky systemd service file
       ansible.builtin.template:
         src: "docker-compose@.service.j2"
         dest: "/etc/systemd/system/docker-compose@blocky.service"
-        mode: 0644
+        mode: "0644"
   notify: Restart blocky

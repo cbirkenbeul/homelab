@@ -1,6 +1,6 @@
 ---
 - hosts:
-    - apps01
+    - app01
   become: true
   gather_facts: true
   any_errors_fatal: true
@@ -11,6 +11,6 @@
   roles:
     - role: geerlingguy.pip
     - role: geerlingguy.docker
-    - role: apps01
+    - role: app01
       tags:
-        - apps01
+        - app01
