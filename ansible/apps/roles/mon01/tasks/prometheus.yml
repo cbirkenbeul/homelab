@@ -1,28 +1,77 @@
 ---
-- name: Create prometheus directories
+- name: Create app directories
   ansible.builtin.file:
     path: "{{ item }}"
     state: directory
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: "0755"
   loop:
-    - "/container/apps/prometheus"
-    - "/container/config/prometheus"
-    - "/container/data/prometheus"
+    - "{{ docker_dir }}/prometheus"
 
+- name: Create prometheus data directory
+  ansible.builtin.file:
+    path: "{{ docker_dir }}/prometheus/data"
+    state: directory
+    mode: '0777'
+    access_time: preserve
+    modification_time: preserve
 
-- block:
-    - name: Create prometheus config file
-      ansible.builtin.template:
-        src: prometheus/config/prometheus.yml.j2
-        dest: "/container/config/prometheus/prometheus.yml"
-        mode: 0755
-    - name: Create prometheus docker compose file
-      ansible.builtin.template:
-        src: prometheus/docker-compose.yml.j2
-        dest: "/container/apps/prometheus/docker-compose.yml"
-        mode: 0755
-    - name: Create prometheus systemd service file
-      ansible.builtin.template:
-        src: "docker-compose@.service.j2"
-        dest: "/etc/systemd/system/docker-compose@prometheus.service"
-        mode: 0644
-  notify: Restart prometheus
+- name: Create prometheus config directory
+  ansible.builtin.file:
+    path: "{{ docker_dir }}/prometheus/config"
+    state: directory
+    mode: '0755'
+    access_time: preserve
+    modification_time: preserve
+
+- name: Create sprometheus.yml file
+  ansible.builtin.copy:
+    content: |
+      global:
+        scrape_interval: 15s
+        evaluation_interval: 15s
+      rule_files:
+      scrape_configs:
+        - job_name: 'blocky'
+          static_configs:
+            - targets: ['blky01.casalani.de:4000']
+        - job_name: 'unraid'
+          static_configs:
+            - targets: ['nas.casalani.de:9100']
+        - job_name: 'hosts'
+          static_configs:
+            - targets: ['gw01.casalani.de:9100', 'dkr01.casalani.de:9100', 'app01.casalani.de:9100']
+        - job_name: 'vms'
+          static_configs:
+            - targets: ['dms01.casalani.de:9100']
+        - job_name: 'rpi'
+          static_configs:
+            - targets: ['blky01.casalani.de:9100']
+    dest: "{{ docker_dir }}/prometheus/config/prometheus.yml"
+    mode: '0644'
+    owner: "{{ username }}"
+    group: "{{ username }}"
+
+- name: Deploy prometheus with docker container
+  community.docker.docker_container:
+    name: prometheus
+    image: prom/prometheus:v2.43.1
+    restart_policy: unless-stopped
+    state: started
+    recreate: true
+    networks:
+      - name: homelab
+    volumes:
+      - "{{ docker_dir }}/prometheus/data:/prometheus"
+      - "{{ docker_dir }}/prometheus/config/prometheus.yml:/etc/prometheus/prometheus.yml"
+    env:
+      TZ: "{{ TZ }}"
+    ports:
+      - "9090:9090"
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.prometheus.rule: "Host(`prometheus.{{ SECRET_DOMAIN }}`)"
+      traefik.http.routers.prometheus.entrypoints: "https"
+      traefik.http.routers.prometheus.tls.certresolver: "letsencrypt"
+      traefik.http.services.prometheus.loadbalancer.server.port: "9090"

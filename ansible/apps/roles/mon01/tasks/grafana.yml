@@ -1,23 +1,39 @@
 ---
-- name: Create grafana directories
+- name: Create app directories
   ansible.builtin.file:
     path: "{{ item }}"
     state: directory
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: "0755"
   loop:
-    - "/container/apps/grafana"
-    - "/container/config/grafana"
-    - "/container/data/grafana"
+    - "{{ docker_dir }}/grafana"
 
+- name: Create grafana data directory
+  ansible.builtin.file:
+    path: "{{ docker_dir }}/grafana/data"
+    state: directory
+    mode: '0777'
+    access_time: preserve
+    modification_time: preserve
 
-- block:
-    - name: Create grafana docker compose file
-      ansible.builtin.template:
-        src: grafana/docker-compose.yml.j2
-        dest: "/container/apps/grafana/docker-compose.yml"
-        mode: 0755
-    - name: Create grafana systemd service file
-      ansible.builtin.template:
-        src: "docker-compose@.service.j2"
-        dest: "/etc/systemd/system/docker-compose@grafana.service"
-        mode: 0644
-  notify: Restart grafana
+- name: Deploy grafana with docker container
+  community.docker.docker_container:
+    name: grafana
+    image: grafana/grafana:9.5.2
+    restart_policy: unless-stopped
+    state: started
+    recreate: true
+    networks:
+      - name: homelab
+    volumes:
+      - "{{ docker_dir }}/grafana/data:/var/lib/grafana"
+    env:
+      TZ: "{{ TZ }}"
+      GF_PANELS_DISABLE_SANITIZE_HTML: "true"
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.grafana.rule: "Host(`grafana.{{ SECRET_DOMAIN }}`)"
+      traefik.http.routers.grafana.entrypoints: "https"
+      traefik.http.routers.grafana.tls.certresolver: "letsencrypt"
+      traefik.http.services.grafana.loadbalancer.server.port: "3000"
