@@ -56,7 +56,7 @@
 - name: Deploy prometheus with docker container
   community.docker.docker_container:
     name: prometheus
-    image: prom/prometheus:v2.43.1
+    image: prom/prometheus:v2.44.0
     restart_policy: unless-stopped
     state: started
     recreate: true
