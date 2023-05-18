@@ -124,7 +124,7 @@
 - name: Deploy promtail with docker container
   community.docker.docker_container:
     name: promtail
-    image: grafana/promtail:2.8.0
+    image: grafana/promtail:2.8.2
     restart_policy: unless-stopped
     state: started
     recreate: true
