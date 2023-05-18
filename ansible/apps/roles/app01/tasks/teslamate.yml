@@ -1,0 +1,47 @@
+---
+- name: Create teslamate application directory
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: "0755"
+  loop:
+    - "{{ docker_dir }}/teslamate"
+
+- name: Create teslamate data directory
+  ansible.builtin.file:
+    path: "{{ docker_dir }}/teslamate/data"
+    state: directory
+    mode: '0755'
+    access_time: preserve
+    modification_time: preserve
+
+- name: Create teslamate container
+  community.docker.docker_container:
+    name: teslamate
+    image: ghcr.io/cbirkenbeul/teslamate:1.27.2
+    pull: true
+    state: started
+    recreate: true
+    restart_policy: unless-stopped
+    env:
+      TZ: "{{ TZ }}"
+      ENCRYPTION_KEY: 3CUQv7GbijOjAltg7yhMgI0xznCpWvsb
+      DATABASE_USER: "{{ SECRET_TESLAMATE_USER }}"
+      DATABASE_PASS: "{{ SECRET_TESLAMATE_PASSWORD }}"
+      DATABASE_NAME: teslamate
+      DATABASE_HOST: "{{ SECRET_POSTGRES_SERVER }}"
+      MQTT_HOST: "192.168.10.100"
+      MQTT_USERNAME: "{{ SECRET_MQTT_USER }}"
+      MQTT_PASSWORD: "{{ SECRET_MQTT_PASSWORD }}"
+    volumes:
+      - "{{ docker_dir }}/teslamate/data:/opt/app/import"
+    networks:
+      - name: homelab
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.teslamate.rule: "Host(`teslamate.{{ SECRET_DOMAIN }}`)"
+      traefik.http.routers.teslamate.entrypoints: "https"
+      traefik.http.routers.teslamate.tls.certresolver: "letsencrypt"
+      traefik.http.services.teslamate.loadbalancer.server.port: "4000"

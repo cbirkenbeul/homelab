@@ -31,6 +31,7 @@
     - traefik
     - cloudflared
     - homepage
+    - teslamate
 
 - name: Cleanup Docker system
   community.docker.docker_prune:

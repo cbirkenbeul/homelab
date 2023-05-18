@@ -48,6 +48,12 @@
         - job_name: 'rpi'
           static_configs:
             - targets: ['blky01.casalani.de:9100']
+        - job_name: minio-job
+          bearer_token: " {{ SECRET_MINIO_PROMETHEUS_TOKEN }}"
+          metrics_path: /minio/v2/metrics/cluster
+          scheme: http
+          static_configs:
+          - targets: ['192.168.10.108:9000']
     dest: "{{ docker_dir }}/prometheus/config/prometheus.yml"
     mode: '0644'
     owner: "{{ username }}"

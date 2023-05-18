@@ -22,3 +22,7 @@ media:
   hosts:
     media01:
     apps01:
+
+applications:
+  hosts:
+    bkp01:

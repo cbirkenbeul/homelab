@@ -7,8 +7,6 @@
     state: started
     recreate: true
     restart_policy: unless-stopped
-    env:
-      TZ: "{{ TZ }}"
-      TUNNEL_TOKEN: "{{ SECRET_CLOUDFLARED_TOKEN }}"
+    command: tunnel --no-autoupdate run --token "{{ SECRET_CLOUDFLARED_TOKEN }}"
     networks:
       - name: homelab
