@@ -108,7 +108,7 @@
 - name: Deploy loki with docker container
   community.docker.docker_container:
     name: loki
-    image: grafana/loki:2.8.0
+    image: grafana/loki:2.8.2
     restart_policy: unless-stopped
     state: started
     recreate: true
