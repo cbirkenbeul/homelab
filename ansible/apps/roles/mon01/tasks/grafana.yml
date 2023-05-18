@@ -33,7 +33,7 @@
       GF_PANELS_DISABLE_SANITIZE_HTML: "true"
       GF_RENDERING_SERVER_URL: http://grafana-image-renderer:8081/render
       GF_RENDERING_CALLBACK_URL: https://grafana.casalani.de/
-      GF_AUTH_ANONYMOUS_ENABLED: true
+      GF_AUTH_ANONYMOUS_ENABLED: "true"
     labels:
       traefik.enable: "true"
       traefik.http.routers.grafana.rule: "Host(`grafana.{{ SECRET_DOMAIN }}`)"
