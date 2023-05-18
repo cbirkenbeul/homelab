@@ -25,7 +25,8 @@
     state: started
     recreate: true
     networks:
-      - name: homelab
+      - name: homelabgit filter-branch --index-filter 'git rm -rf --cached --ignore-unmatch path_to_file' HEAD
+ 
     volumes:
       - "{{ docker_dir }}/grafana/data:/var/lib/grafana"
     env:
