@@ -1,0 +1,4 @@
+---
+proxmox:
+  hosts:
+    pve01:

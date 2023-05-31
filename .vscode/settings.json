@@ -18,5 +18,6 @@
         "Kubernetes": "cluster/*.yaml"
     },
     "editor.bracketPairColorization.enabled": true,
-    "editor.guides.bracketPairs":"active"
+    "editor.guides.bracketPairs": "active",
+    "ansible.python.interpreterPath": "/opt/homebrew/bin/python3"
 }
