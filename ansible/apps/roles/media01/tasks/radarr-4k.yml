@@ -10,7 +10,7 @@
 - name: Create radarr-4k container
   community.docker.docker_container:
     name: radarr-4k
-    image: lscr.io/linuxserver/radarr:4.4.4
+    image: lscr.io/linuxserver/radarr:4.5.2
     pull: true
     state: started
     recreate: true
