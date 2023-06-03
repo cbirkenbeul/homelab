@@ -32,6 +32,7 @@
     - cloudflared
     - homepage
     - teslamate
+    - uptimekuma
 
 - name: Cleanup Docker system
   community.docker.docker_prune:

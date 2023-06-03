@@ -132,6 +132,12 @@
               url: "{{ SECRET_HOMEPAGE_OPNSENSE_URL }}"
               username: "{{ SECRET_HOMEPAGE_OPNSENSE_USER }}"
               password: "{{ SECRET_HOMEPAGE_OPNSENSE_PASSWORD }}"
+        - Uptime Kuma:
+            href: "{{ SECRET_HOMEPAGE_UPTIMEKUMA_URL }}"
+            widget:
+              type: uptimekuma
+              url: "{{ SECRET_HOMEPAGE_UPTIMEKUMA_URL }}"
+              slug: homepage
       - Home:
         - Paperless-NGX:
             href: "{{ SECRET_HOMEPAGE_PAPERLESS_URL }}"

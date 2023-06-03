@@ -1,0 +1,39 @@
+---
+- name: Create Uptime Kuma application directory
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: "0755"
+  loop:
+    - "{{ docker_dir }}/uptimekuma"
+
+- name: Create Uptime Kuma data directory
+  ansible.builtin.file:
+    path: "{{ docker_dir }}/uptimekuma/data"
+    state: directory
+    mode: '0755'
+    access_time: preserve
+    modification_time: preserve
+
+- name: Create Uptime Kuma container
+  community.docker.docker_container:
+    name: uptimekuma
+    image: louislam/uptime-kuma:1.21.3
+    pull: true
+    state: started
+    recreate: true
+    restart_policy: unless-stopped
+    env:
+      TZ: "{{ TZ }}"
+    volumes:
+      - "{{ docker_dir }}/uptimekuma/data://app/data"
+    networks:
+      - name: homelab
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.uptimekuma.rule: "Host(`status.{{ SECRET_DOMAIN }}`)"
+      traefik.http.routers.uptimekuma.entrypoints: "https"
+      traefik.http.routers.uptimekuma.tls.certresolver: "letsencrypt"
+      traefik.http.services.uptimekuma.loadbalancer.server.port: "3001"
