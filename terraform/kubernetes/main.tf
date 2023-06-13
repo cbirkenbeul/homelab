@@ -6,7 +6,7 @@ terraform {
     }
     sops = {
       source = "carlpett/sops"
-      version = "~> 0.5"
+      version = "~> 0.7"
     }
   }
 }
