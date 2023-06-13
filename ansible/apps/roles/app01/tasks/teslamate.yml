@@ -20,7 +20,7 @@
 - name: Create teslamate container
   community.docker.docker_container:
     name: teslamate
-    image: ghcr.io/cbirkenbeul/teslamate:1.27.2
+    image: ghcr.io/cbirkenbeul/teslamate:1.27.3
     pull: true
     state: started
     recreate: true
