@@ -34,6 +34,8 @@
     - teslamate
     - uptimekuma
     - ghostfolio
+    - pgadmin
+    - phpmyadmin
 
 - name: Cleanup Docker system
   community.docker.docker_prune:
