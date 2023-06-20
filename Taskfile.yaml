@@ -35,9 +35,10 @@ tasks:
       DEPS: >-
         age
         ansible
+        cilium-cli
+        cloudflare/cloudflare/cloudflared
         direnv
         fluxcd/tap/flux
-        gitleaks
         go-task/tap/go-task
         helm
         ipcalc
@@ -48,7 +49,7 @@ tasks:
         prettier
         sops
         stern
-        terraform
+        weaveworks/tap/gitops
         yamllint
         yq
 

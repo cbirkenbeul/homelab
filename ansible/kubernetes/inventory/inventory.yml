@@ -1,0 +1,15 @@
+---
+kubernetes:
+  children:
+    master:
+      vars:
+        ansible_user: teqqy
+        ansible_ssh_port: 22
+        ansible_ssh_common_args: "-o StrictHostKeyChecking=no"
+      hosts:
+        k8s-0:
+          ansible_host: 192.168.10.121
+        k8s-1:
+          ansible_host: 192.168.10.122
+        k8s-2:
+          ansible_host: 192.168.10.123
