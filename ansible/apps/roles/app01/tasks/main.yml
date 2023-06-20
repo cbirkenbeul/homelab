@@ -36,6 +36,7 @@
     - ghostfolio
     - pgadmin
     - phpmyadmin
+    - paperless-ngx
 
 - name: Cleanup Docker system
   community.docker.docker_prune:

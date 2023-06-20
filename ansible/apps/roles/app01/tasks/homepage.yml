@@ -140,12 +140,12 @@
               slug: homepage
       - Home:
         - Paperless-NGX:
-            href: "{{ SECRET_HOMEPAGE_PAPERLESS_URL }}"
+            href: "{{ SECRET_PAPERLESS_URL }}"
             widget:
               type: paperlessngx
-              url: {{ SECRET_HOMEPAGE_PAPERLESS_URL }}
-              username: {{ SECRET_HOMEPAGE_PAPERLESS_USER }}
-              password: {{ SECRET_HOMEPAGE_PAPERLESS_PASSWORD }}
+              url: {{ SECRET_PAPERLESS_URL }}
+              username: {{ SECRET_PAPERLESS_USER }}
+              password: {{ SECRET_PAPERLESS_PASSWORD }}
     dest: "{{ docker_dir }}/homepage/data/services.yaml"
     mode: '0644'
     owner: "{{ username }}"
