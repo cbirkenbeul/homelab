@@ -33,6 +33,7 @@
     - homepage
     - teslamate
     - uptimekuma
+    - ghostfolio
 
 - name: Cleanup Docker system
   community.docker.docker_prune:
