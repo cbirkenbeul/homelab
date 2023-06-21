@@ -55,7 +55,7 @@
 - name: Deploy traefik with docker container
   community.docker.docker_container:
     name: traefik
-    image: traefik:v2.10.1
+    image: traefik:v2.10.3
     restart_policy: unless-stopped
     state: started
     security_opts:
