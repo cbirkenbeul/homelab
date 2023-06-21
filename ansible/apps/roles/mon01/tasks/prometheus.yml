@@ -41,10 +41,7 @@
             - targets: ['nas.casalani.de:9100']
         - job_name: 'hosts'
           static_configs:
-            - targets: ['gw01.casalani.de:9100', 'dkr01.casalani.de:9100', 'app01.casalani.de:9100']
-        - job_name: 'vms'
-          static_configs:
-            - targets: ['dms01.casalani.de:9100']
+            - targets: ['gw01.casalani.de:9100', 'dkr01.casalani.de:9100', 'app01.casalani.de:9100', 'media01.casalani.de:9100']
         - job_name: 'rpi'
           static_configs:
             - targets: ['blky01.casalani.de:9100']
