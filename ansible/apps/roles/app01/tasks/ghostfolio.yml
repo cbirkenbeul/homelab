@@ -31,7 +31,7 @@
 - name: Create ghostfolio application container
   community.docker.docker_container:
     name: ghostfolio-app
-    image: ghcr.io/cbirkenbeul/ghostfolio:1.280.1
+    image: ghcr.io/cbirkenbeul/ghostfolio:1.283.5
     pull: true
     state: started
     recreate: true
