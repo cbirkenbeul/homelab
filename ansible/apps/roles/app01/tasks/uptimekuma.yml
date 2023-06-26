@@ -20,7 +20,7 @@
 - name: Create Uptime Kuma container
   community.docker.docker_container:
     name: uptimekuma
-    image: louislam/uptime-kuma:1.21.3
+    image: louislam/uptime-kuma:1.22.0
     pull: true
     state: started
     recreate: true
