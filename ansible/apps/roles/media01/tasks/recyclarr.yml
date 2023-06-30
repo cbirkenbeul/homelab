@@ -135,7 +135,7 @@
 - name: Create recyclarr container
   community.docker.docker_container:
     name: recyclarr
-    image: ghcr.io/recyclarr/recyclarr:4.4.1
+    image: ghcr.io/recyclarr/recyclarr:5.1.1
     pull: true
     state: started
     recreate: true
