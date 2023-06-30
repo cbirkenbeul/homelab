@@ -37,6 +37,7 @@
     - pgadmin
     - phpmyadmin
     - paperless-ngx
+    - monica
 
 - name: Cleanup Docker system
   community.docker.docker_prune:

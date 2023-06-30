@@ -35,6 +35,8 @@ SECRET_PAPERLESS_URL: ENC[AES256_GCM,data:RAbTfpZqylPXMyIxHSo6/LQWpHcUIqQ=,iv:lF
 SECRET_PAPERLESS_USER: ENC[AES256_GCM,data:70fVAmo=,iv:NjanDY2CSy9iJKDw2hkC93r7Ddx9bUPu6QLmqFVF/EE=,tag:6Co+vW7jiH7yWRkMQZ3Mmw==,type:str]
 SECRET_PAPERLESS_PASSWORD: ENC[AES256_GCM,data:QUm+QNp/TM7e,iv:ZdEE/IAaBtkAfG4MOR/6hbWc/reXU+E6zX9cZ9lIOg8=,tag:CHuGmLUu0tjdZyp/7isXhA==,type:str]
 SECRET_PAPERLESS_DBPASS: ENC[AES256_GCM,data:hdoX2OHu9DIFqCY652ywjmmBze6/W9Nbswn5EnLgM/x1qMGOmihUNF0=,iv:ynYp63BkciWDbMPw8BiCMO48X6oOlyaJVkG3TaTt5QA=,tag:xrXoa6pOYryYtOeUk61QJg==,type:str]
+SECRET_MONICA_APP_KEY: ENC[AES256_GCM,data:xAWQbmgooscpF5brVsyJjhpE6EkeC7OytgKqy39pohU=,iv:x+CdWpsrPZtBQmN0N5jRG1+K8qVL7+szSBIWWZKokNA=,tag:kWNBpnZzFDAospULYe5Qww==,type:str]
+SECRET_MONICA_DB_PASS: ENC[AES256_GCM,data:TFGbyuhd1RXyob2kn0cbJNchYY1PjDA50zoOTRLwR2TFmv5tTlzbZ5hcyKWkr7hiwtVrBX3Q01egfwZgGYDzGg==,iv:F+twa4a+E2mCERGSAC2/0VkEPza+Jsrt0XVv0FUiQxk=,tag:P1tgpKDDiCVlvyX7zVejVg==,type:str]
 sops:
     kms: []
     gcp_kms: []
@@ -50,8 +52,8 @@ sops:
             OE8yN2xaSVY5WnNwV2ZlRnZEa04zVmsKTEBdVoQJEOmEN+vsXSTTlj6x0tPHSJZh
             MZbgIdsQW7tOdH8r8fvH1aAhIPRfP05hEyzeOmgwqTGMc6CchYCITQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2023-06-20T19:51:50Z"
-    mac: ENC[AES256_GCM,data:zE4jw9lkg/0WfIMztCXUMYSe0QdBTWmL8JryZ/dKvxKCQaEaPZgJKuPnkpJ172dPu5NkPl6g4xppM7C1NygTa+2CUJE/3xRRXHPKbjGoidPCUMLZdAA/tRUx3gZ7TwLSyFuXWpxwffGfyyM9nlBa4rBvvXLDLkVhmT6nJKdkohc=,iv:p/YI3G6hkWvy13PBzsc6oGHUfK/awbRn23qARx0AnjY=,tag:S0EBaK1lfItsQ75YK8TWJw==,type:str]
+    lastmodified: "2023-06-30T21:03:38Z"
+    mac: ENC[AES256_GCM,data:jLMPyJokktp5S23dILQCQB1wKbU69v1ms1O3Yd9jRkWZdi8+/+Oh+FyWlq69fLqIZm/QakeI8Z1U47KC+R6dqXzLnI8PMKVUmmD1BR8lYueZbnKYJrslWJq66K5JrliiW5Eu7f4eOqaqJBthKmhabpEJlfuHdw4vuVRDnK9zNqI=,iv:vbd9o6l/DCYw1GIojiPARUyFOUI5lwVQbe+ZJCR5yTY=,tag:deRzPmznk/g2zWIKkQeAdQ==,type:str]
     pgp: []
     unencrypted_regex: ^(kind)$
     version: 3.7.3
