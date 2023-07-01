@@ -15,7 +15,7 @@ vars:
 
 includes:
 #   ansible: .taskfiles/AnsibleTasks.yml
-#   cluster: .taskfiles/ClusterTasks.yml
+  cluster: .taskfiles/ClusterTasks.yml
 #   precommit: .taskfiles/PrecommitTasks.yml
 #   terraform: .taskfiles/TerraformTasks.yml
 #   snapshot: .taskfiles/SnapshotTasks.yml
