@@ -20,20 +20,20 @@ spec:
   retryInterval: 1m
   timeout: 3m
 ---
-# yaml-language-server: $schema=https://kubernetes-schemas.kashall.dev/kustomize.toolkit.fluxcd.io/kustomization_v1.json
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: cluster-apps-longhorn-storage-classes
-  namespace: flux-system
-spec:
-  dependsOn:
-    - name: cluster-apps-longhorn
-  path: ./k3s-cluster/apps/longhorn-system/longhorn/storage-classes
-  prune: false
-  sourceRef:
-    kind: GitRepository
-    name: home-kubernetes
-  interval: 30m
-  retryInterval: 1m
-  timeout: 3m
+# # yaml-language-server: $schema=https://kubernetes-schemas.kashall.dev/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+# apiVersion: kustomize.toolkit.fluxcd.io/v1
+# kind: Kustomization
+# metadata:
+#   name: cluster-apps-longhorn-storage-classes
+#   namespace: flux-system
+# spec:
+#   dependsOn:
+#     - name: cluster-apps-longhorn
+#   path: ./k3s-cluster/apps/longhorn-system/longhorn/storage-classes
+#   prune: false
+#   sourceRef:
+#     kind: GitRepository
+#     name: home-kubernetes
+#   interval: 30m
+#   retryInterval: 1m
+#   timeout: 3m
