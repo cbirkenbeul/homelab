@@ -8,12 +8,12 @@ spec:
   interval: 30m
   ref:
     branch: main
-  url: "${BOOTSTRAP_GIT_REPOSITORY}"
+  url: https://github.com/cbirkenbeul/homelab
   ignore: |
     # exclude all
     /*
     # include kubernetes directory
-    !/kubernetes
+    !/k3s-cluster
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
@@ -22,7 +22,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 30m
-  path: ./kubernetes/flux
+  path: ./k3s-cluster/flux
   prune: true
   wait: false
   sourceRef:
