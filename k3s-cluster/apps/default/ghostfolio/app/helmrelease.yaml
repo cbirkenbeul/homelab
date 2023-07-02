@@ -52,7 +52,7 @@ spec:
         annotations:
           hajimari.io/icon: mdi:cash-multiple
         hosts:
-          - host: &host "portfolio.${SECRET_DOMAIN}"
+          - host: &host "ghostfolio.${SECRET_DOMAIN}"
             paths:
               - path: /
                 pathType: Prefix
