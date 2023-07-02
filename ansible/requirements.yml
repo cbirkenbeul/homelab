@@ -11,7 +11,7 @@ collections:
   - name: community.sops
     version: 1.6.4
   - name: community.zabbix
-    version: 2.0.1
+    version: 2.1.0
 
 roles:
   - src: geerlingguy.pip
