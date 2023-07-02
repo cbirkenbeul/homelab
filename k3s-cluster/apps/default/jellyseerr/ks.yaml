@@ -10,7 +10,7 @@ metadata:
 spec:
   dependsOn:
     - name: cluster-apps-longhorn
-  path: ./k3s-cluster/apps/default/jellyseer/app
+  path: ./k3s-cluster/apps/default/jellyseerr/app
   prune: true
   sourceRef:
     kind: GitRepository
