@@ -28,7 +28,7 @@ spec:
       defaultReplicaCount: 2
       nodeDownPodDeletionPolicy: delete-both-statefulset-and-deployment-pod
       backupTargetCredentialSecret: longhorn-s3-aws-creds
-      backupTarget: s3://s3.${SECRET_DOMAIN}@de-01/longhorn-backup
+      backupTarget: s3://longhorn-backup@de-01
       concurrentAutomaticEngineUpgradePerNodeLimit: 1
       defaultLonghornStaticStorageClass: longhorn
       createDefaultDiskLabeledNodes: true
