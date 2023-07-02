@@ -8,8 +8,6 @@ metadata:
   labels:
     substitution.flux.home.arpa/enabled: "true"
 spec:
-  dependsOn:
-    - name: longhorn
   path: ./k3s-cluster/apps/default/redis/app
   prune: true
   sourceRef:
