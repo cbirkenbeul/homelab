@@ -10,7 +10,7 @@ metadata:
 spec:
   dependsOn:
     - name: cluster-apps-longhorn
-  path: ./k3s-cluster/apps/default/freshrssr/app
+  path: ./k3s-cluster/apps/default/freshrss/app
   prune: true
   sourceRef:
     kind: GitRepository
