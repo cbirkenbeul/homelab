@@ -1,4 +1,5 @@
 {
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "packageRules": [
     {
       "matchDatasources": ["docker"],
@@ -13,8 +14,14 @@
     },
     {
       "matchDatasources": ["docker"],
-      "matchUpdateTypes": ["digest", "patch"],
+      "matchUpdateTypes": ["patch"],
       "semanticCommitType": "fix",
+      "semanticCommitScope": "container"
+    },
+    {
+      "matchDatasources": ["docker"],
+      "matchUpdateTypes": ["digest"],
+      "semanticCommitType": "chore",
       "semanticCommitScope": "container"
     },
     {
@@ -28,7 +35,6 @@
       "semanticCommitType": "feat",
       "semanticCommitScope": "helm"
     },
-
     {
       "matchDatasources": ["helm"],
       "matchUpdateTypes": ["patch"],
@@ -46,29 +52,11 @@
       "semanticCommitType": "feat",
       "semanticCommitScope": "ansible"
     },
-
     {
       "matchDatasources": ["galaxy", "galaxy-collection"],
       "matchUpdateTypes": ["patch"],
       "semanticCommitType": "fix",
       "semanticCommitScope": "ansible"
-    },
-    {
-      "matchDatasources": ["terraform-provider"],
-      "matchUpdateTypes": ["major"],
-      "commitMessagePrefix": "feat(terraform)!: "
-    },
-    {
-      "matchDatasources": ["terraform-provider"],
-      "matchUpdateTypes": ["minor"],
-      "semanticCommitType": "feat",
-      "semanticCommitScope": "terraform"
-    },
-    {
-      "matchDatasources": ["terraform-provider"],
-      "matchUpdateTypes": ["patch"],
-      "semanticCommitType": "fix",
-      "semanticCommitScope": "terraform"
     },
     {
       "matchDatasources": ["github-releases", "github-tags"],
@@ -103,23 +91,6 @@
       "matchUpdateTypes": ["patch"],
       "semanticCommitType": "fix",
       "semanticCommitScope": "github-action"
-    },
-    {
-      "matchDatasources": ["pypi"],
-      "matchUpdateTypes": ["major"],
-      "commitMessagePrefix": "feat(pip)!: "
-    },
-    {
-      "matchDatasources": ["pypi"],
-      "matchUpdateTypes": ["minor"],
-      "semanticCommitType": "feat",
-      "semanticCommitScope": "pip"
-    },
-    {
-      "matchDatasources": ["pypi"],
-      "matchUpdateTypes": ["patch"],
-      "semanticCommitType": "fix",
-      "semanticCommitScope": "pip"
     }
   ]
 }

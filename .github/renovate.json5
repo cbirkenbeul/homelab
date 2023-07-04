@@ -25,27 +25,29 @@
 "docker-compose": {
   "fileMatch": ["ansible/.+/docker-compose.*\\.ya?ml(\\.j2)?$"]
 },
+"flux": {
+  "fileMatch": ["k3s-cluster/.+\\.ya?ml$"]
+},
+"helm-values": {
+  "fileMatch": ["k3s-cluster/.+\\.ya?ml$"]
+},
+"kubernetes": {
+  "fileMatch": [
+    "ansible/.+\\.ya?ml(\\.j2)?$",
+    "k3s-cluster/.+\\.ya?ml$"
+  ]
+},
 "regexManagers": [
   {
-    "description": "Process various dependencies",
+    "description": "Process various other dependencies",
     "fileMatch": [
-      "ansible/.+\\.ya?ml$",
-      "cluster/.+\\.ya?ml$"
+      "ansible/.+\\.ya?ml(\\.j2)?$",
+      "k3s-cluster/.+\\.ya?ml$"
     ],
     "matchStrings": [
-      "datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)( versioning=(?<versioning>\\S+))?\n.*?\"(?<currentValue>.*)\"\n"
+      "datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)( registryUrl=(?<registryUrl>\\S+))?\n.*?\"(?<currentValue>.*)\"\n"
     ],
-    "datasourceTemplate": "{{#if datasource}}{{{datasource}}}{{else}}github-releases{{/if}}",
-    "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
-  },
-  {
-    "description": "Process raw GitHub URLs",
-    "fileMatch": ["cluster/.+\\.ya?ml$"],
-    "matchStrings": [
-      "https:\\/\\/raw.githubusercontent.com\\/(?<depName>[\\w\\d\\-_]+\\/[\\w\\d\\-_]+)\\/(?<currentValue>[\\w\\d\\.\\-_]+)\\/.*"
-    ],
-    "datasourceTemplate": "github-releases",
-    "versioningTemplate": "semver"
+    "datasourceTemplate": "{{#if datasource}}{{{datasource}}}{{else}}github-releases{{/if}}"
   }
 ]
 }

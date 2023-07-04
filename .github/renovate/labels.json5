@@ -1,4 +1,5 @@
 {
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "packageRules": [
     {
       "matchUpdateTypes": ["major"],
@@ -25,20 +26,12 @@
       "addLabels": ["renovate/ansible"]
     },
     {
-      "matchDatasources": ["terraform-provider"],
-      "addLabels": ["renovate/terraform"]
-    },
-    {
       "matchDatasources": ["github-releases", "github-tags"],
       "addLabels": ["renovate/github-release"]
     },
     {
       "matchManagers": ["github-actions"],
       "addLabels": ["renovate/github-action"]
-    },
-    {
-      "matchDatasources": ["pypi"],
-      "addLabels": ["renovate/pip"]
     }
   ]
 }
