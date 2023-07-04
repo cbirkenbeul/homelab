@@ -10,7 +10,7 @@
 - name: Create radarr-anime container
   community.docker.docker_container:
     name: radarr-anime
-    image: lscr.io/linuxserver/radarr:4.5.2
+    image: lscr.io/linuxserver/radarr:4.6.4
     pull: true
     state: started
     recreate: true
