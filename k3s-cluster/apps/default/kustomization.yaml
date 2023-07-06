@@ -6,6 +6,6 @@ resources:
   - ./freshrss/ks.yaml
   - ./ghostfolio/ks.yaml
   - ./jellyseerr/ks.yaml
-  - ./recyclarr/ks.yaml
+  #- ./recyclarr/ks.yaml
   - ./redis/ks.yaml
   - ./uptime-kuma/ks.yaml
