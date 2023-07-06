@@ -63,7 +63,7 @@ radarr:
           - name: HD-1080p
             score: 15000
 
-  main:
+  main-4k:
     base_url: https://radarr-4k.{{ SECRET_DOMAIN }}
     api_key: {{ SECRET_RADARR4k_API_KEY }}
     delete_old_custom_formats: true
