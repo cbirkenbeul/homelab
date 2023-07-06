@@ -8,10 +8,8 @@
   loop:
     - node-exporter
     - traefik
-    - jellyseerr
     - prowlarr
     - radarr
     - radarr-4k
     - radarr-anime
-    - recyclarr
     - sonarr
