@@ -7,5 +7,5 @@ resources:
   - ./ghostfolio/ks.yaml
   - ./jellyseerr/ks.yaml
   - ./recyclarr/ks.yaml
-  - ./redis/ks.yaml
+  #- ./redis/ks.yaml
   - ./uptime-kuma/ks.yaml
