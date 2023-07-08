@@ -28,7 +28,7 @@ metadata:
   namespace: flux-system
 spec:
   path: ./k3s-cluster/apps/longhorn-system/longhorn/configs
-  targetNamespace: longhorn
+  targetNamespace: longhorn-system
   interval: 10m
   prune: true
   dependsOn:
