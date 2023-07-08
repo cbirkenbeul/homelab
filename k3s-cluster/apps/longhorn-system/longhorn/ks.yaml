@@ -35,4 +35,4 @@ spec:
     - name: cluster-apps-longhorn
   sourceRef:
     kind: GitRepository
-    name: flux-system
+    name: home-kubernetes
