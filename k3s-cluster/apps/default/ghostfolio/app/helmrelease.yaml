@@ -26,6 +26,11 @@ spec:
       retries: 3
   uninstall:
     keepHistory: false
+  dependsOn:
+    - name: ingress-nginx
+      namespace: networking
+    - name: ghostfolio-redis
+      namespace: default
   values:
     controller:
       annotations:
