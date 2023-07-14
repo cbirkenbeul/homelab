@@ -6,4 +6,5 @@ resources:
   - ./freshrss/ks.yaml
   - ./ghostfolio/ks.yaml
   - ./redis/ks.yaml
+  - ./theme-park/ks.yaml
   - ./uptime-kuma/ks.yaml
