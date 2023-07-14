@@ -4,5 +4,6 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   - ./cilium/ks.yaml
+  - intel-gpu-plugin
   - ./metrics-server/ks.yaml
   - ./reloader/ks.yaml
