@@ -29,7 +29,7 @@ spec:
   dependsOn:
     - name: ingress-nginx
       namespace: networking
-    - name: ghostfolio-redis
+    - name: redis
       namespace: default
   values:
     controller:
