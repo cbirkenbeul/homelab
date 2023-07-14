@@ -83,4 +83,7 @@ spec:
     persistence:
       media:
         enabled: true
-        existingClaim: nfs-media-pvc
+        type: nfs
+        server: &nas 'nas.${SECRET_DOMAIN}'
+        path: /mnt/user/media
+        mountPath: /media
