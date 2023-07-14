@@ -41,6 +41,9 @@ spec:
     service:
       main:
         enabled: false
+    envFrom:
+      - secretRef:
+          name: *app
     persistence:
       config:
         enabled: true
