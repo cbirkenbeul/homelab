@@ -5,4 +5,5 @@ resources:
   - ./namespace.yaml
   - ./jellyseerr/ks.yaml
   - ./radarr/ks.yaml
+  - ./radarr-4k/ks.yaml
   - ./recyclarr/ks.yaml
