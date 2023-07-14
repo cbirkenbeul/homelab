@@ -11,7 +11,7 @@ spec:
   # dependsOn:
   #   - name: cluster-apps-radarr-app
   #   - name: cluster-apps-sonarr-app
-  path: ./k3s-cluster/apps/default/recyclarr/app
+  path: ./k3s-cluster/apps/media/recyclarr/app
   prune: true
   sourceRef:
     kind: GitRepository
