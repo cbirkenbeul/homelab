@@ -1,0 +1,89 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: radarr
+  namespace: media
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: app-template
+      version: 1.5.1
+      sourceRef:
+        kind: HelmRepository
+        name: chart-bjw
+        namespace: flux-system
+  maxHistory: 3
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    image:
+      repository: ghcr.io/onedr0p/radarr-develop
+      tag: 4.7.0.7588
+    env:
+      TZ: ${TIMEZONE}
+      RADARR__PORT: &port 7878
+      RADARR__POSTGRES_HOST: pgsql01.casalani.de
+      RADARR__POSTGRES_MAIN_DB: radarr
+      RADARR__POSTGRES_LOG_DB: radarr_logs
+      RADARR__POSTGRES_USER: postgres
+      RADARR__POSTGRES_PASSWORD: ${SECRET_POSTGRES_ADMIN_PASS}
+    envFrom:
+      - secretRef:
+          name: radarr-apikey
+    service:
+      main:
+        ports:
+          http:
+            port: *port
+    probes:
+      liveness: &probes
+        enabled: true
+        custom: true
+        spec:
+          httpGet:
+            path: /ping
+            port: *port
+          initialDelaySeconds: 0
+          periodSeconds: 10
+          timeoutSeconds: 1
+          failureThreshold: 3
+      readiness: *probes
+      startup:
+        enabled: false
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: nginx
+        annotations:
+          hajimari.io/appName: Radarr
+          hajimari.io/icon: mdi:filmstrip
+        hosts:
+          - host: &host "radarr.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - *host
+    podSecurityContext:
+      runAsUser: 1000
+      runAsGroup: 1000
+      fsGroup: 1000
+      fsGroupChangePolicy: OnRootMismatch
+      supplementalGroups: [568]
+    persistence:
+      media:
+        enabled: true
+        mountPath: /media
+        path: "${STORAGE_NAS_MEDIA_PATH}"
+        server: "${STORAGE_NAS_IP}"
+        type: nfs
