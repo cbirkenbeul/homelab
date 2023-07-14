@@ -83,7 +83,4 @@ spec:
     persistence:
       media:
         enabled: true
-        mountPath: /media
-        path: "${STORAGE_NAS_MEDIA_PATH}"
-        server: "${STORAGE_NAS_IP}"
-        type: nfs
+        existingClaim: nfs-media-pvc
