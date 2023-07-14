@@ -5,3 +5,4 @@ kind: Kustomization
 namespace: media
 resources:
   - ./helmrelease.yaml
+  - ./secret.sops.yaml
