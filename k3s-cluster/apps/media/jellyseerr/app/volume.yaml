@@ -3,7 +3,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: jellyseer-config
-  namespace: default
+  namespace: media
   labels:
     app.kubernetes.io/name: &name jellyseer
     app.kubernetes.io/instance: *name
