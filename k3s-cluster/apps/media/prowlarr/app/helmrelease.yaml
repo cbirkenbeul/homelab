@@ -30,7 +30,7 @@ spec:
       tag: 1.7.2.3701
     env:
       TZ: ${TIMEZONE}
-      PROWLARR__PORT: &port 9696
+      PROWLARR__PORT: &port 7878
       PROWLARR__POSTGRES_HOST: pgsql01.casalani.de
       PROWLARR__POSTGRES_MAIN_DB: prowlarr
       PROWLARR__POSTGRES_LOG_DB: prowlarr_logs
