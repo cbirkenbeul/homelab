@@ -117,18 +117,15 @@ spec:
       # fsGroupChangePolicy: OnRootMismatch
       supplementalGroups:
         - 20 # dialout for /dev/ttyUSB0
-    volumeClaimTemplates:
-      - name: config
-        mountPath: /config
-        accessMode: ReadWriteOnce
-        size: 1Gi
-        storageClass: longhorn
     persistence:
       usb:
         enabled: true
         type: hostPath
         hostPath: /dev/serial/by-id/usb-ITEAD_SONOFF_Zigbee_3.0_USB_Dongle_Plus_V2_20220708085427-if00
-
+      config:
+        enabled: true
+        existingClaim: zigbee2mqtt-config
+        mountPath: /config
     resources:
       requests:
         cpu: 10m
