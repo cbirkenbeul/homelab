@@ -6,5 +6,5 @@ resources:
   - ./cilium/ks.yaml
   - intel-device-plugin
   - ./metrics-server/ks.yaml
-  - ./node-feature-discvoery/ks.yaml
+  - ./node-feature-discovery/ks.yaml
   - ./reloader/ks.yaml
