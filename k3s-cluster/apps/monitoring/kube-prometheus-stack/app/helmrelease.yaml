@@ -71,7 +71,7 @@ spec:
         hosts:
           - &host "alert-manager.${SECRET_DOMAIN}"
         tls:
-            hosts:
+          - hosts:
               - *host
       alertmanagerSpec:
         replicas: 1
