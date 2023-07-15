@@ -1,0 +1,86 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: prowlarr
+  namespace: media
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: app-template
+      version: 1.5.1
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  maxHistory: 3
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    image:
+      repository: ghcr.io/onedr0p/prowlarr-nightly
+      tag: 1.7.2.3701
+    env:
+      TZ: ${TIMEZONE}
+      PROWLARR__PORT: &port 9696
+      PROWLARR__POSTGRES_HOST: pgsql01.casalani.de
+      PROWLARR__POSTGRES_MAIN_DB: prowlarr
+      PROWLARR__POSTGRES_LOG_DB: prowlarr_logs
+      PROWLARR__POSTGRES_USER: postgres
+      PROWLARR__POSTGRES_PASSWORD: ${SECRET_POSTGRES_ADMIN_PASS}
+    envFrom:
+      - secretRef:
+          name: prowlarr-apikey
+    service:
+      main:
+        ports:
+          http:
+            port: *port
+    probes:
+      liveness: &probes
+        enabled: true
+        custom: true
+        spec:
+          httpGet:
+            path: /ping
+            port: *port
+          initialDelaySeconds: 0
+          periodSeconds: 10
+          timeoutSeconds: 1
+          failureThreshold: 3
+      readiness: *probes
+      startup:
+        enabled: false
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: nginx
+        annotations:
+          hajimari.io/appName: Radarr
+          hajimari.io/icon: mdi:filmstrip
+          nginx.ingress.kubernetes.io/configuration-snippet: |
+            proxy_set_header Accept-Encoding "";
+            sub_filter '</head>' '<link rel="stylesheet" type="text/css" href="https://theme-park.${SECRET_DOMAIN}/css/base/prowlarr/nord.css"></head>';
+            sub_filter_once on;
+        hosts:
+          - host: &host "prowlarr.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - *host
+    podSecurityContext:
+      runAsUser: 1000
+      runAsGroup: 1000
+      fsGroup: 1000
+      fsGroupChangePolicy: OnRootMismatch
+      supplementalGroups: [568]
