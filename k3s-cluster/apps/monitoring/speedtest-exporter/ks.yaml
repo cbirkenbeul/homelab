@@ -8,7 +8,7 @@ spec:
   dependsOn:
     - name: cluster-apps-kube-prometheus-stack
   interval: 10m
-  path: ./kubernetes/apps/monitoring/speedtest-exporter/app
+  path: ./k3s-cluster/apps/monitoring/speedtest-exporter/app
   prune: true
   sourceRef:
     kind: GitRepository
