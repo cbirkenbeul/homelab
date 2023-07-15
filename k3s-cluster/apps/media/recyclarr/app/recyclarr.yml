@@ -124,3 +124,16 @@ radarr:
         - e36a0ba1bc902b26ee40818a1d59b8bd # PMTP
         quality_profiles:
           - name: Ultra-HD
+
+  sonarr:
+    base_url: http://sonarr:8989
+    api_key: !env_var SONARR__API_KEY
+    delete_old_custom_formats: true
+    quality_definition:
+      type: series
+    custom_formats:
+      - trash_ids:
+        # MISC
+        - ec8fa7296b64e8cd390a1600981f3923 # Repack
+        - eb3d5cc0a2be0db205fb823640db6a3c # Repack v2
+        - 44e7c4de10ae50265753082e5dc76047 # Repack v3
