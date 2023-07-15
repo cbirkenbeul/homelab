@@ -169,7 +169,8 @@ radarr:
         - ed38b889b31be83fda192888e2286d83 # BR-DISK
         - 90a6f9a284dff5103f6346090e6280c8 # LQ
         - b8cd450cbfa689c0259a01d9e29ba3d6 # 3D
-        - 9c38ebb7384dada637be8899efa68e6f # SDR        # STREAMING SERVICES
+        - 9c38ebb7384dada637be8899efa68e6f # SDR
+        # STREAMING SERVICES
         - b3b3a6ac74ecbd56bcdbefa4799fb9df # AMZN
         - 40e9380490e748672c2522eaaeb692f7 # ATVP
         - cc5e51a9e85a6296ceefe097a77f12f4 # BCORE
