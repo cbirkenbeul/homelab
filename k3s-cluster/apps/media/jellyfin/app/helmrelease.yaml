@@ -1,0 +1,98 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.devbu.io/helm.toolkit.fluxcd.io/helmrelease_v2beta1.json
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: &app jellyfin
+  namespace: default
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: app-template
+      version: 1.5.1
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  maxHistory: 2
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    image:
+      repository: ghcr.io/onedr0p/jellyfin
+      tag: 10.8.10@sha256:1ef614db6a4c589777eb48bc9004d573b9c09f0d6d573a509041c6060f3a956b
+    env:
+      TZ: ${TIMEZONE}
+    service:
+      main:
+        type: LoadBalancer
+        loadBalancerIP: "${METALLB_JELLYFIN}"
+        externalTrafficPolicy: Local
+        ports:
+          http:
+            port: 8096
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: "nginx"
+        annotations:
+          hajimari.io/icon: simple-icons:jellyfin
+        hosts:
+          - host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - *host
+    podSecurityContext:
+      runAsUser: 568
+      runAsGroup: 568
+      fsGroup: 568
+      fsGroupChangePolicy: "OnRootMismatch"
+      supplementalGroups:
+        - 44
+        - 109
+    persistence:
+      config:
+        enabled: true
+        existingClaim: jellyfin-config
+        mountPath: /config
+      media:
+        enabled: true
+        type: nfs
+        server: &nas 'nas.${SECRET_DOMAIN}'
+        path: /mnt/user/media
+        mountPath: /media
+      transcode:
+        enabled: true
+        type: emptyDir
+      cache:
+        enabled: true
+        type: emptyDir
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+            - matchExpressions:
+                - key: feature.node.kubernetes.io/custom-intel-gpu
+                  operator: In
+                  values:
+                    - "true"
+    resources:
+      requests:
+        gpu.intel.com/i915: 1
+        cpu: 100m
+        memory: 1Gi
+      limits:
+        gpu.intel.com/i915: 1
+        memory: 6Gi
