@@ -68,8 +68,6 @@ spec:
         enabled: true
         pathType: Prefix
         ingressClassName: "nginx"
-        annotations:
-          cert-manager.io/cluster-issuer: ${CLUSTER_CERT}
         hosts:
           - &host "alert-manager.${SECRET_DOMAIN}"
         tls:
