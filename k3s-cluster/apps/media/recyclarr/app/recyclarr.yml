@@ -132,7 +132,7 @@ radarr:
     custom_formats:
       - trash_ids:
         # AUDIO
-        - 496f355514737f7d83bf7aa4d24f8169 # TrueHD ATMOS
+        - 0d7824bb924701997f874e7ff7d4844a # TrueHD ATMOS
         - 2f22d89048b01681dde8afe203bf2e95 # DTS X
         - 417804f7f2c4308c1f4c5d380d4c4475 # ATMOS (undefined)
         - 1af239278386be2919e1bcee0bde047e # DD+ ATMOS
