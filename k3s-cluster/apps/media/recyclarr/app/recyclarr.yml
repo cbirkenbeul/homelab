@@ -130,10 +130,8 @@ sonarr:
     base_url: http://sonarr:8989
     api_key: !env_var SONARR__API_KEY
     delete_old_custom_formats: true
-    # quality_definition:
-    #   type: series
-    quality_profiles:
-      - name: Any
+    quality_definition:
+      type: series
     custom_formats:
       - trash_ids:
           # Streaming Services
@@ -180,3 +178,5 @@ sonarr:
           - e1a997ddb54e3ecbfe06341ad323c458 # Obfuscated
           - 06d66ab109d4d2eddb2794d21526d140 # Retags
           - 47435ece6b99a0b477caf360e79ba0bb # x265 (HD)
+        quality_profiles:
+          - name: Any
