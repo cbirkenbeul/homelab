@@ -129,8 +129,8 @@ radarr:
     base_url: http://sonarr:8989
     api_key: !env_var SONARR__API_KEY
     delete_old_custom_formats: true
-    quality_definition:
-      type: series
+    # quality_definition:
+    #   type: series
     quality_profiles:
       - name: Any
         reset_unmatched_scores: true
