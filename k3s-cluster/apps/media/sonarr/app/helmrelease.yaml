@@ -85,6 +85,10 @@ spec:
       fsGroupChangePolicy: OnRootMismatch
       supplementalGroups: [568]
     persistence:
+      config:
+        enabled: true
+        existingClaim: sonarr-config
+        mountPath: /config
       media:
         enabled: true
         type: nfs
