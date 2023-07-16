@@ -130,6 +130,8 @@ radarr:
     api_key: !env_var SONARR__API_KEY
     delete_old_custom_formats: true
     replace_existing_custom_formats: true
+    quality_definition:
+      type: series
     custom_formats:
       - trash_ids:
         # AUDIO
@@ -185,3 +187,4 @@ radarr:
         - e36a0ba1bc902b26ee40818a1d59b8bd # PMTP
         quality_profiles:
           - name: Any
+            reset_unmatched_scores: true
