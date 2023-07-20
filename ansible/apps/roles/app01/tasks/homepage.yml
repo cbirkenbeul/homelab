@@ -154,7 +154,7 @@
 - name: Deploy homepage with docker container
   community.docker.docker_container:
     name: homepage
-    image: ghcr.io/benphelps/homepage:v0.6.21
+    image: ghcr.io/benphelps/homepage:v0.6.23
     restart_policy: unless-stopped
     state: started
     recreate: true
