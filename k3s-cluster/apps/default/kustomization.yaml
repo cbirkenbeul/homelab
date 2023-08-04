@@ -9,4 +9,4 @@ resources:
   - ./redis/ks.yaml
   - ./theme-park/ks.yaml
   - ./uptime-kuma/ks.yaml
-  #- ./wallabag/ks.yaml
+  - ./wallabag/ks.yaml
