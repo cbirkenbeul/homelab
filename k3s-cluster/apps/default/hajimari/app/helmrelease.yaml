@@ -34,19 +34,19 @@ spec:
       darkTheme: espresso
       alwaysTargetBlank: true
       showGreeting: false
-      showAppGroups: false
+      showAppGroups: true
       showAppStatus: false
-      showBookmarkGroups: false
-      showGlobalBookmarks: false
+      showBookmarkGroups: true
+      showGlobalBookmarks: true
       showAppUrls: false
       defaultEnable: true
       namespaceSelector:
-        matchNames:
-          - default
-          - flux-system
-          - media
-          - monitoring
-          - networking
+        any: true
+      globalBookmarks:
+        - name: Homelab
+          bookmarks:
+            - name: k8s-at-home Apps
+              url: "https://nanne.dev/k8s-at-home-search/"
     ingress:
       main:
         enabled: true
