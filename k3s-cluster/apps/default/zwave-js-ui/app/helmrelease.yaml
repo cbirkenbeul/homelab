@@ -1,0 +1,80 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: zwave-js-ui
+  namespace: default
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: app-template
+      version: 1.5.1
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  maxHistory: 2
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    controller:
+      type: statefulset
+      annotations:
+        reloader.stakater.com/auto: "true"
+
+    image:
+      repository: ghcr.io/zwave-js/zwave-js-ui
+      tag: 8.22.0
+    env:
+      TZ: ${TZ}
+
+    service:
+      main:
+        ports:
+          http:
+            port: 8091
+
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: nginx
+        annotations:
+          auth.home.arpa/enabled: "true"
+          hajimari.io/icon: mdi:z-wave
+          hajimari.io/appName: z-wave
+          hajimari.io/group: automation
+        hosts:
+          - host: &host zwave.${SECRET_DOMAIN}
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - *host
+    persistence:
+      config:
+        enabled: true
+        existingClaim: zwavejsui-config
+        mountPath: /usr/src/app/store
+
+    persistence:
+      usb:
+        enabled: true
+        type: hostPath
+        hostPath: /dev/serial/by-id/usb-0658_0200-if00
+        hostPathType: CharDevice
+
+    nodeSelector:
+      feature.node.kubernetes.io/zwave: "true"
+
+    securityContext:
+      privileged: true

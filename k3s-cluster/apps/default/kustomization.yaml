@@ -11,3 +11,4 @@ resources:
   - ./uptime-kuma/ks.yaml
   - ./wallabag/ks.yaml
   # - ./zigbee2mqtt/ks.yaml
+  - ./zwave-js-ui/ks.yaml
