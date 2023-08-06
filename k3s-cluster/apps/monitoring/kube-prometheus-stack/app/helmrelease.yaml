@@ -68,6 +68,8 @@ spec:
         enabled: true
         pathType: Prefix
         ingressClassName: "nginx"
+        annotations:
+          hajimari.io/enable: false
         hosts:
           - &host "alert-manager.${SECRET_DOMAIN}"
         tls:

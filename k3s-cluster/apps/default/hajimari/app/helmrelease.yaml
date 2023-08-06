@@ -41,7 +41,11 @@ spec:
       showAppUrls: false
       defaultEnable: true
       namespaceSelector:
-        any: true
+        matchNames:
+          - default
+          - longhorn-system
+          - media
+          - monitoring
       globalBookmarks:
         - name: Homelab
           bookmarks:
