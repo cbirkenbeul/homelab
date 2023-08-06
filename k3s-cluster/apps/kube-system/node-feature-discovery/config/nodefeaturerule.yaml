@@ -6,11 +6,13 @@ metadata:
   namespace: kube-system
 spec:
   rules:
-    # - # Google Coral USB Accelerator
-    #   name: google.coral
-    #   labels:
-    #     google.feature.node.kubernetes.io/coral: "true"
-    #   matchFeatures:
-    #     - feature: usb.device
-    #       matchExpressions:
-    #         vendor: { op: In, value: ["1a6e", "*"] }
+    - # zWave Device
+      name: zwave
+      labels:
+        feature.node.kubernetes.io/zwave: "true"
+      matchFeatures:
+        - feature: usb.device
+          matchExpressions:
+            class: { op: In, value: ["ff"] }
+            vendor: { op: In, value: ["0658"] }
+            device: { op: In, value: ["0200"] }
