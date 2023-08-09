@@ -80,8 +80,6 @@ spec:
             conditional:
               mapping:
                 {{ SECRET_DOMAIN }}: 192.168.10.1
-            clientLookup:
-              upstream: tcp+udp:${ROUTER_IP}
             blocking:
               blackLists:
                 ads:
@@ -107,7 +105,7 @@ spec:
             httpPort: 4000
             queryLog:
               type: mysql
-              target: ${{BLOCKY_DB_USER}}:${{BLOCKY_DB_PASSWORD}}@tcp(${{BLOCKY_DB_HOST}}:3306)/blocky?charset=utf8mb4&parseTime=True&loc=Local
+              target: ${BLOCKY_DB_USER}:${BLOCKY_DB_PASSWORD}@tcp(${BLOCKY_DB_HOST}:3306)/blocky?charset=utf8mb4&parseTime=True&loc=Local
               logRetentionDays: 7
     podAnnotations:
       configmap.reloader.stakater.com/reload: *config
