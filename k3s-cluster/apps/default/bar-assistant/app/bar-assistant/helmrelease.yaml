@@ -60,8 +60,13 @@ spec:
         existingClaim: bar-assistant-data
         mountPath: /var/www/cocktails/storage/bar-assistant
 
-    securityContext:
-      privileged: true
+    podSecurityContext:
+      runAsUser: 33
+      runAsGroup: 33
+      fsGroup: 33
+      fsGroupChangePolicy: "OnRootMismatch"
+      supplementalGroups:
+        - 100
 
 
     podAnnotations:
