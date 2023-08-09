@@ -11,5 +11,5 @@ resources:
   - ./theme-park/ks.yaml
   - ./uptime-kuma/ks.yaml
   - ./wallabag/ks.yaml
-  - ./zigbee2mqtt/ks.yaml
+  #- ./zigbee2mqtt/ks.yaml
   - ./zwave-js-ui/ks.yaml
