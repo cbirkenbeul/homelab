@@ -1,0 +1,47 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.devbu.io/helmrelease_v2beta1.json
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: &app bar-assistant-meilisearch
+  namespace: default
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: app-template
+      version: 1.5.1
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  maxHistory: 3
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  dependsOn:
+    - name: ingress-nginx
+      namespace: networking
+  values:
+    image:
+      repository: getmeili/meilisearch
+      tag: 1.1
+    env:
+      MEILI_ENV: "production"
+    envFrom:
+      - secretRef:
+          name: bar-assistant-secret
+    persistence:
+      config:
+        enabled: true
+        existingClaim: bar-assistant-meilisearch
+        mountPath: /meili_data
+    podAnnotations:
+      secret.reloader.stakater.com/reload: *app
