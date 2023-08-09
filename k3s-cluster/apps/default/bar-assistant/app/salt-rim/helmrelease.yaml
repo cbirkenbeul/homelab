@@ -29,6 +29,8 @@ spec:
   dependsOn:
     - name: ingress-nginx
       namespace: networking
+    - name: bar-assistant-app
+      namespace: default
   values:
     image:
       repository: barassistant/salt-rim

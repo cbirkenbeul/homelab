@@ -29,6 +29,8 @@ spec:
   dependsOn:
     - name: ingress-nginx
       namespace: networking
+    - name: bar-assistant-meilisearch
+      namespace: default
   values:
     image:
       repository: barassistant/server
