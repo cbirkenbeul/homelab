@@ -6,7 +6,7 @@ resources:
   # - ./bar-assistant/ks.yaml
   - ./freshrss/ks.yaml
   - ./ghostfolio/ks.yaml
-  - ./hajimari/ks.yaml
+  # - ./hajimari/ks.yaml
   - ./redis/ks.yaml
   - ./teslamate/ks.yaml
   - ./theme-park/ks.yaml
