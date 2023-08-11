@@ -55,8 +55,8 @@ spec:
           name: bar-assistant-secret
 
     podSecurityContext:
-        runAsUser: 0
-        runAsGroup: 0
+        runAsUser: 33
+        runAsGroup: 33
 
     securityContext:
       privileged: true
