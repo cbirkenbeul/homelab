@@ -54,6 +54,14 @@ spec:
       - secretRef:
           name: bar-assistant-secret
 
+    podSecurityContext:
+        runAsUser: 0
+        runAsGroup: 0
+        fsGroup: 0
+        fsGroupChangePolicy: OnRootMismatch
+        supplementalGroups:
+          - 100
+
     persistence:
       config:
         enabled: true
