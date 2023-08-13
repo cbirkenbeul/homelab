@@ -79,11 +79,13 @@ spec:
           - hosts:
               - *host
     podSecurityContext:
-      runAsUser: 1000
-      runAsGroup: 1000
-      fsGroup: 1000
+      runAsUser: 1026
+      runAsGroup: 100
+      fsGroup: 100
       fsGroupChangePolicy: OnRootMismatch
-      supplementalGroups: [568]
+      supplementalGroups:
+        - 100
+
     persistence:
       media:
         enabled: true
