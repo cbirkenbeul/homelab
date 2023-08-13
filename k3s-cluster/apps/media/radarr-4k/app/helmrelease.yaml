@@ -79,15 +79,17 @@ spec:
           - hosts:
               - *host
     podSecurityContext:
-      runAsUser: 1000
-      runAsGroup: 1000
-      fsGroup: 1000
+      runAsUser: 1026
+      runAsGroup: 100
+      fsGroup: 100
       fsGroupChangePolicy: OnRootMismatch
-      supplementalGroups: [568]
+      supplementalGroups:
+        - 100
+
     persistence:
       media:
         enabled: true
         type: nfs
         server: &nas 'nas.${SECRET_DOMAIN}'
-        path: /Volume1/media
+        path: /volume1/media
         mountPath: /media

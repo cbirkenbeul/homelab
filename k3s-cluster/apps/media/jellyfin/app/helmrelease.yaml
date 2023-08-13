@@ -56,13 +56,13 @@ spec:
           - hosts:
               - *host
     podSecurityContext:
-      runAsUser: 568
-      runAsGroup: 568
-      fsGroup: 568
-      fsGroupChangePolicy: "OnRootMismatch"
+      runAsUser: 1026
+      runAsGroup: 100
+      fsGroup: 100
+      fsGroupChangePolicy: OnRootMismatch
       supplementalGroups:
-        - 44
-        - 109
+        - 100
+
     persistence:
       config:
         enabled: true
@@ -72,7 +72,7 @@ spec:
         enabled: true
         type: nfs
         server: &nas 'nas.${SECRET_DOMAIN}'
-        path: /Volume1/media
+        path: /volume1/media
         mountPath: /media
       transcode:
         enabled: true

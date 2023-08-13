@@ -91,5 +91,5 @@ spec:
         enabled: true
         type: nfs
         server: &nas 'nas.${SECRET_DOMAIN}'
-        path: /Volume1/media
+        path: /volume1/media
         mountPath: /media
