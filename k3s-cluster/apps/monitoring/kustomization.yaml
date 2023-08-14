@@ -6,4 +6,5 @@ resources:
   - alertmanager-discord
   - ./grafana/ks.yaml
   - ./kube-prometheus-stack/ks.yaml
+  - snmp-exporter
   - ./speedtest-exporter/ks.yaml
