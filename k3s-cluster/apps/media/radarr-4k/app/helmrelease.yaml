@@ -27,7 +27,7 @@ spec:
   values:
     image:
       repository: ghcr.io/onedr0p/radarr-develop
-      tag: 4.7.3.7731
+      tag: 4.7.5.7809
     env:
       TZ: ${TIMEZONE}
       RADARR__PORT: &port 7878
