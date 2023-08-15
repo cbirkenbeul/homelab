@@ -64,7 +64,7 @@ spec:
         enabled: true
         ingressClassName: nginx
         annotations:
-          hajimari.io/appName: Radarr (UHD)
+          hajimari.io/appName: Radarr (Anime)
           hajimari.io/icon: mdi:filmstrip
           nginx.ingress.kubernetes.io/configuration-snippet: |
             proxy_set_header Accept-Encoding "";
