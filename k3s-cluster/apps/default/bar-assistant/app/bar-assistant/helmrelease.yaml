@@ -34,7 +34,7 @@ spec:
   values:
     image:
       repository: barassistant/server
-      tag: v2.4.0
+      tag: v2.5.2
 
     service:
       main:
