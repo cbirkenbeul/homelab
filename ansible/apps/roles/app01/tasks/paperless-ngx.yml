@@ -47,7 +47,7 @@
 - name: Create paperless application container
   community.docker.docker_container:
     name: paperless-app
-    image: ghcr.io/paperless-ngx/paperless-ngx:1.17.1
+    image: ghcr.io/paperless-ngx/paperless-ngx:1.17.2
     pull: true
     state: started
     recreate: true
