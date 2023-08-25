@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: kube-prometheus-stack
-      version: 48.3.3
+      version: 48.4.0
       sourceRef:
         kind: HelmRepository
         name: prometheus-community
@@ -20,12 +20,12 @@ spec:
     createNamespace: true
     crds: CreateReplace
     remediation:
-      retries: 3
+      retries: 5
   upgrade:
     cleanupOnFail: true
     crds: CreateReplace
     remediation:
-      retries: 3
+      retries: 5
   uninstall:
     keepHistory: false
   dependsOn:
