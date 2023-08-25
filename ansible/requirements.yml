@@ -9,7 +9,7 @@ collections:
   - name: community.kubernetes
     version: 2.0.1
   - name: community.sops
-    version: 1.6.4
+    version: 1.6.5
   - name: community.zabbix
     version: 2.1.0
 
