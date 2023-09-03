@@ -18,12 +18,10 @@ spec:
   maxHistory: 2
   install:
     createNamespace: true
-    crds: CreateReplace
     remediation:
       retries: 5
   upgrade:
     cleanupOnFail: true
-    crds: CreateReplace
     remediation:
       retries: 5
   uninstall:
