@@ -86,7 +86,7 @@ spec:
           datasource: Prometheus
         blocky-query:
           url: https://raw.githubusercontent.com/0xERR0R/blocky/main/docs/blocky-query-grafana.json
-          datasource: blocky
+          datasource: MySQL
     sidecar:
       dashboards:
         enabled: true
