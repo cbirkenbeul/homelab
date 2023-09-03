@@ -69,7 +69,7 @@ spec:
             database: blocky
             user: ${SECRET_BLOCKY_DB_USER}
             secureJsonData:
-              password: {SECRET_BLOCKY_DB_PASSWORD}
+              password: ${SECRET_BLOCKY_DB_PASSWORD}
     dashboards:
       default:
         cert-manager:
