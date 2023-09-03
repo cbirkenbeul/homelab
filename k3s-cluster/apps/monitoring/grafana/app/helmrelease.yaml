@@ -63,6 +63,13 @@ spec:
             access: proxy
             url: http://kube-prometheus-stack-prometheus.monitoring.svc.cluster.local:9090
             isDefault: true
+          - name: blocky
+            type: mysql
+            url: ${SECRET_MYSQL_SERVER}:3306
+            database: blocky
+            user: ${SECRET_BLOCKY_DB_USER}
+            secureJsonData:
+              password: {SECRET_BLOCKY_DB_PASSWORD}
     dashboards:
       default:
         cert-manager:
@@ -74,6 +81,10 @@ spec:
         flux-control-plane:
           url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/monitoring-config/dashboards/control-plane.json
           datasource: Prometheus
+      infrastructure:
+        blocky:
+          gnetId: 14980
+          datasource: blocky
     sidecar:
       dashboards:
         enabled: true
