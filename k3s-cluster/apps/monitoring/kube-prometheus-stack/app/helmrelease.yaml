@@ -187,3 +187,8 @@ spec:
               resources:
                 requests:
                   storage: 5Gi
+        additionalScrapeConfigs:
+          - job_name: node-exporter
+            static_configs:
+              - targets:
+                  - 192.168.10.2:9100
