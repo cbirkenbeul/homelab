@@ -82,10 +82,10 @@ spec:
           url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/monitoring-config/dashboards/control-plane.json
           datasource: Prometheus
         blocky:
-          url: https://raw.githubusercontent.com/0xERR0R/blocky/development/docs/blocky-grafana.json
+          url: https://raw.githubusercontent.com/0xERR0R/blocky/main/docs/blocky-grafana.json
           datasource: Prometheus
         blocky-query:
-          url: https://raw.githubusercontent.com/0xERR0R/blocky/development/docs/blocky-query-grafana.json
+          url: https://raw.githubusercontent.com/0xERR0R/blocky/main/docs/blocky-query-grafana.json
           datasource: blocky
     sidecar:
       dashboards:
