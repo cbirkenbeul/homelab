@@ -5,7 +5,7 @@ metadata:
   name: jellyseer-config
   namespace: media
   labels:
-    app.kubernetes.io/name: &name jellyseer
+    app.kubernetes.io/name: &name jellyseerr
     app.kubernetes.io/instance: *name
     snapshot.home.arpa/enabled: "true"
 spec:
