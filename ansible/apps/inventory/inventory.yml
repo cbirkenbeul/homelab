@@ -11,17 +11,9 @@ database:
 docker:
   hosts:
     app01:
-    dkr01:
     blky01:
       ansible_user: ubuntu
-    dms01:
-    media01:
-    mon01:
-
-media:
-  hosts:
-    media01:
-    apps01:
+    zigbee:
 
 applications:
   hosts:
