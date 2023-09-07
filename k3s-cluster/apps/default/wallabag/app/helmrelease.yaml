@@ -24,7 +24,7 @@ spec:
   values:
     image:
       repository: wallabag/wallabag
-      tag: 2.6.5
+      tag: 2.6.6
       pullPolicy: IfNotPresent
     env:
       SYMFONY__ENV__DATABASE_DRIVER: pdo_pgsql
