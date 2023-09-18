@@ -15,3 +15,22 @@ spec:
     requests:
       storage: 20Gi
   storageClassName: longhorn
+
+---
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: jellyfin-transcode
+  namespace: media
+  labels:
+    app.kubernetes.io/name: &name jellyfin
+    app.kubernetes.io/instance: *name
+    snapshot.home.arpa/enabled: "true"
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 30Gi
+  storageClassName: longhorn
