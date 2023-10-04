@@ -1,4 +1,24 @@
 ---
+proxmox:
+  hosts:
+#    pve01:
+
+database:
+  hosts:
+    mysql01:
+    pgsql01:
+
+docker:
+  hosts:
+    app01:
+    blky01:
+      ansible_user: ubuntu
+    zigbee:
+
+applications:
+  hosts:
+    bkp01:
+
 kubernetes:
   children:
     master:
