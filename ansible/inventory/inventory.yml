@@ -1,7 +1,7 @@
 ---
 proxmox:
   hosts:
-#    pve01:
+    pve01:
 
 database:
   hosts:
@@ -17,7 +17,17 @@ docker:
 
 applications:
   hosts:
-    bkp01:
+    unifi01:
+      ansible_user: root
+    weewx:
+      ansible_user: root
+      ansible_host: 192.168.10.106
+    minio01:
+      ansible_user: root
+    immich:
+      ansible_host: 192.168.10.110
+    mastodon:
+      ansible_host: 192.168.10.111
 
 kubernetes:
   children:
