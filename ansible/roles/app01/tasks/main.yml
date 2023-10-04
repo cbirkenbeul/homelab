@@ -30,8 +30,6 @@
     - node-exporter
     - traefik
     - cloudflared
-    - homepage
-    - teslamate
     - pgadmin
     - phpmyadmin
     - paperless-ngx
