@@ -33,6 +33,14 @@
     access_time: preserve
     modification_time: preserve
 
+- name: Create paperless export directory
+  ansible.builtin.file:
+    path: "{{ docker_dir }}/paperless/export"
+    state: directory
+    mode: '0755'
+    access_time: preserve
+    modification_time: preserve
+
 - name: Create paperless redis container
   community.docker.docker_container:
     name: paperless-redis
@@ -66,7 +74,7 @@
       - "{{ docker_dir }}/paperless/data:/usr/src/paperless/data"
       - "{{ docker_dir }}/paperless/media:/usr/src/paperless/media"
       - "{{ docker_dir }}/paperless/consume:/usr/src/paperless/consume"
-      - "/mnt/dms-export:/usr/src/paperless/export"
+      - "{{ docker_dir }}/paperless/export:/usr/src/paperless/export"
     networks:
       - name: homelab
     labels:
