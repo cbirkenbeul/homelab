@@ -27,7 +27,7 @@ spec:
   values:
     image:
       repository: ghcr.io/onedr0p/prowlarr-nightly
-      tag: 1.9.3.4011
+      tag: 1.9.3.4012
     env:
       TZ: ${TIMEZONE}
       PROWLARR__PORT: &port 9696
