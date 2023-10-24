@@ -35,7 +35,7 @@ spec:
         type: statefulset
         annotations:
           secret.reloader.stakater.com/auto: "true"
-        container:
+        containers:
           main:
             image:
               repository: freshrss/freshrss
