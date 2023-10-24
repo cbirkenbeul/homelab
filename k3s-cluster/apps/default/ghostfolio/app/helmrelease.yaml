@@ -32,7 +32,7 @@ spec:
     - name: redis
       namespace: default
   values:
-    controller:
+    controllers:
       main:
         annotations:
           reloader.stakater.com/auto: "true"
