@@ -28,6 +28,6 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    name: intel-gpu-plugin
+    name: intel-gpu-plugin-gpu
     sharedDevNum: 3
     nodeFeatureRule: true
