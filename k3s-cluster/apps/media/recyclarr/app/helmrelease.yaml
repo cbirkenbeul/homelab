@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.5.1
+      version: 2.0.3
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -27,29 +27,42 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    controller:
-      type: cronjob
-      cronjob:
-        schedule: "@daily"
-        ttlSecondsAfterFinished: 86400
-    restartPolicy: OnFailure
-    image:
-      repository: ghcr.io/recyclarr/recyclarr
-      tag: edge@sha256:e4c6aea8342d3913910c25da79cc5673f7956656729f69c7f4e808376f5607ca
-    command: ["/app/recyclarr/recyclarr"]
-    args: ["sync"]
-    service:
+    controllers:
       main:
-        enabled: false
-    envFrom:
-      - secretRef:
-          name: *app
+        type: statefulset
+        statefulset:
+          volumeClaimTemplates:
+            - name: config
+              mountPath: /config
+              accessMode: ReadWriteOnce
+              size: 1Gi
+              storageClass: longhorn
+        annotations:
+          secret.reloader.stakater.com/reload: &secret recyclarr-secret
+          configmap.reloader.stakater.com/reload: &configmap recyclarr-configmap
+        pod:
+          securityContext:
+            runAsUser: 568
+            runAsGroup: 568
+            fsGroup: 568
+            fsGroupChangePolicy: OnRootMismatch
+        containers:
+          main:
+            image:
+              repository: ghcr.io/recyclarr/recyclarr
+              tag: 6.0.2
+            env:
+              TZ: ${TZ}
+          envFrom:
+            - secretRef:
+                name: *app
+
     persistence:
       config:
         enabled: true
         type: configMap
-        name: recyclarr-configmap
-        subPath: recyclarr.yml
-        mountPath: /config/recyclarr.yml
-        defaultMode: 0775
-        readOnly: true
+        name: *configmap
+        globalMounts:
+          - path: /config/recyclarr.yml
+            subPath: recyclarr.yml
+            readOnly: true
