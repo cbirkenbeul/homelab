@@ -66,3 +66,7 @@ spec:
           - path: /config/recyclarr.yml
             subPath: recyclarr.yml
             readOnly: true
+
+    service:
+      main:
+        enabled: false
