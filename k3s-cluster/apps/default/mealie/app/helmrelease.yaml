@@ -67,7 +67,6 @@ spec:
         tls:
           - hosts:
               - *host
-            secretName: mealie-tls
     persistence:
       api-data:
         enabled: true
