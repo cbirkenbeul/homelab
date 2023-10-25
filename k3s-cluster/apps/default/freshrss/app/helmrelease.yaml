@@ -42,7 +42,6 @@ spec:
             env:
               TZ: ${TIMEZONE}
               CRON_MIN: "18,48"
-              DOMAIN: "https://freshrss.${SECRET_DOMAIN}/"
           envFrom:
             - secretRef:
                 name: freshrss-secret
