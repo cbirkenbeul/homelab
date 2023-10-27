@@ -40,9 +40,9 @@ spec:
               TZ: "${TZ}"
               DISABLE_MQTT: "false"
 
-        envFrom:
-          - secretRef:
-              name: teslamate-secret
+            envFrom:
+              - secretRef:
+                  name: teslamate-secret
 
     service:
       main:
@@ -65,7 +65,6 @@ spec:
                 service:
                   name: main
                   port: http
-
         tls:
           - hosts:
               - *host
