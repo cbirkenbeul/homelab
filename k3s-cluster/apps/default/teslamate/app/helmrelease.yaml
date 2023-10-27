@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.5.1
+      version: 2.0.3
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -27,18 +27,21 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    global:
-      nameOverride: *app
-    image:
-      repository: teslamate/teslamate
-      tag: 1.27.3
-    env:
-      TZ: "${TZ}"
-      DISABLE_MQTT: "false"
+    controllers:
+      main:
+        annotations:
+          reloader.stakater.com/auto: "true"
+        containers:
+          image:
+            repository: teslamate/teslamate
+            tag: 1.27.3
+          env:
+            TZ: "${TZ}"
+            DISABLE_MQTT: "false"
 
-    envFrom:
-      - secretRef:
-          name: teslamate-secret
+        envFrom:
+          - secretRef:
+              name: teslamate-secret
 
     service:
       main:
@@ -58,6 +61,10 @@ spec:
             paths:
               - path: /
                 pathType: Prefix
+                service:
+                  name: main
+                  port: http
+
         tls:
           - hosts:
               - *host
