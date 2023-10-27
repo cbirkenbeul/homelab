@@ -11,7 +11,7 @@ database:
 docker:
   hosts:
     app01:
-    blky01:
+    pihole01:
       ansible_user: ubuntu
     zigbee:
 
