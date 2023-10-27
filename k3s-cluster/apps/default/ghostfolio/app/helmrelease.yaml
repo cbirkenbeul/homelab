@@ -45,9 +45,9 @@ spec:
               NODE_ENV: production
               REDIS_HOST: redis.default.svc.cluster.local
               REDIS_PORT: 6379
-          envFrom:
-            - secretRef:
-                name: ghostfolio-secret
+            envFrom:
+              - secretRef:
+                  name: ghostfolio-secret
 
     service:
       main:
