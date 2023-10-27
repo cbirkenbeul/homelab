@@ -33,9 +33,9 @@ spec:
           secret.reloader.stakater.com/auto: "true"
         containers:
           main:
-          image:
-            repository: louislam/uptime-kuma
-            tag: 1.23.3
+            image:
+              repository: louislam/uptime-kuma
+              tag: 1.23.3
 
     service:
       main:
