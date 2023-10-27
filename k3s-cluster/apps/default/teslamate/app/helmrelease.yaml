@@ -32,12 +32,13 @@ spec:
         annotations:
           reloader.stakater.com/auto: "true"
         containers:
-          image:
-            repository: teslamate/teslamate
-            tag: 1.27.3
-          env:
-            TZ: "${TZ}"
-            DISABLE_MQTT: "false"
+          main:
+            image:
+              repository: teslamate/teslamate
+              tag: 1.27.3
+            env:
+              TZ: "${TZ}"
+              DISABLE_MQTT: "false"
 
         envFrom:
           - secretRef:
