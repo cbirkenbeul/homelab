@@ -34,9 +34,9 @@ spec:
               tag: frontend-v1.0.0beta-5
               pullPolicy: IfNotPresent
           api:
-            name: mealie-api
-            image: docker.io/hkotel/mealie
-            tag: api-v1.0.0beta-5
+            image:
+              repository: docker.io/hkotel/mealie
+              tag: api-v1.0.0beta-5
               pullPolicy: IfNotPresent
             env:
               - name: API_PORT
