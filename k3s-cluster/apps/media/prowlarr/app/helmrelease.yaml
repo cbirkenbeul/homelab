@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.5.1
+      version: 2.0.3
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -25,25 +25,30 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    image:
-      repository: ghcr.io/onedr0p/prowlarr-nightly
-      tag: 1.10.1.4059
-    env:
-      TZ: ${TIMEZONE}
-      PROWLARR__PORT: &port 9696
-      PROWLARR__POSTGRES_HOST: pgsql01.casalani.de
-      PROWLARR__POSTGRES_MAIN_DB: prowlarr
-      PROWLARR__POSTGRES_LOG_DB: prowlarr_logs
-      PROWLARR__POSTGRES_USER: postgres
-      PROWLARR__POSTGRES_PASSWORD: ${SECRET_POSTGRES_ADMIN_PASS}
-    envFrom:
-      - secretRef:
-          name: prowlarr-apikey
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: ghcr.io/onedr0p/prowlarr-nightly
+              tag: 1.10.1.4059
+            env:
+              TZ: ${TIMEZONE}
+              PROWLARR__PORT: &port 9696
+              PROWLARR__POSTGRES_HOST: pgsql01.casalani.de
+              PROWLARR__POSTGRES_MAIN_DB: prowlarr
+              PROWLARR__POSTGRES_LOG_DB: prowlarr_logs
+              PROWLARR__POSTGRES_USER: postgres
+              PROWLARR__POSTGRES_PASSWORD: ${SECRET_POSTGRES_ADMIN_PASS}
+            envFrom:
+              - secretRef:
+                  name: prowlarr-apikey
     service:
       main:
         ports:
           http:
             port: *port
+
     probes:
       liveness: &probes
         enabled: true
@@ -59,6 +64,7 @@ spec:
       readiness: *probes
       startup:
         enabled: false
+
     ingress:
       main:
         enabled: true
@@ -66,18 +72,18 @@ spec:
         annotations:
           hajimari.io/appName: Prowlarr
           hajimari.io/icon: mdi:movie-search
-          # nginx.ingress.kubernetes.io/configuration-snippet: |
-          #   proxy_set_header Accept-Encoding "";
-          #   sub_filter '</head>' '<link rel="stylesheet" type="text/css" href="https://theme-park.${SECRET_DOMAIN}/css/base/prowlarr/nord.css"></head>';
-          #   sub_filter_once on;
         hosts:
           - host: &host "prowlarr.${SECRET_DOMAIN}"
             paths:
               - path: /
                 pathType: Prefix
+                service:
+                  name: main
+                  port: http
         tls:
           - hosts:
               - *host
+
     podSecurityContext:
       runAsUser: 1000
       runAsGroup: 1000
