@@ -54,7 +54,7 @@ spec:
           http:
             port: 3000
           api:
-            enabled: true
+            controller: main
             port: 9000
 
     ingress:
