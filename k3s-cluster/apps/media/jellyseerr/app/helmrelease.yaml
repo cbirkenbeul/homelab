@@ -73,7 +73,7 @@ spec:
         enabled: true
         existingClaim: jellyseer-config
         globalMounts:
-          -path: /app/config
+          - path: /app/config
 
     resources:
       requests:
