@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.5.1
+      version: 2.0.3
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -27,13 +27,17 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    image:
-      repository: docker.io/fallenbagel/jellyseerr
-      tag: 1.7.0
-    env:
-      TZ: "${TIMEZONE}"
-      LOG_LEVEL: "info"
-      PORT: &port 8080
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: docker.io/fallenbagel/jellyseerr
+              tag: 1.7.0
+            env:
+              TZ: "${TIMEZONE}"
+              LOG_LEVEL: "info"
+              PORT: &port 8080
     service:
       main:
         ports:
@@ -51,19 +55,26 @@ spec:
             paths:
               - path: /
                 pathType: Prefix
+                service:
+                  name: main
+                  port: http
         tls:
           - hosts:
               - *host
+
     podSecurityContext:
       runAsUser: 1000
       runAsGroup: 1000
       fsGroup: 1000
       fsGroupChangePolicy: "OnRootMismatch"
+
     persistence:
       config:
         enabled: true
         existingClaim: jellyseer-config
-        mountPath: /app/config
+        globalMounts:
+          -path: /app/config
+
     resources:
       requests:
         cpu: 10m
