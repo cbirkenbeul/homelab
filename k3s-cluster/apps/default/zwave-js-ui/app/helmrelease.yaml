@@ -74,10 +74,13 @@ spec:
           - path: /usr/src/app/store
 
       usb:
-        enabled: true
         type: hostPath
         hostPath: /dev/serial/by-id/usb-0658_0200-if00
         hostPathType: CharDevice
+        globalMounts:
+          - path: /dev/serial/by-id/usb-0658_0200-if00
+
+
 
     nodeSelector:
       feature.node.kubernetes.io/zwave: "true"
