@@ -100,6 +100,5 @@ spec:
         type: nfs
         server: &nas 'nas.${SECRET_DOMAIN}'
         path: /volume1/media
-        mountPath: /media
         globalMounts:
-          -path: /media
+          - path: /media
