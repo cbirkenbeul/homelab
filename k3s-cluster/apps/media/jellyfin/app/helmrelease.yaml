@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.5.1
+      version: 2.0.3
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -27,11 +27,20 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    image:
-      repository: ghcr.io/onedr0p/jellyfin
-      tag: 10.8.11@sha256:926e2a9f6677a0c7b12feba29f36c954154869318d6a52df72f72ff9c74cf494
-    env:
-      TZ: ${TIMEZONE}
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: ghcr.io/onedr0p/jellyfin
+              tag: 10.8.11@sha256:926e2a9f6677a0c7b12feba29f36c954154869318d6a52df72f72ff9c74cf494
+            env:
+              TZ: ${TIMEZONE}
+              DOTNET_SYSTEM_IO_DISABLEFILELOCKING: "true"
+              JELLYFIN_FFmpeg__probesize: 50000000
+              JELLYFIN_FFmpeg__analyzeduration: 50000000
+              JELLYFIN_PublishedServerUrl: &loadBalancerIP ${METALLB_JELLYFIN}
+
     service:
       main:
         type: LoadBalancer
@@ -40,6 +49,7 @@ spec:
         ports:
           http:
             port: 8096
+
     ingress:
       main:
         enabled: true
@@ -52,9 +62,13 @@ spec:
             paths:
               - path: /
                 pathType: Prefix
+                service:
+                  name: main
+                  port: http
         tls:
           - hosts:
               - *host
+
     podSecurityContext:
       runAsUser: 1026
       runAsGroup: 100
@@ -67,21 +81,27 @@ spec:
       config:
         enabled: true
         existingClaim: jellyfin-config
-        mountPath: /config
+        globalMounts:
+          - path: /config
       media:
         enabled: true
         type: nfs
         server: &nas 'nas.${SECRET_DOMAIN}'
         path: /volume1/media
         mountPath: /media
+        globalMounts:
+          - path: /media
       transcode:
         enabled: true
         existingClaim: jellyfin-transcode
-        mountPath: /config/transcodes
+        globalMounts:
+          - path: /config/transcodes
+
       cache:
         enabled: true
         type: emptyDir
-        mountPath: /config/cache
+        globalMounts: 
+          - path: /config/cache
     nodeSelector:
       intel.feature.node.kubernetes.io/gpu: "true"
     resources:
