@@ -27,7 +27,7 @@ spec:
   values:
     controllers:
       main:
-        image:
+        containers:
           main:
             image:
               repository: ghcr.io/onedr0p/radarr-develop
