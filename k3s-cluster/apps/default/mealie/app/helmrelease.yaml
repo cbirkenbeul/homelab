@@ -25,25 +25,29 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    image:
-      repository: docker.io/hkotel/mealie
-      tag: frontend-v1.0.0beta-5
-    sidecars:
-      api:
-        name: mealie-api
-        image: docker.io/hkotel/mealie:api-v1.0.0beta-5
-        imagePullPolicy: IfNotPresent
-        env:
-          - name: API_PORT
-            value: "9000"
-          - name: ALLOW_SIGNUP
-            value: "false"
-        ports:
-          - name: api
-            containerPort: 9000
-        volumeMounts:
-          - name: api-data
-            mountPath: /app/data/
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: docker.io/hkotel/mealie
+              tag: frontend-v1.0.0beta-5
+          api:
+            name: mealie-api
+            image: docker.io/hkotel/mealie:api-v1.0.0beta-5
+            imagePullPolicy: IfNotPresent
+            env:
+              - name: API_PORT
+                value: "9000"
+              - name: ALLOW_SIGNUP
+                value: "false"
+            ports:
+              - name: api
+                containerPort: 9000
+            volumeMounts:
+              - name: api-data
+                mountPath: /app/data/
+
     service:
       main:
         ports:
@@ -52,6 +56,7 @@ spec:
           api:
             enabled: true
             port: 9000
+
     ingress:
       main:
         enabled: true
@@ -64,16 +69,22 @@ spec:
             paths:
               - path: /
                 pathType: Prefix
+                service:
+                  name: main
+                  port: http
         tls:
           - hosts:
               - *host
+
     persistence:
       api-data:
         enabled: true
-        mountPath: /app/data/
         accessMode: ReadWriteOnce
         size: 10Gi
         existingClaim: mealie-config
+        globalMounts:
+          - path: /app/data
+
     resources:
       requests:
         cpu: 100m
