@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.5.1
+      version: 2.0.3
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -38,19 +38,25 @@ spec:
     - name: cert-manager
       namespace: cert-manager
   values:
-    image:
-      repository: ghcr.io/onedr0p/sabnzbd
-      tag: 4.1.0@sha256:91f3cd6b9f1c9988af5447f464b299630706eb7f691dee857eab1487d4bb626e
-    env:
-      TZ: ${TIMEZONE}
-      SABNZBD__PORT: &port 8080
-      SABNZBD__HOST_WHITELIST_ENTRIES: >-
-        sabnzbd,
-        sabnzbd.media,
-        sabnzbd.media.svc,
-        sabnzbd.media.svc.cluster,
-        sabnzbd.media.svc.cluster.local,
-        {{ .Release.Name }}.${SECRET_DOMAIN}
+    controllers:
+      main:
+        podAnnotations:
+          configmap.reloader.stakater.com/reload: cluster-settings
+        containers:
+          main:
+            image:
+              repository: ghcr.io/onedr0p/sabnzbd
+              tag: 4.1.0@sha256:91f3cd6b9f1c9988af5447f464b299630706eb7f691dee857eab1487d4bb626e
+            env:
+              TZ: ${TIMEZONE}
+              SABNZBD__PORT: &port 8080
+              SABNZBD__HOST_WHITELIST_ENTRIES: >-
+                sabnzbd,
+                sabnzbd.media,
+                sabnzbd.media.svc,
+                sabnzbd.media.svc.cluster,
+                sabnzbd.media.svc.cluster.local,
+                {{ .Release.Name }}.${SECRET_DOMAIN}
     service:
       main:
         ports:
@@ -63,18 +69,18 @@ spec:
         annotations:
           hajimari.io/enable: "true"
           hajimari.io/icon: "cloud-download"
-          # nginx.ingress.kubernetes.io/configuration-snippet: |
-          #   proxy_set_header Accept-Encoding "";
-          #   sub_filter '</head>' '<link rel="stylesheet" type="text/css" href="https://theme-park.${SECRET_DOMAIN}/css/base/sabnzbd/nord.css"></head>';
-          #   sub_filter_once on;
         hosts:
           - host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
             paths:
               - path: /
                 pathType: Prefix
+                service:
+                  name: main
+                  port: http
         tls:
           - hosts:
               - *host
+
     podSecurityContext:
       runAsUser: 1026
       runAsGroup: 100
@@ -82,18 +88,21 @@ spec:
       fsGroupChangePolicy: OnRootMismatch
       supplementalGroups:
         - 100
-    podAnnotations:
-      configmap.reloader.stakater.com/reload: cluster-settings
+
     persistence:
       config:
         enabled: true
         existingClaim: sabnzbd-config-v1
+
       media:
         enabled: true
         type: nfs
         server: &nas 'nas.${SECRET_DOMAIN}'
         path: /volume1/media
         mountPath: /media
+        globalMounts:
+          - path: /media
+
     resources:
       requests:
         cpu: 10m

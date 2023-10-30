@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.5.1
+      version: 2.0.3
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -25,25 +25,31 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    image:
-      repository: ghcr.io/onedr0p/sonarr-develop
-      tag: 4.0.0.703@sha256:7f97e4783153bedc1c70568beb2bf925826fc92a4461d61ba58e8eda1649b49f
-    env:
-      TZ: ${TIMEZONE}
-      SONARR__PORT: &port 8989
-      SONARR__POSTGRES_HOST: pgsql01.casalani.de
-      SONARR__POSTGRES_MAIN_DB: sonarr
-      SONARR__POSTGRES_LOG_DB: sonarr_logs
-      SONARR__POSTGRES_USER: postgres
-      SONARR__POSTGRES_PASSWORD: ${SECRET_POSTGRES_ADMIN_PASS}
-    envFrom:
-      - secretRef:
-          name: sonarr-apikey
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: ghcr.io/onedr0p/sonarr-develop
+              tag: 4.0.0.703@sha256:7f97e4783153bedc1c70568beb2bf925826fc92a4461d61ba58e8eda1649b49f
+            env:
+              TZ: ${TIMEZONE}
+              SONARR__PORT: &port 8989
+              SONARR__POSTGRES_HOST: pgsql01.casalani.de
+              SONARR__POSTGRES_MAIN_DB: sonarr
+              SONARR__POSTGRES_LOG_DB: sonarr_logs
+              SONARR__POSTGRES_USER: postgres
+              SONARR__POSTGRES_PASSWORD: ${SECRET_POSTGRES_ADMIN_PASS}
+            envFrom:
+              - secretRef:
+                  name: sonarr-apikey
+
     service:
       main:
         ports:
           http:
             port: *port
+
     probes:
       liveness: &probes
         enabled: true
@@ -59,6 +65,7 @@ spec:
       readiness: *probes
       startup:
         enabled: false
+
     ingress:
       main:
         enabled: true
@@ -66,15 +73,14 @@ spec:
         annotations:
           hajimari.io/appName: sonarr
           hajimari.io/icon: mdi:television-classic
-          # nginx.ingress.kubernetes.io/configuration-snippet: |
-          #   proxy_set_header Accept-Encoding "";
-          #   sub_filter '</head>' '<link rel="stylesheet" type="text/css" href="https://theme-park.${SECRET_DOMAIN}/css/base/sonarr/dark.css"></head>';
-          #   sub_filter_once on;
         hosts:
           - host: &host "sonarr.${SECRET_DOMAIN}"
             paths:
               - path: /
                 pathType: Prefix
+                service:
+                  name: main
+                  port: http
         tls:
           - hosts:
               - *host
@@ -91,10 +97,13 @@ spec:
       config:
         enabled: true
         existingClaim: sonarr-config
-        mountPath: /config
+        globalMounts: 
+          - path: /config
       media:
         enabled: true
         type: nfs
         server: &nas 'nas.${SECRET_DOMAIN}'
         path: /volume1/media
         mountPath: /media
+        globalMounts:
+          - path: /media
