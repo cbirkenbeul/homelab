@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.5.1
+      version: 2.0.3
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -25,20 +25,24 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    image:
-      repository: ghcr.io/onedr0p/radarr-develop
-      tag: 5.1.2.8207
-    env:
-      TZ: ${TIMEZONE}
-      RADARR__PORT: &port 7878
-      RADARR__POSTGRES_HOST: pgsql01.casalani.de
-      RADARR__POSTGRES_MAIN_DB: radarr-4k
-      RADARR__POSTGRES_LOG_DB: radarr-4k_logs
-      RADARR__POSTGRES_USER: postgres
-      RADARR__POSTGRES_PASSWORD: ${SECRET_POSTGRES_ADMIN_PASS}
-    envFrom:
-      - secretRef:
-          name: radarr-4k-apikey
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: ghcr.io/onedr0p/radarr-develop
+              tag: 5.1.2.8207
+            env:
+              TZ: ${TIMEZONE}
+              RADARR__PORT: &port 7878
+              RADARR__POSTGRES_HOST: pgsql01.casalani.de
+              RADARR__POSTGRES_MAIN_DB: radarr-4k
+              RADARR__POSTGRES_LOG_DB: radarr-4k_logs
+              RADARR__POSTGRES_USER: postgres
+              RADARR__POSTGRES_PASSWORD: ${SECRET_POSTGRES_ADMIN_PASS}
+            envFrom:
+              - secretRef:
+                  name: radarr-4k-apikey
     service:
       main:
         ports:
@@ -75,6 +79,9 @@ spec:
             paths:
               - path: /
                 pathType: Prefix
+                service:
+                  name: main
+                  port: http
         tls:
           - hosts:
               - *host
@@ -93,4 +100,5 @@ spec:
         type: nfs
         server: &nas 'nas.${SECRET_DOMAIN}'
         path: /volume1/media
-        mountPath: /media
+        globalMounts:
+          -path: /media
