@@ -35,7 +35,8 @@ spec:
               pullPolicy: IfNotPresent
           api:
             name: mealie-api
-            image: docker.io/hkotel/mealie:api-v1.0.0beta-5
+            image: docker.io/hkotel/mealie
+            tag: api-v1.0.0beta-5
               pullPolicy: IfNotPresent
             env:
               - name: API_PORT
