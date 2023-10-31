@@ -32,6 +32,7 @@ spec:
   values:
     controllers:
       main:
+        type: statefulset
         annotations:
           secret.reloader.stakater.com/auto: "true"
         containers:
@@ -42,9 +43,13 @@ spec:
             env:
               TZ: ${TIMEZONE}
               CRON_MIN: "18,48"
-          envFrom:
-            - secretRef:
-                name: freshrss-secret
+            envFrom:
+              - secretRef:
+                  name: freshrss-secret
+            resources:
+              requests:
+                cpu: 50m
+                memory: 256Mi
 
     service:
       main:
@@ -79,7 +84,3 @@ spec:
         tls:
           - hosts:
               - *host
-    resources:
-      requests:
-        cpu: 50m
-        memory: 256Mi
