@@ -68,12 +68,12 @@ spec:
                 enabled: false
             pod:
               securityContext:
-                runAsUser: 1026
-                runAsGroup: 100
-                fsGroup: 100
+                runAsUser: 568
+                runAsGroup: 568
+                fsGroup: 568
                 fsGroupChangePolicy: OnRootMismatch
                 supplementalGroups:
-                  - 100
+                  - 568
 
     service:
       main:
