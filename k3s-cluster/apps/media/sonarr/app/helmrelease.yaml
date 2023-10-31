@@ -44,28 +44,29 @@ spec:
             envFrom:
               - secretRef:
                   name: sonarr-apikey
-          probes:
-            liveness: &probes
-              enabled: true
-              custom: true
-              spec:
-                httpGet:
-                  path: /ping
-                  port: *port
-                initialDelaySeconds: 0
-                periodSeconds: 10
-                timeoutSeconds: 1
-                failureThreshold: 3
-            readiness: *probes
-            startup:
-              enabled: false
-          podSecurityContext:
-            runAsUser: 1026
-            runAsGroup: 100
-            fsGroup: 100
-            fsGroupChangePolicy: OnRootMismatch
-            supplementalGroups:
-              - 100
+            probes:
+              liveness: &probes
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /ping
+                    port: *port
+                  initialDelaySeconds: 0
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
+              startup:
+                enabled: false
+            pod:
+              securityContext:
+                runAsUser: 1026
+                runAsGroup: 100
+                fsGroup: 100
+                fsGroupChangePolicy: OnRootMismatch
+                supplementalGroups:
+                  - 100
 
     service:
       main:
