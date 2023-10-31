@@ -40,6 +40,7 @@ spec:
   values:
     controllers:
       main:
+        type: statefulset
         podAnnotations:
           configmap.reloader.stakater.com/reload: cluster-settings
         containers:
