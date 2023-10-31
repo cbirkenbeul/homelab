@@ -63,6 +63,14 @@ spec:
             access: proxy
             url: http://kube-prometheus-stack-prometheus.monitoring.svc.cluster.local:9090
             isDefault: true
+          - name: TeslaMate
+            type: postgres
+            access: proxy
+            url: ${SECRET_POSTGRES_HOST}
+            user: teslamate
+            secureJsonData:
+              password: ${SECRET_TESLAMATE_POSTGRESS_PASSWORD}
+              sslmode: disable
     dashboards:
       default:
         cert-manager:
