@@ -43,6 +43,14 @@ spec:
         type: statefulset
         podAnnotations:
           configmap.reloader.stakater.com/reload: cluster-settings
+        statefulset:
+          volumeClaimTemplates:
+            - name: sabnzbd-config
+              accessMode: ReadWriteOnce
+              size: 1Gi
+              storageClass: longhorn
+              globalMounts:
+                - path: /config
         containers:
           main:
             image:
@@ -58,19 +66,21 @@ spec:
                 sabnzbd.media.svc.cluster,
                 sabnzbd.media.svc.cluster.local,
                 {{ .Release.Name }}.${SECRET_DOMAIN}
-            podSecurityContext:
-              runAsUser: 1026
-              runAsGroup: 100
-              fsGroup: 100
-              fsGroupChangePolicy: OnRootMismatch
-              supplementalGroups:
-                - 100
             resources:
               requests:
                 cpu: 10m
                 memory: 250Mi
               limits:
                 memory: 2000Mi
+
+          pod:
+            SecurityContext:
+              runAsUser: 1026
+              runAsGroup: 100
+              fsGroup: 100
+              fsGroupChangePolicy: OnRootMismatch
+              supplementalGroups:
+                - 100
 
     service:
       main:
@@ -99,10 +109,6 @@ spec:
 
 
     persistence:
-      config:
-        enabled: true
-        existingClaim: sabnzbd-config-v1
-
       media:
         enabled: true
         type: nfs
