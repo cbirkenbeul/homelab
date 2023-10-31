@@ -63,13 +63,6 @@ spec:
             access: proxy
             url: http://kube-prometheus-stack-prometheus.monitoring.svc.cluster.local:9090
             isDefault: true
-          - name: blocky
-            type: mysql
-            url: ${SECRET_MYSQL_SERVER}:3306
-            database: blocky
-            user: ${SECRET_BLOCKY_DB_USER}
-            secureJsonData:
-              password: ${SECRET_BLOCKY_DB_PASSWORD}
     dashboards:
       default:
         cert-manager:
@@ -81,12 +74,6 @@ spec:
         flux-control-plane:
           url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/monitoring-config/dashboards/control-plane.json
           datasource: Prometheus
-        blocky:
-          url: https://raw.githubusercontent.com/0xERR0R/blocky/main/docs/blocky-grafana.json
-          datasource: Prometheus
-        blocky-query:
-          url: https://raw.githubusercontent.com/0xERR0R/blocky/main/docs/blocky-query-grafana.json
-          datasource: MySQL
     sidecar:
       dashboards:
         enabled: true
