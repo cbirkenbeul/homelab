@@ -15,7 +15,7 @@ spec:
         name: bjw-s
         namespace: flux-system
   dependsOn:
-    - name: intel-gpu-plugin-gpu
+    - name: intel-device-plugin-gpu
       namespace: kube-system
   maxHistory: 3
   install:
