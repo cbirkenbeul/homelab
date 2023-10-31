@@ -28,6 +28,13 @@ spec:
     controllers:
       main:
         type: statefulset
+        statefulset:
+          volumeClaimTemplates:
+            - name: config
+              mountPath: /config
+              storageClass: longhorn
+              accessMode: ReadWriteOnce
+              size: 5Gi
         containers:
           main:
             image:
