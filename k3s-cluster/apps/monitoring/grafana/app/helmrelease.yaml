@@ -67,8 +67,9 @@ spec:
             type: postgres
             access: proxy
             user: teslamate
+            database: teslamate
             secureJsonData:
-              url: "$SECRET_POSTGRES_HOST"
+              url: pgsql01.casalani.de:5432
               password: "$SECRET_TESLAMATE_POSTGRESS_PASSWORD"
               sslmode: disable
     dashboards:
