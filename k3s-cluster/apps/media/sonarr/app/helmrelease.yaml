@@ -66,14 +66,14 @@ spec:
               readiness: *probes
               startup:
                 enabled: false
-            pod:
-              securityContext:
-                runAsUser: 568
-                runAsGroup: 568
-                fsGroup: 568
-                fsGroupChangePolicy: OnRootMismatch
-                supplementalGroups:
-                  - 568
+        pod:
+          securityContext:
+            runAsUser: 568
+            runAsGroup: 568
+            fsGroup: 568
+            fsGroupChangePolicy: OnRootMismatch
+            supplementalGroups:
+              - 568
 
     service:
       main:

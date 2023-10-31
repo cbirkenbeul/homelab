@@ -73,14 +73,14 @@ spec:
               limits:
                 memory: 2000Mi
 
-          pod:
-            SecurityContext:
-              runAsUser: 568
-              runAsGroup: 568
-              fsGroup: 568
-              fsGroupChangePolicy: OnRootMismatch
-              supplementalGroups:
-                - 568
+        pod:
+          SecurityContext:
+            runAsUser: 568
+            runAsGroup: 568
+            fsGroup: 568
+            fsGroupChangePolicy: OnRootMismatch
+            supplementalGroups:
+              - 568
 
     service:
       main:
