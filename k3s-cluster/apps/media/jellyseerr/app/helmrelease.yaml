@@ -29,6 +29,7 @@ spec:
   values:
     controllers:
       main:
+        type: statefulset
         containers:
           main:
             image:
@@ -38,11 +39,24 @@ spec:
               TZ: "${TIMEZONE}"
               LOG_LEVEL: "info"
               PORT: &port 8080
+            resources:
+              requests:
+                cpu: 10m
+                memory: 250Mi
+              limits:
+                memory: 500Mi
+            podSecurityContext:
+              runAsUser: 1000
+              runAsGroup: 1000
+              fsGroup: 1000
+              fsGroupChangePolicy: "OnRootMismatch"
+
     service:
       main:
         ports:
           http:
             port: *port
+
     ingress:
       main:
         enabled: true
@@ -62,12 +76,6 @@ spec:
           - hosts:
               - *host
 
-    podSecurityContext:
-      runAsUser: 1000
-      runAsGroup: 1000
-      fsGroup: 1000
-      fsGroupChangePolicy: "OnRootMismatch"
-
     persistence:
       config:
         enabled: true
@@ -75,9 +83,3 @@ spec:
         globalMounts:
           - path: /app/config
 
-    resources:
-      requests:
-        cpu: 10m
-        memory: 250Mi
-      limits:
-        memory: 500Mi
