@@ -74,7 +74,7 @@ spec:
                 memory: 2000Mi
 
         pod:
-          SecurityContext:
+          securityContext:
             runAsUser: 568
             runAsGroup: 568
             fsGroup: 568
