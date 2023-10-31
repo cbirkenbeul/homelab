@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.5.1
+      version: 2.0.3
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -34,20 +34,23 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    global:
-      nameOverride: *app
-    image:
-      repository: benjojo/alertmanager-discord
-      tag: latest
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: benjojo/alertmanager-discord
+              tag: latest
+            resources:
+              requests:
+                cpu: 20m
+                memory: 100Mi
+            envFrom:
+              - secretRef:
+                  name: alertmanager-discord-secret
+
     service:
       main:
         ports:
           http:
             port: 9094
-    resources:
-      requests:
-        cpu: 20m
-        memory: 100Mi
-    envFrom:
-      - secretRef:
-          name: alertmanager-discord-secret
