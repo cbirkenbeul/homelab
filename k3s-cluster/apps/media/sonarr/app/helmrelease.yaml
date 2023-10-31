@@ -94,9 +94,6 @@ spec:
               - *host
 
     persistence:
-      config:
-        enabled: true
-        existingClaim: sonarr-config
       media:
         enabled: true
         type: nfs
