@@ -57,11 +57,26 @@ spec:
                 sabnzbd.media.svc.cluster,
                 sabnzbd.media.svc.cluster.local,
                 {{ .Release.Name }}.${SECRET_DOMAIN}
+            podSecurityContext:
+              runAsUser: 1026
+              runAsGroup: 100
+              fsGroup: 100
+              fsGroupChangePolicy: OnRootMismatch
+              supplementalGroups:
+                - 100
+            resources:
+              requests:
+                cpu: 10m
+                memory: 250Mi
+              limits:
+                memory: 2000Mi
+
     service:
       main:
         ports:
           http:
             port: *port
+
     ingress:
       main:
         enabled: true
@@ -81,13 +96,6 @@ spec:
           - hosts:
               - *host
 
-    podSecurityContext:
-      runAsUser: 1026
-      runAsGroup: 100
-      fsGroup: 100
-      fsGroupChangePolicy: OnRootMismatch
-      supplementalGroups:
-        - 100
 
     persistence:
       config:
@@ -103,9 +111,3 @@ spec:
         globalMounts:
           - path: /media
 
-    resources:
-      requests:
-        cpu: 10m
-        memory: 250Mi
-      limits:
-        memory: 2000Mi
