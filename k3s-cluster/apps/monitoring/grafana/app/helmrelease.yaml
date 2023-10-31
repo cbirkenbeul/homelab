@@ -66,10 +66,10 @@ spec:
           - name: TeslaMate
             type: postgres
             access: proxy
-            url: $SECRET_POSTGRES_HOST
             user: teslamate
             secureJsonData:
-              password: $SECRET_TESLAMATE_POSTGRESS_PASSWORD
+              url: "$SECRET_POSTGRES_HOST"
+              password: "$SECRET_TESLAMATE_POSTGRESS_PASSWORD"
               sslmode: disable
     dashboards:
       default:
