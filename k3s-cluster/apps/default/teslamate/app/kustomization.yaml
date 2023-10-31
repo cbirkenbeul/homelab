@@ -6,4 +6,3 @@ namespace: default
 resources:
   - ./helmrelease.yaml
   - ./secret.sops.yaml
-  - ./dashboard
