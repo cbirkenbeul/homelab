@@ -70,7 +70,10 @@ spec:
             database: teslamate
             url: pgsql01.casalani.de:5432
             secureJsonData:
-              password: "$TESLAMATE_POSTGRESS_PASSWORD"
+              password: ${TESLAMATE_POSTGRESS_PASSWORD}
+              sslmode: disable
+            jsonData:
+              postgresVersion: 1000
               sslmode: disable
     dashboards:
       default:
