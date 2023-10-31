@@ -5,5 +5,5 @@ kind: Kustomization
 namespace: media
 resources:
   - ./config-pvc.yaml
-  - ./helmrelease.yaml
+  #- ./helmrelease.yaml
   - ./secret.sops.yaml
