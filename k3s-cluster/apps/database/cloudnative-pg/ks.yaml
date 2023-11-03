@@ -29,7 +29,7 @@ metadata:
 spec:
   dependsOn:
     - name: cluster-apps-cloudnative-pg
-    - name: cluster-apps-local-path-provisioner
+    #- name: cluster-apps-local-path-provisioner
   path: ./k3s-cluster/apps/database/cloudnative-pg/cluster
   prune: true
   sourceRef:
