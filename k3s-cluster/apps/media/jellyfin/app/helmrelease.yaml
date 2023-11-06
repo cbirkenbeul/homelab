@@ -50,14 +50,29 @@ spec:
               JELLYFIN_FFmpeg__probesize: 50000000
               JELLYFIN_FFmpeg__analyzeduration: 50000000
               JELLYFIN_PublishedServerUrl: &loadBalancerIP ${METALLB_JELLYFIN}
-              resources:
-                requests:
-                  gpu.intel.com/i915: 1
-                  cpu: 100m
-                  memory: 1Gi
-                limits:
-                  gpu.intel.com/i915: 1
-                  memory: 6Gi
+            probes:
+              liveness: &probes
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /health
+                    port: &port 8096
+                  initialDelaySeconds: 0
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
+              startup:
+                enabled: false
+            resources:
+              requests:
+                gpu.intel.com/i915: 1
+                cpu: 100m
+                memory: 1Gi
+              limits:
+                gpu.intel.com/i915: 1
+                memory: 6Gi
 
     service:
       main:
