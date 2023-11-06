@@ -30,6 +30,15 @@ spec:
     controllers:
       main:
         type: statefulset
+        pod:
+          securityContext:
+            runAsUser: 568
+            runAsGroup: 568
+            fsGroup: 568
+            fsGroupChangePolicy: OnRootMismatch
+            supplementalGroups:
+              - 44
+              - 109
         containers:
           main:
             image:
@@ -41,6 +50,14 @@ spec:
               JELLYFIN_FFmpeg__probesize: 50000000
               JELLYFIN_FFmpeg__analyzeduration: 50000000
               JELLYFIN_PublishedServerUrl: &loadBalancerIP ${METALLB_JELLYFIN}
+              resources:
+                requests:
+                  gpu.intel.com/i915: 1
+                  cpu: 100m
+                  memory: 1Gi
+                limits:
+                  gpu.intel.com/i915: 1
+                  memory: 6Gi
 
     service:
       main:
@@ -70,14 +87,6 @@ spec:
           - hosts:
               - *host
 
-    podSecurityContext:
-      runAsUser: 1026
-      runAsGroup: 100
-      fsGroup: 100
-      fsGroupChangePolicy: OnRootMismatch
-      supplementalGroups:
-        - 100
-
     persistence:
       config:
         enabled: true
@@ -97,19 +106,8 @@ spec:
         existingClaim: jellyfin-transcode
         globalMounts:
           - path: /config/transcodes
-
       cache:
         enabled: true
         type: emptyDir
         globalMounts: 
           - path: /config/cache
-    nodeSelector:
-      intel.feature.node.kubernetes.io/gpu: "true"
-    resources:
-      requests:
-        gpu.intel.com/i915: 1
-        cpu: 100m
-        memory: 1Gi
-      limits:
-        gpu.intel.com/i915: 1
-        memory: 6Gi
