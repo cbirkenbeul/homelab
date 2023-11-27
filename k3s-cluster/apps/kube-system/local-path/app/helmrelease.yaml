@@ -3,7 +3,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: local-path-provisioner
-  namespace: kube-system
+  namespace: kube-s
 spec:
   interval: 30m
   chart:
@@ -29,11 +29,11 @@ spec:
         # distributed support is not yet ready for expansion
         allowVolumeExpansion: false
 
-    volumeSnapshotClasses:
-      - name: local-hostpath
-        deletionPolicy: Delete
-        parameters:
-          dummy: {}
+    # volumeSnapshotClasses:
+    #   - name: local-hostpath
+    #     deletionPolicy: Delete
+    #     parameters:
+    #       dummy: {}
 
     controller:
       enabled: true
@@ -53,10 +53,10 @@ spec:
       externalResizer:
         enabled: false
       externalSnapshotter:
-        enabled: true
-        extraArgs:
-          - --leader-election=false
-          - --node-deployment=true
+        enabled: false
+        # extraArgs:
+        #   - --leader-election=false
+        #   - --node-deployment=true
       nodeSelector:
         ssd: "true"
     node:
