@@ -5,7 +5,7 @@ metadata:
   name: cluster-apps-local-hostpath
   namespace: flux-system
 spec:
-  path: ./k3s-cluster/apps/democratic-csi/local-path-provisioner/app
+  path: ./k3s-cluster/apps/kube-system/local-path/app
   prune: true
   sourceRef:
     kind: GitRepository

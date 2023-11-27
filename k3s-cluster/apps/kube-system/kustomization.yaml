@@ -5,6 +5,7 @@ resources:
   - ./namespace.yaml
   - ./cilium/ks.yaml
   - intel-device-plugin
+  - ./local-path/ks.yaml
   - ./metrics-server/ks.yaml
   - ./node-feature-discovery/ks.yaml
   - ./reloader/ks.yaml
