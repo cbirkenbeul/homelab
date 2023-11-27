@@ -9,6 +9,5 @@ resources:
   - ./mealie/ks.yaml
   - ./redis/ks.yaml
   - ./teslamate/ks.yaml
-  - ./uptime-kuma/ks.yaml
   - ./wallabag/ks.yaml
   - ./zwave-js-ui/ks.yaml
