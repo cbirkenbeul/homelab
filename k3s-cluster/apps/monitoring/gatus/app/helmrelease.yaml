@@ -113,7 +113,6 @@ spec:
         tls:
           - hosts:
               - *host
-              - *customHost
     serviceAccount:
       create: true
       name: gatus
