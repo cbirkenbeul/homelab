@@ -4,7 +4,7 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   - ./cilium/ks.yaml
-  #- ./external-secrets/ks.yaml
+  - ./external-secrets/ks.yaml
   - intel-device-plugin
   - ./local-path/ks.yaml
   - ./metrics-server/ks.yaml
