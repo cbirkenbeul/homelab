@@ -104,7 +104,7 @@ spec:
         enabled: true
         ingressClassName: nginx
         hosts:
-          - host: &customHost status.${ SECRET_DOMAIN }
+          - host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
             paths:
               - path: /
                 service:
