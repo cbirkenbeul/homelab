@@ -119,7 +119,7 @@ spec:
         enabled: true
         className: internal
         hosts:
-          - host: &host "{{ .Release.Name }}.devbu.io"
+          - host: &host "{{ .Release.Name }}.{{ SECRET_DOMAIN }}"
             paths:
               - path: /
                 service:
