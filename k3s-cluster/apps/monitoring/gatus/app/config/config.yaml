@@ -48,7 +48,7 @@ endpoints:
   ## Media
   - name: sonarr
     group: media
-    url: "tcp://sonarr.media.svc.cluster.local:5432"
+    url: "tcp://sonarr.media.svc.cluster.local:8989"
     interval: 1m
     ui:
       hide-hostname: true
@@ -59,7 +59,7 @@ endpoints:
       - type: pushover
   - name: radarr
     group: media
-    url: "tcp://radarr.media.svc.cluster.local:5432"
+    url: "tcp://radarr.media.svc.cluster.local:7878"
     interval: 1m
     ui:
       hide-hostname: true
@@ -70,7 +70,7 @@ endpoints:
       - type: pushover
   - name: radarr-4k
     group: media
-    url: "tcp://radarr-4k.media.svc.cluster.local:5432"
+    url: "tcp://radarr-4k.media.svc.cluster.local:7878"
     interval: 1m
     ui:
       hide-hostname: true
@@ -81,7 +81,7 @@ endpoints:
       - type: pushover
   - name: radarr-anime
     group: media
-    url: "tcp://radarr-anime.media.svc.cluster.local:5432"
+    url: "tcp://radarr-anime.media.svc.cluster.local:7878"
     interval: 1m
     ui:
       hide-hostname: true
@@ -92,7 +92,7 @@ endpoints:
       - type: pushover
   - name: sabnzbd
     group: media
-    url: "tcp://sabnzbd.media.svc.cluster.local:5432"
+    url: "tcp://sabnzbd.media.svc.cluster.local:8080"
     interval: 1m
     ui:
       hide-hostname: true
@@ -103,7 +103,7 @@ endpoints:
       - type: pushover
   - name: prowlarr
     group: media
-    url: "tcp://prowlarr.media.svc.cluster.local:5432"
+    url: "tcp://prowlarr.media.svc.cluster.local:9696"
     interval: 1m
     ui:
       hide-hostname: true
@@ -114,7 +114,7 @@ endpoints:
       - type: pushover
   - name: jellyseerr
     group: media
-    url: "tcp://jellyseerr.media.svc.cluster.local:5432"
+    url: "tcp://jellyseerr.media.svc.cluster.local:8080"
     interval: 1m
     ui:
       hide-hostname: true
