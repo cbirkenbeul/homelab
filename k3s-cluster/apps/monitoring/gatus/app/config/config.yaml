@@ -45,6 +45,53 @@ endpoints:
     alerts:
       - type: pushover
 
+
+  ## Default
+  - name: freshrss
+    group: default
+    url: "tcp://freshrss.default.svc.cluster.local:80"
+    interval: 1m
+    ui:
+      hide-hostname: true
+      hide-url: true
+    conditions:
+      - "[CONNECTED] == true"
+    alerts:
+      - type: pushover
+  - name: ghostfo333o
+    group: default
+    url: "tcp://ghostfolio.default.svc.cluster.local:333"
+    interval: 1m
+    ui:
+      hide-hostname: true
+      hide-url: true
+    conditions:
+      - "[CONNECTED] == true"
+    alerts:
+      - type: pushover
+  - name: mealie
+    group: default
+    url: "tcp://mealie.default.svc.cluster.local:3000"
+    interval: 1m
+    ui:
+      hide-hostname: true
+      hide-url: true
+    conditions:
+      - "[CONNECTED] == true"
+    alerts:
+      - type: pushover
+  - name: teslamate
+    group: default
+    url: "tcp://teslamate.default.svc.cluster.local:4000"
+    interval: 1m
+    ui:
+      hide-hostname: true
+      hide-url: true
+    conditions:
+      - "[CONNECTED] == true"
+    alerts:
+      - type: pushover
+
   ## Media
   - name: sonarr
     group: media
