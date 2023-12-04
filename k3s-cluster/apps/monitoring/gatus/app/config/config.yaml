@@ -44,3 +44,28 @@ endpoints:
       - "[STATUS] == 404"
     alerts:
       - type: pushover
+
+  ## Database
+  - name: postgresql
+    group: database
+    url: "tcp://cloudnative-pg-cluster.database.svc.cluster.local:5432"
+    interval: 1m
+    ui:
+      hide-hostname: true
+      hide-url: true
+    conditions:
+      - "[CONNECTED] == true"
+    alerts:
+      - type: pushover
+
+  - name: redis
+    group: database
+    url: "tcp://redis-master.database.svc.cluster.local:6379"
+    interval: 1m
+    ui:
+      hide-hostname: true
+      hide-url: true
+    conditions:
+      - "[CONNECTED] == true"
+    alerts:
+      - type: pushover
