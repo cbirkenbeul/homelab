@@ -45,6 +45,85 @@ endpoints:
     alerts:
       - type: pushover
 
+  ## Media
+  - name: sonarr
+    group: media
+    url: "tcp://sonarr.media.svc.cluster.local:5432"
+    interval: 1m
+    ui:
+      hide-hostname: true
+      hide-url: true
+    conditions:
+      - "[CONNECTED] == true"
+    alerts:
+      - type: pushover
+  - name: radarr
+    group: media
+    url: "tcp://radarr.media.svc.cluster.local:5432"
+    interval: 1m
+    ui:
+      hide-hostname: true
+      hide-url: true
+    conditions:
+      - "[CONNECTED] == true"
+    alerts:
+      - type: pushover
+  - name: radarr-4k
+    group: media
+    url: "tcp://radarr-4k.media.svc.cluster.local:5432"
+    interval: 1m
+    ui:
+      hide-hostname: true
+      hide-url: true
+    conditions:
+      - "[CONNECTED] == true"
+    alerts:
+      - type: pushover
+  - name: radarr-anime
+    group: media
+    url: "tcp://radarr-anime.media.svc.cluster.local:5432"
+    interval: 1m
+    ui:
+      hide-hostname: true
+      hide-url: true
+    conditions:
+      - "[CONNECTED] == true"
+    alerts:
+      - type: pushover
+  - name: sabnzbd
+    group: media
+    url: "tcp://sabnzbd.media.svc.cluster.local:5432"
+    interval: 1m
+    ui:
+      hide-hostname: true
+      hide-url: true
+    conditions:
+      - "[CONNECTED] == true"
+    alerts:
+      - type: pushover
+  - name: prowlarr
+    group: media
+    url: "tcp://prowlarr.media.svc.cluster.local:5432"
+    interval: 1m
+    ui:
+      hide-hostname: true
+      hide-url: true
+    conditions:
+      - "[CONNECTED] == true"
+    alerts:
+      - type: pushover
+  - name: jellyseerr
+    group: media
+    url: "tcp://jellyseerr.media.svc.cluster.local:5432"
+    interval: 1m
+    ui:
+      hide-hostname: true
+      hide-url: true
+    conditions:
+      - "[CONNECTED] == true"
+    alerts:
+      - type: pushover
+
   ## Database
   - name: postgresql
     group: database
