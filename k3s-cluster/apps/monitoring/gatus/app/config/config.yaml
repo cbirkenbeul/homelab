@@ -58,9 +58,9 @@ endpoints:
       - "[CONNECTED] == true"
     alerts:
       - type: pushover
-  - name: ghostfo333o
+  - name: ghostfolio
     group: default
-    url: "tcp://ghostfolio.default.svc.cluster.local:333"
+    url: "tcp://ghostfolio.default.svc.cluster.local:3333"
     interval: 1m
     ui:
       hide-hostname: true
