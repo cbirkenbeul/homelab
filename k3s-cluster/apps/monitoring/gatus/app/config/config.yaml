@@ -48,7 +48,7 @@ endpoints:
   ## Database
   - name: postgresql
     group: database
-    url: "tcp://cloudnative-pg-cluster.database.svc.cluster.local:5432"
+    url: "tcp://postgres16-rw.database.svc.cluster.local:5432"
     interval: 1m
     ui:
       hide-hostname: true
@@ -60,7 +60,7 @@ endpoints:
 
   - name: redis
     group: database
-    url: "tcp://redis-master.database.svc.cluster.local:6379"
+    url: "tcp://redis.database.svc.cluster.local:6379"
     interval: 1m
     ui:
       hide-hostname: true
