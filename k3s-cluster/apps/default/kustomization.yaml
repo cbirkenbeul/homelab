@@ -7,7 +7,6 @@ resources:
   - ./ghostfolio/ks.yaml
   - ./hajimari/ks.yaml
   - ./mealie/ks.yaml
-  - ./redis/ks.yaml
   - ./teslamate/ks.yaml
   - ./wallabag/ks.yaml
   - ./zwave-js-ui/ks.yaml

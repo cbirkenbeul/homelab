@@ -44,7 +44,7 @@ spec:
               tag: 2.27.0
             env:
               NODE_ENV: production
-              REDIS_HOST: redis.default.svc.cluster.local
+              REDIS_HOST: redis.database.svc.cluster.local
               REDIS_PORT: 6379
             envFrom:
               - secretRef:
