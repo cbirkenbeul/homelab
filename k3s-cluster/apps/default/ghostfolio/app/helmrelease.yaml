@@ -30,7 +30,7 @@ spec:
     - name: ingress-nginx
       namespace: networking
     - name: redis
-      namespace: default
+      namespace: database
   values:
     controllers:
       main:
