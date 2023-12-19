@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   - ./longhorn/ks.yaml
+  - ./longhonr-recurring-jobs/ks.yaml
