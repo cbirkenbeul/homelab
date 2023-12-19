@@ -19,4 +19,4 @@ spec:
   wait: true
   timeout: 2m
   dependsOn:
-    - name: cert-manager
+    - name: cluster-apps-cert-manager
