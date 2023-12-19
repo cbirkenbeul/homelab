@@ -11,7 +11,7 @@ spec:
     labels:
       app.kubernetes.io/name: *appname
   interval: 10m
-  path: "./k3s-cluster/main/apps/system/snapshot-controller/app"
+  path: "./k3s-cluster/apps/system/snapshot-controller/app"
   prune: true
   sourceRef:
     kind: GitRepository
