@@ -11,7 +11,7 @@ spec:
     labels:
       app.kubernetes.io/name: *appname
   interval: 10m
-  path: "./k3s-cluster/apps/apps/system/volsync/app"
+  path: "./k3s-cluster/apps/system/volsync/app"
   prune: true
   sourceRef:
     kind: GitRepository
