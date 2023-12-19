@@ -24,4 +24,5 @@ resources:
   - ./piraeus.yaml
   - ./prometheus-community.yaml
   - ./stakater.yaml
+  - ./tyzbit.yaml
   - ./weave-gitops.yaml
