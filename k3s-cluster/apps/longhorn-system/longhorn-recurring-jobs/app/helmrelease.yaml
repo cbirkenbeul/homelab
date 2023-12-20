@@ -10,7 +10,7 @@ spec:
   upgrade:
     force: true # In case a StorageClass needs updating
   dependsOn:
-    - name: cluster-apps-longhorn
+    - name: longhorn
       namespace: longhorn-system
   timeout: 120s
   chart:
