@@ -5,7 +5,7 @@ kind: HelmRelease
 metadata:
   name: longhorn-recurring-jobs
 spec:
-  targetNamespace: storage
+  targetNamespace: longhorn-system
   releaseName: longhorn-recurring-jobs
   upgrade:
     force: true # In case a StorageClass needs updating
