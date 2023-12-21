@@ -109,7 +109,7 @@ spec:
     persistence:
       data:
         enabled: true
-        existingClaim: "${CLAIM}"
+        existingClaim: "${VOLSYNC_CLAIM}"
         advancedMounts:
           main:
             main:
