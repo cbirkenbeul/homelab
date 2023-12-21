@@ -17,3 +17,11 @@ spec:
   retryInterval: 1m
   timeout: 5m
   wait: true
+  postBuild:
+    substitute:
+      APP: *appname
+      HOSTNAME: paperless.casalani.de
+      APP_UID: "1000"
+      APP_GID: "65543"
+      VOLSYNC_CLAIM: paperless-data
+      VOLSYNC_CAPACITY: 15Gi
