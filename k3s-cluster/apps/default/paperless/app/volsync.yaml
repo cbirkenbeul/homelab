@@ -3,13 +3,14 @@
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
-  name: "paperless-data-volsync-r2"
+  name: paperless-data-volsync-r2
+  namespace: default
 spec:
   secretStoreRef:
     kind: ClusterSecretStore
     name: onepassword-connect
   target:
-    name: "paperless-data-volsync-r2-secret"
+    name: paperless-data-volsync-r2-secret
     template:
       engineVersion: v2
       data:
@@ -27,15 +28,16 @@ spec:
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: "paperless-data-r2"
+  name: paperless-data-r2
+  namespace: default
 spec:
-  sourcePVC: "paperless-data"
+  sourcePVC: paperless-data
   trigger:
     schedule: "0 0 * * *"
   restic:
     copyMethod: Snapshot
     pruneIntervalDays: 7
-    repository: "paperless-data-volsync-r2-secret"
+    repository: paperless-data-volsync-r2-secret
     volumeSnapshotClassName: longhorn-snapclass
     cacheCapacity: 10Gi
     cacheStorageClassName: local-hostpath
