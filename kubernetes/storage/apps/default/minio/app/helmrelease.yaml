@@ -89,6 +89,7 @@ spec:
     ingress:
       main:
         enabled: true
+        ingressClassName: "nginx"
         hosts:
           - host: &host "{{ .Release.Name }}.casalani.de"
             paths:
