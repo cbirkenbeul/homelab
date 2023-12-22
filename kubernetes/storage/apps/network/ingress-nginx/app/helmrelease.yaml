@@ -28,11 +28,17 @@ spec:
   values:
     controller:
       replicaCount: 1
+
+      updateStrategy:
+        type: Recreate
+
       extraEnvs:
         - name: TZ
           value: "${TIMEZONE}"
       service:
-        type: loadbalancer
+        enabled: true
+        type: LoadBalancer
+        externalTrafficPolicy: Cluster
       ingressClassResource:
         default: true
       config:
