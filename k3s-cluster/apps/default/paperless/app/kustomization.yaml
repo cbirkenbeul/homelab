@@ -6,4 +6,4 @@ resources:
   - helmrelease.yaml
   #- data-pvc.yaml
   #- volsync.yaml
-  - ../../../templates/volsync
+  - ../../../../templates/volsync
