@@ -111,7 +111,7 @@ spec:
       config:
         enabled: true
         type: hostPath
-        hostPath: /daten/k3s/minio
+        hostPath: /daten/minio
         hostPathType: Directory
         globalMounts:
           - path: /data
