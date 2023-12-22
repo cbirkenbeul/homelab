@@ -32,8 +32,8 @@ spec:
       wal:
         compression: bzip2
         maxParallel: 8
-      destinationPath: s3://k3s-cnpg/
-      endpointURL: https://${SECRET_CLOUDFLARE_ACCOUNT_ID}.r2.cloudflarestorage.com
+      destinationPath: s3://cloudnative-pg/
+      endpointURL: https://s3.casalani.de
       serverName: &currentCluster postgres16
       s3Credentials:
         accessKeyId:
