@@ -8,7 +8,7 @@ tasks:
     cmds:
       - flux check --pre
 
-  install:
+  install-main:
     desc: Install Flux into your cluster
     cmds:
       - kubectl apply --kustomize ~/GitHub/homelab/k3s-cluster/bootstrap
@@ -16,6 +16,21 @@ tasks:
       - sops --decrypt ~/GitHub/homelab/k3s-cluster/flux/vars/cluster-secrets.sops.yaml | kubectl apply -f -
       - kubectl apply -f ~/GitHub/homelab/k3s-cluster/flux/vars/cluster-settings.yaml
       - kubectl apply --kustomize ~/GitHub/homelab/k3s-cluster/flux/config
+    preconditions:
+      - sh: test -f {{.SOPS_AGE_KEY_FILE}}
+        msg: |
+          Age key file is not found. Did you forget to create it?
+    vars:
+      SOPS_AGE_KEY_FILE: ~/.config/sops/age/keys.txt
+
+  install-storage:
+    desc: Install Flux into your cluster
+    cmds:
+      - kubectl apply --kustomize ~/GitHub/homelab/kubernetes/storage/bootstrap --kubeconfig ~/GitHub/homelab/kubernetes/storage/kubeconfig
+      - cat {{.SOPS_AGE_KEY_FILE}} | kubectl --kubeconfig ~/GitHub/homelab/kubernetes/storage/kubeconfig -n flux-system create secret generic sops-age --from-file=age.agekey=/dev/stdin
+      - sops --decrypt ~/GitHub/homelab/kubernetes/storage/flux/vars/cluster-secrets.sops.yaml | kubectl --kubeconfig ~/GitHub/homelab/kubernetes/storage/kubeconfig apply -f -
+      - kubectl apply -f ~/GitHub/homelab/kubernetes/storage/flux/vars/cluster-settings.yaml --kubeconfig ~/GitHub/homelab/kubernetes/storage/kubeconfig
+      - kubectl apply --kustomize ~/GitHub/homelab/kubernetes/storage/flux/config --kubeconfig ~/GitHub/homelab/kubernetes/storage/kubeconfig
     preconditions:
       - sh: test -f {{.SOPS_AGE_KEY_FILE}}
         msg: |

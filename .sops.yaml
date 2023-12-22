@@ -6,7 +6,7 @@ creation_rules:
     age: >-
       age1kmnhp30e40u4q54znn8ysz3atvee5k4q9r585y8mzxz9xuuxm37spk5w4w
 
-  - path_regex: cluster/.*\.ya?ml
+  - path_regex: kubernetes/.*\.secret(\.sops)?\.env
     encrypted_regex: "^(data|stringData)$"
     age: >-
       age1kmnhp30e40u4q54znn8ysz3atvee5k4q9r585y8mzxz9xuuxm37spk5w4w

@@ -10,8 +10,9 @@ vars:
 
 # dotenv: [".config.env"]
 
-# env:
-#   KUBECONFIG: "~/.kube/config"
+env:
+  KUBECONFIG: "{{.KUBERNETES_DIR}}/kubernetes/main/kubeconfig:{{.KUBERNETES_DIR}}/kubernetes/storage/kubeconfig"
+  SOPS_AGE_KEY_FILE: "{{.ROOT_DIR}}/age.key"
 
 includes:
 #   ansible: .taskfiles/AnsibleTasks.yml
