@@ -27,8 +27,8 @@ tasks:
     desc: Install Flux into your cluster
     cmds:
       - kubectl apply --kustomize ~/GitHub/homelab/kubernetes/storage/bootstrap --kubeconfig ~/GitHub/homelab/kubernetes/storage/kubeconfig
-      - cat {{.SOPS_AGE_KEY_FILE}} | kubectl --kubeconfig ~/GitHub/homelab/kubernetes/storage/kubeconfig -n flux-system create secret generic sops-age --from-file=age.agekey=/dev/stdin
-      - sops --decrypt ~/GitHub/homelab/kubernetes/storage/flux/vars/cluster-secrets.sops.yaml | kubectl --kubeconfig ~/GitHub/homelab/kubernetes/storage/kubeconfig apply -f -
+      #- cat {{.SOPS_AGE_KEY_FILE}} | kubectl --kubeconfig ~/GitHub/homelab/kubernetes/storage/kubeconfig -n flux-system create secret generic sops-age --from-file=age.agekey=/dev/stdin
+      #- sops --decrypt ~/GitHub/homelab/kubernetes/storage/flux/vars/cluster-secrets.sops.yaml | kubectl --kubeconfig ~/GitHub/homelab/kubernetes/storage/kubeconfig apply -f -
       - kubectl apply -f ~/GitHub/homelab/kubernetes/storage/flux/vars/cluster-settings.yaml --kubeconfig ~/GitHub/homelab/kubernetes/storage/kubeconfig
       - kubectl apply --kustomize ~/GitHub/homelab/kubernetes/storage/flux/config --kubeconfig ~/GitHub/homelab/kubernetes/storage/kubeconfig
     preconditions:
