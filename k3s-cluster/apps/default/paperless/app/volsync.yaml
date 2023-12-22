@@ -42,6 +42,8 @@ spec:
     cacheCapacity: 10Gi
     cacheStorageClassName: local-hostpath
     storageClassName: longhorn
+    cacheAccessModes: ReadWriteOnce
+    accessModes: ReadWriteOnce
     moverSecurityContext:
       runAsUser: 568
       runAsGroup: 568
