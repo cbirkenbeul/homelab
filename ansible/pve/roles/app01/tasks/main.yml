@@ -30,8 +30,6 @@
     - node-exporter
     - traefik
     - cloudflared
-    - pgadmin
-    - phpmyadmin
     - paperless-ngx
 
 - name: Cleanup Docker system

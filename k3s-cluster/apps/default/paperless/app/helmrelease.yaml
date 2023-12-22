@@ -112,3 +112,9 @@ spec:
           main:
             main:
               - path: /data/local
+      export:
+        type: nfs
+        server: &nas 'nas.${SECRET_DOMAIN}'
+        path: /mnt/user/app-backup/paperless
+        globalMounts:
+          - path: /data/local/export
