@@ -17,4 +17,4 @@ patchesStrategicMerge:
     apiVersion: v1
     kind: Namespace
     metadata:
-      name: system-upgrade
+      name: system
