@@ -5,5 +5,5 @@ resources:
   - ./externalsecret.yaml
   - ./helmrelease.yaml
   - data-pvc.yaml
-  # - volsync.yaml
+  - volsync.yaml
   #- ../../../../templates/volsync
