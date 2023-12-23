@@ -3,14 +3,14 @@
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
-  name: jellyfin-data-volsync-r2
+  name: jellyfin-data-volsync-minio
   namespace: default
 spec:
   secretStoreRef:
     kind: ClusterSecretStore
     name: onepassword-connect
   target:
-    name: jellyfin-data-volsync-r2-secret
+    name: jellyfin-data-volsync-minio-secret
     template:
       engineVersion: v2
       data:
@@ -22,14 +22,14 @@ spec:
     - extract:
         key: minio
     - extract:
-        key: volsync-r2-template
+        key: volsync-minio-template
         
 ---
 # yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/volsync.backube/replicationsource_v1alpha1.json
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: jellyfin-data-r2
+  name: jellyfin-data-minio
   namespace: default
 spec:
   sourcePVC: jellyfin-config
@@ -38,13 +38,11 @@ spec:
   restic:
     copyMethod: Snapshot
     pruneIntervalDays: 7
-    repository: jellyfin-data-volsync-r2-secret
+    repository: jellyfin-data-volsync-minio-secret
     volumeSnapshotClassName: longhorn
     cacheCapacity: 10Gi
     cacheStorageClassName: local-hostpath
     storageClassName: longhorn
-    cacheAccessModes: ReadWriteOnce
-    accessModes: ReadWriteOnce
     moverSecurityContext:
       runAsUser: 568
       runAsGroup: 568
@@ -65,7 +63,7 @@ spec:
     manual: restore-once
   restic:
     copyMethod: Snapshot
-    repository: jellyfin-data-volsync-r2-secret
+    repository: jellyfin-data-volsync-minio-secret
     cacheStorageClassName: local-hostpath
     cacheCapacity: "${VOLSYNC_CACHE_CAPACITY:-1Gi}"
     storageClassName: "${VOLSYNC_STORAGECLASS:-longhorn}"
