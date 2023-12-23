@@ -16,8 +16,8 @@ spec:
     name: cloudnative-pg-secret
   enableSuperuserAccess: true
   bootstrap:
-   recovery:
-     source: &previous-cluster postgres-v2
+    recovery:
+      source: &previous-cluster postgres-v2
   postgresql:
     parameters:
       max_connections: "300"
