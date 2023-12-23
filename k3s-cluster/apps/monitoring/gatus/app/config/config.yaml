@@ -174,7 +174,7 @@ endpoints:
   ## Database
   - name: postgresql
     group: database
-    url: "tcp://postgres16-rw.database.svc.cluster.local:5432"
+    url: "tcp://postgres16-v1-rw.database.svc.cluster.local:5432"
     interval: 1m
     ui:
       hide-hostname: true
