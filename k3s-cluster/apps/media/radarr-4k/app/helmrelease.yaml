@@ -99,6 +99,6 @@ spec:
         enabled: true
         type: nfs
         server: &nas 'nas.${SECRET_DOMAIN}'
-        path: /volume1/media
+        path: /mnt/user/media
         globalMounts:
           - path: /media
