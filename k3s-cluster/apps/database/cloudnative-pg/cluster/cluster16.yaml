@@ -3,7 +3,7 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
-  name: postgres16-v2
+  name: postgres16-v1
   namespace: database
 spec:
   instances: 3
@@ -15,9 +15,9 @@ spec:
   superuserSecret:
     name: cloudnative-pg-secret
   enableSuperuserAccess: true
-  bootstrap:
-    recovery:
-      source: &previous-cluster postgres
+  # bootstrap:
+  #   recovery:
+  #     source: &previous-cluster postgres-v1
   postgresql:
     parameters:
       max_connections: "300"
@@ -34,7 +34,7 @@ spec:
         maxParallel: 8
       destinationPath: s3://cloudnative-pg/
       endpointURL: https://s3.casalani.de
-      serverName: &currentCluster postgres16-v2
+      serverName: &currentCluster postgres16-v1
       s3Credentials:
         accessKeyId:
           name: cloudnative-pg-secret
