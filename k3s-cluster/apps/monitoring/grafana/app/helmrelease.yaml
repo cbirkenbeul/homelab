@@ -96,8 +96,8 @@ spec:
           url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/monitoring-config/dashboards/control-plane.json
           datasource: Prometheus
         opnsense:
-          gnetId: 19366
-          revision: 2
+          gnetId: 18957
+          revision: 1
           datasource: Prometheus
 
       teslamate:
