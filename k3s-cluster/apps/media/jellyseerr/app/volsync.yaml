@@ -40,6 +40,7 @@ spec:
     pruneIntervalDays: 7
     repository: jellyseerr-config-volsync-minio-secret
     volumeSnapshotClassName: longhorn
+    accessModes: ["${VOLSYNC_ACCESSMODES:-ReadWriteOnce}"]
     cacheCapacity: 10Gi
     cacheStorageClassName: local-hostpath
     storageClassName: longhorn
