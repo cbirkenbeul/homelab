@@ -95,6 +95,10 @@ spec:
         flux-control-plane:
           url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/monitoring-config/dashboards/control-plane.json
           datasource: Prometheus
+        opnsense:
+          gnetId: 19366
+          revision: 2
+          datasource: Prometheus
 
       teslamate:
         charge-level:
