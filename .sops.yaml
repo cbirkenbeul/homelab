@@ -10,3 +10,8 @@ creation_rules:
     encrypted_regex: "^(data|stringData)$"
     age: >-
       age1kmnhp30e40u4q54znn8ysz3atvee5k4q9r585y8mzxz9xuuxm37spk5w4w
+
+  - path_regex: kk3s-cluster/.*\.sops\.ya?ml
+    encrypted_regex: "^(data|stringData)$"
+    age: >-
+      age1kmnhp30e40u4q54znn8ysz3atvee5k4q9r585y8mzxz9xuuxm37spk5w4w
