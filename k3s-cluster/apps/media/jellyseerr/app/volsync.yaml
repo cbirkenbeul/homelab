@@ -32,7 +32,7 @@ metadata:
   name: jellyseerr-config-minio
   namespace: media
 spec:
-  sourcePVC: jellyfin-config
+  sourcePVC: jellyseer-config
   trigger:
     schedule: "0 * * * *"
   restic:
