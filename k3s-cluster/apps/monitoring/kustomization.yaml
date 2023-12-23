@@ -6,5 +6,4 @@ resources:
   - ./gatus/ks.yaml
   - ./grafana/ks.yaml
   - ./kube-prometheus-stack/ks.yaml
-  - ./snmp-exporter/ks.yaml
   - ./speedtest-exporter/ks.yaml
