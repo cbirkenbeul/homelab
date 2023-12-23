@@ -27,6 +27,14 @@ spec:
   values:
     controllers:
       main:
+        initContainers:
+          init-db:
+            image:
+              repository: ghcr.io/onedr0p/postgres-init
+              tag: 16
+            envFrom: &envFrom
+              - secretRef:
+                  name: radarr-secret 
         containers:
           main:
             image:
@@ -35,34 +43,50 @@ spec:
             env:
               TZ: ${TIMEZONE}
               RADARR__PORT: &port 7878
-              RADARR__POSTGRES_HOST: pgsql01.casalani.de
-              RADARR__POSTGRES_MAIN_DB: radarr-anime
-              RADARR__POSTGRES_LOG_DB: radarr-anime_logs
-              RADARR__POSTGRES_USER: postgres
-              RADARR__POSTGRES_PASSWORD: ${SECRET_POSTGRES_ADMIN_PASS}
             envFrom:
               - secretRef:
                   name: radarr-anime-apikey
+            envFrom: *envFrom
+            probes:
+              liveness: &probes
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /ping
+                    port: *port
+                  initialDelaySeconds: 0
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
+              startup:
+                enabled: false
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities: { drop: ["ALL"] }
+            resources:
+              requests:
+                cpu: 10m
+                memory: 256M
+              limits:
+                memory: 1Gi
+        pod:
+          securityContext:
+            runAsUser: 568
+            runAsGroup: 568
+            runAsNonRoot: true
+            fsGroup: 568
+            fsGroupChangePolicy: OnRootMismatch
+            supplementalGroups: [10000]
+
     service:
       main:
         ports:
           http:
             port: *port
-    probes:
-      liveness: &probes
-        enabled: true
-        custom: true
-        spec:
-          httpGet:
-            path: /ping
-            port: *port
-          initialDelaySeconds: 0
-          periodSeconds: 10
-          timeoutSeconds: 1
-          failureThreshold: 3
-      readiness: *probes
-      startup:
-        enabled: false
+
     ingress:
       main:
         enabled: true
@@ -81,14 +105,6 @@ spec:
         tls:
           - hosts:
               - *host
-
-    podSecurityContext:
-      runAsUser: 568
-      runAsGroup: 568
-      fsGroup: 568
-      fsGroupChangePolicy: "OnRootMismatch"
-      supplementalGroups:
-        - 65539
 
     persistence:
       media:
