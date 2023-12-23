@@ -112,17 +112,17 @@ spec:
         enabled: true
         type: nfs
         server: &nas 'nas.${SECRET_DOMAIN}'
-        path: /volume1/media
+        path: /mnt/user/media
         mountPath: /media
         globalMounts:
           - path: /media
       transcode:
         enabled: true
-        existingClaim: jellyfin-transcode
+        type: emptyDir
         globalMounts:
-          - path: /config/transcodes
+          - path: /transcode
       cache:
         enabled: true
         type: emptyDir
-        globalMounts: 
-          - path: /config/cache
+        globalMounts:
+          - path: /cache
