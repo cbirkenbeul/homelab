@@ -4,7 +4,7 @@ apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
   name: jellyfin-data-volsync-minio
-  namespace: default
+  namespace: media
 spec:
   secretStoreRef:
     kind: ClusterSecretStore
@@ -30,7 +30,7 @@ apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
   name: jellyfin-data-minio
-  namespace: default
+  namespace: media
 spec:
   sourcePVC: jellyfin-config
   trigger:
