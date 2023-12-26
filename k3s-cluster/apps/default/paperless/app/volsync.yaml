@@ -33,7 +33,7 @@ metadata:
 spec:
   sourcePVC: paperless-data
   trigger:
-    schedule: "0 * * * *"
+    schedule: "0 0 * * *"
   restic:
     copyMethod: Snapshot
     pruneIntervalDays: 7
@@ -47,6 +47,6 @@ spec:
       runAsGroup: 568
       fsGroup: 568
     retain:
-      hourly: 24
+      # hourly: 24
       daily: 7
-      weekly: 5
+      # weekly: 5

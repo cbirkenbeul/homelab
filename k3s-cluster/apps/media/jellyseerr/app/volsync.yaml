@@ -34,7 +34,7 @@ metadata:
 spec:
   sourcePVC: jellyseer-config
   trigger:
-    schedule: "0 * * * *"
+    schedule: "0 0 * * *"
   restic:
     copyMethod: Snapshot
     pruneIntervalDays: 7
@@ -49,9 +49,9 @@ spec:
       runAsGroup: 568
       fsGroup: 568
     retain:
-      hourly: 24
+      # hourly: 24
       daily: 7
-      weekly: 5
+      # weekly: 5
 
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/volsync.backube/replicationdestination_v1alpha1.json
