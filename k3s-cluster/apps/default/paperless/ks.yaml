@@ -2,7 +2,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: &appname paperless
+  name: &app paperless
   namespace: flux-system
 spec:
   dependsOn:
@@ -19,7 +19,7 @@ spec:
   wait: true
   postBuild:
     substitute:
-      APP: *appname
+      APP: *app
       HOSTNAME: paperless.casalani.de
       APP_UID: "1000"
       APP_GID: "65543"
