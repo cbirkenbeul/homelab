@@ -107,11 +107,12 @@ spec:
     persistence:
       data:
         enabled: true
+        accessMode: ReadWriteOnce
+        size: 10Gi
         existingClaim: paperless
-        advancedMounts:
-          main:
-            main:
-              - path: /data/local
+        globalMounts:
+          - path: /data/local
+
       export:
         type: nfs
         server: &nas 'nas.${SECRET_DOMAIN}'
