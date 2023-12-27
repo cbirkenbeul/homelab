@@ -23,3 +23,8 @@ spec:
   interval: 30m
   retryInterval: 1m
   timeout: 3m
+  postBuild:
+    substitute:
+      APP: *app
+      GATUS_SUBDOMAIN: zwave-js-ui
+      VOLSYNC_CAPACITY: 2Gi
