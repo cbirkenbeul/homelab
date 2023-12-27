@@ -10,4 +10,4 @@ resources:
   # - ./paperless/ks.yaml
   - ./teslamate/ks.yaml
   # - ./wallabag/ks.yaml
-  - ./zwave-js-ui/ks.yaml
+  # - ./zwave-js-ui/ks.yaml
