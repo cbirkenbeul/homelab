@@ -4,6 +4,6 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   - ./gatus/ks.yaml
-  - ./grafana/ks.yaml
-  - ./kube-prometheus-stack/ks.yaml
-  - ./speedtest-exporter/ks.yaml
+  #- ./grafana/ks.yaml
+  #- ./kube-prometheus-stack/ks.yaml
+  #- ./speedtest-exporter/ks.yaml
