@@ -22,7 +22,7 @@ spec:
         key: minio
     - extract:
         key: volsync-minio-template
----
+# ---
 # yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/volsync.backube/replicationsource_v1alpha1.json
 # apiVersion: volsync.backube/v1alpha1
 # kind: ReplicationSource
@@ -50,7 +50,7 @@ spec:
 #       hourly: 24
 #       daily: 7
 #       weekly: 5
----
+# ---
 # yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/volsync.backube/replicationdestination_v1alpha1.json
 # apiVersion: volsync.backube/v1alpha1
 # kind: ReplicationDestination
