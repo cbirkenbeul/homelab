@@ -3,14 +3,14 @@
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
-  name: jellyseerr-config-volsync-minio
+  name: jellyseerr-data-volsync-minio
   namespace: media
 spec:
   secretStoreRef:
     kind: ClusterSecretStore
     name: onepassword-connect
   target:
-    name: jellyseerr-config-volsync-minio-secret
+    name: jellyseerr-data-volsync-minio-secret
     template:
       engineVersion: v2
       data:
@@ -29,21 +29,20 @@ spec:
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: jellyseerr-config-minio
+  name: "${APP}"
   namespace: media
 spec:
-  sourcePVC: jellyseer-config
+  sourcePVC: "${APP}"
   trigger:
     schedule: "0 0 * * *"
   restic:
     copyMethod: Snapshot
     pruneIntervalDays: 7
-    repository: jellyseerr-config-volsync-minio-secret
-    volumeSnapshotClassName: longhorn
-    accessModes: ["${VOLSYNC_ACCESSMODES:-ReadWriteOnce}"]
+    repository: jellyseerr-data-volsync-minio-secret
+    volumeSnapshotClassName: csi-ceph-blockpool
     cacheCapacity: 10Gi
     cacheStorageClassName: local-hostpath
-    storageClassName: longhorn
+    storageClassName: ceph-block
     moverSecurityContext:
       runAsUser: 568
       runAsGroup: 568
@@ -55,24 +54,24 @@ spec:
 
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/volsync.backube/replicationdestination_v1alpha1.json
-# apiVersion: volsync.backube/v1alpha1
-# kind: ReplicationDestination
-# metadata:
-#   name: "${APP}-bootstrap"
-# spec:
-#   trigger:
-#     manual: restore-once
-#   restic:
-#     copyMethod: Snapshot
-#     repository: jellyseerr-config-volsync-minio-secret
-#     cacheStorageClassName: local-hostpath
-#     cacheCapacity: "${VOLSYNC_CACHE_CAPACITY:-1Gi}"
-#     storageClassName: "${VOLSYNC_STORAGECLASS:-longhorn}"
-#     volumeSnapshotClassName: "${VOLSYNC_SNAPSHOTCLASS:-longhorn}"
-#     moverSecurityContext:
-#       runAsUser: ${APP_UID:-568}
-#       runAsGroup: ${APP_GID:-568}
-#       fsGroup: ${APP_GID:-568}
-#     accessModes:
-#       - "${VOLSYNC_ACCESSMODES:-ReadWriteOnce}"
-#     capacity: "${VOLSYNC_CAPACITY:-1Gi}"
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationDestination
+metadata:
+  name: "${APP}-dst"
+spec:
+  trigger:
+    manual: restore-once
+  restic:
+    repository: jellyseerr-data-volsync-minio-secret
+    copyMethod: Snapshot # must be Snapshot
+    volumeSnapshotClassName: "${VOLSYNC_SNAPSHOTCLASS:-csi-ceph-blockpool}"
+    cacheStorageClassName: "${VOLSYNC_CACHE_SNAPSHOTCLASS:-local-hostpath}"
+    cacheAccessModes: ["${VOLSYNC_CACHE_ACCESSMODES:-ReadWriteOnce}"]
+    cacheCapacity: "${VOLSYNC_CACHE_CAPACITY:-8Gi}"
+    storageClassName: "${VOLSYNC_STORAGECLASS:-ceph-block}"
+    accessModes: ["${VOLSYNC_ACCESSMODES:-ReadWriteOnce}"]
+    capacity: "${VOLSYNC_CAPACITY:-1Gi}"
+    moverSecurityContext:
+      runAsUser: "${VOLSYNC_UID:-568}"
+      runAsGroup: "${VOLSYNC_GID:-568}"
+      fsGroup: "${VOLSYNC_GID:-568}"
