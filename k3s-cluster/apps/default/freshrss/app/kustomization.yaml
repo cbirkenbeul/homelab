@@ -7,5 +7,3 @@ resources:
   - ./helmrelease.yaml
   - ./externalsecret.yaml
   - ../../../../templates/volsync
-  # - ./volume.yaml
-  # - ./volsync.yaml
