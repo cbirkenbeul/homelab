@@ -36,7 +36,7 @@ spec:
               mountPath: /config
               accessMode: ReadWriteOnce
               size: 1Gi
-              storageClass: longhorn
+              storageClass: ceph-block
         annotations:
           secret.reloader.stakater.com/reload: &secret recyclarr-secret
           configmap.reloader.stakater.com/reload: &configmap recyclarr-configmap
