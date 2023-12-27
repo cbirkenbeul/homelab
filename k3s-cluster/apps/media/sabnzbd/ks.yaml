@@ -6,6 +6,9 @@ metadata:
   name: sabnzbd
   namespace: flux-system
 spec:
+  dependsOn:
+    - name: rook-ceph-cluster
+    - name: cluster-apps-ingress-nginx
   interval: 5m
   path: ./k3s-cluster/apps/media/sabnzbd/app
   prune: true
