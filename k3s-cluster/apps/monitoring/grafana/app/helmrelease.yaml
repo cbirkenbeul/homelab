@@ -193,6 +193,6 @@ spec:
             - *host
     persistence:
       enabled: true
-      storageClassName: longhorn
+      storageClassName: ceph-block
     testFramework:
       enabled: false

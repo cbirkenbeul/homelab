@@ -41,7 +41,7 @@ spec:
     volumeSnapshotClassName: longhorn
     cacheCapacity: 10Gi
     cacheStorageClassName: local-hostpath
-    storageClassName: longhorn
+    storageClassName: ceph-block
     moverSecurityContext:
       runAsUser: 568
       runAsGroup: 568
