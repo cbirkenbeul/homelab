@@ -3,14 +3,14 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: cluster-apps-recyclarr-app
+  name: ecyclarr
   namespace: flux-system
   labels:
     substitution.flux.home.arpa/enabled: "true"
 spec:
-  # dependsOn:
-  #   - name: cluster-apps-radarr-app
-  #   - name: cluster-apps-sonarr-app
+  dependsOn:
+    - name: cluster-apps-radarr-app
+    - name: sonarr
   path: ./k3s-cluster/apps/media/recyclarr/app
   prune: true
   sourceRef:
