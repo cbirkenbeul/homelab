@@ -27,39 +27,28 @@ spec:
   values:
     controllers:
       main:
+        initContainers:
+          init-db:
+            image:
+              repository: ghcr.io/onedr0p/postgres-init
+              tag: 16
+            envFrom: &envFrom
+              - secretRef:
+                  name: mealie-secret 
         containers:
           main:
             image:
-              repository: docker.io/hkotel/mealie
-              tag: frontend-v1.0.0beta-5
-              pullPolicy: IfNotPresent
-          api:
-            image:
-              repository: docker.io/hkotel/mealie
-              tag: api-v1.0.0beta-5
+              repository: ghcr.io/mealie-recipes/mealie
+              tag: v1.0.0-RC1.1
               pullPolicy: IfNotPresent
             env:
-              - name: API_PORT
-                value: "9000"
-              - name: ALLOW_SIGNUP
-                value: "false"
-            ports:
-              - name: api
-                containerPort: 9000
-            volumeMounts:
-              - name: api-data
-                mountPath: /app/data/
+              DB_ENGINE: postgres
 
     service:
       main:
         ports:
           http:
             port: 3000
-      api:
-        controller: main
-        ports:
-          api:
-            port: 9000
 
     ingress:
       main:
@@ -85,7 +74,7 @@ spec:
         enabled: true
         accessMode: ReadWriteOnce
         size: 10Gi
-        existingClaim: mealie-config
+        existingClaim: mealie
         globalMounts:
           - path: /app/data
 
