@@ -21,6 +21,4 @@ spec:
     substitute:
       APP: *app
       HOSTNAME: paperless.casalani.de
-      APP_UID: "1000"
-      APP_GID: "65543"
       VOLSYNC_CAPACITY: 15Gi
