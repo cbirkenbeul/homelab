@@ -6,5 +6,6 @@ namespace: default
 resources:
   - ./helmrelease.yaml
   - ./externalsecret.yaml
-  - ./volume.yaml
-  - ./volsync.yaml
+  - ../../../../templates/volsync
+  # - ./volume.yaml
+  # - ./volsync.yaml
