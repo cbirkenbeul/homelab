@@ -118,3 +118,10 @@ spec:
         path: /mnt/user/app-backup/paperless
         globalMounts:
           - path: /usr/src/paperless/export
+      consume:
+        enabled: true
+        type: nfs
+        server: &nas 'nas.${SECRET_DOMAIN}'
+        path: /mnt/user/dms-import
+        globalMounts:
+          - path: /usr/src/paperless/consume
