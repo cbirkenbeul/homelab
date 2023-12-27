@@ -38,7 +38,7 @@ spec:
     copyMethod: Snapshot
     pruneIntervalDays: 7
     repository: paperless-data-volsync-r2-secret
-    volumeSnapshotClassName: longhorn
+    volumeSnapshotClassName: "${VOLSYNC_SNAPSHOTCLASS:-csi-ceph-blockpool}"
     cacheCapacity: 10Gi
     cacheStorageClassName: local-hostpath
     storageClassName: ceph-block
