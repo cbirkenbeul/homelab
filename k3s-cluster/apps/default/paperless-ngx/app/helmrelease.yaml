@@ -105,7 +105,7 @@ spec:
     persistence:
       data:
         enabled: true
-        existingClaim: paperless
+        existingClaim: paperless-ngx
         globalMounts:
           - subPath: data
             path: /usr/src/paperless/data
