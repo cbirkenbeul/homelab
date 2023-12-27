@@ -4,6 +4,5 @@ kind: Kustomization
 resources:
   - ./externalsecret.yaml
   - ./helmrelease.yaml
-  - data-pvc.yaml
-  - volsync.yaml
-  #- ../../../../templates/volsync
+  - ./volume.yaml
+  - ./volsync.yaml

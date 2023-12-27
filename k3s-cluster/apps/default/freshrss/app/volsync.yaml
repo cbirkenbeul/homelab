@@ -3,18 +3,18 @@
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
-  name: paperless-data-volsync-r2
-  namespace: default
+  name: "${APP}-volsync"
+  namespace: media
 spec:
   secretStoreRef:
     kind: ClusterSecretStore
     name: onepassword-connect
   target:
-    name: paperless-data-volsync-r2-secret
+    name: "${APP}-volsync-secret"
     template:
       engineVersion: v2
       data:
-        RESTIC_REPOSITORY: "{{ .RESTIC_REPOSITORY }}/paperless-data"
+        RESTIC_REPOSITORY: "{{ .RESTIC_REPOSITORY }}/${APP}"
         RESTIC_PASSWORD: "{{ .RESTIC_PASSWORD }}"
         AWS_ACCESS_KEY_ID: "{{ .AWS_ACCESS_KEY_ID }}"
         AWS_SECRET_ACCESS_KEY: "{{ .AWS_SECRET_ACCESS_KEY }}"
@@ -22,26 +22,27 @@ spec:
     - extract:
         key: minio
     - extract:
-        key: volsync-r2-template
+        key: volsync-minio-template
+        
 ---
 # yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/volsync.backube/replicationsource_v1alpha1.json
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: paperless-data-r2
-  namespace: default
+  name: "${APP}"
+  namespace: media
 spec:
-  sourcePVC: paperless-data
+  sourcePVC: "${APP}"
   trigger:
     schedule: "0 0 * * *"
   restic:
     copyMethod: Snapshot
     pruneIntervalDays: 7
-    repository: paperless-data-volsync-r2-secret
-    volumeSnapshotClassName: longhorn
+    repository: "${APP}-volsync-secret"
+    volumeSnapshotClassName: csi-ceph-blockpool
     cacheCapacity: 10Gi
     cacheStorageClassName: local-hostpath
-    storageClassName: longhorn
+    storageClassName: ceph-block
     moverSecurityContext:
       runAsUser: 568
       runAsGroup: 568
@@ -61,7 +62,7 @@ spec:
   trigger:
     manual: restore-once
   restic:
-    repository: paperless-data-volsync-r2-secret
+    repository: "${APP}-volsync-secret"
     copyMethod: Snapshot # must be Snapshot
     volumeSnapshotClassName: "${VOLSYNC_SNAPSHOTCLASS:-csi-ceph-blockpool}"
     cacheStorageClassName: "${VOLSYNC_CACHE_SNAPSHOTCLASS:-local-hostpath}"
