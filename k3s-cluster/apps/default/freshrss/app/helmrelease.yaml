@@ -32,7 +32,6 @@ spec:
   values:
     controllers:
       main:
-        type: statefulset
         annotations:
           secret.reloader.stakater.com/auto: "true"
         initContainers:
@@ -59,14 +58,6 @@ spec:
               requests:
                 cpu: 50m
                 memory: 256Mi
-        statefulset:
-          volumeClaimTemplates:
-            - name: freshrss
-              accessMode: ReadWriteOnce
-              storageClass: ceph-block
-              size: 2Gi
-              globalMounts:
-                - path: /var/www/FreshRSS/data
 
     service:
       main:
@@ -92,3 +83,12 @@ spec:
         tls:
           - hosts:
               - *host
+
+    persistence:
+      config:
+        enabled: true
+        accessMode: ReadWriteOnce
+        size: 10Gi
+        existingClaim: freshrss
+        globalMounts:
+          - path: /var/www/FreshRSS/data
