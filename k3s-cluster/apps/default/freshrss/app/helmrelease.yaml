@@ -88,7 +88,7 @@ spec:
       config:
         enabled: true
         accessMode: ReadWriteOnce
-        size: 10Gi
+        size: 2Gi
         existingClaim: freshrss
         globalMounts:
           - path: /var/www/FreshRSS/data
