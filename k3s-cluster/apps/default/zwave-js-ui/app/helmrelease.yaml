@@ -87,7 +87,7 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: zwavejsui-config
+        existingClaim: zwave-js-ui
         globalMounts:
           - path: /usr/src/app/store
 

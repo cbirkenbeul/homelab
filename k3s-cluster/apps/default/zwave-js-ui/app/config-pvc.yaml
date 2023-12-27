@@ -2,16 +2,14 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: zwavejsui-config
-  namespace: default
-  labels:
-    app.kubernetes.io/name: &name zwavejsui
-    app.kubernetes.io/instance: *name
-    snapshot.home.arpa/enabled: "true"
+  name: "${APP}"
 spec:
-  accessModes:
-    - ReadWriteOnce
+  accessModes: ["${VOLSYNC_ACCESSMODES:-ReadWriteOnce}"]
+  dataSourceRef:
+    kind: ReplicationDestination
+    apiGroup: volsync.backube
+    name: "${APP}-dst"
   resources:
     requests:
-      storage: 1Gi
-  storageClassName: longhorn
+      storage: "${VOLSYNC_CAPACITY}"
+  storageClassName: "${VOLSYNC_STORAGECLASS:-ceph-block}"
