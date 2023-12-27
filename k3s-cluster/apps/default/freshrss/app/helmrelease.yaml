@@ -63,8 +63,7 @@ spec:
           volumeClaimTemplates:
             - name: freshrss
               accessMode: ReadWriteOnce
-              size: 1Gi
-              storageClass: rook-ceph-block
+              storageClass: ceph-block
               globalMounts:
                 - path: /var/www/FreshRSS/data
 
