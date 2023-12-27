@@ -43,7 +43,7 @@ spec:
               tag: "16.1"
             envFrom:
               - secretRef:
-                  name: paperless-dbinit-secret
+                  name: paperless-ngx-dbinit-secret
 
         containers:
           main:
@@ -58,12 +58,12 @@ spec:
               PAPERLESS_TIKA_GOTENBERG_ENDPOINT: http://localhost:3000
               PAPERLESS_TIKA_ENDPOINT: http://localhost:9998
               PAPERLESS_TIME_ZONE: Europe/Berlin
-              PAPERLESS_URL: https://{{ .Release.Name }}.casalani.de
+              PAPERLESS_URL: https://paperless.casalani.de
               PAPERLESS_REDIS: redis://redis.database.svc.cluster.local
               PAPERLESS_ENABLE_HTTP_REMOTE_USER: "true"
             envFrom:
               - secretRef:
-                  name: paperless-secret
+                  name: paperless-ngx-secret
 
           gotenburg:
             name: gotenburg
@@ -91,7 +91,7 @@ spec:
         enabled: true
         className: internal
         hosts:
-          - host: &host "{{ .Release.Name }}.casalani.de"
+          - host: &host "paperless.casalani.de"
             paths:
               - path: /
                 pathType: Prefix
@@ -111,3 +111,10 @@ spec:
             path: /usr/src/paperless/data
           - subPath: media
             path: /usr/src/paperless/media
+      export:
+        enabled: true
+        type: nfs
+        server: &nas 'nas.${SECRET_DOMAIN}'
+        path: /mnt/user/app-backup/paperless
+        globalMounts:
+          - path: /usr/src/paperless/export
