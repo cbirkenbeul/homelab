@@ -29,10 +29,10 @@ spec:
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: jellyfin-data-minio
+  name: "${APP}"
   namespace: media
 spec:
-  sourcePVC: jellyfin-config
+  sourcePVC: "${APP}"
   trigger:
     schedule: "0 0 * * *"
   restic:
