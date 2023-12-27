@@ -33,10 +33,11 @@ spec:
         statefulset:
           volumeClaimTemplates:
             - name: config
-              mountPath: /config
               accessMode: ReadWriteOnce
               size: 1Gi
               storageClass: ceph-block
+              globalMounts:
+                - path: /config
         annotations:
           secret.reloader.stakater.com/reload: &secret recyclarr-secret
           configmap.reloader.stakater.com/reload: &configmap recyclarr-configmap
