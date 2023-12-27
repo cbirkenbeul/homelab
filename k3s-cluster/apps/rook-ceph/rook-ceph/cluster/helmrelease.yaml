@@ -34,20 +34,17 @@ spec:
       enabled: true
       createPrometheusRules: true
     ingress:
-      ingressClassName: nginx
       dashboard:
+        ingressClassName: nginx
         annotations:
-          cert-manager.io/cluster-issuer: "letsencrypt-production"
-          hajimari.io/instance: "bloop-quarky"
-          hajimari.io/enable: "true"
           hajimari.io/appName: "Rook"
+          hajimari.io/icon: mdi:chess-rook
         host:
-          name: "rook.${SECRET_DOMAIN}"
-          path: "/"
+          name: &host "rook.${SECRET_DOMAIN}"
+          path: /
         tls:
-          - secretName: tls.rook
-            hosts:
-              - "rook.${SECRET_DOMAIN}"
+          - hosts:
+              - *host
     toolbox:
       enabled: true
     configOverride: |
