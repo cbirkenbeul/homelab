@@ -23,6 +23,7 @@ resources:
   - ./node-feature-discovery-charts.yaml
   - ./piraeus.yaml
   - ./prometheus-community.yaml
+  - ./rook-ceph.yaml
   - ./stakater.yaml
   - ./tyzbit.yaml
   - ./weave-gitops.yaml
