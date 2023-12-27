@@ -43,7 +43,9 @@ spec:
               pullPolicy: IfNotPresent
             env:
               DB_ENGINE: postgres
-
+            envFrom: &envFrom
+              - secretRef:
+                  name: mealie-secret 
     service:
       main:
         ports:
