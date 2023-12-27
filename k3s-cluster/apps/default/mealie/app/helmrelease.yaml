@@ -42,15 +42,17 @@ spec:
               tag: v1.0.0-RC1.1
               pullPolicy: IfNotPresent
             env:
+              BASE_URL: https://mealie.${SECRET_DOMAIN}
               DB_ENGINE: postgres
             envFrom: &envFrom
               - secretRef:
                   name: mealie-secret 
+
     service:
       main:
         ports:
           http:
-            port: 3000
+            port: 9000
 
     ingress:
       main:
