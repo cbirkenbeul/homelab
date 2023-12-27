@@ -132,11 +132,11 @@ spec:
         spec:
           metadataPool:
             replicated:
-              size: 6
+              size: 3
           dataPools:
             - failureDomain: host
               replicated:
-                size: 6
+                size: 3
               name: data0
           metadataServer:
             activeCount: 1
