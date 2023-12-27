@@ -39,10 +39,10 @@ spec:
     copyMethod: Snapshot
     pruneIntervalDays: 7
     repository: jellyfin-data-volsync-minio-secret
-    volumeSnapshotClassName: longhorn
+    volumeSnapshotClassName: csi-ceph-blockpool
     cacheCapacity: 10Gi
     cacheStorageClassName: local-hostpath
-    storageClassName: longhorn
+    storageClassName: ceph-block
     moverSecurityContext:
       runAsUser: 568
       runAsGroup: 568
@@ -54,24 +54,24 @@ spec:
 
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/volsync.backube/replicationdestination_v1alpha1.json
-# apiVersion: volsync.backube/v1alpha1
-# kind: ReplicationDestination
-# metadata:
-#   name: "${APP}-bootstrap"
-# spec:
-#   trigger:
-#     manual: restore-once
-#   restic:
-#     copyMethod: Snapshot
-#     repository: jellyfin-data-volsync-minio-secret
-#     cacheStorageClassName: local-hostpath
-#     cacheCapacity: "${VOLSYNC_CACHE_CAPACITY:-1Gi}"
-#     storageClassName: "${VOLSYNC_STORAGECLASS:-longhorn}"
-#     volumeSnapshotClassName: "${VOLSYNC_SNAPSHOTCLASS:-longhorn}"
-#     moverSecurityContext:
-#       runAsUser: ${APP_UID:-568}
-#       runAsGroup: ${APP_GID:-568}
-#       fsGroup: ${APP_GID:-568}
-#     accessModes:
-#       - "${VOLSYNC_ACCESSMODES:-ReadWriteOnce}"
-#     capacity: "${VOLSYNC_CAPACITY:-1Gi}"
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationDestination
+metadata:
+  name: "${APP}-bootstrap"
+spec:
+  trigger:
+    manual: restore-once
+  restic:
+    copyMethod: Snapshot
+    repository: jellyfin-data-volsync-minio-secret
+    cacheStorageClassName: local-hostpath
+    cacheCapacity: "${VOLSYNC_CACHE_CAPACITY:-1Gi}"
+    storageClassName: "${VOLSYNC_STORAGECLASS:-ceph-block}"
+    volumeSnapshotClassName: "${VOLSYNC_SNAPSHOTCLASS:-csi-ceph-blockpool}"
+    moverSecurityContext:
+      runAsUser: ${APP_UID:-568}
+      runAsGroup: ${APP_GID:-568}
+      fsGroup: ${APP_GID:-568}
+    accessModes:
+      - "${VOLSYNC_ACCESSMODES:-ReadWriteOnce}"
+    capacity: "${VOLSYNC_CAPACITY:-1Gi}"
