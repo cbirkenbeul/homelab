@@ -57,21 +57,20 @@ spec:
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationDestination
 metadata:
-  name: "${APP}-bootstrap"
+  name: "${APP}-dst"
 spec:
   trigger:
     manual: restore-once
   restic:
-    copyMethod: Snapshot
     repository: jellyfin-data-volsync-minio-secret
-    cacheStorageClassName: local-hostpath
-    cacheCapacity: "${VOLSYNC_CACHE_CAPACITY:-1Gi}"
-    storageClassName: "${VOLSYNC_STORAGECLASS:-ceph-block}"
+    copyMethod: Snapshot # must be Snapshot
     volumeSnapshotClassName: "${VOLSYNC_SNAPSHOTCLASS:-csi-ceph-blockpool}"
-    moverSecurityContext:
-      runAsUser: ${APP_UID:-568}
-      runAsGroup: ${APP_GID:-568}
-      fsGroup: ${APP_GID:-568}
+    cacheStorageClassName: "${VOLSYNC_CACHE_SNAPSHOTCLASS:-local-hostpath}"
+    cacheAccessModes: ["${VOLSYNC_CACHE_ACCESSMODES:-ReadWriteOnce}"]
+    cacheCapacity: "${VOLSYNC_CACHE_CAPACITY:-8Gi}"
+    storageClassName: "${VOLSYNC_STORAGECLASS:-ceph-block}"
+    accessModes: ["${VOLSYNC_ACCESSMODES:-ReadWriteOnce}"]
+    capacity: "${VOLSYNC_CAPACITY}"
     accessModes:
       - "${VOLSYNC_ACCESSMODES:-ReadWriteOnce}"
     capacity: "${VOLSYNC_CAPACITY:-1Gi}"
