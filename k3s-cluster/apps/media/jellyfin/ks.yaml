@@ -28,4 +28,4 @@ spec:
     substitute:
       APP: *app
       GATUS_SUBDOMAIN: jellyfin
-      VOLSYNC_CAPACITY: 5Gi
+      VOLSYNC_CAPACITY: 15Gi
