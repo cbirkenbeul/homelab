@@ -64,6 +64,7 @@ spec:
             - name: freshrss
               accessMode: ReadWriteOnce
               storageClass: ceph-block
+              size: 2Gi
               globalMounts:
                 - path: /var/www/FreshRSS/data
 
