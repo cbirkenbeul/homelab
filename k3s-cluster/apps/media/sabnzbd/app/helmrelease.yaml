@@ -33,8 +33,8 @@ spec:
   uninstall:
     keepHistory: false
   dependsOn:
-    - name: longhorn
-      namespace: longhorn-system
+    - name: rook-ceph-cluster
+      namespace: rook-ceph
     - name: cert-manager
       namespace: cert-manager
   values:
