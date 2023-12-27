@@ -32,7 +32,7 @@ spec:
         type: statefulset
         statefulset:
           volumeClaimTemplates:
-            - name: config
+            - name: recyclarr-config
               accessMode: ReadWriteOnce
               size: 1Gi
               storageClass: ceph-block
