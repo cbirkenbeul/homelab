@@ -1,24 +1,31 @@
 ---
+# yaml-language-server: $schema=https://kubernetes-schemas.devbu.io/kustomization_v1beta2.json
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: &app paperless
   namespace: flux-system
+  labels:
+    substitution.flux.home.arpa/enabled: "true"
 spec:
   dependsOn:
-    - name: cluster-apps-cloudnative-pg-cluster
-    - name: external-secrets-stores
+    - name: rook-ceph-cluster
+    - name: cluster-apps-ingress-nginx
   path: ./k3s-cluster/apps/default/paperless/app
   prune: true
   sourceRef:
     kind: GitRepository
     name: home-kubernetes
+  healthChecks:
+    - apiVersion: helm.toolkit.fluxcd.io/v2beta2
+      kind: HelmRelease
+      name: paperless
+      namespace: default
   interval: 30m
   retryInterval: 1m
-  timeout: 5m
-  wait: true
+  timeout: 3m
   postBuild:
     substitute:
       APP: *app
-      HOSTNAME: paperless.casalani.de
+      GATUS_SUBDOMAIN: paperless
       VOLSYNC_CAPACITY: 15Gi
