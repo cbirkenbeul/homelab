@@ -43,7 +43,7 @@ spec:
               pullPolicy: IfNotPresent
             envFrom: &envFrom
               - secretRef:
-                  name: freshrss-secret
+                  name: freshrss-dbinit-secret
         containers:
           main:
             image:
