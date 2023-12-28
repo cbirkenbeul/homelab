@@ -195,6 +195,18 @@ spec:
         tls:
           - hosts:
               - *host
+
+      thanosService:
+        enabled: true
+      thanosServiceMonitor:
+        enabled: true
+        thanos:
+          image: quay.io/thanos/thanos:v0.33.0
+          objectStorageConfig:
+            existingSecret:
+              name: thanos-objstore-secret
+              key: objstore.yml
+
       prometheusSpec:
         ruleSelectorNilUsesHelmValues: false
         serviceMonitorSelectorNilUsesHelmValues: false

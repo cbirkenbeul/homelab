@@ -5,6 +5,6 @@ resources:
   - ./namespace.yaml
   - ./gatus/ks.yaml
   - ./grafana/ks.yaml
-  #- ./kube-prometheus-stack/ks.yaml
+  - ./kube-prometheus-stack/ks.yaml
   #- ./speedtest-exporter/ks.yaml
   - ./thanos/ks.yaml
