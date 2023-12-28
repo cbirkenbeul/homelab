@@ -8,6 +8,6 @@ resources:
   - ./hajimari/ks.yaml
   - ./mealie/ks.yaml
   - ./paperless-ngx/ks.yaml
-  - ./teslamate/ks.yaml
+  # - ./teslamate/ks.yaml
   # - ./wallabag/ks.yaml
   - ./zwave-js-ui/ks.yaml
