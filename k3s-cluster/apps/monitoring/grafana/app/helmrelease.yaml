@@ -72,7 +72,7 @@ spec:
             access: proxy
             user: teslamate
             database: teslamate
-            url: pgsql01.casalani.de:5432
+            url: postgres16-v1-rw.database.svc.cluster.local:5432
             secureJsonData:
               password: ${TESLAMATE_POSTGRESS_PASSWORD}
               sslmode: disable
