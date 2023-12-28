@@ -31,6 +31,16 @@ spec:
       main:
         annotations:
           reloader.stakater.com/auto: "true"
+
+        initContainers:
+          01-init-db:
+            image:
+              repository: ghcr.io/onedr0p/postgres-init
+              tag: "16.1"
+            envFrom:
+              - secretRef:
+                  name: teslamate-dbinit-secret
+
         containers:
           main:
             image:
