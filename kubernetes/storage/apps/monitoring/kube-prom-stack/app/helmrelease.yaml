@@ -95,7 +95,7 @@ spec:
     prometheus:
       ingress:
         enabled: true
-        ingressClassName: internal
+        ingressClassName: nginx
         pathType: Prefix
         hosts:
           - &host prom-nas.${SECRET_DOMAIN}
