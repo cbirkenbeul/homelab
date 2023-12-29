@@ -4,3 +4,4 @@ kind: Kustomization
 namespace: monitoring
 resources:
   - ./node-exporter.yaml
+  - ./federation.yaml
