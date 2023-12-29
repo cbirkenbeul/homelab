@@ -37,7 +37,7 @@ spec:
               MINIO_API_CORS_ALLOW_ORIGIN: https://minio.casalani.de,https://s3.casalani.de
               MINIO_BROWSER_REDIRECT_URL: https://minio.casalani.de
               MINIO_PROMETHEUS_JOB_ID: minio
-              MINIO_PROMETHEUS_URL: https://prometheus.casalani.de
+              MINIO_PROMETHEUS_URL: https://prom-nas.casalani.de
               MINIO_PROMETHEUS_AUTH_TYPE: public
               MINIO_SERVER_URL: https://s3.casalani.de
               MINIO_UPDATE: "off"
