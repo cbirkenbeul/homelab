@@ -6,7 +6,7 @@ metadata:
   name: &app kube-prometheus-stack
   namespace: flux-system
 spec:
-  targetNamespace: observability
+  targetNamespace: monitoring
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
