@@ -13,5 +13,5 @@ spec:
   metricsPath: /federate
   params:
     "match[]":
-      - '{job="node-exporter"}'
+      # - '{job="node-exporter"}'
       - '{job="minio"}'
