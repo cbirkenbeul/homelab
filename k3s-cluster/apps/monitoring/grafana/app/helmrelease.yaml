@@ -58,6 +58,14 @@ spec:
             allowUiUpdates: true
             options:
               path: /var/lib/grafana/dashboards/teslamate
+          - name: ceph
+            orgId: 1
+            folder: Ceph
+            type: file
+            disableDeletion: false
+            editable: true
+            options:
+              path: /var/lib/grafana/dashboards/ceph
     datasources:
       datasources.yaml:
         apiVersion: 1
@@ -93,7 +101,14 @@ spec:
         opnsense:
           gnetId: 18957
           revision: 1
-          datasource: Prometheus
+          datasource:
+            - { name: DS_PROMETHEUS, value: Prometheus }  
+        minio:
+          # renovate: depName="MinIO Dashboard"
+          gnetId: 13502
+          revision: 24
+          datasource:
+            - { name: DS_PROMETHEUS, value: Prometheus }
 
       teslamate:
         charge-level:
@@ -157,6 +172,24 @@ spec:
           url: https://raw.githubusercontent.com/jheredianet/Teslamate-CustomGrafanaDashboards/main/dashboards/BatteryHealth.json
         charging-costs-stats:
           url: https://raw.githubusercontent.com/jheredianet/Teslamate-CustomGrafanaDashboards/main/dashboards/ChargingCostsStats.json
+
+      ceph:
+        ceph-cluster:
+          # renovate: depName="Ceph Cluster"
+          gnetId: 2842
+          revision: 17
+          datasource: Prometheus
+        ceph-osd:
+          # renovate: depName="Ceph - OSD (Single)"
+          gnetId: 5336
+          revision: 9
+          datasource: Prometheus
+        ceph-pools:
+          # renovate: depName="Ceph - Pools"
+          gnetId: 5342
+          revision: 9
+          datasource: Prometheus
+      flux:
 
     plugins:
       - natel-discrete-panel
