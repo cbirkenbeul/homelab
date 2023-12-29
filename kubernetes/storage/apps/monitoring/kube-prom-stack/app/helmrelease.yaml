@@ -72,7 +72,7 @@ spec:
     kubeControllerManager:
       enabled: true
       endpoints: &cp
-        - 192.168.42.80
+        - 192.168.10.24
       serviceMonitor:
         metricRelabelings:
           # Remove duplicate labels provided by k3s
@@ -103,10 +103,10 @@ spec:
           - hosts:
               - *host
       prometheusSpec:
-        additionalAlertManagerConfigs:
-          - static_configs:
-              - targets:
-                  - alertmanager.devbu.io
+        # additionalAlertManagerConfigs:
+        #   - static_configs:
+        #       - targets:
+        #           - alertmanager.devbu.io
         replicas: 1
         replicaExternalLabelName: __replica__
         ruleSelectorNilUsesHelmValues: false
