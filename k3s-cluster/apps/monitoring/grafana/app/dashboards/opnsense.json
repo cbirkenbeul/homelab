@@ -2394,7 +2394,7 @@
               "uid": "Prometheus"
             },
             "editorMode": "code",
-            "expr": "irate(node_network_receive_bytes_total{job=\"scrapeConfig/monitoring/opnsense-nodeexporter\",device=\"igb2\"}[1m])",
+            "expr": "irate(node_network_receive_bytes_total{job=\"scrapeConfig/monitoring/opnsense-nodeexporter\",device=\"em0_vlan30\"}[1m])",
             "intervalFactor": 1,
             "legendFormat": "In: {{ device }}",
             "metric": "node_network_receive_bytes_total",
@@ -2408,7 +2408,7 @@
               "uid": "Prometheus"
             },
             "editorMode": "code",
-            "expr": "-irate(node_network_transmit_bytes_total{job=\"scrapeConfig/monitoring/opnsense-nodeexporter\",device=\"igb2\"}[1m])",
+            "expr": "-irate(node_network_transmit_bytes_total{job=\"scrapeConfig/monitoring/opnsense-nodeexporter\",device=\"em0_vlan30\"}[1m])",
             "hide": false,
             "intervalFactor": 1,
             "legendFormat": "Out: {{ device }}",
