@@ -1344,7 +1344,7 @@
               "uid": "Prometheus"
             },
             "editorMode": "code",
-            "expr": "irate(node_network_receive_bytes_total{job=\"scrapeConfig/monitoring/opnsense-nodeexporter\",device=\"igb1\"}[1m])",
+            "expr": "irate(node_network_receive_bytes_total{job=\"scrapeConfig/monitoring/opnsense-nodeexporter\",device=\"em0\"}[1m])",
             "intervalFactor": 1,
             "legendFormat": "In: {{ device }}",
             "metric": "node_network_receive_bytes_total",
@@ -1358,7 +1358,7 @@
               "uid": "Prometheus"
             },
             "editorMode": "code",
-            "expr": "-irate(node_network_transmit_bytes_total{job=\"scrapeConfig/monitoring/opnsense-nodeexporter\",device=\"igb1\"}[1m])",
+            "expr": "-irate(node_network_transmit_bytes_total{job=\"scrapeConfig/monitoring/opnsense-nodeexporter\",device=\"em0\"}[1m])",
             "hide": false,
             "intervalFactor": 1,
             "legendFormat": "Out: {{ device }}",
@@ -1668,7 +1668,7 @@
               "uid": "Prometheus"
             },
             "editorMode": "code",
-            "expr": "irate(node_network_receive_packets_total{job=\"scrapeConfig/monitoring/opnsense-nodeexporter\",device=\"igb0\"}[1m])",
+            "expr": "irate(node_network_receive_packets_total{job=\"scrapeConfig/monitoring/opnsense-nodeexporter\",device=\"em2\"}[1m])",
             "intervalFactor": 1,
             "legendFormat": "Receive: {{ device }}",
             "metric": "node_network_receive_bytes_total",
@@ -1682,7 +1682,7 @@
               "uid": "Prometheus"
             },
             "editorMode": "code",
-            "expr": "irate(node_network_receive_multicast_total{job=\"scrapeConfig/monitoring/opnsense-nodeexporter\",device=\"igb0\"}[1m])",
+            "expr": "irate(node_network_receive_multicast_total{job=\"scrapeConfig/monitoring/opnsense-nodeexporter\",device=\"em2\"}[1m])",
             "hide": false,
             "intervalFactor": 1,
             "legendFormat": "Multicasts: {{ device }}",
@@ -1697,7 +1697,7 @@
               "uid": "Prometheus"
             },
             "editorMode": "code",
-            "expr": "irate(node_network_receive_drop_total{job=\"scrapeConfig/monitoring/opnsense-nodeexporter\",device=\"igb0\"}[1m])",
+            "expr": "irate(node_network_receive_drop_total{job=\"scrapeConfig/monitoring/opnsense-nodeexporter\",device=\"em2\"}[1m])",
             "hide": false,
             "intervalFactor": 1,
             "legendFormat": "Drops: {{ device }}",
@@ -1712,7 +1712,7 @@
               "uid": "Prometheus"
             },
             "editorMode": "code",
-            "expr": "irate(node_network_receive_errs_total{job=\"scrapeConfig/monitoring/opnsense-nodeexporter\",device=\"igb0\"}[1m])",
+            "expr": "irate(node_network_receive_errs_total{job=\"scrapeConfig/monitoring/opnsense-nodeexporter\",device=\"em2\"}[1m])",
             "hide": false,
             "intervalFactor": 1,
             "legendFormat": "Errors: {{ device }}",
@@ -1812,7 +1812,7 @@
               "uid": "Prometheus"
             },
             "editorMode": "code",
-            "expr": "irate(node_network_receive_packets_total{job=\"scrapeConfig/monitoring/opnsense-nodeexporter\",device=\"igb1\"}[1m])",
+            "expr": "irate(node_network_receive_packets_total{job=\"scrapeConfig/monitoring/opnsense-nodeexporter\",device=\"em0\"}[1m])",
             "intervalFactor": 1,
             "legendFormat": "Receive: {{ device }}",
             "metric": "node_network_receive_bytes_total",
@@ -1826,7 +1826,7 @@
               "uid": "Prometheus"
             },
             "editorMode": "code",
-            "expr": "irate(node_network_receive_multicast_total{job=\"scrapeConfig/monitoring/opnsense-nodeexporter\",device=\"igb1\"}[1m])",
+            "expr": "irate(node_network_receive_multicast_total{job=\"scrapeConfig/monitoring/opnsense-nodeexporter\",device=\"em0\"}[1m])",
             "hide": false,
             "intervalFactor": 1,
             "legendFormat": "Multicasts: {{ device }}",
@@ -1841,7 +1841,7 @@
               "uid": "Prometheus"
             },
             "editorMode": "code",
-            "expr": "irate(node_network_receive_drop_total{job=\"scrapeConfig/monitoring/opnsense-nodeexporter\",device=\"igb1\"}[1m])",
+            "expr": "irate(node_network_receive_drop_total{job=\"scrapeConfig/monitoring/opnsense-nodeexporter\",device=\"em0\"}[1m])",
             "hide": false,
             "intervalFactor": 1,
             "legendFormat": "Drops: {{ device }}",
@@ -1856,7 +1856,7 @@
               "uid": "Prometheus"
             },
             "editorMode": "code",
-            "expr": "irate(node_network_receive_errs_total{job=\"scrapeConfig/monitoring/opnsense-nodeexporter\",device=\"igb1\"}[1m])",
+            "expr": "irate(node_network_receive_errs_total{job=\"scrapeConfig/monitoring/opnsense-nodeexporter\",device=\"em0\"}[1m])",
             "hide": false,
             "intervalFactor": 1,
             "legendFormat": "Errors: {{ device }}",
@@ -2106,7 +2106,7 @@
               "uid": "Prometheus"
             },
             "editorMode": "code",
-            "expr": "irate(node_network_transmit_packets_total{job=\"scrapeConfig/monitoring/opnsense-nodeexporter\",device=\"igb0\"}[1m])",
+            "expr": "irate(node_network_transmit_packets_total{job=\"scrapeConfig/monitoring/opnsense-nodeexporter\",device=\"em2\"}[1m])",
             "intervalFactor": 1,
             "legendFormat": "Receive: {{ device }}",
             "metric": "node_network_receive_bytes_total",
@@ -2120,7 +2120,7 @@
               "uid": "Prometheus"
             },
             "editorMode": "code",
-            "expr": "irate(node_network_transmit_multicast_total{job=\"scrapeConfig/monitoring/opnsense-nodeexporter\",device=\"igb0\"}[1m])",
+            "expr": "irate(node_network_transmit_multicast_total{job=\"scrapeConfig/monitoring/opnsense-nodeexporter\",device=\"em2\"}[1m])",
             "hide": false,
             "intervalFactor": 1,
             "legendFormat": "Multicasts: {{ device }}",
@@ -2135,7 +2135,7 @@
               "uid": "Prometheus"
             },
             "editorMode": "code",
-            "expr": "irate(node_network_transmit_drop_total{job=\"scrapeConfig/monitoring/opnsense-nodeexporter\",device=\"igb0\"}[1m])",
+            "expr": "irate(node_network_transmit_drop_total{job=\"scrapeConfig/monitoring/opnsense-nodeexporter\",device=\"em2\"}[1m])",
             "hide": false,
             "intervalFactor": 1,
             "legendFormat": "Drops: {{ device }}",
@@ -2150,7 +2150,7 @@
               "uid": "Prometheus"
             },
             "editorMode": "code",
-            "expr": "irate(node_network_transmit_errs_total{job=\"scrapeConfig/monitoring/opnsense-nodeexporter\",device=\"igb0\"}[1m])",
+            "expr": "irate(node_network_transmit_errs_total{job=\"scrapeConfig/monitoring/opnsense-nodeexporter\",device=\"em2\"}[1m])",
             "hide": false,
             "intervalFactor": 1,
             "legendFormat": "Errors: {{ device }}",
@@ -2250,7 +2250,7 @@
               "uid": "Prometheus"
             },
             "editorMode": "code",
-            "expr": "irate(node_network_transmit_packets_total{job=\"scrapeConfig/monitoring/opnsense-nodeexporter\",device=\"igb1\"}[1m])",
+            "expr": "irate(node_network_transmit_packets_total{job=\"scrapeConfig/monitoring/opnsense-nodeexporter\",device=\"em0\"}[1m])",
             "intervalFactor": 1,
             "legendFormat": "Receive: {{ device }}",
             "metric": "node_network_receive_bytes_total",
@@ -2264,7 +2264,7 @@
               "uid": "Prometheus"
             },
             "editorMode": "code",
-            "expr": "irate(node_network_transmit_multicast_total{job=\"scrapeConfig/monitoring/opnsense-nodeexporter\",device=\"igb1\"}[1m])",
+            "expr": "irate(node_network_transmit_multicast_total{job=\"scrapeConfig/monitoring/opnsense-nodeexporter\",device=\"em0\"}[1m])",
             "hide": false,
             "intervalFactor": 1,
             "legendFormat": "Multicasts: {{ device }}",
@@ -2279,7 +2279,7 @@
               "uid": "Prometheus"
             },
             "editorMode": "code",
-            "expr": "irate(node_network_transmit_drop_total{job=\"scrapeConfig/monitoring/opnsense-nodeexporter\",device=\"igb1\"}[1m])",
+            "expr": "irate(node_network_transmit_drop_total{job=\"scrapeConfig/monitoring/opnsense-nodeexporter\",device=\"em0\"}[1m])",
             "hide": false,
             "intervalFactor": 1,
             "legendFormat": "Drops: {{ device }}",
@@ -2294,7 +2294,7 @@
               "uid": "Prometheus"
             },
             "editorMode": "code",
-            "expr": "irate(node_network_transmit_errs_total{job=\"scrapeConfig/monitoring/opnsense-nodeexporter\",device=\"igb1\"}[1m])",
+            "expr": "irate(node_network_transmit_errs_total{job=\"scrapeConfig/monitoring/opnsense-nodeexporter\",device=\"em0\"}[1m])",
             "hide": false,
             "intervalFactor": 1,
             "legendFormat": "Errors: {{ device }}",
