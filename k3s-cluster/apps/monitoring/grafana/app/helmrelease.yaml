@@ -26,6 +26,8 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    annotations:
+      configmap.reloader.stakater.com/reload: grafana
     deploymentStrategy:
       type: Recreate
     admin:
