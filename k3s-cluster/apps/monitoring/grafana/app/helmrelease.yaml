@@ -66,6 +66,14 @@ spec:
             editable: true
             options:
               path: /var/lib/grafana/dashboards/ceph
+          - name: network
+            orgId: 1
+            folder: Network
+            type: file
+            disableDeletion: false
+            editable: true
+            options:
+              path: /var/lib/grafana/dashboards/network
     datasources:
       datasources.yaml:
         apiVersion: 1
@@ -97,18 +105,19 @@ spec:
           datasource: Prometheus
         flux-control-plane:
           url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/monitoring-config/dashboards/control-plane.json
-          datasource: Prometheus
-        opnsense:
-          gnetId: 18957
-          revision: 1
-          datasource:
-            - { name: DS_PROMETHEUS, value: Prometheus }  
+          datasource: Prometheus 
         minio:
           # renovate: depName="MinIO Dashboard"
           gnetId: 13502
           revision: 24
           datasource:
             - { name: DS_PROMETHEUS, value: Prometheus }
+
+      network:
+        opnsense:
+          url: https://raw.githubusercontent.com/cbirkenbeul/homelab/main/k3s-cluster/apps/monitoring/grafana/app/dashboards/opnsense.json
+          datasource:
+            - { name: DS_PROMETHEUS, value: Prometheus } 
 
       teslamate:
         charge-level:
