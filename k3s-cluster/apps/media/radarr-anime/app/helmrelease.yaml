@@ -27,6 +27,7 @@ spec:
   values:
     controllers:
       main:
+
         initContainers:
           init-db:
             image:
@@ -35,6 +36,7 @@ spec:
             envFrom: &envFrom
               - secretRef:
                   name: radarr-anime-secret 
+
         containers:
           main:
             image:
