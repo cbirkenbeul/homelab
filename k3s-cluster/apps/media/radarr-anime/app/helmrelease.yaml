@@ -46,7 +46,9 @@ spec:
               TZ: ${TIMEZONE}
               COMPlus_EnableDiagnostics: "0"
               RADARR__PORT: &port 7878
-            envFrom: *envFrom
+            envFrom: 
+              - secretRef:
+                  name: radarr-anime-secret
             probes:
               liveness: &probes
                 enabled: true
