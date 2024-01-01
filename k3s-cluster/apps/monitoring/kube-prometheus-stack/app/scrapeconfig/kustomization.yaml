@@ -5,4 +5,4 @@ namespace: monitoring
 resources:
   - ./opnsense.yaml
   - ./federation.yaml
-  - ./node-exporter.yalm
+  - ./node-exporter.yaml
