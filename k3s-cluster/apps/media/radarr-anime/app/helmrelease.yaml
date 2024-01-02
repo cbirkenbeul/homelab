@@ -28,14 +28,14 @@ spec:
     controllers:
       main:
 
-        # initContainers:
-        #   init-db:
-        #     image:
-        #       repository: ghcr.io/onedr0p/postgres-init
-        #       tag: 16
-        #     envFrom:
-        #       - secretRef:
-        #           name: radarr-anime-dbinit-secret
+        initContainers:
+          init-db:
+            image:
+              repository: ghcr.io/onedr0p/postgres-init
+              tag: 16
+            envFrom:
+              - secretRef:
+                  name: radarr-anime-dbinit-secret
 
         containers:
           main:
@@ -53,8 +53,8 @@ spec:
               RADARR__POSTGRES_PASSWORD: ${SECRET_POSTGRES_ADMIN_PASS}
             envFrom: 
               - secretRef:
-                  # name: radarr-anime-secret
-                  name: radarr-anime-apikey
+                  name: radarr-anime-secret
+                  # name: radarr-anime-apikey
             probes:
               liveness: &probes
                 enabled: true
