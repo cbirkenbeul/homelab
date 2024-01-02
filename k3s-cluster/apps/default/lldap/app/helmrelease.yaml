@@ -34,7 +34,7 @@ spec:
             image:
               repository: ghcr.io/onedr0p/postgres-init
               tag: 16
-            envFrom: &envFrom
+            envFrom:
               - secretRef:
                   name: lldap-dbinit-secret
         containers:
@@ -54,7 +54,7 @@ spec:
               # LLDAP_SMTP_OPTIONS__ENABLE_PASSWORD_RESET: true
               # LLDAP_SMTP_OPTIONS__FROM: LLDAP Admin <{{ .Release.Name }}@${SECRET_DOMAIN}>
               # LLDAP_SMTP_OPTIONS__SERVER: smtp-relay.networking.svc.cluster.local
-            envFrom: &envFrom
+            envFrom:
               - secretRef:
                   name: lldap-secret
             resources:
