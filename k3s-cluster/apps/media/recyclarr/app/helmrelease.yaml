@@ -29,7 +29,7 @@ spec:
   values:
     controllers:
       main:
-        type: statefulset
+
         statefulset:
           volumeClaimTemplates:
             - name: recyclarr-config
