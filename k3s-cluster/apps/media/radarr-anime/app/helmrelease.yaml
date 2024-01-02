@@ -53,7 +53,8 @@ spec:
               RADARR__POSTGRES_PASSWORD: ${SECRET_POSTGRES_ADMIN_PASS}
             envFrom: 
               - secretRef:
-                  name: radarr-anime-secret
+                  # name: radarr-anime-secret
+                  name: radarr-anime-apikey
             probes:
               liveness: &probes
                 enabled: true
