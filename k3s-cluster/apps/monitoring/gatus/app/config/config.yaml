@@ -71,7 +71,7 @@ endpoints:
       - type: pushover
   - name: mealie
     group: default
-    url: "tcp://mealie.default.svc.cluster.local:3000"
+    url: "tcp://mealie.default.svc.cluster.local:9000"
     interval: 1m
     ui:
       hide-hostname: true
@@ -83,6 +83,17 @@ endpoints:
   - name: teslamate
     group: default
     url: "tcp://teslamate.default.svc.cluster.local:4000"
+    interval: 1m
+    ui:
+      hide-hostname: true
+      hide-url: true
+    conditions:
+      - "[CONNECTED] == true"
+    alerts:
+      - type: pushover
+  - name: paperless
+    group: default
+    url: "tcp://paperless-ngx.default.svc.cluster.local:8000"
     interval: 1m
     ui:
       hide-hostname: true
