@@ -90,6 +90,8 @@ spec:
       main:
         enabled: true
         className: nginx
+        annotations:
+          hajimari.io/icon: mdi:note-multiple
         hosts:
           - host: &host "paperless.casalani.de"
             paths:

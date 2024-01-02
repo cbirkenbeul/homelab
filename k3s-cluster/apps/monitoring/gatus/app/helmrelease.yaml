@@ -103,6 +103,8 @@ spec:
       main:
         enabled: true
         ingressClassName: nginx
+        annotations:
+          hajimari.io/icon: mdi:list-status
         hosts:
           - host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
             paths:
