@@ -28,14 +28,14 @@ spec:
     controllers:
       main:
 
-        initContainers:
-          init-db:
-            image:
-              repository: ghcr.io/onedr0p/postgres-init
-              tag: 16
-            envFrom:
-              - secretRef:
-                  name: radarr-anime-dbinit-secret
+        # initContainers:
+        #   init-db:
+        #     image:
+        #       repository: ghcr.io/onedr0p/postgres-init
+        #       tag: 16
+        #     envFrom:
+        #       - secretRef:
+        #           name: radarr-anime-dbinit-secret
 
         containers:
           main:
@@ -46,6 +46,11 @@ spec:
               TZ: ${TIMEZONE}
               COMPlus_EnableDiagnostics: "0"
               RADARR__PORT: &port 7878
+              RADARR__POSTGRES_HOST: pgsql01.casalani.de
+              RADARR__POSTGRES_MAIN_DB: radarr-anime
+              RADARR__POSTGRES_LOG_DB: radarr-anime_logs
+              RADARR__POSTGRES_USER: postgres
+              RADARR__POSTGRES_PASSWORD: ${SECRET_POSTGRES_ADMIN_PASS}
             envFrom: 
               - secretRef:
                   name: radarr-anime-secret
