@@ -27,6 +27,19 @@ spec:
   values:
     controllers:
       main:
+
+        annotations:
+          reloader.stakater.com/auto: "true"
+
+        initContainers:
+          init-db:
+            image:
+              repository: ghcr.io/onedr0p/postgres-init
+              tag: 16
+            envFrom:
+              - secretRef:
+                  name: prowlarr-dbinit-secret
+
         containers:
           main:
             image:
@@ -35,14 +48,9 @@ spec:
             env:
               TZ: ${TIMEZONE}
               PROWLARR__PORT: &port 9696
-              PROWLARR__POSTGRES_HOST: pgsql01.casalani.de
-              PROWLARR__POSTGRES_MAIN_DB: prowlarr
-              PROWLARR__POSTGRES_LOG_DB: prowlarr_logs
-              PROWLARR__POSTGRES_USER: postgres
-              PROWLARR__POSTGRES_PASSWORD: ${SECRET_POSTGRES_ADMIN_PASS}
             envFrom:
               - secretRef:
-                  name: prowlarr-apikey
+                  name: prowlarr-secret
     service:
       main:
         ports:
