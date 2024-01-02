@@ -102,7 +102,6 @@ spec:
           - hosts:
               - *host
 
-
     persistence:
       media:
         enabled: true

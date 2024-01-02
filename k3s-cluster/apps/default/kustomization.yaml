@@ -6,6 +6,7 @@ resources:
   - ./freshrss/ks.yaml
   - ./ghostfolio/ks.yaml
   - ./hajimari/ks.yaml
+  - ./lldap/ks.yaml
   - ./mealie/ks.yaml
   - ./paperless-ngx/ks.yaml
   - ./teslamate/ks.yaml
