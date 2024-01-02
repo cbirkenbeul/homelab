@@ -27,6 +27,16 @@ spec:
   values:
     controllers:
       main:
+
+        initContainers:
+          init-db:
+            image:
+              repository: ghcr.io/onedr0p/postgres-init
+              tag: 16
+            envFrom:
+              - secretRef:
+                  name: radarr-4k-dbinit-secret
+
         containers:
           main:
             image:
@@ -35,14 +45,9 @@ spec:
             env:
               TZ: ${TIMEZONE}
               RADARR__PORT: &port 7878
-              RADARR__POSTGRES_HOST: pgsql01.casalani.de
-              RADARR__POSTGRES_MAIN_DB: radarr-4k
-              RADARR__POSTGRES_LOG_DB: radarr-4k_logs
-              RADARR__POSTGRES_USER: postgres
-              RADARR__POSTGRES_PASSWORD: ${SECRET_POSTGRES_ADMIN_PASS}
             envFrom:
               - secretRef:
-                  name: radarr-4k-apikey
+                  name: radarr-4k-secret
     service:
       main:
         ports:
@@ -69,11 +74,7 @@ spec:
         ingressClassName: nginx
         annotations:
           hajimari.io/appName: Radarr (UHD)
-          hajimari.io/icon: mdi:filmstrip
-          # nginx.ingress.kubernetes.io/configuration-snippet: |
-          #   proxy_set_header Accept-Encoding "";
-          #   sub_filter '</head>' '<link rel="stylesheet" type="text/css" href="https://theme-park.${SECRET_DOMAIN}/css/base/radarr/nord.css"></head>';
-          #   sub_filter_once on;
+          hajimari.io/icon: mdi:ultra-high-definition
         hosts:
           - host: &host "radarr-4k.${SECRET_DOMAIN}"
             paths:
