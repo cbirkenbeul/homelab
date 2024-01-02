@@ -28,6 +28,9 @@ spec:
     controllers:
       main:
 
+        annotations:
+          reloader.stakater.com/auto: "true"
+
         initContainers:
           init-db:
             image:
