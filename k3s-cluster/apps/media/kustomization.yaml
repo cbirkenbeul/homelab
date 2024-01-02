@@ -9,6 +9,6 @@ resources:
   - ./radarr/ks.yaml
   - ./radarr-anime/ks.yaml
   - ./radarr-4k/ks.yaml
-  - ./recyclarr/ks.yaml
+  # - ./recyclarr/ks.yaml
   - ./sabnzbd/ks.yaml
   - ./sonarr/ks.yaml
