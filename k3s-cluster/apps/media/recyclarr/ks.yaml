@@ -21,6 +21,6 @@ spec:
   retryInterval: 1m
   timeout: 3m
   postBuild:
-  substitute:
-    APP: *app
-    VOLSYNC_CAPACITY: 1Gi
+    substitute:
+      APP: *app
+      VOLSYNC_CAPACITY: 1Gi
