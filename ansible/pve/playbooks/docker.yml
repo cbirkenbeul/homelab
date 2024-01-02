@@ -18,20 +18,6 @@
         group: docker
         append: yes
 
-    - name: Create custom docker network
-      community.docker.docker_network:
-        name: homelab
-        state: present
-        driver: bridge
-
-    - name: Create Docker directory
-      ansible.builtin.file:
-        path: "{{ docker_dir }}"
-        state: directory
-        owner: "{{ username }}"
-        group: "{{ username }}"
-        mode: "0755"
-
     - name: Prune old docker images
       community.docker.docker_prune:
         images: true
