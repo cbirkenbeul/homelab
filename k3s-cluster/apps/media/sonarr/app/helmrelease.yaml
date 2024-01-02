@@ -29,14 +29,14 @@ spec:
       main:
         containers:
 
-        initContainers:
-          init-db:
-            image:
-              repository: ghcr.io/onedr0p/postgres-init
-              tag: 16
-            envFrom:
-              - secretRef:
-                  name: sonarr-dbinit-secret
+          initContainers:
+            init-db:
+              image:
+                repository: ghcr.io/onedr0p/postgres-init
+                tag: 16
+              envFrom:
+                - secretRef:
+                    name: sonarr-dbinit-secret
 
           main:
             image:
