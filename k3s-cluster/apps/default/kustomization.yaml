@@ -11,4 +11,5 @@ resources:
   - ./paperless-ngx/ks.yaml
   - ./teslamate/ks.yaml
   # - ./wallabag/ks.yaml
+  - ./wallos/ks.yaml
   - ./zwave-js-ui/ks.yaml
