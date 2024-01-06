@@ -74,4 +74,4 @@ spec:
         size: 2Gi
         existingClaim: wallos
         globalMounts:
-          - path: /var/www/html/
+          - path: /var/www/html/db
