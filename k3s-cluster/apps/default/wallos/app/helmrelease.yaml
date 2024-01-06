@@ -47,7 +47,7 @@ spec:
       main:
         ports:
           http:
-            port: 8282
+            port: 80
 
     ingress:
       main:
