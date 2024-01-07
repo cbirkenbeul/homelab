@@ -27,4 +27,4 @@ spec:
     substitute:
       APP: *app
       GATUS_SUBDOMAIN: jellyseerr
-      VOLSYNC_CAPACITY: 15Gi
+      VOLSYNC_CAPACITY: 2Gi
