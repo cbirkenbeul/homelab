@@ -54,20 +54,35 @@ meters:
     port: 1502 # Port 
 
 chargers:
-  - name: my_charger
+  - name: teslamate
     type: custom
-    status: # charger status A..F
-      source: script
-      cmd: /bin/sh -c 'echo b'
-    enabled: # charger enabled state (true/false or 0/1)
-      source: script
-      cmd: /bin/sh -c 'echo false'
-    enable: # set charger enabled state (true/false or 0/1)
-      source: script
-      cmd: /bin/sh -c 'echo false'
-    maxcurrent: # set charger max current (A)
-      source: script
-      cmd: /bin/sh -c 'echo 10'
+    status:
+      source: const
+      value: B
+    enabled:
+      source: mqtt
+      topic: teslamate/cars/1/state
+    enable:
+      source: mqtt
+      topic: teslamate/cars/1/state
+      timeout: 5s
+    maxcurrent:
+      source: mqtt
+      topic: teslamate/cars/1/charger_actual_current
+  # - name: my_charger
+  #   type: custom
+  #   status: # charger status A..F
+  #     source: script
+  #     cmd: /bin/sh -c 'echo b'
+  #   enabled: # charger enabled state (true/false or 0/1)
+  #     source: script
+  #     cmd: /bin/sh -c 'echo false'
+  #   enable: # set charger enabled state (true/false or 0/1)
+  #     source: script
+  #     cmd: /bin/sh -c 'echo false'
+  #   maxcurrent: # set charger max current (A)
+  #     source: script
+  #     cmd: /bin/sh -c 'echo 10'
 
 vehicles:
   - name: teqqCar
@@ -96,7 +111,7 @@ site:
 
 loadpoints:
   - title: CASA LANI
-    charger: my_charger
+    charger: teslamate
 
 tariffs:
   currency: EUR
