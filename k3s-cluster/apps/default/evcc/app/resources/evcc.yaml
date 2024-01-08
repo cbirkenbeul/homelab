@@ -109,11 +109,11 @@ tariffs:
     zip: 55437
 
 # mqtt message broker
-mqtt:
-  broker: 192.168.10.100:1883
-  topic: evcc # root topic for publishing, set empty to disable
-  user: !env_var MQTTUSER
-  password: !env_var MQTTPASSWORD
+# mqtt:
+#   broker: 192.168.10.100:1883
+#   topic: evcc # root topic for publishing, set empty to disable
+#   user: !env_var MQTTUSER
+#   password: !env_var MQTTPASSWORD
 
 # influx database
 influx:
