@@ -53,6 +53,12 @@ meters:
     host: 192.168.50.10 # Hostname
     port: 1502 # Port 
 
+  - name: charge
+    type: custom
+    power:
+      source: mqtt
+      topic: teslamate/cars/1/charger_power
+
 chargers:
   - name: teslamate
     type: custom
