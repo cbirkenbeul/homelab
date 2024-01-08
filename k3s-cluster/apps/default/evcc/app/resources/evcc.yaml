@@ -69,14 +69,6 @@ chargers:
     maxcurrent:
       source: mqtt
       topic: teslamate/cars/1/charger_actual_current
-    power:
-      source: mqtt
-      topic: teslamate/cars/1/charger_power
-    phases:
-      source: mqtt
-      topic: teslamate/cars/1/charger_phases
-
-
 
 vehicles:
   - name: teqqCar
@@ -99,6 +91,12 @@ site:
 loadpoints:
   - title: CASA LANI
     charger: teslamate
+    power:
+      source: mqtt
+      topic: teslamate/cars/1/charger_power
+    phases:
+      source: mqtt
+      topic: teslamate/cars/1/charger_phases
 
 tariffs:
   currency: EUR
