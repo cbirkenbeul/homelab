@@ -97,6 +97,7 @@ site:
 loadpoints:
   - title: CASA LANI
     charger: teslamate
+    meter: charge
 
 tariffs:
   currency: EUR
