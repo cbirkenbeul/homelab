@@ -8,7 +8,7 @@ metadata:
   labels:
     substitution.flux.home.arpa/enabled: "true"
 spec:
-  path: ./k3s-cluster/apps/media/evcc/app
+  path: ./k3s-cluster/apps/default/evcc/app
   prune: true
   sourceRef:
     kind: GitRepository
