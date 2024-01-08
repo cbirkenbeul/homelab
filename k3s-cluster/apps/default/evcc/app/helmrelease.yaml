@@ -75,8 +75,8 @@ spec:
         globalMounts:
           - path: /root/.evcc
       config-file:
-        type: configMap
-        name: evcc-configmap
+        type: secret
+        name: evcc-secret
         globalMounts:
           - path: /etc/evcc.yaml
             subPath: evcc.yaml

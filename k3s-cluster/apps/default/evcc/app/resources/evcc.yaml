@@ -101,7 +101,7 @@ tariffs:
   currency: EUR
   grid:
     type: tibber
-    token: "{{ .TIBBERTOKEN }}"
+    token: {{ .TIBBERTOKEN }}
 
   co2:
     # co2 tariff provides co2 intensity forecast and is for co2-optimized target charging if no variable grid tariff is specified
@@ -112,8 +112,8 @@ tariffs:
 mqtt:
   broker: 192.168.10.100:1883
   topic: evcc # root topic for publishing, set empty to disable
-  user: "{{ .MQTTUSER }}"
-  password: "{{ .MQTTPASSWORD }}"
+  user: {{ .MQTTUSER }}
+  password: {{ .MQTTPASSWORD }}
 
 # influx database
 influx:
