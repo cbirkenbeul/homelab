@@ -91,12 +91,6 @@ site:
 loadpoints:
   - title: CASA LANI
     charger: teslamate
-    power:
-      source: mqtt
-      topic: teslamate/cars/1/charger_power
-    phases:
-      source: mqtt
-      topic: teslamate/cars/1/charger_phases
 
 tariffs:
   currency: EUR
