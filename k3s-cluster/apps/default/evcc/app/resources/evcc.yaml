@@ -72,6 +72,7 @@ chargers:
 vehicles:
   - name: teqqCar
     type: template
+    template: teslamate
     title: teqqCar
     id: 1
     capacity: 74
