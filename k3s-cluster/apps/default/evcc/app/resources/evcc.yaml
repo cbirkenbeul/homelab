@@ -74,7 +74,7 @@ chargers:
       timeout: 5s
     maxcurrent:
       source: mqtt
-      topic: teslamate/cars/1/charger_actual_current
+      topic: teslamate/cars/1/charger_actual_current * 1000
 
 vehicles:
   - name: teqqCar
