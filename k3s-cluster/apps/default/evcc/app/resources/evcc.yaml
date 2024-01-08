@@ -58,6 +58,8 @@ meters:
     power:
       source: mqtt
       topic: teslamate/cars/1/charger_power
+      scale: 1000
+
 
 chargers:
   - name: teslamate
@@ -75,7 +77,6 @@ chargers:
     maxcurrent:
       source: mqtt
       topic: teslamate/cars/1/charger_actual_current
-      scale: 1000
 
 vehicles:
   - name: teqqCar
