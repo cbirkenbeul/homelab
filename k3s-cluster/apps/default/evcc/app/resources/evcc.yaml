@@ -70,13 +70,18 @@ chargers:
       cmd: /bin/sh -c 'echo 10'
 
 vehicles:
-  - name: teqqcar
+  - name: teqqCar
     type: template
-    template: tesla
-    title: teqqCar # Wird in der Benutzeroberfläche angezeigt (optional)
-    accessToken: !env_var TESLAACCESSTOKEN
-    refreshToken: !env_var TESLAREFRESHTOKEN
-    capacity: 74 # Akkukapazität in kWh (optional) 
+    title: teqqCar
+    id: 1
+    capacity: 74
+  # - name: teqqcar
+  #   type: template
+  #   template: tesla
+  #   title: teqqCar # Wird in der Benutzeroberfläche angezeigt (optional)
+  #   accessToken: !env_var TESLAACCESSTOKEN
+  #   refreshToken: !env_var TESLAREFRESHTOKEN
+  #   capacity: 74 # Akkukapazität in kWh (optional) 
 
 # site describes the EVU connection, PV and home battery
 site:
@@ -105,10 +110,10 @@ tariffs:
 
 # mqtt message broker
 mqtt:
-  # broker: localhost:1883
-  # topic: evcc # root topic for publishing, set empty to disable
-  # user:
-  # password:
+  broker: 192.168.10.100:1883
+  topic: evcc # root topic for publishing, set empty to disable
+  user: !env_var MQTTUSER
+  password: !env_var MQTTPASSWORD
 
 # influx database
 influx:
