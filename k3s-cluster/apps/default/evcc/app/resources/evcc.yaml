@@ -69,20 +69,14 @@ chargers:
     maxcurrent:
       source: mqtt
       topic: teslamate/cars/1/charger_actual_current
-  # - name: my_charger
-  #   type: custom
-  #   status: # charger status A..F
-  #     source: script
-  #     cmd: /bin/sh -c 'echo b'
-  #   enabled: # charger enabled state (true/false or 0/1)
-  #     source: script
-  #     cmd: /bin/sh -c 'echo false'
-  #   enable: # set charger enabled state (true/false or 0/1)
-  #     source: script
-  #     cmd: /bin/sh -c 'echo false'
-  #   maxcurrent: # set charger max current (A)
-  #     source: script
-  #     cmd: /bin/sh -c 'echo 10'
+    power:
+      source: mqtt
+      topic: teslamate/cars/1/charger_power
+    phases:
+      source: mqtt
+      topic: teslamate/cars/1/charger_phases
+
+
 
 vehicles:
   - name: teqqCar
@@ -91,13 +85,6 @@ vehicles:
     title: teqqCar
     id: 1
     capacity: 74
-  # - name: teqqcar
-  #   type: template
-  #   template: tesla
-  #   title: teqqCar # Wird in der Benutzeroberfläche angezeigt (optional)
-  #   accessToken: !env_var TESLAACCESSTOKEN
-  #   refreshToken: !env_var TESLAREFRESHTOKEN
-  #   capacity: 74 # Akkukapazität in kWh (optional) 
 
 # site describes the EVU connection, PV and home battery
 site:
