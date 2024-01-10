@@ -13,6 +13,7 @@ docker:
     pihole01:
       ansible_user: ubuntu
     zigbee:
+      ansible_host: 192.168.10.23
     immich:
       ansible_host: 192.168.10.101
 
