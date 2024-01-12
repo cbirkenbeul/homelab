@@ -126,28 +126,6 @@ endpoints:
       - "[CONNECTED] == true"
     alerts:
       - type: pushover
-  - name: radarr-4k
-    group: media
-    url: "tcp://radarr-4k.media.svc.cluster.local:7878"
-    interval: 1m
-    ui:
-      hide-hostname: true
-      hide-url: true
-    conditions:
-      - "[CONNECTED] == true"
-    alerts:
-      - type: pushover
-  - name: radarr-anime
-    group: media
-    url: "tcp://radarr-anime.media.svc.cluster.local:7878"
-    interval: 1m
-    ui:
-      hide-hostname: true
-      hide-url: true
-    conditions:
-      - "[CONNECTED] == true"
-    alerts:
-      - type: pushover
   - name: sabnzbd
     group: media
     url: "tcp://sabnzbd.media.svc.cluster.local:8080"
