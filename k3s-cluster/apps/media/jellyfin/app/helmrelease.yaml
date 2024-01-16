@@ -29,7 +29,7 @@ spec:
   values:
     controllers:
       main:
-        pod:
+        # pod:
           # securityContext:
           #   runAsUser: 568
           #   runAsGroup: 568
