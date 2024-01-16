@@ -29,15 +29,15 @@ spec:
   values:
     controllers:
       main:
-        # pod:
-          # securityContext:
-          #   runAsUser: 568
-          #   runAsGroup: 568
-          #   fsGroup: 568
-          #   fsGroupChangePolicy: OnRootMismatch
-          #   supplementalGroups:
-          #     - 44
-          #     - 109
+        pod:
+          securityContext:
+            runAsUser: 568
+            runAsGroup: 568
+            fsGroup: 568
+            fsGroupChangePolicy: OnRootMismatch
+            supplementalGroups:
+              - 44
+              - 109
         containers:
           main:
             image:
