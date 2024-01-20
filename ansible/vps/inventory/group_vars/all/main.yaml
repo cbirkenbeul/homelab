@@ -3,7 +3,7 @@
 k3s_release_version: "v1.29.0+k3s1"
 k3s_install_hard_links: true
 k3s_become: true
-k3s_registration_address: 192.168.10.24
+k3s_registration_address: 192.168.10.103
 k3s_control_node: true
 k3s_server:
   cluster-cidr: 10.142.0.0/16
@@ -14,7 +14,7 @@ k3s_server:
   docker: false
   etcd-disable-snapshots: true
   etcd-expose-metrics: true
-  flannel-iface: enp0s31f6
+  flannel-iface: ens18
   kube-controller-manager-arg: ["bind-address=0.0.0.0"]
   kube-scheduler-arg: ["bind-address=0.0.0.0"]
   kube-apiserver-arg: ["anonymous-auth=true"]

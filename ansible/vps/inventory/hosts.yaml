@@ -3,6 +3,7 @@ kubernetes:
   vars:
     ansible_user: teqqy
     ansible_ssh_port: 22
+    ansible_become_pass: test123
   children:
     master:
       hosts:
