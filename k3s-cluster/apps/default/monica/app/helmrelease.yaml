@@ -34,6 +34,10 @@ spec:
             image:
               repository: ghcr.io/monicahq/monica-next
               tag: main
+            env:
+              APP_ENV: production
+              APP_URL: https://monica.${SECRET_DOMAIN}"
+              APP_TRUSTED_PROXIES: "*"
             envFrom:
               - secretRef:
                   name: monica-secret
