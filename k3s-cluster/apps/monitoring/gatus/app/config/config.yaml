@@ -210,9 +210,33 @@ endpoints:
       - "[STATUS] == 200"
     alerts:
       - type: pushover
-  - name: tabarelly.family
+  - name: tabarelli.family
     group: netcup
     url: "https://tabarelli.family"
+    interval: 5m
+    conditions:
+      - "[STATUS] == 200"
+    alerts:
+      - type: pushover
+  - name: nachspielzeiten.de
+    group: netcup
+    url: "https://nachspielzeiten.de"
+    interval: 5m
+    conditions:
+      - "[STATUS] == 200"
+    alerts:
+      - type: pushover
+  - name: midsomermurdershistory.org
+    group: netcup
+    url: "https://midsomermurdershistory.org"
+    interval: 5m
+    conditions:
+      - "[STATUS] == 200"
+    alerts:
+      - type: pushover
+  - name: wetter-ockenheim.de
+    group: netcup
+    url: "https://wetter-ockenheim.de"
     interval: 5m
     conditions:
       - "[STATUS] == 200"
