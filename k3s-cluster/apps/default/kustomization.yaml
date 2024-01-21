@@ -9,7 +9,7 @@ resources:
   - ./hajimari/ks.yaml
   - ./lldap/ks.yaml
   - ./mealie/ks.yaml
-  #- ./monica/ks.yaml
+  - ./monica/ks.yaml
   - ./paperless-ngx/ks.yaml
   - ./teslamate/ks.yaml
   # - ./wallabag/ks.yaml

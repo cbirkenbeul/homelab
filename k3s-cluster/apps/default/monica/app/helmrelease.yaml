@@ -79,5 +79,3 @@ spec:
       config:
         enabled: true
         existingClaim: monica
-        globalMounts:
-          - path: /var/www/html/database
