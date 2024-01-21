@@ -184,3 +184,13 @@ endpoints:
       - "[CONNECTED] == true"
     alerts:
       - type: pushover
+
+  ## Netcup
+  - name: teqqy.de
+    group: netcup
+    url: "https://teqqy.de"
+    interval: 5m
+    conditions:
+      - "[STATUS] == 200"
+    alerts:
+      - type: pushover
