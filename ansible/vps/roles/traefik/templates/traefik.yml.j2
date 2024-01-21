@@ -1,0 +1,69 @@
+api:
+  dashboard: true
+metrics:
+  prometheus:
+    addRoutersLabels: true
+certificatesResolvers:
+  http_resolver:
+    acme:
+      email: "deine@email.de"
+      storage: "acme_letsencrypt.json"
+      httpChallenge:
+        entryPoint: web
+  tls_resolver:
+    acme:
+      email: "deine@email.de"
+      storage: "tls_letsencrypt.json"
+      tlsChallenge: {}
+entryPoints:
+  ping:
+    address: ':88'
+  web:
+    address: ':80'
+    http:
+      redirections:
+        entryPoint:
+          to: websecure
+          scheme: https
+      middlewares:
+        - traefik-crowdsec-bouncer@file
+  websecure:
+    address: ':443'
+    http:
+      middlewares:
+        - traefik-crowdsec-bouncer@file
+    proxyProtocol:
+      trustedIPs:
+       - 10.0.0.0/8
+       - 172.16.0.0/12
+       - 192.168.0.0/16
+    forwardedHeaders:
+      trustedIPs:
+       - 10.0.0.0/8
+       - 172.16.0.0/12
+       - 192.168.0.0/16
+ping:
+  entryPoint: "ping"
+global:
+  checknewversion: true
+  sendanonymoususage: false
+experimental:
+  plugins:
+    real-ip:
+      moduleName: github.com/Paxxs/traefik-get-real-ip
+      version: "v1.0.2"
+providers:
+  docker:
+    endpoint: "unix:///var/run/docker.sock"
+    exposedByDefault: false
+    network: "proxy"
+  file:
+    filename: "./dynamic_conf.yml"
+    watch: true
+  providersThrottleDuration: 10s
+log:
+  level: "INFO"
+  filePath: "/var/log/traefik/traefik.log"
+accessLog:
+  filePath: "/var/log/traefik/access.log"
+  bufferingSize: 100

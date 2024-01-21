@@ -1,5 +1,5 @@
 ---
-kubernetes:
+vps:
   vars:
     ansible_user: teqqy
     ansible_ssh_port: 22
@@ -7,5 +7,5 @@ kubernetes:
   children:
     master:
       hosts:
-        backup:
+        vps01:
           ansible_host: 192.168.10.103
