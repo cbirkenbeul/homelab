@@ -38,6 +38,9 @@ spec:
               APP_ENV: production
               APP_URL: https://monica.${SECRET_DOMAIN}"
               APP_TRUSTED_PROXIES: "*"
+              MAIL_MAILER: smtp
+              MAIL_HOST: mail.lanicloud.de
+              MAIL_PORT: 587
             envFrom:
               - secretRef:
                   name: monica-secret
