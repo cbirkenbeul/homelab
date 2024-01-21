@@ -194,3 +194,27 @@ endpoints:
       - "[STATUS] == 200"
     alerts:
       - type: pushover
+  - name: petra-tabarelli.de
+    group: netcup
+    url: "https://petra-tabarelli.de"
+    interval: 5m
+    conditions:
+      - "[STATUS] == 200"
+    alerts:
+      - type: pushover
+  - name: kirchenchor-ockenheim.de
+    group: netcup
+    url: "https://kirchenchor-ockenheim.de"
+    interval: 5m
+    conditions:
+      - "[STATUS] == 200"
+    alerts:
+      - type: pushover
+  - name: tabarelly.family
+    group: netcup
+    url: "https://tabarelly.family"
+    interval: 5m
+    conditions:
+      - "[STATUS] == 200"
+    alerts:
+      - type: pushover
