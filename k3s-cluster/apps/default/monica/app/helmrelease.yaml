@@ -80,4 +80,4 @@ spec:
         enabled: true
         existingClaim: monica
         globalMounts:
-          - path: /var/www/html/storage
+          - path: /var/www/html
