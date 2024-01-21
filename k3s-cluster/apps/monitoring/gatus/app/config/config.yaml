@@ -212,7 +212,7 @@ endpoints:
       - type: pushover
   - name: tabarelly.family
     group: netcup
-    url: "https://tabarelly.family"
+    url: "https://tabarelli.family"
     interval: 5m
     conditions:
       - "[STATUS] == 200"
