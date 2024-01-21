@@ -218,3 +218,24 @@ endpoints:
       - "[STATUS] == 200"
     alerts:
       - type: pushover
+
+  ## Mailserver
+  - name: Admin Console
+    group: mailserver
+    url: "https://mail.lanicloud.de"
+    interval: 5m
+    conditions:
+      - "[STATUS] == 200"
+    alerts:
+      - type: pushover
+  - name: smtp
+    group: mailserver
+    url: "tcp://mail.lanicloud.de:587"
+    interval: 1m
+    ui:
+      hide-hostname: true
+      hide-url: true
+    conditions:
+      - "[CONNECTED] == true"
+    alerts:
+      - type: pushover
