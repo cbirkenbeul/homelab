@@ -246,7 +246,7 @@ endpoints:
   ## Mailserver
   - name: Admin Console
     group: mailserver
-    url: "https://mail.lanicloud.de"
+    url: "https://mail.teqqnet.de"
     interval: 5m
     conditions:
       - "[STATUS] == 200"
@@ -254,7 +254,7 @@ endpoints:
       - type: pushover
   - name: smtp
     group: mailserver
-    url: "tcp://mail.lanicloud.de:587"
+    url: "tcp://mail.teqqnet.de:587"
     interval: 1m
     ui:
       hide-hostname: true
