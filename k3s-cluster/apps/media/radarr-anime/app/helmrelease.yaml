@@ -44,7 +44,7 @@ spec:
           main:
             image:
               repository: ghcr.io/onedr0p/radarr-develop
-              tag: 5.3.4.8567
+              tag: 5.3.5.8592
             env:
               TZ: ${TIMEZONE}
               COMPlus_EnableDiagnostics: "0"
