@@ -69,7 +69,7 @@ spec:
             name: gotenburg
             image:
               repository: ghcr.io/mchestr/gotenberg
-              tag: 8.1.0
+              tag: 8.2.0
             env:
               - name: DISABLE_GOOGLE_CHROME
                 value: "1"
