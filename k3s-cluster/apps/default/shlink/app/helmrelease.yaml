@@ -33,7 +33,7 @@ spec:
           main:
             image:
               repository: ghcr.io/shlinkio/shlink-web-client
-              tag: v4.0.1
+              tag: 4.0.1
             envFrom:
               - secretRef:
                   name: shlink-secret
