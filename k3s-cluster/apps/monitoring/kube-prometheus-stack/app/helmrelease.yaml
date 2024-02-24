@@ -196,6 +196,14 @@ spec:
           - hosts:
               - *host
 
+      additionalScrapeConfigs:
+        - job_name: minio-job
+          bearer_token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJwcm9tZXRoZXVzIiwiZXhwIjo0ODYyMzk0MzU4fQ.3OxU7paIt6SmCP8AtJYI3ewptcAwbpw8stdUcXQL70Gj-iRDBKjvSxls3kvHBSFLFztkLE6XslOnfoc6ieDz3w
+          metrics_path: /minio/v2/metrics/cluster
+          scheme: http
+          static_configs:
+          - targets: ['minio.casalani.de']
+
       thanosService:
         enabled: true
       thanosServiceMonitor:
