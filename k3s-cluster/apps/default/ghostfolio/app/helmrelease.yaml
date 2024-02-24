@@ -50,7 +50,7 @@ spec:
           main:
             image:
               repository: docker.io/ghostfolio/ghostfolio
-              tag: 2.55.0
+              tag: 2.56.0
             env:
               NODE_ENV: production
               REDIS_HOST: redis.database.svc.cluster.local
