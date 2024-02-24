@@ -11,4 +11,3 @@ spec:
   metricsPath: /minio/v2/metrics/cluster
   bearer_token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJwcm9tZXRoZXVzIiwiZXhwIjo0ODYyMzk0MzU4fQ.3OxU7paIt6SmCP8AtJYI3ewptcAwbpw8stdUcXQL70Gj-iRDBKjvSxls3kvHBSFLFztkLE6XslOnfoc6ieDz3w
   scheme: https
-‚
