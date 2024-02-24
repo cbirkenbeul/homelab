@@ -11,7 +11,7 @@ resources:
   - ./mealie/ks.yaml
   - ./monica/ks.yaml
   - ./paperless-ngx/ks.yaml
+  - ./shlink/ks.yaml
   - ./teslamate/ks.yaml
-  # - ./wallabag/ks.yaml
   - ./wallos/ks.yaml
   - ./zwave-js-ui/ks.yaml
