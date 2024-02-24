@@ -4,5 +4,4 @@ kind: Kustomization
 namespace: monitoring
 resources:
   - ./opnsense.yaml
-  - ./federation.yaml
   - ./node-exporter.yaml
