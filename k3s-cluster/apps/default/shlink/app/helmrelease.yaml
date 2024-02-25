@@ -55,7 +55,9 @@ spec:
         enabled: true
         ingressClassName: nginx
         annotations:
-          hajimari.io/icon: mdi:link
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: Home
+          gethomepage.dev/name: Shlink
         hosts:
           - host: &host "shlink.${SECRET_DOMAIN}"
             paths:
