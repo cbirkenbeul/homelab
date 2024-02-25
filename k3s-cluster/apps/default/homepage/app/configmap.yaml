@@ -13,7 +13,7 @@ data:
         - Gitea:
             - icon: gitea.png
               href: https://git.${SECRET_DOMAIN}
-        - Umami
+        - Umami:
             - icon: umami-analytics-light
               href: https://umami.teqqnet.de
   docker.yaml: |
