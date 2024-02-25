@@ -24,8 +24,8 @@ data:
             widget:
               type: proxmox
               url: https://pve01.${SECRET_DOMAIN}:8006
-              username: {{PROXMOX_TOKEN_ID}}
-              password: {{PROXMOX_TOKEN_SECRET}}
+              username: {{HOMEPAGE_VAR_PROXMOX_TOKEN_ID}}
+              password: {{HOMEPAGE_VAR_PROXMOX_TOKEN_SECRET}}
     # - Media:
     #     - Jellyfin:
     #         icon: jellyfin.png
