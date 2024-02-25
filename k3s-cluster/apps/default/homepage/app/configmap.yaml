@@ -33,6 +33,14 @@ data:
               type: pihole
               url: http://192.168.10.2
               key: {{HOMEPAGE_VAR_PIHOLE_KEY}}
+    - Media:
+        - Radarr
+            icon: radarr.png
+            href: https://radarr.${SECRET_DOMAIN}
+            widget:
+              type: radarr
+              url: https://radarr.${SECRET_DOMAIN}
+              key: {{HOMEPAGE_VAR_RADARR_API_KEY}}
 
   settings.yaml: |
     ---
