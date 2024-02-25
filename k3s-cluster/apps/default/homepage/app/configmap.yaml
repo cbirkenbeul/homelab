@@ -161,10 +161,13 @@ data:
     #     cache: 5
     - kubernetes:
         cluster:
+          cpu: true
+          label: cluster
+          memory: true
           show: true
+          showLabel: true
+        nodes:
           cpu: true
           memory: true
-          showLabel: true
-          label: home-cluster
-        nodes:
           show: false
+          showLabel: true

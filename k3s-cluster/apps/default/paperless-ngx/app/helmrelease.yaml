@@ -91,7 +91,11 @@ spec:
         enabled: true
         className: nginx
         annotations:
-          hajimari.io/icon: mdi:note-multiple
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: Home
+          gethomepage.dev/name: Paperless
+          gethomepage.dev/icon: paperless.png
+          gethomepage.dev/description: Document OCR Software
         hosts:
           - host: &host "paperless.casalani.de"
             paths:
