@@ -9,7 +9,7 @@ metadata:
 data:
   bookmarks.yaml: |
     ---
-    - Stuff:
+    - self hosted:
         - Gitea:
             - icon: gitea.png
               href: https://git.${SECRET_DOMAIN}
@@ -45,22 +45,13 @@ data:
               username: {{HOMEPAGE_VAR_PBS_TOKEN_ID}}
               password: {{HOMEPAGE_VAR_PBS_TOKEN_SECRET}}
 
-    - Netzwerk:
-        - Pi-Hole:
-            icon: pi-hole.png
-            href: http://192.168.10.2/admin
+    - Heim Automatisierung:
+        - EVCC:
+            icon: mdi-ev-station
+            href: https://evcc.${SECRET_DOMAIN}
             widget:
-              type: pihole
-              url: http://192.168.10.2
-              key: {{HOMEPAGE_VAR_PIHOLE_KEY}}
-        - Unifi:
-            icon: unifi
-            href: https://unifi01.${SECRET_DOMAIN}:8443
-            widget:
-              type: unifi
-              url: https://unifi01.${SECRET_DOMAIN}:8443
-              username: {{HOMEPAGE_VAR_UNIFI_USERNAME}}
-              password: {{HOMEPAGE_VAR_UNIFI_PASSWORD}}
+              type: evcc
+              url: https://evcc.${SECRET_DOMAIN}
 
     - Media:
         - Radarr:
@@ -84,13 +75,32 @@ data:
               type: jellyfin
               url: https://jellyfin.${SECRET_DOMAIN}
               key: {{HOMEPAGE_VAR_JELLYFIN_API_KEY}}
-    - Home Automation:
-        - EVCC:
-            icon: evcc.png
-            href: https://evcc.${SECRET_DOMAIN}
+
+    - Netzwerk:
+        - Pi-Hole:
+            icon: pi-hole.png
+            href: http://192.168.10.2/admin
             widget:
-              type: evcc
-              url: https://evcc.${SECRET_DOMAIN}
+              type: pihole
+              url: http://192.168.10.2
+              key: {{HOMEPAGE_VAR_PIHOLE_KEY}}
+        - Unifi:
+            icon: unifi
+            href: https://unifi01.${SECRET_DOMAIN}:8443
+            widget:
+              type: unifi
+              url: https://unifi01.${SECRET_DOMAIN}:8443
+              username: {{HOMEPAGE_VAR_UNIFI_USERNAME}}
+              password: {{HOMEPAGE_VAR_UNIFI_PASSWORD}}
+
+    - Stuff:
+        - Ghostfolio:
+            icon: ghostfolio.png
+            href: https://ghostfolio.${SECRET_DOMAIN}
+            widget:
+              type: ghostfolio
+              url: https://ghostfolio.${SECRET_DOMAIN}
+              key: {{HOMEPAGE_VAR_GHOSTFOLIO_KEY}}
 
   settings.yaml: |
     ---
@@ -100,7 +110,7 @@ data:
     headerStyle: boxedWidgets
     target: _blank
     layout:
-      Stuff:
+      self hosted:
         style: row
         columns: 4
     quicklaunch:

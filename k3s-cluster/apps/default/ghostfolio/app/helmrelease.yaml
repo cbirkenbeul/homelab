@@ -73,10 +73,6 @@ spec:
       main:
         enabled: true
         ingressClassName: "nginx"
-        annotations:
-          gethomepage.dev/enabled: "true"
-          gethomepage.dev/group: Home
-          gethomepage.dev/name: Ghostfolio
         hosts:
           - host: &host "ghostfolio.${SECRET_DOMAIN}"
             paths:
