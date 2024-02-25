@@ -34,6 +34,7 @@ data:
               url: https://pbs01.${SECRET_DOMAIN}:8007
               username: {{HOMEPAGE_VAR_PBS_TOKEN_ID}}
               password: {{HOMEPAGE_VAR_PBS_TOKEN_SECRET}}
+    - Netzwerk:
         - Pi-Hole:
             icon: pi-hole.png
             href: http://192.168.10.2/admin
@@ -41,6 +42,14 @@ data:
               type: pihole
               url: http://192.168.10.2
               key: {{HOMEPAGE_VAR_PIHOLE_KEY}}
+        - Unifi:
+            icon: unifi
+            href: https://unifi01.${SECRET_DOMAIN}:8443
+            widget:
+              type: unifi
+              username: {{HOMEPAGE_VAR_UNIFI_USERNAME}}
+              password: {{HOMEPAGE_VAR_UNIFI_PASSWORD}}
+
     - Media:
         - Radarr:
             icon: radarr.png
