@@ -9,6 +9,13 @@ metadata:
 data:
   bookmarks.yaml: |
     ---
+    - Stuff
+        - Gitea:
+            - icon: gitea.png
+              href: https://git.${SECRET_DOMAIN}
+        - Umami
+            - icon: umami-analytics-light
+              href: https://umami.teqqnet.de
   docker.yaml: |
     ---
   kubernetes.yaml: |
@@ -34,6 +41,7 @@ data:
               url: https://pbs01.${SECRET_DOMAIN}:8007
               username: {{HOMEPAGE_VAR_PBS_TOKEN_ID}}
               password: {{HOMEPAGE_VAR_PBS_TOKEN_SECRET}}
+
     - Netzwerk:
         - Pi-Hole:
             icon: pi-hole.png
