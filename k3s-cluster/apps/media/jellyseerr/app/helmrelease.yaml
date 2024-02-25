@@ -62,7 +62,10 @@ spec:
         ingressClassName: "nginx"
         annotations:
           external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
-          hajimari.io/icon: mdi:eye-circle
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: Media
+          gethomepage.dev/name: Jellyseerr
+          gethomepage.dev/icon: jellyseerr.png
         hosts:
           - host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
             paths:

@@ -61,8 +61,10 @@ spec:
           external-dns.home.arpa/enabled: "true"
           cert-manager.home.arpa/enabled: "true"
           auth.home.arpa/enabled: "true"
-          hajimari.io/icon: mdi:chef-hat
-
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: Home
+          gethomepage.dev/name: Mealie
+          gethomepage.dev/icon: mealie.png
         hosts:
           - host: &host mealie.${SECRET_DOMAIN}
             paths:
