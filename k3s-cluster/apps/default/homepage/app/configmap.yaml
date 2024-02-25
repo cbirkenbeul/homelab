@@ -84,6 +84,13 @@ data:
               type: jellyfin
               url: https://jellyfin.${SECRET_DOMAIN}
               key: {{HOMEPAGE_VAR_JELLYFIN_API_KEY}}
+    - Home Automation:
+        - EVCC:
+            icon: evcc.png
+            href: https://evcc.${SECRET_DOMAIN}
+            widget:
+              type: evcc
+              url: https://evcc.${SECRET_DOMAIN}
 
   settings.yaml: |
     ---

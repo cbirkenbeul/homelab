@@ -54,12 +54,6 @@ spec:
       main:
         enabled: true
         ingressClassName: nginx
-        annotations:
-          gethomepage.dev/enabled: "true"
-          gethomepage.dev/group: Home
-          gethomepage.dev/name: EVCC
-          gethomepage.dev/icon: evcc.png
-          gethomepage.dev/description: EV car charing
         hosts:
           - host: &host "evcc.${SECRET_DOMAIN}"
             paths:
