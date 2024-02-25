@@ -46,14 +46,14 @@ data:
             href: https://sonarr.${SECRET_DOMAIN}
             widget:
               type: sonarr
-              url: https://sonarr${SECRET_DOMAIN}
+              url: https://sonarr.${SECRET_DOMAIN}
               key: {{HOMEPAGE_VAR_SONARR_API_KEY}}
         - Jellyfin:
             icon: jellyfin.png
             href: https://jellyfin.${SECRET_DOMAIN}
             widget:
               type: jellyfin
-              url: https://jellyfin${SECRET_DOMAIN}
+              url: https://jellyfin.${SECRET_DOMAIN}
               key: {{HOMEPAGE_VAR_JELLYFIN_API_KEY}}
 
   settings.yaml: |
