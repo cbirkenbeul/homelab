@@ -28,10 +28,10 @@ data:
               password: {{HOMEPAGE_VAR_PROXMOX_TOKEN_SECRET}}
         - Pi-Hole:
             icon: pihole.png
-            href: https://192.168.10.2/admin
+            href: http://192.168.10.2/admin
             widget:
               type: pihole
-              url: https://192.168.10.2
+              url: http://192.168.10.2
               key: {{HOMEPAGE_VAR_PIHOLE_KEY}}
 
   settings.yaml: |
