@@ -13,6 +13,9 @@ data:
         - Gitea:
             - icon: gitea.png
               href: https://git.${SECRET_DOMAIN}
+        - Mailcow:
+            - icon: mailcow.png
+              href: https://mail.teqqnet.de
         - Umami:
             - icon: umami-analytics-light
               href: https://umami.teqqnet.de
@@ -89,7 +92,10 @@ data:
     color: slate
     headerStyle: boxedWidgets
     target: _blank
-
+    layout:
+      Booksmarks:
+        style: row
+        columns: 4
     quicklaunch:
       searchDescription: true
       hideInternetSearch: true
