@@ -10,6 +10,6 @@ spec:
         - minio.casalani.de
   metricsPath: /minio/v2/metrics/cluster
   bearerTokenSecret:
-    name: "prometheus-secrets"
-    key: "MINIO_BAREAR_TOKEN"
+    name: prometheus-secrets
+    key: MINIO_BAREAR_TOKEN
   scheme: https
