@@ -18,14 +18,14 @@ data:
   services.yaml: |
     ---
     - Infrastruktur:
-      - Proxmox
-          icon: proxmox.png
-          href: https://pve01.${SECRET_DOMAIN}:8006
-          widget:
-            type: proxmox
-            url: https://pve01.${SECRET_DOMAIN}:8006
-            username: {{PROXMOX_TOKEN_ID}}
-            password: {{PROXMOX_TOKEN_SECRET}}
+        - Proxmox
+            icon: proxmox.png
+            href: https://pve01.${SECRET_DOMAIN}:8006
+            widget:
+              type: proxmox
+              url: https://pve01.${SECRET_DOMAIN}:8006
+              username: {{PROXMOX_TOKEN_ID}}
+              password: {{PROXMOX_TOKEN_SECRET}}
     # - Media:
     #     - Jellyfin:
     #         icon: jellyfin.png
