@@ -91,15 +91,6 @@ spec:
       main:
         enabled: true
         ingressClassName: nginx
-        annotations:
-          gethomepage.dev/enabled: "true"
-          gethomepage.dev/group: Downloads
-          gethomepage.dev/name: Sonarr
-          gethomepage.dev/icon: sonarr.png
-          gethomepage.dev/description: TV Downloads
-          gethomepage.dev/widget.type: sonarr
-          gethomepage.dev/widget.url: http://sonarr.media
-          gethomepage.dev/widget.key: "{{HOMEPAGE_VAR_SONARR_API_KEY}}"
         hosts:
           - host: &host "sonarr.${SECRET_DOMAIN}"
             paths:
