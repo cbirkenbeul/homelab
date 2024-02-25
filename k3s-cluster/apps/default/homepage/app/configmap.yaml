@@ -93,7 +93,7 @@ data:
     headerStyle: boxedWidgets
     target: _blank
     layout:
-      Booksmarks:
+      Stuff:
         style: row
         columns: 4
     quicklaunch:
