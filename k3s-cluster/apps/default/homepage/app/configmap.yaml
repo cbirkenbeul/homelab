@@ -34,7 +34,7 @@ data:
               url: http://192.168.10.2
               key: {{HOMEPAGE_VAR_PIHOLE_KEY}}
     - Media:
-        - Radarr
+        - Radarr:
             icon: radarr.png
             href: https://radarr.${SECRET_DOMAIN}
             widget:
