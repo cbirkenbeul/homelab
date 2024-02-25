@@ -26,6 +26,14 @@ data:
               url: https://pve01.${SECRET_DOMAIN}:8006
               username: {{HOMEPAGE_VAR_PROXMOX_TOKEN_ID}}
               password: {{HOMEPAGE_VAR_PROXMOX_TOKEN_SECRET}}
+        - Proxmox Backup:
+            icon: proxmox.png
+            href: https://pbs01.${SECRET_DOMAIN}:8007
+            widget:
+              type: proxmoxbackupserver
+              url: https://pbs01.${SECRET_DOMAIN}:8007
+              username: {{HOMEPAGE_VAR_PBS_TOKEN_ID}}
+              password: {{HOMEPAGE_VAR_PBS_TOKEN_SECRET}}
         - Pi-Hole:
             icon: pi-hole.png
             href: http://192.168.10.2/admin
@@ -55,13 +63,6 @@ data:
               type: jellyfin
               url: https://jellyfin.${SECRET_DOMAIN}
               key: {{HOMEPAGE_VAR_JELLYFIN_API_KEY}}
-    - Stuff:
-        - Mastodon:
-            icon: mastodon.png
-            href: https://teqqy.social
-            widget:
-              type: mastodon
-              url: https://teqqy.social/@me
 
   settings.yaml: |
     ---
