@@ -55,6 +55,13 @@ data:
               type: jellyfin
               url: https://jellyfin.${SECRET_DOMAIN}
               key: {{HOMEPAGE_VAR_JELLYFIN_API_KEY}}
+    - Stuff:
+        - Mastodon:
+            icon: mastodon.png
+            href: https://teqqy.social
+            widget:
+              type: mastodon
+              url: https://teqqy.social/@me
 
   settings.yaml: |
     ---

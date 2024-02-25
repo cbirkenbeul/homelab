@@ -104,7 +104,11 @@ spec:
         enabled: true
         ingressClassName: nginx
         annotations:
-          hajimari.io/icon: mdi:list-status
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: Monitoring
+          gethomepage.dev/name: Gatus
+          gethomepage.dev/icon: gatus.png
         hosts:
           - host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
             paths:
