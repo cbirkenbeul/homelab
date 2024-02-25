@@ -18,7 +18,7 @@ data:
   services.yaml: |
     ---
     - Infrastruktur:
-        - Proxmox
+        - Proxmox:
             icon: proxmox.png
             href: https://pve01.${SECRET_DOMAIN}:8006
             widget:
