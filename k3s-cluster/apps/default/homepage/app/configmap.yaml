@@ -9,7 +9,7 @@ metadata:
 data:
   bookmarks.yaml: |
     ---
-    - Stuff
+    - Stuff:
         - Gitea:
             - icon: gitea.png
               href: https://git.${SECRET_DOMAIN}
