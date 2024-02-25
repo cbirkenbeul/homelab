@@ -27,7 +27,7 @@ data:
               username: {{HOMEPAGE_VAR_PROXMOX_TOKEN_ID}}
               password: {{HOMEPAGE_VAR_PROXMOX_TOKEN_SECRET}}
         - Pi-Hole:
-            icon: pihole.png
+            icon: pi-hole.png
             href: http://192.168.10.2/admin
             widget:
               type: pihole
