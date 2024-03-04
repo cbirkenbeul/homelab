@@ -53,7 +53,7 @@ spec:
               tag: 2.60.0
             env:
               NODE_ENV: production
-              REDIS_HOST: redis.database.svc.cluster.local
+              REDIS_HOST: ghostfolio-redis.default.svc.cluster.local
               REDIS_PORT: 6379
             envFrom:
               - secretRef:
