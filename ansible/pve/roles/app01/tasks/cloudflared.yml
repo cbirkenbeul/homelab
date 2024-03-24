@@ -2,7 +2,7 @@
 - name: Create cloudflared container
   community.docker.docker_container:
     name: cloudflared
-    image: cloudflare/cloudflared:2024.2.1
+    image: cloudflare/cloudflared:2024.3.0
     pull: true
     state: started
     recreate: true
