@@ -30,7 +30,7 @@ spec:
           main:
             image:
               repository: wallabag/wallabag
-              tag: 2.6.8
+              tag: 2.6.9
               pullPolicy: IfNotPresent
             env:
               SYMFONY__ENV__DATABASE_DRIVER: pdo_pgsql
