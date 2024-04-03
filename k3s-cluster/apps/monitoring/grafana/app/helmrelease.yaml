@@ -222,10 +222,10 @@ spec:
     ingress:
       enabled: true
       ingressClassName: nginx
-      annotations:
       gethomepage.dev/enabled: "true"
       gethomepage.dev/group: Monitoring
       gethomepage.dev/name: Grafana
+      annotations:
         external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
       hosts:
         - &host "grafana.${SECRET_DOMAIN}"
