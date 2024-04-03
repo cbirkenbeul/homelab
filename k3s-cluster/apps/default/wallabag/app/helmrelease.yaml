@@ -19,8 +19,10 @@ spec:
     remediation:
       retries: 5
   upgrade:
+    cleanupOnFail: true
     remediation:
-      retries: 5
+      strategy: uninstall
+      retries: 3
   values:
     controllers:
       main:
