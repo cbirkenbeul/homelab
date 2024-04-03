@@ -34,7 +34,7 @@ spec:
     controllers:
       freshrss:
         annotations:
-          secret.reloader.stakater.com/auto: "true"
+          reloader.stakater.com/auto: "true"
         initContainers:
           init-db:
             image:
