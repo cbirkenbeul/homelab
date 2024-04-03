@@ -37,7 +37,7 @@ spec:
           main:
             image:
               repository: ghcr.io/zwave-js/zwave-js-ui
-              tag: 9.10.0
+              tag: 9.10.1
             probes:
               liveness: &probes
                 enabled: true
