@@ -68,7 +68,7 @@ spec:
     ingress:
       app:
         enabled: true
-        ClassName: "nginx"
+        className: nginx
         annotations:
           external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
           hajimari.io/icon: mdi:rss
