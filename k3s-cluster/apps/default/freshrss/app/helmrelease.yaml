@@ -71,12 +71,10 @@ spec:
         className: nginx
         annotations:
           external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
-          hajimari.io/icon: mdi:rss
         hosts:
           - host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
             paths:
               - path: /
-                pathType: Prefix
                 service:
                   identifiers: app
                   port: http
@@ -86,9 +84,6 @@ spec:
 
     persistence:
       config:
-        enabled: true
-        accessMode: ReadWriteOnce
-        size: 2Gi
         existingClaim: freshrss
         globalMounts:
           - path: /var/www/FreshRSS/data
