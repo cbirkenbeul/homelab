@@ -104,7 +104,6 @@ spec:
         enabled: true
         ingressClassName: nginx
         annotations:
-        annotations:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: Monitoring
           gethomepage.dev/name: Gatus
