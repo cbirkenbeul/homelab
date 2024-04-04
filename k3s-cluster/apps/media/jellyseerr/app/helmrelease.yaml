@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 2.6.0
+      version: 3.0.4
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -29,9 +29,9 @@ spec:
     keepHistory: false
   values:
     controllers:
-      main:
+      jellyseerr:
         containers:
-          main:
+          app:
             image:
               repository: docker.io/fallenbagel/jellyseerr
               tag: 1.7.0
@@ -52,10 +52,11 @@ spec:
               fsGroupChangePolicy: "OnRootMismatch"
 
     service:
-      main:
+      app:
+        controller: *app
         ports:
           http:
-            port: *port
+            port: 8080
 
     ingress:
       main:
@@ -67,9 +68,8 @@ spec:
           - host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
             paths:
               - path: /
-                pathType: Prefix
                 service:
-                  name: main
+                  identifier: app
                   port: http
         tls:
           - hosts:
@@ -77,7 +77,6 @@ spec:
 
     persistence:
       config:
-        enabled: true
         existingClaim: jellyseerr
         globalMounts:
           - path: /app/config

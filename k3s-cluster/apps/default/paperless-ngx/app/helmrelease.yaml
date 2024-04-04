@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 2.6.0
+      version: 3.0.4
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -33,7 +33,7 @@ spec:
         fsGroupChangePolicy: OnRootMismatch
 
     controllers:
-      main:
+      paperless:
         annotations:
           reloader.stakater.com/auto: "true"
 
@@ -47,7 +47,7 @@ spec:
                   name: paperless-ngx-dbinit-secret
 
         containers:
-          main:
+          app:
             image:
               repository: ghcr.io/paperless-ngx/paperless-ngx
               tag: 2.6.3
@@ -84,7 +84,8 @@ spec:
               tag: 2.9.1-full
 
     service:
-      main:
+      app:
+        controller: *app
         ports:
           http:
             port: 8000
@@ -103,9 +104,8 @@ spec:
           - host: &host "paperless.casalani.de"
             paths:
               - path: /
-                pathType: Prefix
                 service:
-                  name: main
+                  identifier: app
                   port: http
         tls:
           - hosts:
@@ -113,7 +113,6 @@ spec:
 
     persistence:
       data:
-        enabled: true
         existingClaim: paperless-ngx
         globalMounts:
           - subPath: data
@@ -121,14 +120,12 @@ spec:
           - subPath: media
             path: /usr/src/paperless/media
       export:
-        enabled: true
         type: nfs
         server: &nas 'nas.${SECRET_DOMAIN}'
         path: /mnt/user/app-backup/paperless
         globalMounts:
           - path: /usr/src/paperless/export
       consume:
-        enabled: true
         type: nfs
         server: &nas 'nas.${SECRET_DOMAIN}'
         path: /mnt/user/dms-import

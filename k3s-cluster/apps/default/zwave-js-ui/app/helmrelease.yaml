@@ -2,14 +2,14 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
-  name: zwave-js-ui
+  name: &app zwave-js-ui
   namespace: default
 spec:
   interval: 15m
   chart:
     spec:
       chart: app-template
-      version: 2.6.0
+      version: 3.0.4
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -28,13 +28,13 @@ spec:
     keepHistory: false
   values:
     controllers:
-      main:
+      zwave-js-ui:
         type: statefulset
         annotations:
           reloader.stakater.com/auto: "true"
 
         containers:
-          main:
+          app:
             image:
               repository: ghcr.io/zwave-js/zwave-js-ui
               tag: 9.10.1
@@ -52,7 +52,7 @@ spec:
                   failureThreshold: 3
               readiness: *probes
             env:
-              TZ: America/Vancouver
+              TZ: ${ TZ }
             securityContext:
               privileged: true
         pod:
@@ -60,7 +60,8 @@ spec:
             feature.node.kubernetes.io/zwave: "true"
 
     service:
-      main:
+      app:
+        controller: *app
         ports:
           http:
             port: 8091
@@ -78,16 +79,14 @@ spec:
           - host: &host zwave.${SECRET_DOMAIN}
             paths:
               - path: /
-                pathType: Prefix
                 service:
-                  name: main
+                  identifier: app
                   port: http
         tls:
           - hosts:
               - *host
     persistence:
       config:
-        enabled: true
         existingClaim: zwave-js-ui
         globalMounts:
           - path: /usr/src/app/store

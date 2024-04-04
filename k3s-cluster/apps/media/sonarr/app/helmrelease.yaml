@@ -2,14 +2,14 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
-  name: sonarr
+  name: &app sonarr
   namespace: media
 spec:
   interval: 15m
   chart:
     spec:
       chart: app-template
-      version: 2.6.0
+      version: 3.0.4
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -27,7 +27,7 @@ spec:
     keepHistory: false
   values:
     controllers:
-      main:
+      sonarr:
 
         annotations:
           reloader.stakater.com/auto: "true"
@@ -42,7 +42,7 @@ spec:
                   name: sonarr-dbinit-secret
 
         containers:
-          main:
+          app:
             image:
               repository: ghcr.io/onedr0p/sonarr-develop
               tag: 4.0.2.1408
@@ -83,7 +83,8 @@ spec:
               - 568
 
     service:
-      main:
+      app:
+        controller: *app
         ports:
           http:
             port: *port
@@ -96,9 +97,8 @@ spec:
           - host: &host "sonarr.${SECRET_DOMAIN}"
             paths:
               - path: /
-                pathType: Prefix
                 service:
-                  name: main
+                  identifier: app
                   port: http
         tls:
           - hosts:
@@ -106,7 +106,6 @@ spec:
 
     persistence:
       media:
-        enabled: true
         type: nfs
         server: &nas 'nas.${SECRET_DOMAIN}'
         path: /mnt/user/media
