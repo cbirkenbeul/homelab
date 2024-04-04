@@ -30,6 +30,14 @@ spec:
   values:
     controllers:
       jellyseerr:
+        annotations:
+          reloader.stakater.com/auto: "true"
+        pod:
+          SecurityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
+            fsGroup: 1000
+            fsGroupChangePolicy: "OnRootMismatch"
         containers:
           app:
             image:
@@ -45,11 +53,6 @@ spec:
                 memory: 250Mi
               limits:
                 memory: 500Mi
-            podSecurityContext:
-              runAsUser: 1000
-              runAsGroup: 1000
-              fsGroup: 1000
-              fsGroupChangePolicy: "OnRootMismatch"
 
     service:
       app:
