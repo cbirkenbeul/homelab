@@ -61,7 +61,7 @@ spec:
 
     service:
       app:
-        controller: *app
+        controller: zwave-js-ui
         ports:
           http:
             port: 8091
