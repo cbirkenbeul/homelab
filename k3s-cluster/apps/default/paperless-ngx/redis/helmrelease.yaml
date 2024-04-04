@@ -9,12 +9,23 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 2.6.0
+      version: 3.1.0
       interval: 30m
       sourceRef:
         kind: HelmRepository
         name: bjw-s
         namespace: flux-system
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: uninstall
+      retries: 3
+  uninstall:
+    keepHistory: false
 
   values:
     controllers:
@@ -33,9 +44,7 @@ spec:
 
     service:
       main:
+        controller: main
         ports:
           http:
-            enabled: false
-          redis:
-            enabled: true
             port: 6379
