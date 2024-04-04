@@ -7,9 +7,7 @@ resources:
   - ./freshrss/ks.yaml
   - ./ghostfolio/ks.yaml
   - ./homepage/ks.yaml
-  - ./lldap/ks.yaml
   - ./mealie/ks.yaml
-  - ./monica/ks.yaml
   - ./paperless-ngx/ks.yaml
   - ./shlink/ks.yaml
   - ./teslamate/ks.yaml
