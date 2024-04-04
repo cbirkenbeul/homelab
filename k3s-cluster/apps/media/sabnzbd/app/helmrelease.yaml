@@ -92,7 +92,7 @@ spec:
 
     persistence:
       config:
-        existingClaim: *app
+        existingClaim: sabnzb-config
         globalMounts:
           - path: /config
       media:
