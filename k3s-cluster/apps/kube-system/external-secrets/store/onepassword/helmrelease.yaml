@@ -94,7 +94,7 @@ spec:
                 spec:
                   httpGet:
                     path: /health
-                    port: *sport
+                    port: *syncPort
                   initialDelaySeconds: 15
               liveness:
                 enabled: true
@@ -102,7 +102,7 @@ spec:
                 spec:
                   httpGet:
                     path: /heartbeat
-                    port: *sport
+                    port: *syncPort
                   failureThreshold: 3
                   periodSeconds: 30
                   initialDelaySeconds: 15
