@@ -68,21 +68,6 @@ spec:
               - secretRef:
                   name: paperless-ngx-secret
 
-          gotenburg:
-            name: gotenburg
-            image:
-              repository: ghcr.io/mchestr/gotenberg
-              tag: 8.3.0
-            env:
-              - name: DISABLE_GOOGLE_CHROME
-                value: "1"
-
-          tika:
-            name: tika
-            image:
-              repository: ghcr.io/paperless-ngx/tika
-              tag: 2.9.1-full
-
     service:
       app:
         controller: *app
