@@ -33,7 +33,7 @@ spec:
         fsGroupChangePolicy: OnRootMismatch
 
     controllers:
-      paperless:
+      paperless-ngx:
         annotations:
           reloader.stakater.com/auto: "true"
 
@@ -55,9 +55,6 @@ spec:
               PAPERLESS_CONSUMER_POLLING: 5
               PAPERLESS_OCR_LANGUAGE: deu
               PAPERLESS_PORT: 8000
-              PAPERLESS_TIKA_ENABLED: 1
-              PAPERLESS_TIKA_GOTENBERG_ENDPOINT: http://localhost:3000
-              PAPERLESS_TIKA_ENDPOINT: http://localhost:9998
               PAPERLESS_TIME_ZONE: Europe/Berlin
               PAPERLESS_URL: https://paperless.casalani.de
               PAPERLESS_REDIS: redis://paperless-redis.default.svc.cluster.local
