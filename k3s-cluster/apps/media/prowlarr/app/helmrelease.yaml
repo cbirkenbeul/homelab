@@ -78,10 +78,7 @@ spec:
     ingress:
       main:
         enabled: true
-        ingressClassName: nginx
-        annotations:
-          hajimari.io/appName: Prowlarr
-          hajimari.io/icon: mdi:movie-search
+        className: nginx
         hosts:
           - host: &host "prowlarr.${SECRET_DOMAIN}"
             paths:

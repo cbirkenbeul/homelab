@@ -69,12 +69,9 @@ spec:
     ingress:
       main:
         enabled: true
-        ingressClassName: nginx
+        className: nginx
         annotations:
           auth.home.arpa/enabled: "true"
-          hajimari.io/icon: mdi:z-wave
-          hajimari.io/appName: z-wave
-          hajimari.io/group: automation
         hosts:
           - host: &host zwave.${SECRET_DOMAIN}
             paths:
