@@ -3,7 +3,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: sabnzbd
+  name: &app sabnzbd
   namespace: flux-system
 spec:
   dependsOn:
@@ -16,3 +16,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: home-kubernetes
+  postBuild:
+    substitute:
+      APP: *app
+      VOLSYNC_CAPACITY: 2Gi
