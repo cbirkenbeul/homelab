@@ -35,7 +35,7 @@ spec:
   values:
     controllers:
       sabnzbd:
-        podAnnotations:
+        annotations:
           reloader.stakater.com/auto: "true"
         containers:
           app:
@@ -100,7 +100,6 @@ spec:
         type: nfs
         server: &nas 'nas.${SECRET_DOMAIN}'
         path: /mnt/user/media
-        mountPath: /media
         globalMounts:
           - path: /media
 
