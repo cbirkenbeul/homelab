@@ -88,27 +88,24 @@ spec:
                     name: onepassword-connect-secret
                     key: 1password-credentials.json
             probes:
-              liveness:
-                enabled: true
-                custom: true
-                spec:
-                  httpGet:
-                    path: /heartbeat
-                    port: *syncPort
-                  initialDelaySeconds: 15
-                  periodSeconds: 30
-                  failureThreshold: 3
               readiness:
                 enabled: true
                 custom: true
                 spec:
                   httpGet:
                     path: /health
-                    port: *syncPort
+                    port: *sport
                   initialDelaySeconds: 15
-              startup:
-                enabled: false
-              resources: *resources
+              liveness:
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /heartbeat
+                    port: *sport
+                  failureThreshold: 3
+                  periodSeconds: 30
+                  initialDelaySeconds: 15
         pod:
           securityContext:
             runAsUser: 999
