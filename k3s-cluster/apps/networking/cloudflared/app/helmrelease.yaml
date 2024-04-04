@@ -63,7 +63,8 @@ spec:
             port: 8080
 
     serviceMonitor:
-      app:
+      main:
+        serviceName: cloudflared
         enabled: true
         endpoints:
           - port: http
