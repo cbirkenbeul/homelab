@@ -105,6 +105,8 @@ spec:
               - *host
 
     persistence:
+      config:
+        existingClaim: sonarr
       media:
         type: nfs
         server: &nas 'nas.${SECRET_DOMAIN}'
