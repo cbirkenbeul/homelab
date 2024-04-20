@@ -99,6 +99,8 @@ spec:
         - 65539
 
     persistence:
+      config:
+        existingClaim: *app
       media:
         type: nfs
         server: &nas 'nas.${SECRET_DOMAIN}'
