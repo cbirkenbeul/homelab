@@ -3,13 +3,11 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: cluster-apps-prowlarr-app
+  name: &app prowlarr
   namespace: flux-system
   labels:
     substitution.flux.home.arpa/enabled: "true"
 spec:
-  # dependsOn:
-  #   - name: rook-ceph-cluster
   path: ./k3s-cluster/apps/media/prowlarr/app
   prune: true
   sourceRef:
@@ -23,3 +21,7 @@ spec:
   interval: 30m
   retryInterval: 1m
   timeout: 3m
+  postBuild:
+    substitute:
+      APP: *app
+      VOLSYNC_CAPACITY: 2Gi
