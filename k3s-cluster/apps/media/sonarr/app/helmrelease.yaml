@@ -49,14 +49,8 @@ spec:
             env:
               TZ: ${TIMEZONE}
               SONARR__PORT: &port 8989
-              # SONARR__POSTGRES_HOST: pgsql01.casalani.de
-              # SONARR__POSTGRES_MAIN_DB: sonarr
-              # SONARR__POSTGRES_LOG_DB: sonarr_logs
-              # SONARR__POSTGRES_USER: postgres
-              # SONARR__POSTGRES_PASSWORD: ${SECRET_POSTGRES_ADMIN_PASS}
             envFrom:
               - secretRef:
-                  # name: sonarr-apikey
                   name: sonarr-secret
             probes:
               liveness: &probes
