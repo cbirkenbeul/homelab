@@ -10,6 +10,11 @@ metadata:
 spec:
   path: ./k3s-cluster/apps/media/prowlarr/app
   prune: true
+  dependsOn:
+    - name: rook-ceph-cluster
+    - name: cluster-apps-ingress-nginx
+    - name: radarr
+    - name: sonarr
   sourceRef:
     kind: GitRepository
     name: home-kubernetes

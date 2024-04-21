@@ -10,6 +10,9 @@ metadata:
 spec:
   path: ./k3s-cluster/apps/media/sonarr/app
   prune: true
+  dependsOn:
+    - name: rook-ceph-cluster
+    - name: cluster-apps-ingress-nginx
   sourceRef:
     kind: GitRepository
     name: home-kubernetes

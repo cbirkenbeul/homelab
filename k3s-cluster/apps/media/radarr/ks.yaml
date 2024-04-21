@@ -8,8 +8,9 @@ metadata:
   labels:
     substitution.flux.home.arpa/enabled: "true"
 spec:
-  # dependsOn:
-  #   - name: rook-ceph-cluster
+  dependsOn:
+    - name: rook-ceph-cluster
+    - name: cluster-apps-ingress-nginx
   path: ./k3s-cluster/apps/media/radarr/app
   prune: true
   sourceRef:

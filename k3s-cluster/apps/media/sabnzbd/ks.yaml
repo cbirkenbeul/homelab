@@ -9,7 +9,9 @@ metadata:
     substitution.flux.home.arpa/enabled: "true"
 spec:
   dependsOn:
-    - name: cluster-apps-radarr-app
+    - name: rook-ceph-cluster
+    - name: cluster-apps-ingress-nginx
+    - name: radarr
     - name: sonarr
   path: ./k3s-cluster/apps/media/sabnzbd/app
   prune: true
