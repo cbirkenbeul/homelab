@@ -1,6 +1,6 @@
 ---
 # yaml-language-server: $schema=https://kubernetes-schemas.devbu.io/helmrelease_v2beta1.json
-apiVersion: helm.toolkit.fluxcd.io/v2beta2
+apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: &app wallos
@@ -36,7 +36,7 @@ spec:
           app:
             image:
               repository: bellamy/wallos
-              tag: 1.27.0
+              tag: 1.27.1
             env:
               TZ: ${TIMEZONE}
             resources:

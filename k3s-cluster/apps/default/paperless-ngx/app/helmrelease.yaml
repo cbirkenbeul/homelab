@@ -1,5 +1,5 @@
 ---
-apiVersion: helm.toolkit.fluxcd.io/v2beta2
+apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: &app paperless-ngx
@@ -41,7 +41,7 @@ spec:
           01-init-db:
             image:
               repository: ghcr.io/onedr0p/postgres-init
-              tag: "16.2"
+              tag: "16.3"
             envFrom:
               - secretRef:
                   name: paperless-ngx-dbinit-secret
@@ -50,7 +50,7 @@ spec:
           app:
             image:
               repository: ghcr.io/paperless-ngx/paperless-ngx
-              tag: 2.8.3
+              tag: 2.8.6
             env:
               PAPERLESS_CONSUMER_POLLING: 5
               PAPERLESS_OCR_LANGUAGE: deu
