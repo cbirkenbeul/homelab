@@ -94,9 +94,9 @@ spec:
 
     defaultPodOptions:
       securityContext:
-        runAsUser: 0 # ${APP_UID}
-        runAsGroup: 0 # ${APP_GID}
-        fsGroup: 0 # ${APP_GID}
+        runAsUser: 568 # ${APP_UID}
+        runAsGroup: 568 # ${APP_GID}
+        fsGroup: 568 # ${APP_GID}
         fsGroupChangePolicy: "OnRootMismatch"
 
     persistence:
