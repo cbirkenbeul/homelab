@@ -20,7 +20,7 @@
 - name: Create PGAdmin container
   community.docker.docker_container:
     name: pgadmin
-    image: dpage/pgadmin4:8.7
+    image: dpage/pgadmin4:8.8
     pull: true
     state: started
     recreate: true
