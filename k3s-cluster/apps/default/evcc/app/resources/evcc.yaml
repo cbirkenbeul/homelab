@@ -96,7 +96,8 @@ site:
     meters:
       grid: grid # grid meter reference
       pv: # (pvs = veraltet)
-        - pv # first pv meter reference
+        - plenticore
+        - pico # first pv meter reference
       battery: # (batteries = veraltet)
         - battery # battery meter reference
 
