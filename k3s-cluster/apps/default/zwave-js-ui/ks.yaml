@@ -26,5 +26,4 @@ spec:
   postBuild:
     substitute:
       APP: *app
-      GATUS_SUBDOMAIN: zwave-js-ui
       VOLSYNC_CAPACITY: 2Gi
