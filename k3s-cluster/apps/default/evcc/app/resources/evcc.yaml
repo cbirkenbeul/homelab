@@ -1,3 +1,6 @@
+# trial token, valid until 2024-06-27
+sponsortoken: {{ .SPONSORTOKEN }}
+
 network:
   schema: http
   host: evcc.local
@@ -85,9 +88,11 @@ chargers:
 vehicles:
   - name: teqqCar
     type: template
-    template: teslamate
+    template: tronity
     title: teqqCar
-    id: 1
+    clientid: {{ .TRONITYCLIENTID }}
+    clientsecret: {{ .TRONITYCLIENTSECRET }}
+    vin: {{ .SPONSORTOKEN }}
     capacity: 74
 
 # site describes the EVU connection, PV and home battery
