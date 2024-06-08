@@ -92,7 +92,6 @@ vehicles:
     title: teqqCar
     clientid: {{ .TRONITYCLIENTID }}
     clientsecret: {{ .TRONITYCLIENTSECRET }}
-    vin: {{ .SPONSORTOKEN }}
     capacity: 74
 
 # site describes the EVU connection, PV and home battery
