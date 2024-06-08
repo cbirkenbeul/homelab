@@ -92,14 +92,14 @@ vehicles:
 
 # site describes the EVU connection, PV and home battery
 site:
-  - title: Zuhause # display name for UI
+  - title: Zuhause
     meters:
-      grid: grid # grid meter reference
-      pv: # (pvs = veraltet)
+      grid: grid
+      pv:
         - plenticore
-        - pico # first pv meter reference
-      battery: # (batteries = veraltet)
-        - battery # battery meter reference
+        - pico
+      battery:
+        - battery
 
 loadpoints:
   - title: CASA LANI
