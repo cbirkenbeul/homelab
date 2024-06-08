@@ -20,16 +20,20 @@ modbusproxy:
   #    # readonly: true # use `deny` to raise modbus errors
 
 meters:
-  - name: pv
+  - name: plenticore
     type: template
     template: kostal-plenticore
     usage: pv
-    
-    # Modbus TCP
     modbus: tcpip
     id: 71
     host: 192.168.50.10 # Hostname
     port: 1502 # Port 
+
+  - name: pico
+    type: template
+    template: kostal-piko-mp-plus
+    usage: pv
+    host: 192.168.50.11 # IP-Adresse oder Hostname 
 
   - name: grid
     type: template
