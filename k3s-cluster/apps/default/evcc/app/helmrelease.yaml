@@ -77,4 +77,4 @@ spec:
         globalMounts:
           - path: /etc/evcc.yaml
             subPath: evcc.yaml
-            #readOnly: true
+            readOnly: false
