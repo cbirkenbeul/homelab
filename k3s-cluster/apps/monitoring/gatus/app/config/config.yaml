@@ -242,6 +242,14 @@ endpoints:
       - "[STATUS] == 200"
     alerts:
       - type: pushover
+  - name: Matomo
+    group: netcup
+    url: "https://analytics.teqqnet.de"
+    interval: 5m
+    conditions:
+      - "[STATUS] == 200"
+    alerts:
+      - type: pushover
 
   ## Mailserver
   - name: Admin Console
