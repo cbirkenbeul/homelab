@@ -69,21 +69,12 @@ meters:
 
 
 chargers:
-  - name: teslamate
-    type: custom
-    status:
-      source: const
-      value: B
-    enabled:
-      source: mqtt
-      topic: teslamate/cars/1/state
-    enable:
-      source: mqtt
-      topic: teslamate/cars/1/state
-      timeout: 5s
-    maxcurrent:
-      source: mqtt
-      topic: teslamate/cars/1/charger_actual_current
+  - name: easee
+    type: template
+    template: easee
+    user: {{ .EASEEUSER }}
+    password: {{ .EASEEPASSWORD }}
+    charger: {{ .EASEECHARGER }}
 
 vehicles:
   - name: teqqCar
@@ -107,7 +98,7 @@ site:
 
 loadpoints:
   - title: CASA LANI
-    charger: teslamate
+    charger: easee
     meter: charge
 
 tariffs:
