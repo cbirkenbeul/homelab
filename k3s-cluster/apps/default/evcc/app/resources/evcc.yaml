@@ -29,44 +29,32 @@ meters:
     usage: pv
     modbus: tcpip
     id: 71
-    host: 192.168.50.10 # Hostname
+    host: 192.168.50.10
     port: 1502 # Port 
 
   - name: pico
     type: template
     template: kostal-piko-mp-plus
     usage: pv
-    host: 192.168.50.11 # IP-Adresse oder Hostname 
+    host: 192.168.50.11
 
   - name: grid
     type: template
     template: kostal-ksem
     usage: grid
-    
-    # Modbus TCP
     modbus: tcpip
     id: 71
-    host: 192.168.50.12 # Hostname
+    host: 192.168.50.12
     port: 502 # Port 
 
   - name: battery
     type: template
     template: kostal-plenticore
     usage: battery
-    
-    # Modbus TCP
     modbus: tcpip
     id: 71
-    host: 192.168.50.10 # Hostname
+    host: 192.168.50.10
     port: 1502 # Port 
-
-  - name: charge
-    type: custom
-    power:
-      source: mqtt
-      topic: teslamate/cars/1/charger_power
-      scale: 1000
-
 
 chargers:
   - name: easee
@@ -99,7 +87,6 @@ site:
 loadpoints:
   - title: CASA LANI
     charger: easee
-    meter: charge
 
 tariffs:
   currency: EUR
