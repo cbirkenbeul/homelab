@@ -46,7 +46,7 @@ spec:
           app:
             image:
               repository: teslamate/teslamate
-              tag: 1.29.2
+              tag: 1.30.0
             env:
               TZ: "${TZ}"
               DISABLE_MQTT: "false"
