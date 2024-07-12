@@ -50,7 +50,18 @@ spec:
             env:
               TZ: "${TZ}"
               DISABLE_MQTT: "false"
-
+              TESLA_API_HOST: "https://api.myteslamate.com"
+              TESLA_AUTH_HOST: "https://api.myteslamate.com"
+              TESLA_AUTH_PATH: "/api/oauth2/v3"
+              TESLA_WSS_HOST: "wss://streaming.myteslamate.com"
+              TESLA_WSS_TLS_ACCEPT_INVALID_CERTS: "true"
+              TESLA_WSS_USE_VIN: "true"
+              POLLING_ASLEEP_INTERVAL: "300"
+              POLLING_CHARGING_INTERVAL: "450"
+              POLLING_DRIVING_INTERVAL: "300"
+              POLLING_ONLINE_INTERVAL: "450"
+              POLLING_DEFAULT_INTERVAL: "120"
+              POLLING_MINIMUM_INTERVAL: "120"
             envFrom:
               - secretRef:
                   name: teslamate-secret
