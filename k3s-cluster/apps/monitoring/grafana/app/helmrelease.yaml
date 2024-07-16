@@ -115,12 +115,6 @@ spec:
           datasource:
             - { name: DS_PROMETHEUS, value: Prometheus }
 
-      network:
-        opnsense:
-          url: https://raw.githubusercontent.com/cbirkenbeul/homelab/main/k3s-cluster/apps/monitoring/grafana/app/dashboards/opnsense.json
-          datasource:
-            - { name: DS_PROMETHEUS, value: Prometheus } 
-
       teslamate:
         charge-level:
           url: https://raw.githubusercontent.com/adriankumpf/teslamate/master/grafana/dashboards/charge-level.json
