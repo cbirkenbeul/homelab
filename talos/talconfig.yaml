@@ -1,0 +1,15 @@
+---
+clusterName: home-cluster
+endpoint: https://192.168.10.214:6443
+nodes:
+  - hostname: k3s01
+    ipAddress: 192.168.10.214
+    controlPlane: true
+    installDisk: /dev/sda
+  - hostname: k3s02
+    ipAddress: 192.168.10.215
+    controlPlane: false
+    installDisk: /dev/sda
+    networkInterfaces:
+      - interface: eth0
+        dhcp: true

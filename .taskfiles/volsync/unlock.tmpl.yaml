@@ -1,0 +1,20 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: unlock-volsync-src-wallos
+  namespace: default
+spec:
+  ttlSecondsAfterFinished: 3600
+  template:
+    spec:
+      automountServiceAccountToken: false
+      restartPolicy: OnFailure
+      containers:
+        - name: minio
+          image: docker.io/restic/restic:latest
+          args: ["unlock", "--remove-all"]
+          envFrom:
+            - secretRef:
+                name: wallos-volsync-secret
+          resources: {}
