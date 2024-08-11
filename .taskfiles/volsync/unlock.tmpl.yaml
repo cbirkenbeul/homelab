@@ -2,7 +2,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: unlock-volsync-src-wallos
+  name: unlock-volsync-src-paperless
   namespace: default
 spec:
   ttlSecondsAfterFinished: 3600
@@ -16,5 +16,5 @@ spec:
           args: ["unlock", "--remove-all"]
           envFrom:
             - secretRef:
-                name: wallos-volsync-secret
+                name: paperless-ngx-volsync-secret
           resources: {}
