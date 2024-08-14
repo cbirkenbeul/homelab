@@ -63,6 +63,10 @@ spec:
               limits:
                 memory: 128M
 
+    service:
+      app:
+        enabled: false
+
     persistence:
       config:
         existingClaim: recyclarr
