@@ -8,9 +8,6 @@ metadata:
   labels:
     substitution.flux.home.arpa/enabled: "true"
 spec:
-  dependsOn:
-    - name: radarr
-    - name: sonarr
   path: ./k3s-cluster/apps/media/recyclarr/app
   prune: true
   sourceRef:
