@@ -15,16 +15,7 @@ spec:
         kind: HelmRepository
         name: bjw-s
         namespace: flux-system
-  install:
-    remediation:
-      retries: 3
-  upgrade:
-    cleanupOnFail: true
-    remediation:
-      strategy: uninstall
-      retries: 3
-  uninstall:
-    keepHistory: false
+
   values:
     controllers:
       recyclarr:
@@ -50,13 +41,15 @@ spec:
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
-              capabilities: { drop: ["ALL"] }
+              capabilities:
+                drop:
+                  - ALL
             resources:
-              limits: &resources
-                memory: 128Mi
               requests:
-                <<: *resources
-                cpu: 10m
+                cpu: 5m
+                memory: 36M
+              limits:
+                memory: 128M
         pod:
           securityContext:
             runAsUser: 568
