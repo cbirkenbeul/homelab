@@ -17,6 +17,13 @@ radarr:
       - name: SQP-1 (2160p)
         # Uncomment the below line if you don't have access to top-tier indexers
         # min_format_score: 10
+        reset_unmatched_scores:
+          enabled: true
+          except:
+            - German DL
+            - German DL 2
+            - Language Not ENGGER
+
 
     include:
       # Comment out any of the following includes to disable them
