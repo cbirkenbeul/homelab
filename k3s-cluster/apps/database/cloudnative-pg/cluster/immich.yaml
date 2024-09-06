@@ -15,9 +15,9 @@ spec:
   enableSuperuserAccess: true
   superuserSecret:
     name: cloudnative-pg-secret
-  bootstrap:
-    recovery:
-      source: &previous-cluster pgvecto-v3 #This must match backup.barmanObjectStore.serverName from previous backup
+  # bootstrap:
+  #   recovery:
+  #     source: &previous-cluster pgvecto-v3 #This must match backup.barmanObjectStore.serverName from previous backup
   postgresql:
     shared_preload_libraries:
       - "vectors.so"
