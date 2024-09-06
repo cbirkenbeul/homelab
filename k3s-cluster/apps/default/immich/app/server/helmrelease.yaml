@@ -51,7 +51,7 @@ spec:
               pullPolicy: IfNotPresent
             envFrom:
               - secretRef:
-                  name: immich-secret
+                  name: immich-dbinit-secret
         containers:
           immich-server:
             image:
