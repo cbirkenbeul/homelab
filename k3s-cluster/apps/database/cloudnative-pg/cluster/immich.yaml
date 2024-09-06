@@ -36,7 +36,7 @@ spec:
         maxParallel: 8
       destinationPath: s3://cloudnative-pg/
       endpointURL: https://s3.casalani.de
-      serverName: &currentCluster postgres16-v1
+      serverName: &currentCluster pgvecto
       s3Credentials:
         accessKeyId:
           name: cloudnative-pg-secret
