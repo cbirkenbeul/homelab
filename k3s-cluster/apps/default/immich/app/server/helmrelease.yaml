@@ -71,7 +71,7 @@ spec:
             port: 3001
     ingress:
       immich-server:
-        className: external
+        className: nginx
         annotations:
           external-dns.alpha.kubernetes.io/target: ingress.${SECRET_DOMAIN}
           hajimari.io/icon: simple-icons:immich
