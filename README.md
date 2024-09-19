@@ -3,9 +3,7 @@
 <img src="https://raw.githubusercontent.com/smbonn2005/HomeOps/main/icons/logo.png" align="center" width="144px" height="144px"/>
 
 ### My Home Operations repository :octocat:
-
 _... managed with Flux, Renovate and GitHub Actions_ 🤖
-
 
 </div>
 
@@ -14,7 +12,7 @@ _... managed with Flux, Renovate and GitHub Actions_ 🤖
 [![Discord](https://img.shields.io/discord/673534664354430999?style=for-the-badge&label&logo=discord&logoColor=white&color=blue)](https://discord.gg/k8s-at-home)&nbsp;&nbsp;
 <!-- [![Talos](https://img.shields.io/endpoint?url=https%3A%2F%2Fkromgo.casalani.de%2Fquery%3Fformat%3Dendpoint%26metric%3Dtalos_version&style=for-the-badge&logo=talos&logoColor=white&color=blue&label=%20)](https://www.talos.dev/)&nbsp;&nbsp; -->
 [![Kubernetes](https://img.shields.io/endpoint?url=https%3A%2F%2Fkromgo.casalani.de%2Fquery%3Fformat%3Dendpoint%26metric%3Dkubernetes_version&style=for-the-badge&logo=kubernetes&logoColor=white&color=blue&label=%20)](https://www.talos.dev/)&nbsp;&nbsp;
-[![GitHub last commit](https://img.shields.io/github/last-commit/cbirkenbeul/homelab?color=purple&style=for-the-badge)](https://github.com/cbirkenbeul/homelab/commits/main 'Commit History')\
+[![GitHub last commit](https://img.shields.io/github/last-commit/cbirkenbeul/homelab?color=purple&style=for-the-badge)](https://github.com/cbirkenbeul/homelab/commits/main 'Commit History')
 [![GitHub stars](https://img.shields.io/github/stars/cbirkenbeul/homelab?color=green&style=for-the-badge)](https://github.com/cbirkenbeul/homelab/stargazers 'This repo star count')
 
 </div>
@@ -44,6 +42,7 @@ The following apps are installed on the clusters.
 | --------------------------------------------------------------------------------- | ------------------------------------------------------------- |
 | [Flux2](https://fluxcd.io)                                                        | GitOps Tool managing the cluster                              |
 | [NGINX Ingress Controller](https://kubernetes.github.io/ingress-nginx)            | Cluster Ingress controller                                    |
+| [Rook-Ceph](https://rook.io/)                                                     | Cloud native distributed block storage for Kubernetes         |
 | [MetalLB](https://metallb.universe.tf)                                            | Bare metal LoadBalancer                                       |
 | [Cert-Manager](https://cert-manager.io)                                           | Letsencrypt certificates with Cloudflare DNS                  |
 | [ExternalDNS](https://github.com/kubernetes-sigs/external-dns)                    | Configure Cloudflare DNS Servers                              |
