@@ -27,7 +27,7 @@ spec:
     keepHistory: false
   values:
     controllers:
-      ollama-ui:
+      openwebui:
         type: deployment
         annotations:
           reloader.stakater.com/auto: "true"
