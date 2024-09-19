@@ -38,7 +38,7 @@ spec:
               repository: ghcr.io/ollama-webui/ollama-webui
               tag: main
             env:
-              OLLAMA_API_BASE_URL: http://ollama.ollama.svc:11434/api
+              OLLAMA_API_BASE_URL: http://ollama.default.cluster.local:11434/api
             resources:
               requests:
                 cpu: 200m
