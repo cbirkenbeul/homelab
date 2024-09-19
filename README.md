@@ -10,7 +10,7 @@ _... managed with Flux, Renovate and GitHub Actions_ 🤖
 <div align="center">
 
 [![Discord](https://img.shields.io/discord/673534664354430999?style=for-the-badge&label&logo=discord&logoColor=white&color=blue)](https://discord.gg/k8s-at-home)
-[![Kubernetes](https://img.shields.io/endpoint?url=https%3A%2F%2Fkromgo.casalani.de%2Fquery%3Fformat%3Dendpoint%26metric%3Dkubernetes_version&style=for-the-badge&logo=kubernetes&logoColor=white&color=blue&label=%20)](https://www.talos.dev/)&nbsp;&nbsp;
+[![Kubernetes](https://img.shields.io/endpoint?url=https%3A%2F%2Fkromgo.casalani.de%2Fquery%3Fformat%3Dendpoint%26metric%3Dkubernetes_version&style=for-the-badge&logo=kubernetes&logoColor=white&color=blue&label=%20)](https://www.talos.dev/)
 [![GitHub last commit](https://img.shields.io/github/last-commit/cbirkenbeul/homelab?color=purple&style=for-the-badge)](https://github.com/cbirkenbeul/homelab/commits/main 'Commit History')
 [![GitHub stars](https://img.shields.io/github/stars/cbirkenbeul/homelab?color=green&style=for-the-badge)](https://github.com/cbirkenbeul/homelab/stargazers 'This repo star count')
 
@@ -77,6 +77,14 @@ While most of my infrastructure and workloads are self-hosted I do rely upon the
 | kube-01 | Dell 5090   | i5-10500T | 256 GB NVME | 128 GB SSD  | 32 GB | Debian 12 | k8s control-plane, worker |
 | kube-02 | Dell 5090   | i5-10500T | 256 GB NVME | 128 GB SSD  | 32 GB | Debian 12 | k8s control-plane, worker |
 | kube-03 | Dell 5090   | i5-10500T | 256 GB NVME | 128 GB SSD  | 32 GB | Debian 12 | k8s control-plane, worker |
+
+### Networking/UPS Hardware
+
+| Device                      | Purpose          |
+|-----------------------------|------------------|
+| Lenovo M920q (opnsense)     | Network - Router |
+| MikroTik CRS328-24P-4S+     | Network - Switch |
+| Cyberpower USV OR600ERM     | UPS              |
 
 ## :robot:&nbsp; Automation
 
