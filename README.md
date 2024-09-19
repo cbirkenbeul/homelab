@@ -43,7 +43,6 @@ The following apps are installed on the clusters.
 | Software                                                                          | Purpose                                                       |
 | --------------------------------------------------------------------------------- | ------------------------------------------------------------- |
 | [Flux2](https://fluxcd.io)                                                        | GitOps Tool managing the cluster                              |
-| [Longhorn](https://longhorn.io)                                                   | Persistent Block Storage Provisioner                          |
 | [NGINX Ingress Controller](https://kubernetes.github.io/ingress-nginx)            | Cluster Ingress controller                                    |
 | [MetalLB](https://metallb.universe.tf)                                            | Bare metal LoadBalancer                                       |
 | [Cert-Manager](https://cert-manager.io)                                           | Letsencrypt certificates with Cloudflare DNS                  |
@@ -56,6 +55,30 @@ The following apps are installed on the clusters.
 | [System Upgrade Controller](https://github.com/rancher/system-upgrade-controller) | Automated k3s upgrades                                        |
 | [Descheduler](https://github.com/kubernetes-sigs/descheduler)                     | Evicts pods to optimize scheduling                            |
 | [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server)    | Source of container resource metrics for Kubernetes           |
+
+## ☁️ Cloud Dependencies
+
+While most of my infrastructure and workloads are self-hosted I do rely upon the cloud for certain key parts of my setup. This saves me from having to worry about two things. (1) Dealing with chicken/egg scenarios and (2) services I critically need whether my cluster is online or not.
+
+
+| Service                                     | Use                                                               | Cost           |
+|---------------------------------------------|-------------------------------------------------------------------|----------------|
+| [1Password](https://1password.com/)         | Secrets with [External Secrets](https://external-secrets.io/)     | ~€80/yr        |
+| [NetCaup](https://www.netcup.de/)           | Domain                                                            | ~€5/yr         |
+| [GitHub](https://github.com/)               | Hosting this repository and continuous integration/deployments    | Free           |
+|                                             |                                                                   | Total: ~€7/mo  |
+
+---
+
+## 🔧 Hardware
+
+### Main Kubernetes Cluster
+
+| Name  | Device         | CPU       | OS Disk   | Data Disk | RAM  | OS    | Purpose           |
+|-------|----------------|-----------|-----------|-----------|------|-------|-------------------|
+| kube-01 | Dell 5090   | i5-10500T | 256 GB NVME | 128 GB SSD  | 32 GB | Debian 12 | k8s control-plane, worker |
+| kube-02 | Dell 5090   | i5-10500T | 256 GB NVME | 128 GB SSD  | 32 GB | Debian 12 | k8s control-plane, worker |
+| kube-03 | Dell 5090   | i5-10500T | 256 GB NVME | 128 GB SSD  | 32 GB | Debian 12 | k8s control-plane, worker |
 
 ## :robot:&nbsp; Automation
 
