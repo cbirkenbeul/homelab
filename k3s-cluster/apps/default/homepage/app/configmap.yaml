@@ -84,14 +84,6 @@ data:
               type: pihole
               url: http://192.168.10.2
               key: {{HOMEPAGE_VAR_PIHOLE_KEY}}
-        - Unifi:
-            icon: unifi
-            href: https://unifi01.${SECRET_DOMAIN}:8443
-            widget:
-              type: unifi
-              url: https://unifi01.${SECRET_DOMAIN}:8443
-              username: {{HOMEPAGE_VAR_UNIFI_USERNAME}}
-              password: {{HOMEPAGE_VAR_UNIFI_PASSWORD}}
 
     - Stuff:
         - Ghostfolio:
