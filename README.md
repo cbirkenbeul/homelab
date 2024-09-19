@@ -9,8 +9,7 @@ _... managed with Flux, Renovate and GitHub Actions_ 🤖
 
 <div align="center">
 
-[![Discord](https://img.shields.io/discord/673534664354430999?style=for-the-badge&label&logo=discord&logoColor=white&color=blue)](https://discord.gg/k8s-at-home)&nbsp;&nbsp;
-<!-- [![Talos](https://img.shields.io/endpoint?url=https%3A%2F%2Fkromgo.casalani.de%2Fquery%3Fformat%3Dendpoint%26metric%3Dtalos_version&style=for-the-badge&logo=talos&logoColor=white&color=blue&label=%20)](https://www.talos.dev/)&nbsp;&nbsp; -->
+[![Discord](https://img.shields.io/discord/673534664354430999?style=for-the-badge&label&logo=discord&logoColor=white&color=blue)](https://discord.gg/k8s-at-home)
 [![Kubernetes](https://img.shields.io/endpoint?url=https%3A%2F%2Fkromgo.casalani.de%2Fquery%3Fformat%3Dendpoint%26metric%3Dkubernetes_version&style=for-the-badge&logo=kubernetes&logoColor=white&color=blue&label=%20)](https://www.talos.dev/)&nbsp;&nbsp;
 [![GitHub last commit](https://img.shields.io/github/last-commit/cbirkenbeul/homelab?color=purple&style=for-the-badge)](https://github.com/cbirkenbeul/homelab/commits/main 'Commit History')
 [![GitHub stars](https://img.shields.io/github/stars/cbirkenbeul/homelab?color=green&style=for-the-badge)](https://github.com/cbirkenbeul/homelab/stargazers 'This repo star count')
