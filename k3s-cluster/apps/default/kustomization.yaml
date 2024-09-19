@@ -9,6 +9,8 @@ resources:
   - ./homepage/ks.yaml
   - ./immich/ks.yaml
   - ./mealie/ks.yaml
+  - ./ollama/ks.yaml
+  - ./openwebui/ks.yaml
   - ./paperless-ngx/ks.yaml
   - ./shlink/ks.yaml
   - ./teslamate/ks.yaml
