@@ -1,15 +1,21 @@
 ---
 clusterName: home-cluster
+
+talosVersion: v1.7.6
+kubernetesVersion: 1.30.2
+
 endpoint: https://192.168.10.214:6443
+
 nodes:
-  - hostname: k3s01
-    ipAddress: 192.168.10.214
+  - hostname: talos-01
+    ipAddress: 192.168.10.217
     controlPlane: true
     installDisk: /dev/sda
-  - hostname: k3s02
-    ipAddress: 192.168.10.215
-    controlPlane: false
+  - hostname: talos-02
+    ipAddress: 192.168.10.218
+    controlPlane: true
     installDisk: /dev/sda
-    networkInterfaces:
-      - interface: eth0
-        dhcp: true
+  - hostname: talos-03
+    ipAddress: 192.168.10.219
+    controlPlane: true
+    installDisk: /dev/sda
