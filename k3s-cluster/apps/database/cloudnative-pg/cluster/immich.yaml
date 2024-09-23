@@ -35,7 +35,7 @@ spec:
         compression: bzip2
         maxParallel: 8
       destinationPath: s3://cloudnative-pg/
-      endpointURL: https://s3.casalani.de
+      endpointURL: https://s3.teqqnet.de
       serverName: &currentCluster pgvecto
       s3Credentials:
         accessKeyId:
