@@ -7,6 +7,7 @@ vars:
   CLUSTER_DIR: "{{.PROJECT_DIR}}/cluster"
   ANSIBLE_DIR: "{{.PROJECT_DIR}}/provision/ansible"
   TERRAFORM_DIR: "{{.PROJECT_DIR}}/provision/terraform"
+  KUBERNETES_DIR: "{{.ROOT_DIR}}/kubernetes"
 
 # dotenv: [".config.env"]
 
@@ -21,6 +22,7 @@ includes:
 #   terraform: .taskfiles/TerraformTasks.yml
 #   snapshot: .taskfiles/SnapshotTasks.yml
   ansible: .taskfiles/AnsibleTasks.yml
+  talos: .taskfiles/Talos
 tasks:
 
   init:

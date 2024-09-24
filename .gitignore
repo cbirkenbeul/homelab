@@ -10,17 +10,12 @@ Thumbs.db
 ansible/k3s/roles/xanmanning.k3s
 ansible/k3s/roles/mrlesmithjr.zfs
 
-# Terraform
-*.tfstate
-*.tfstate.backup
-terraform.tfvars
-.terraform*
-
 # Flux update
 bin/flux
 
 # Direnv
 .direnv
+.venv
 
 # Sops
 .decrypted~*
