@@ -22,6 +22,7 @@ resources:
   - ./node-feature-discovery-charts.yaml
   - ./piraeus.yaml
   - ./prometheus-community.yaml
+  - ./spegel.yaml
   - ./rook-ceph.yaml
   - ./stakater.yaml
   - ./tyzbit.yaml
