@@ -9,7 +9,7 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
-  path: ./kubernetes/utility/kube-system/reloader/app
+  path: ./kubernetes/utility/app/kube-system/reloader/app
   prune: true
   sourceRef:
     kind: GitRepository
