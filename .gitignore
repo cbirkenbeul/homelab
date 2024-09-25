@@ -19,6 +19,8 @@ bin/flux
 
 # Sops
 .decrypted~*
+*.key
+*.agekey
 
 # Other files
 kubeconfig*
