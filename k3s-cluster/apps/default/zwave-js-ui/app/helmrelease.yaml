@@ -28,7 +28,7 @@ spec:
     keepHistory: false
   values:
     controllers:
-      zwave-js-ui:
+      main:
         annotations:
           reloader.stakater.com/auto: "true"
 
