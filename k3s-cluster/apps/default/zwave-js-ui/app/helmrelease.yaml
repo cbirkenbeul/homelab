@@ -82,18 +82,14 @@ spec:
       main:
         enabled: true
         className: nginx
-        annotations:
-          auth.home.arpa/enabled: "true"
         hosts:
-          - host: &host zwave.${SECRET_DOMAIN}
+          - host: &host "zwave.${SECRET_DOMAIN}"
             paths:
               - path: /
                 service:
-                  identifier: app
-                  port: http
-        tls:
-          - hosts:
-              - *host
+                  identifier: main
+                  port: *httpPort
+
     persistence:
       config:
         existingClaim: zwave-js-ui
