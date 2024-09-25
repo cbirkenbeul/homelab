@@ -15,12 +15,9 @@ resources:
   - ./ingress-nginx.yaml
   - ./intel.yaml
   - ./jetstack.yaml
-  - ./k8s-gateway.yaml
-  - ./kubernetes-dashboard.yaml
-  - ./metallb.yaml
   - ./metrics-server.yaml
   - ./node-feature-discovery-charts.yaml
-  - ./piraeus.yaml
+  - ./postfinance.yaml
   - ./prometheus-community.yaml
   - ./spegel.yaml
   - ./rook-ceph.yaml
