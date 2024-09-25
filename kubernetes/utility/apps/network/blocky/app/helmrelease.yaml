@@ -111,7 +111,7 @@ spec:
     #           - path: /
     #             service:
     #               identifier: app
-                  port: http
+                  # port: http
     persistence:
       config:
         type: configMap
