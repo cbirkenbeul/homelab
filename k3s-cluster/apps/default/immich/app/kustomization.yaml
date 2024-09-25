@@ -6,7 +6,6 @@ namespace: default
 resources:
   - ./externalsecret.yaml
   - ./configmap.yaml
-  - ./redis
   - ./server
   - ./machine-learning
 labels:
