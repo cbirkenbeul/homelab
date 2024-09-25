@@ -6,7 +6,9 @@ resources:
   - ./cilium/ks.yaml
   - ./external-secrets/ks.yaml
   - intel-device-plugin
+  - /kubelet-csr-approver/ks.yaml
   - ./local-path/ks.yaml
   - ./metrics-server/ks.yaml
   - ./node-feature-discovery/ks.yaml
   - ./reloader/ks.yaml
+  - ./spegel/ks.yaml
