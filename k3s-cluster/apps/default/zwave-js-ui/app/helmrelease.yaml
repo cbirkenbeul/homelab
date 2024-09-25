@@ -29,7 +29,6 @@ spec:
   values:
     controllers:
       zwave-js-ui:
-        type: statefulset
         annotations:
           reloader.stakater.com/auto: "true"
 

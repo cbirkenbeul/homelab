@@ -15,4 +15,4 @@ resources:
   - ./shlink/ks.yaml
   - ./teslamate/ks.yaml
   - ./wallos/ks.yaml
-  #- ./zwave-js-ui/ks.yaml
+  - ./zwave-js-ui/ks.yaml
