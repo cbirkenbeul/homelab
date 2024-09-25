@@ -13,6 +13,7 @@ resources:
   - ./intel.yaml
   - ./metrics-server.yaml
   - ./node-feature-discovery-charts.yaml
+  - ./openebs.yaml
   - ./postfinance.yaml
   - ./prometheus-community.yaml
   - ./spegel.yaml
