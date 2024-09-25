@@ -37,6 +37,7 @@ spec:
             image:
               repository: ghcr.io/zwave-js/zwave-js-ui
               tag: 9.20.0
+
             probes:
               liveness: &probes
                 enabled: true
@@ -44,26 +45,38 @@ spec:
                 spec:
                   httpGet:
                     path: /health
-                    port: &port 8091
+                    port: &httpPort 8091
                   initialDelaySeconds: 0
                   periodSeconds: 10
                   timeoutSeconds: 1
                   failureThreshold: 3
               readiness: *probes
-            env:
-              TZ: ${ TZ }
+              startup:
+                enabled: false
+
             securityContext:
               privileged: true
+
+            resources:
+              requests:
+                cpu: 50m
+                memory: 512M
+              limits:
+                memory: 512M
+
         pod:
           nodeSelector:
             feature.node.kubernetes.io/zwave: "true"
 
     service:
-      app:
-        controller: zwave-js-ui
+      main:
+        controller: main
         ports:
           http:
-            port: 8091
+            port: *httpPort
+          websocket:
+            port: 3000
+
 
     ingress:
       main:
