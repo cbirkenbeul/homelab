@@ -5,13 +5,13 @@ talosVersion: v1.7.6
 kubernetesVersion: v1.30.3
 
 clusterName: utility
-endpoint: https://192.168.10.223:6443
+endpoint: https://192.168.10.22:6443
 clusterPodNets:
   - "10.42.0.0/16"
 clusterSvcNets:
   - "10.43.0.0/16"
 additionalApiServerCertSans: &sans
-  - 192.168.10.223
+  - 192.168.10.22
   - 127.0.0.1 # KubePrism
 
 additionalMachineCertSans: *sans
@@ -20,13 +20,13 @@ cniConfig:
   name: none
 
 nodes:
-  - hostname: utility-01
-    ipAddress: 192.168.10.223
+  - hostname: k3s-utility-01
+    ipAddress: 192.168.10.22
     controlPlane: true
-    installDisk: /dev/sda
+    installDisk: /dev/nvme0n1
     networkInterfaces:
       - deviceSelector:
-          hardwareAddr: "bc:24:*"
+          hardwareAddr: "00:4e:01:ab:65:04"
         dhcp: true
 
 patches:
@@ -61,6 +61,14 @@ patches:
               rsize = 131072
               wsize = 131072
               nconnect = 8
+
+  # Configure NTP
+  - &ntpPatch |-
+    machine:
+      time:
+        disabled: false
+        servers:
+          - 192.168.10.1
 
   # Disable search domain everywhere
   - |-
