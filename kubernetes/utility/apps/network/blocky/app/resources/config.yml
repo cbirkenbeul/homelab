@@ -16,15 +16,11 @@ upstreams:
 clientLookup:
   upstream: &router 192.168.10.1
 
-# conditional:
-#   fallbackUpstream: false
-#   mapping:
-#     168.192.in-addr.arpa: *router
-#     69.10.in-addr.arpa: *router
-#     internal: *router
-#     jory.dev: *router
-#     j8g.dev: *router
-#     jory.casa: *router
+conditional:
+  fallbackUpstream: false
+  mapping:
+    168.192.in-addr.arpa: *router
+    casalani.de: *router
 
 # customDNS:
 #   zone: |
