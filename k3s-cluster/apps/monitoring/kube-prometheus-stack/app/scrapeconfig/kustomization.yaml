@@ -6,3 +6,4 @@ resources:
   - ./opnsense.yaml
   # - ./minio.yaml
   - ./node-exporter.yaml
+  - ./blocky.yaml

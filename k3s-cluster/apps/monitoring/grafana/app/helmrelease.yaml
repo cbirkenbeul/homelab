@@ -114,7 +114,13 @@ spec:
           revision: 24
           datasource:
             - { name: DS_PROMETHEUS, value: Prometheus }
-
+        blocky:
+          # renovate: depName="blocky"
+          gnetId: 13768
+          revision: 4
+          datasource:
+            - { name: DS_PROMETHEUS, value: Prometheus }
+            - { name: VAR_BLOCKY_URL, value: 'https:\/\/blocky.${SECRET_DOMAIN}' }
       # teslamate:
       #   charge-level:
       #     url: https://raw.githubusercontent.com/teslamate-org/teslamate/master/grafana/dashboards/charge-level.json
