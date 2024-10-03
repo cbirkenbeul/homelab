@@ -26,7 +26,7 @@ spec:
     controller:
       service:
         annotations:
-          io.cilium/lb-ipam-ips: "${SVC_INGRESS_ADDR}"
+          lbipam.cilium.io/ips: "${SVC_INGRESS_ADDR}"
         externalTrafficPolicy: Cluster
       ingressClassResource:
         name: internal
