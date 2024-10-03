@@ -7,5 +7,5 @@ metadata:
 spec:
   staticConfigs:
     - targets:
-        - https://blocky.casalani.de
+        - blocky.casalani.de
   metricsPath: /metrics
