@@ -28,15 +28,20 @@
   "fileMatch": ["ansible/.+/docker-compose.*\\.ya?ml(\\.j2)?$"]
 },
 "flux": {
-  "fileMatch": ["k3s-cluster/.+\\.ya?ml$"]
+  "fileMatch": [
+    "k3s-cluster/.+\\.ya?ml$",
+    "kubernetes/.+\\.ya?ml$"]
 },
 "helm-values": {
-  "fileMatch": ["k3s-cluster/.+\\.ya?ml$"]
+  "fileMatch": [
+    "k3s-cluster/.+\\.ya?ml$",
+    "kubernetes/.+\\.ya?ml$"]
 },
 "kubernetes": {
   "fileMatch": [
     "ansible/.+\\.ya?ml(\\.j2)?$",
-    "k3s-cluster/.+\\.ya?ml$"
+    "k3s-cluster/.+\\.ya?ml$",
+    "kubernetes/.+\\.ya?ml$"
   ]
 },
 "regexManagers": [
@@ -44,7 +49,8 @@
     "description": "Process various other dependencies",
     "fileMatch": [
       "ansible/.+\\.ya?ml(\\.j2)?$",
-      "k3s-cluster/.+\\.ya?ml$"
+      "k3s-cluster/.+\\.ya?ml$",
+      "kubernetes/.+\\.ya?ml$"
     ],
     "matchStrings": [
       "datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)( registryUrl=(?<registryUrl>\\S+))?\n.*?\"(?<currentValue>.*)\"\n"
