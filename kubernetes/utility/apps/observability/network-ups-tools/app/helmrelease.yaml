@@ -48,8 +48,7 @@ spec:
         controller: *app
         type: LoadBalancer
         annotations:
-          lbipam.cilium.io/ips: ${SVC_NUT_ADDR:=temp}
-          external-dns.alpha.kubernetes.io/hostname: network-nut.${SECRET_DOMAIN}
+          lbipam.cilium.io/ips: ${SVC_NUT_ADDR}
         externalTrafficPolicy: Cluster
         ports:
           http:
