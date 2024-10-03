@@ -108,12 +108,6 @@ spec:
         flux-control-plane:
           url: https://raw.githubusercontent.com/fluxcd/flux2-monitoring-example/main/monitoring/configs/dashboards/control-plane.json
           datasource: Prometheus 
-        minio:
-          # renovate: depName="MinIO Dashboard"
-          gnetId: 13502
-          revision: 24
-          datasource:
-            - { name: DS_PROMETHEUS, value: Prometheus }
         blocky:
           # renovate: depName="blocky"
           gnetId: 13768
@@ -121,6 +115,29 @@ spec:
           datasource:
             - { name: DS_PROMETHEUS, value: Prometheus }
             - { name: VAR_BLOCKY_URL, value: 'https:\/\/blocky.${SECRET_DOMAIN}' }
+        cloudflared:
+          # renovate: depName="Cloudflare Tunnels (cloudflared)"
+          gnetId: 17457
+          revision: 6
+          datasource:
+            - { name: DS_PROMETHEUS, value: Prometheus }
+        spegel:
+          # renovate: depName="Spegel"
+          gnetId: 18089
+          revision: 1
+          datasource:
+            - { name: DS_PROMETHEUS, value: Prometheus }
+        volsync:
+          # renovate: depName="VolSync Dashboard"
+          gnetId: 21356
+          revision: 3
+          datasource:
+            - { name: DS_PROMETHEUS, value: Prometheus }
+            - { name: VAR_REPLICATIONDESTNAME, value: '.*-bootstrap'}
+        nut-exporter:
+          url: https://raw.githubusercontent.com/nklmilojevic/grafana-dashboards/main/nut-exporter.json
+          datasource: 
+            - { name: DS_PROMETHEUS, value: Prometheus }
       # teslamate:
       #   charge-level:
       #     url: https://raw.githubusercontent.com/teslamate-org/teslamate/master/grafana/dashboards/charge-level.json
