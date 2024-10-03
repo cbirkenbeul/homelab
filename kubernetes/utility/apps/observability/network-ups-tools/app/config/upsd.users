@@ -77,3 +77,7 @@
 [monuser]
   password = secret
   upsmon primary
+
+[monslave]
+  password = secret
+  upsmon slave
