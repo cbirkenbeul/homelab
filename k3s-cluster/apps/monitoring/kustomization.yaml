@@ -8,4 +8,4 @@ resources:
   - ./kromgo/ks.yaml
   - ./kube-prometheus-stack/ks.yaml
   - ./speedtest-exporter/ks.yaml
-  - ./thanos/ks.yaml
+  # - ./thanos/ks.yaml
