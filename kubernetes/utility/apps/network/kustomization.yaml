@@ -7,3 +7,4 @@ resources:
   - ./namespace.yaml
   # Flux-Kustomizations
   - ./blocky/ks.yaml
+  - ./ingress-nginx/ks.yaml
