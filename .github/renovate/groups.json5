@@ -51,6 +51,16 @@
           "commitMessageTopic": "{{{groupName}}} group"
         },
         "separateMinorPatch": true
-      }
+      },
+      {
+        "description": "Immich Group",
+        "groupName": "Immich",
+        "matchPackagePatterns": ["immich"],
+        "matchDatasources": ["docker"],
+        "group": {
+          "commitMessageTopic": "{{{groupName}}} group",
+        },
+        "separateMinorPatch": true,
+      },
     ]
   }
