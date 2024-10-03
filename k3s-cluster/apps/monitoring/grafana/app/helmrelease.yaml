@@ -135,7 +135,7 @@ spec:
             - { name: DS_PROMETHEUS, value: Prometheus }
             - { name: VAR_REPLICATIONDESTNAME, value: '.*-bootstrap'}
         nut-exporter:
-          url: https://raw.githubusercontent.com/nklmilojevic/grafana-dashboards/main/nut-exporter.json
+          url: https://raw.githubusercontent.com/DRuggeri/nut_exporter/master/dashboard/dashboard.json
           datasource: 
             - { name: DS_PROMETHEUS, value: Prometheus }
       # teslamate:
