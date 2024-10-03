@@ -9,4 +9,3 @@ resources:
   - ./kube-prometheus-stack/ks.yaml
   - ./nut-exporter/ks.yaml
   - ./speedtest-exporter/ks.yaml
-  # - ./thanos/ks.yaml
