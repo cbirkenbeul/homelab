@@ -231,6 +231,16 @@ spec:
               resources:
                 requests:
                   storage: 10Gi
+        ruleSelector:
+          matchLabels: ~ # Null means that everything is scraped
+        serviceMonitorSelector:
+          matchLabels: ~
+        podMonitorSelector:
+          matchLabels: ~
+        scrapeConfigSelector:
+          matchLabels: ~
+        probeSelector:
+          matchLabels: ~
     grafana:
       enabled: false
       forceDeployDashboards: true
