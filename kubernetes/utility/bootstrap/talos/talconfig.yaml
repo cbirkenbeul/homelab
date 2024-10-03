@@ -5,13 +5,13 @@ talosVersion: v1.7.6
 kubernetesVersion: v1.30.3
 
 clusterName: utility
-endpoint: https://192.168.10.22:6443
+endpoint: https://192.168.10.45:6443
 clusterPodNets:
   - "10.42.0.0/16"
 clusterSvcNets:
   - "10.43.0.0/16"
 additionalApiServerCertSans: &sans
-  - 192.168.10.22
+  - 192.168.10.45
   - 127.0.0.1 # KubePrism
 
 additionalMachineCertSans: *sans
@@ -21,7 +21,7 @@ cniConfig:
 
 nodes:
   - hostname: k3s-utility-01
-    ipAddress: 192.168.10.22
+    ipAddress: 192.168.10.45
     controlPlane: true
     installDisk: /dev/nvme0n1
     networkInterfaces:
