@@ -34,9 +34,12 @@ spec:
               tag: "3.1.1"
 
             env:
-              TZ: "Europe/Belgrade"
-              NUT_EXPORTER_SERVER: "192.168.10.133"
-              NUT_EXPORTER_VARIABLES: "battery.charge,battery.charge,battery.runtime,battery.voltage,battery.voltage.nominal,input.voltage,input.voltage.nominal,ups.load,ups.status,ups.status"
+              NUT_EXPORTER_USERNAME: monuser
+              NUT_EXPORTER_SERVER: 192.168.10.133
+              NUT_EXPORTER_SERVERPORT: 3493
+            envFrom:
+              - secretRef:
+                  name: nut-exporter-secret
             resources:
               requests:
                 cpu: 15m
