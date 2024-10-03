@@ -5,7 +5,7 @@ metadata:
   name: external-dns
   namespace: flux-system
 spec:
-  path: ./kubernetes/utility/apps/networking/external-dns/app
+  path: ./kubernetes/utility/apps/network/external-dns/app
   prune: true
   sourceRef:
     kind: GitRepository
