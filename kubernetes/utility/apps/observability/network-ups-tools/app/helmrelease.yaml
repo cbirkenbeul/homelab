@@ -45,7 +45,7 @@ spec:
             configmap.reloader.stakater.com/reload: &config network-ups-tools-config
     service:
       app:
-        controller: *app
+        controller: network-ups-tools
         type: LoadBalancer
         annotations:
           lbipam.cilium.io/ips: ${SVC_NUT_ADDR}
