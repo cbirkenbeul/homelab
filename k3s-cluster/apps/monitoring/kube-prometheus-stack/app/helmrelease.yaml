@@ -212,7 +212,7 @@ spec:
               storageClassName: ceph-block
               resources:
                 requests:
-                  storage: 10Gi
+                  storage: 35Gi
         ruleSelector:
           matchLabels: ~ # Null means that everything is scraped
         serviceMonitorSelector:
