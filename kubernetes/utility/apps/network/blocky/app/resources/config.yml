@@ -72,10 +72,12 @@ blocking:
       - |
         *.androidtvchannels-pa.googleapis.com
         *.androidtvwatsonfe-pa.googleapis.com
+      - https://raw.githubusercontent.com/cbirkenbeul/homelab/refs/heads/main/kubernetes/utility/apps/network/blocky/app/resources/blacklist.txt
   whiteLists:
     ads:
       - |
         *.amazonaws.com
+      - https://raw.githubusercontent.com/cbirkenbeul/homelab/refs/heads/main/kubernetes/utility/apps/network/blocky/app/resources/whitelist.txt
   clientGroupsBlock:
     default:
       - ads
