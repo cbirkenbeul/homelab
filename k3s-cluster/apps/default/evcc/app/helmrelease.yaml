@@ -60,7 +60,7 @@ spec:
           gethomepage.dev/icon: evcc.png
           gethomepage.dev/name: EVCC
           gethomepage.dev/widget.type: evcc
-          gethomepage.dev/group: Downloads
+          gethomepage.dev/group: Home
           gethomepage.dev/widget.url: http://evcc.default.svc.cluster.local:7070
         hosts:
           - host: &host "evcc.${SECRET_DOMAIN}"

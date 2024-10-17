@@ -79,6 +79,14 @@ spec:
       main:
         enabled: true
         className: nginx
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/icon: radarr.png
+          gethomepage.dev/name: Radarr
+          gethomepage.dev/widget.type: radarr
+          gethomepage.dev/group: Media
+          gethomepage.dev/widget.url: http://radarr.media.svc.cluster.local:7878
+          gethomepage.dev/widget.key: {{HOMEPAGE_VAR_RADARR_API_KEY}}
         hosts:
           - host: &host "radarr.${SECRET_DOMAIN}"
             paths:

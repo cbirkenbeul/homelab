@@ -45,28 +45,28 @@ data:
     #           username: {{HOMEPAGE_VAR_PBS_TOKEN_ID}}
     #           password: {{HOMEPAGE_VAR_PBS_TOKEN_SECRET}}
 
-    - Media:
-        - Radarr:
-            icon: radarr.png
-            href: https://radarr.${SECRET_DOMAIN}
-            widget:
-              type: radarr
-              url: https://radarr.${SECRET_DOMAIN}
-              key: {{HOMEPAGE_VAR_RADARR_API_KEY}}
-        - Sonarr:
-            icon: sonarr.png
-            href: https://sonarr.${SECRET_DOMAIN}
-            widget:
-              type: sonarr
-              url: https://sonarr.${SECRET_DOMAIN}
-              key: {{HOMEPAGE_VAR_SONARR_API_KEY}}
-        - Jellyfin:
-            icon: jellyfin.png
-            href: https://jellyfin.${SECRET_DOMAIN}
-            widget:
-              type: jellyfin
-              url: https://jellyfin.${SECRET_DOMAIN}
-              key: {{HOMEPAGE_VAR_JELLYFIN_API_KEY}}
+    # - Media:
+    #     - Radarr:
+    #         icon: radarr.png
+    #         href: https://radarr.${SECRET_DOMAIN}
+    #         widget:
+    #           type: radarr
+    #           url: https://radarr.${SECRET_DOMAIN}
+    #           key: {{HOMEPAGE_VAR_RADARR_API_KEY}}
+    #     - Sonarr:
+    #         icon: sonarr.png
+    #         href: https://sonarr.${SECRET_DOMAIN}
+    #         widget:
+    #           type: sonarr
+    #           url: https://sonarr.${SECRET_DOMAIN}
+    #           key: {{HOMEPAGE_VAR_SONARR_API_KEY}}
+    #     - Jellyfin:
+    #         icon: jellyfin.png
+    #         href: https://jellyfin.${SECRET_DOMAIN}
+    #         widget:
+    #           type: jellyfin
+    #           url: https://jellyfin.${SECRET_DOMAIN}
+    #           key: {{HOMEPAGE_VAR_JELLYFIN_API_KEY}}
 
     # - Netzwerk:
     #     - Pi-Hole:
@@ -94,9 +94,14 @@ data:
     headerStyle: boxedWidgets
     target: _blank
     layout:
-      style: row
-      columns: 3
-      icon: mdi-download-circle
+      Home:
+        style: row
+        columns: 3
+        icon: mdi-download-circle
+      Media:
+        style: row
+        columns: 3
+        icon: mdi-download-circle
     quicklaunch:
       searchDescription: true
       hideInternetSearch: true
