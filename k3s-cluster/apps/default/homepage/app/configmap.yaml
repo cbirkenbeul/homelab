@@ -27,31 +27,23 @@ data:
 
   services.yaml: |
     ---
-    - Infrastruktur:
-        - Proxmox:
-            icon: proxmox.png
-            href: https://pve01.${SECRET_DOMAIN}:8006
-            widget:
-              type: proxmox
-              url: https://pve01.${SECRET_DOMAIN}:8006
-              username: {{HOMEPAGE_VAR_PROXMOX_TOKEN_ID}}
-              password: {{HOMEPAGE_VAR_PROXMOX_TOKEN_SECRET}}
-        - Proxmox Backup:
-            icon: proxmox.png
-            href: https://pbs01.${SECRET_DOMAIN}:8007
-            widget:
-              type: proxmoxbackupserver
-              url: https://pbs01.${SECRET_DOMAIN}:8007
-              username: {{HOMEPAGE_VAR_PBS_TOKEN_ID}}
-              password: {{HOMEPAGE_VAR_PBS_TOKEN_SECRET}}
-
-    - Heim Automatisierung:
-        - EVCC:
-            icon: mdi-ev-station
-            href: https://evcc.${SECRET_DOMAIN}
-            widget:
-              type: evcc
-              url: https://evcc.${SECRET_DOMAIN}
+    # - Infrastruktur:
+    #     - Proxmox:
+    #         icon: proxmox.png
+    #         href: https://pve01.${SECRET_DOMAIN}:8006
+    #         widget:
+    #           type: proxmox
+    #           url: https://pve01.${SECRET_DOMAIN}:8006
+    #           username: {{HOMEPAGE_VAR_PROXMOX_TOKEN_ID}}
+    #           password: {{HOMEPAGE_VAR_PROXMOX_TOKEN_SECRET}}
+    #     - Proxmox Backup:
+    #         icon: proxmox.png
+    #         href: https://pbs01.${SECRET_DOMAIN}:8007
+    #         widget:
+    #           type: proxmoxbackupserver
+    #           url: https://pbs01.${SECRET_DOMAIN}:8007
+    #           username: {{HOMEPAGE_VAR_PBS_TOKEN_ID}}
+    #           password: {{HOMEPAGE_VAR_PBS_TOKEN_SECRET}}
 
     - Media:
         - Radarr:
@@ -76,23 +68,23 @@ data:
               url: https://jellyfin.${SECRET_DOMAIN}
               key: {{HOMEPAGE_VAR_JELLYFIN_API_KEY}}
 
-    - Netzwerk:
-        - Pi-Hole:
-            icon: pi-hole.png
-            href: http://192.168.10.2/admin
-            widget:
-              type: pihole
-              url: http://192.168.10.2
-              key: {{HOMEPAGE_VAR_PIHOLE_KEY}}
+    # - Netzwerk:
+    #     - Pi-Hole:
+    #         icon: pi-hole.png
+    #         href: http://192.168.10.2/admin
+    #         widget:
+    #           type: pihole
+    #           url: http://192.168.10.2
+    #           key: {{HOMEPAGE_VAR_PIHOLE_KEY}}
 
-    - Stuff:
-        - Ghostfolio:
-            icon: ghostfolio.png
-            href: https://ghostfolio.${SECRET_DOMAIN}
-            widget:
-              type: ghostfolio
-              url: https://ghostfolio.${SECRET_DOMAIN}
-              key: {{HOMEPAGE_VAR_GHOSTFOLIO_KEY}}
+    # - Stuff:
+    #     - Ghostfolio:
+    #         icon: ghostfolio.png
+    #         href: https://ghostfolio.${SECRET_DOMAIN}
+    #         widget:
+    #           type: ghostfolio
+    #           url: https://ghostfolio.${SECRET_DOMAIN}
+    #           key: {{HOMEPAGE_VAR_GHOSTFOLIO_KEY}}
 
   settings.yaml: |
     ---
