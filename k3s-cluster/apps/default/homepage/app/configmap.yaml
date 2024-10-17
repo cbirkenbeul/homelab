@@ -94,9 +94,9 @@ data:
     headerStyle: boxedWidgets
     target: _blank
     layout:
-      self hosted:
-        style: row
-        columns: 4
+      style: row
+      columns: 3
+      icon: mdi-download-circle
     quicklaunch:
       searchDescription: true
       hideInternetSearch: true
