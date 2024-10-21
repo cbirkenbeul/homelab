@@ -31,9 +31,9 @@ spec:
     cluster:
       name: home-cluster
       id: 1
-    containerRuntime:
-      integration: containerd
-      socketPath: /var/run/k3s/containerd/containerd.sock
+    # containerRuntime:
+    #   integration: containerd
+    #   socketPath: /var/run/k3s/containerd/containerd.sock
     hubble:
       enabled: true
       metrics:
