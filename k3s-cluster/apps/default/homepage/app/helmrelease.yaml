@@ -70,8 +70,9 @@ spec:
 
     persistence:
       config:
+        enabled: true
         type: configMap
-        name: *config
+        name: *configmap
         globalMounts:
           - subPath: bookmarks.yaml
             path: /app/config/bookmarks.yaml
