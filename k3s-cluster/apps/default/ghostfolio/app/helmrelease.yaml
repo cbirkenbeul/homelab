@@ -30,7 +30,7 @@ spec:
   dependsOn:
     - name: ingress-nginx
       namespace: networking
-    - name: redis
+    - name: dragonfly-operator
       namespace: database
   values:
     controllers:
