@@ -28,6 +28,7 @@ spec:
     keepHistory: false
   dependsOn:
     - name: dragonfly-operator
+      namespace: database
   values:
     defaultPodOptions:
       topologySpreadConstraints:
