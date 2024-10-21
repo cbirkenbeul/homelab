@@ -48,7 +48,7 @@ spec:
               tag: 5.12.2.9335
             env:
               TZ: ${TIMEZONE}
-              RADARR__PORT: &port 7878
+              RADARR__PORT: &port 80
             envFrom:
               - secretRef:
                   name: radarr-secret
@@ -85,7 +85,7 @@ spec:
           gethomepage.dev/name: Radarr
           gethomepage.dev/widget.type: radarr
           gethomepage.dev/group: Media
-          gethomepage.dev/widget.url: http://radarr.media:7878
+          gethomepage.dev/widget.url: http://radarr.media
           gethomepage.dev/widget.key: "{{ `{HOMEPAGE_VAR_RADARR_API_KEY}` }}"
         hosts:
           - host: &host "radarr.${SECRET_DOMAIN}"
