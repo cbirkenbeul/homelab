@@ -74,11 +74,13 @@ spec:
         className: nginx
         annotations:
           external-dns.alpha.kubernetes.io/target: ingress.${SECRET_DOMAIN}
-          hajimari.io/icon: simple-icons:immich
-          hajimari.io/appName: Immich
-          # nignx.ingress.kubernetes.io/force-ssl-redirect: "true"
-          # nginx.ingress.kubernetes.io/proxy-body-size: "1g"
-          # nginx.ingress.kubernetes.io/upstream-hash-by: "$client_ip"
+#           gethomepage.dev/enabled: "true"
+#           gethomepage.dev/icon: immich.png
+#           gethomepage.dev/name: Immich
+# #          gethomepage.dev/widget.type: sonarr
+#           gethomepage.dev/group: Home
+# #          gethomepage.dev/widget.url: http://sonarr.media.svc.cluster.local:8989
+# #          gethomepage.dev/widget.key: {{HOMEPAGE_VAR_SONARR_API_KEY}}
         hosts:
           - host: &host photos.${SECRET_DOMAIN}
             paths:

@@ -30,8 +30,8 @@ spec:
       homepage:
         pod:
           annotations:
-            configmap.reloader.stakater.com/reload: &config homepage-config
-            reloader.stakater.com/auto: "true"
+          secret.reloader.stakater.com/reload: &secret homepage-secret
+          configmap.reloader.stakater.com/reload: &configmap homepage-config
         containers:
           app:
             image:
