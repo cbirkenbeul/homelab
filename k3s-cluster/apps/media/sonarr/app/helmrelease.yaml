@@ -94,7 +94,7 @@ spec:
           gethomepage.dev/widget.type: sonarr
           gethomepage.dev/group: Media
           gethomepage.dev/widget.url: http://sonarr.media.svc.cluster.local:8989
-          gethomepage.dev/widget.key: "{{ `{HOMEPAGE_VAR_SONARR_API_KEY}` }}"
+          gethomepage.dev/widget.key: '{{ "{{HOMEPAGE_VAR_SONARR_API_KEY}}" }}'
         hosts:
           - host: &host "sonarr.${SECRET_DOMAIN}"
             paths:
