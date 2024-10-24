@@ -82,7 +82,7 @@ spec:
           gethomepage.dev/widget.type: immich
           gethomepage.dev/widget.version: 2
           gethomepage.dev/widget.url: http://immich-server:2283
-          gethomepage.dev/widget.key: {{HOMEPAGE_VAR_HOMEPAGE_API_KEY}}
+          gethomepage.dev/widget.key: '{{ "{{HOMEPAGE_VAR_IMMICH_API_KEY}}" }}'
         hosts:
           - host: &host photos.${SECRET_DOMAIN}
             paths:
