@@ -74,6 +74,15 @@ spec:
     ingress:
       app:
         className: "nginx"
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: Home
+          gethomepage.dev/name: Ghostfolio
+          gethomepage.dev/icon: mealie.png
+          gethomepage.dev/widget.type: ghostfolio
+          gethomepage.dev/widget.url: http://ghostfolio:3333
+          gethomepage.dev/widget.key: '{{ "{{HOMEPAGE_VAR_GHOSTFOLIO_API_KEY}}" }}'
+
         hosts:
           - host: &host "ghostfolio.${SECRET_DOMAIN}"
             paths:
