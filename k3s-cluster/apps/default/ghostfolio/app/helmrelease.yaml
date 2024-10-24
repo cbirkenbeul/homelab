@@ -81,7 +81,7 @@ spec:
           gethomepage.dev/icon: ghostfolio.png
           gethomepage.dev/widget.type: ghostfolio
           gethomepage.dev/widget.url: http://ghostfolio:3333
-          gethomepage.dev/widget.key: '{{ "{{HOMEPAGE_VAR_GHOSTFOLIO_API_KEY}}" }}'
+          gethomepage.dev/widget.key: '{{ "{{HOMEPAGE_VAR_GHOSTFOLIO_KEY}}" }}'
 
         hosts:
           - host: &host "ghostfolio.${SECRET_DOMAIN}"
