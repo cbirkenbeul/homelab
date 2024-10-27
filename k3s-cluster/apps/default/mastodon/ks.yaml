@@ -7,7 +7,6 @@ metadata:
   labels:
     substitution.flux.home.arpa/enabled: "true"
 spec:
-  targetNamespace: default
   commonMetadata:
     labels:
       app.kubernetes.io/name: *appname
@@ -17,7 +16,7 @@ spec:
   prune: true
   sourceRef:
     kind: GitRepository
-    name: homelab-k8s
+    name: home-kubernetes
   wait: true
   postBuild:
     substitute:
