@@ -1,4 +1,0 @@
-mkdocs-git-revision-date-localized-plugin
-mkdocs-material
-mkdocs-autolinks-plugin
-mkdocs-diagrams
