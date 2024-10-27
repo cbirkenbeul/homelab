@@ -28,10 +28,8 @@ spec:
   values:
     controllers:
       homepage:
-        pod:
-          annotations:
-          secret.reloader.stakater.com/reload: &secret homepage-secret
-          configmap.reloader.stakater.com/reload: &configmap homepage-config
+        annotations:
+          reloader.stakater.com/auto: "true"
         containers:
           app:
             image:
