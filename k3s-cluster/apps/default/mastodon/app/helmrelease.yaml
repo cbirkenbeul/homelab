@@ -81,17 +81,6 @@ spec:
         ports:
           http: 80
 
-      sidecars:
-        initContainers:
-          01-init-db:
-            image:
-              repository: ghcr.io/onedr0p/postgres-init
-              tag: 16.3
-              pullPolicy: IfNotPresent
-            envFrom:
-              - secretRef:
-                  name: mastodon-secret
-
     sidekiq:
       replicaCount: 1
       resources:
