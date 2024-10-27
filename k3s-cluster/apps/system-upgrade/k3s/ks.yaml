@@ -20,7 +20,3 @@ spec:
   interval: 30m
   retryInterval: 1m
   timeout: 5m
-  postBuild:
-    substitute:
-      # renovate: datasource=github-releases depName=k3s-io/k3s
-      KUBE_VERSION: v1.31.0+k3s1
