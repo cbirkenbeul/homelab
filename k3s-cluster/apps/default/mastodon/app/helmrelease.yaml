@@ -36,8 +36,8 @@ spec:
       tag: 4.3.1
 
     environment: production
-    adminUser: "peter"
-    adminEmail: "peter@${SECRET_DOMAIN}"
+    adminUser: "mail"
+    adminEmail: "mail@${SECRET_DOMAIN}"
 
     existingSecret: "mastodon-secret"
 
