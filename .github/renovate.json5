@@ -11,7 +11,7 @@
     ":timezone(Europe/Berlin)",
     "github>cbirkenbeul/homelab//.github/renovate/autoMerge.json5",
     "github>cbirkenbeul/homelab//.github/renovate/commitMessage.json5",
-    "github>cbirkenbeul/homelab//.github/renovate/custonManagers.json5",
+    "github>cbirkenbeul/homelab//.github/renovate/customManagers.json5",
     "github>cbirkenbeul/homelab//.github/renovate/grafanaDashboards.json5",
     "github>cbirkenbeul/homelab//.github/renovate/groups.json5",
     "github>cbirkenbeul/homelab//.github/renovate/labels.json5",
