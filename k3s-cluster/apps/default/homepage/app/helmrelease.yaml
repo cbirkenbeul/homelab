@@ -70,7 +70,7 @@ spec:
       config:
         enabled: true
         type: configMap
-        name: *configmap
+        name: homepage-config
         globalMounts:
           - subPath: bookmarks.yaml
             path: /app/config/bookmarks.yaml
