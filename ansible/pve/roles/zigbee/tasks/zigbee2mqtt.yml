@@ -30,7 +30,7 @@
       TZ: "{{ TZ }}"
     volumes:
       - "{{ docker_dir }}/zigbee2mqtt/data:/app/data"
-      - /rund/udev:/run/udev:ro
+      - /run/udev:/run/udev:ro
     networks:
       - name: homelab
     devices:
