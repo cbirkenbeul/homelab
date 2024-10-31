@@ -39,8 +39,12 @@ data:
       Home:
         style: row
         columns: 3
-        icon: mdi-download-circle
+        icon: mdi-home
       Media:
+        style: row
+        columns: 3
+        icon: mdi-multimedia
+      Monitoring:
         style: row
         columns: 3
         icon: mdi-download-circle

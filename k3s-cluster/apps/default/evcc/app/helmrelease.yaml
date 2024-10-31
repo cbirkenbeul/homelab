@@ -57,7 +57,7 @@ spec:
         className: nginx
         annotations:
           gethomepage.dev/enabled: "true"
-          gethomepage.dev/icon: evcc.png
+          gethomepage.dev/icon: sh-evcc
           gethomepage.dev/name: EVCC
           gethomepage.dev/widget.type: evcc
           gethomepage.dev/group: Home
