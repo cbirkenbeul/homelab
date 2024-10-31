@@ -175,7 +175,7 @@ endpoints:
 
   - name: redis
     group: database
-    url: "tcp://redis.database.svc.cluster.local:6379"
+    url: "tcp://dragonfly.database.svc.cluster.local:6379"
     interval: 1m
     ui:
       hide-hostname: true
