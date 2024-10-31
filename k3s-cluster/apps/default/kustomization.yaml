@@ -13,6 +13,7 @@ resources:
   - ./ollama/ks.yaml
   - ./openwebui/ks.yaml
   - ./paperless-ngx/ks.yaml
+  - ./postiz/ks.yaml
   - ./shlink/ks.yaml
   - ./stirling-pdf/ks.yaml
   - ./teslamate/ks.yaml
