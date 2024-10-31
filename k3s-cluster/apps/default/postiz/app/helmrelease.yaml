@@ -27,7 +27,6 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    defaultPodOptions:
     controllers:
       postiz:
         annotations:
