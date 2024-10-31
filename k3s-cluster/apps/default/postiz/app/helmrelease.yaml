@@ -50,7 +50,6 @@ spec:
               MAIN_URL: "https://postiz.${SECRET_DOMAIN}"
               FRONTEND_URL: "https://postiz.${SECRET_DOMAIN}"
               NEXT_PUBLIC_BACKEND_URL: "https://postiz.${SECRET_DOMAIN}/api"
-              DATABASE_URL: "postgresql://postiz-user:postiz-password@postiz-postgres:5432/postiz-db-local"
               REDIS_URL: "redis://dragonfly.database.svc.cluster.local:6379"
               BACKEND_INTERNAL_URL: "http://localhost:3000"
               IS_GENERAL: "true" # Required for self-hosting.
