@@ -82,6 +82,12 @@ spec:
       main:
         enabled: true
         className: nginx
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/icon: sh-z-wave-js-ui
+          gethomepage.dev/name: Z-Wave UI
+          gethomepage.dev/group: Home
+
         hosts:
           - host: &host "zwave.${SECRET_DOMAIN}"
             paths:

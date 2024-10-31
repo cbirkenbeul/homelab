@@ -75,14 +75,10 @@ spec:
         className: nginx
         annotations:
           external-dns.alpha.kubernetes.io/target: ingress.${SECRET_DOMAIN}
-          # gethomepage.dev/enabled: "true"
-          # gethomepage.dev/icon: immich.png
-          # gethomepage.dev/name: Immich
-          # gethomepage.dev/group: Home
-          # gethomepage.dev/widget.type: immich
-          # gethomepage.dev/widget.version: 2
-          # gethomepage.dev/widget.url: http://immich-server:2283
-          # gethomepage.dev/widget.key: '{{ "{{HOMEPAGE_VAR_IMMICH_API_KEY}}" }}'
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/icon: sh-immich
+          gethomepage.dev/name: Immich
+          gethomepage.dev/group: selfhosted
         hosts:
           - host: &host photos.${SECRET_DOMAIN}
             paths:

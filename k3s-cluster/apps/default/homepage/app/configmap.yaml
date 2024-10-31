@@ -40,6 +40,10 @@ data:
         style: row
         columns: 3
         icon: mdi-home
+      selfhosted:
+        style: row
+        columns: 3
+        icon: mdi-home
       Media:
         style: row
         columns: 3

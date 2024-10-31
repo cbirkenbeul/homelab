@@ -63,7 +63,11 @@ spec:
         className: "nginx"
         annotations:
           external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
-          hajimari.io/icon: mdi:rss
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/icon: sh-wallabag
+          gethomepage.dev/name: Wallabag
+          gethomepage.dev/group: selfhosted
+
         hosts:
           - host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
             paths:
