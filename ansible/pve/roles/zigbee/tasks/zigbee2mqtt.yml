@@ -20,7 +20,7 @@
 - name: Create zigbee2mqtt container
   community.docker.docker_container:
     name: zigbee2mqtt
-    image: ghcr.io/koenkk/zigbee2mqtt:1.40.2
+    image: ghcr.io/koenkk/zigbee2mqtt:1.41.0
     pull: true
     state: started
     recreate: true
