@@ -8,6 +8,8 @@ resources:
   - ./helmrelease.yaml
   - ./rbac.yaml
   - ./configmap.yaml
+  - ../../../../templates/gatus/guarded
+
 generatorOptions:
   disableNameSuffixHash: true
   annotations:
