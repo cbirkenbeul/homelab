@@ -17,4 +17,4 @@ spec:
   timeout: 15m
   postBuild:
     substitute:
-      APP: *app
+      APP: photos
