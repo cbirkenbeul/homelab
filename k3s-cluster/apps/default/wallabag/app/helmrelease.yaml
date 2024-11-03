@@ -42,7 +42,7 @@ spec:
           app:
             image:
               repository: wallabag/wallabag
-              tag: 2.6.9
+              tag: 2.6.10
               pullPolicy: IfNotPresent
             env:
               SYMFONY__ENV__DOMAIN_NAME: https://wallabag.${SECRET_DOMAIN}
