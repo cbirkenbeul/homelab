@@ -18,6 +18,7 @@ resources:
   - ./k8s-gateway.yaml
   - ./metallb.yaml
   - ./metrics-server.yaml
+  - ./nextcloud.yaml
   - ./node-feature-discovery-charts.yaml
   - ./openebs.yaml
   - ./piraeus.yaml
