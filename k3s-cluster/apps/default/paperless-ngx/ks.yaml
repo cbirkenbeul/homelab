@@ -23,5 +23,6 @@ spec:
   timeout: 3m
   postBuild:
     substitute:
-      APP: paperless
+      APP: *app
+      GATUS_SUBDOMAIN: paperless
       VOLSYNC_CAPACITY: 10Gi
