@@ -89,9 +89,9 @@ spec:
         passwordKey: INIT_POSTGRES_PASS
     ingress:
       enabled: true
-      className: "nginx"
+      className: nginx
       annotations:
-        external-dns.alpha.kubernetes.io/target: external.${SECRET_DOMAIN}
+        external-dns.alpha.kubernetes.io/target: ingress.${SECRET_DOMAIN}
         nginx.ingress.kubernetes.io/proxy-body-size: "10G"
         nginx.ingress.kubernetes.io/proxy-buffering: "off"
         nginx.ingress.kubernetes.io/proxy-request-buffering: "off"
