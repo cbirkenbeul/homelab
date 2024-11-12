@@ -5,7 +5,7 @@ metadata:
   name: &app mastodon
   namespace: default
 spec:
-  interval: 30m
+  interval: 15m
   chart:
     spec:
       chart: *app
@@ -16,7 +16,6 @@ spec:
         namespace: flux-system
       interval: 30m
   maxHistory: 2
-  timeout: 30m
   install:
     createNamespace: true
     remediation:
