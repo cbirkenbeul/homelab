@@ -11,7 +11,8 @@ spec:
     labels:
       app.kubernetes.io/name: *app
   interval: 30m
-  timeout: 25m
+  retryInterval: 1m
+  timeout: 3m
   path: ./k3s-cluster/apps/default/mastodon/app
   prune: true
   sourceRef:
