@@ -150,25 +150,25 @@ spec:
       password: ""
 
     elasticsearch:
-      enabled: true
-      sysctlImage:
-        enabled: true
-      security:
-        enabled: false
-        existingSecret: ""
-        tls:
-          restEncryption: false
-      master:
-        replicaCount: 1
-      coordinating:
-        replicaCount: 1
-      data:
-        replicaCount: 1
-      ingest:
-        replicaCount: 1
-      service:
-        ports:
-          restAPI: 9200
+      enabled: false
+      # sysctlImage:
+      #   enabled: true
+      # security:
+      #   enabled: false
+      #   existingSecret: ""
+      #   tls:
+      #     restEncryption: false
+      # master:
+      #   replicaCount: 1
+      # coordinating:
+      #   replicaCount: 1
+      # data:
+      #   replicaCount: 1
+      # ingest:
+      #   replicaCount: 1
+      # service:
+      #   ports:
+      #     restAPI: 9200
 
     redis:
       enabled: false
