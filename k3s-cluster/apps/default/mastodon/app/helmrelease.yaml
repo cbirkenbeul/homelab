@@ -137,7 +137,7 @@ spec:
         createAdmin: false
 
     externalDatabase:
-      host: "postgres16-rw.database"
+      host: "postgres16-v1-rw.database.svc.cluster.local"
       port: 5432
       user: mastodon-user
       database: *app
