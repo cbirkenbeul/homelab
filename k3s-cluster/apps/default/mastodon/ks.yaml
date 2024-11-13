@@ -24,4 +24,3 @@ spec:
     substitute:
       APP: mastodon-config
       VOLSYNC_CAPACITY: 50Gi
-      VOLSYNC_ACCESSMODES: ReadWriteMany
