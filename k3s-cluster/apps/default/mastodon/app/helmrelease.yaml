@@ -39,7 +39,7 @@ spec:
               pullPolicy: IfNotPresent
             envFrom:
               - secretRef:
-                  name: mastodon
+                  name: mastodon-secret
         containers:
           mastodon:
             image:
@@ -72,7 +72,7 @@ spec:
               S3_ENABLED: false
             envFrom:
               - secretRef:
-                  name: mastodon
+                  name: mastodon-secret
       
     service:
       app:
