@@ -1,180 +1,104 @@
 ---
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/helm.toolkit.fluxcd.io/helmrelease_v2beta2.json
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: &app mastodon
   namespace: default
 spec:
-  interval: 15m
+  interval: 30m
   chart:
     spec:
-      chart: *app
-      version: 9.0.4
+      chart: app-template
+      version: 3.5.1
       sourceRef:
         kind: HelmRepository
-        name: bitnami
+        name: bjw-s
         namespace: flux-system
-      interval: 30m
-  maxHistory: 2
   install:
-    createNamespace: true
     remediation:
       retries: 3
   upgrade:
     cleanupOnFail: true
     remediation:
+      strategy: uninstall
       retries: 3
   uninstall:
     keepHistory: false
   values:
-    global:
-      storageClass: "ceph-block"
+    controllers:
+      mastodon:
+        annotations:
+          reloader.stakater.com/auto: "true"
 
-    image:
-      registry: docker.io
-      repository: bitnami/mastodon
-      tag: 4.3.1
-
-    environment: production
-    adminUser: "mail"
-    adminEmail: "mail@${SECRET_DOMAIN}"
-
-    existingSecret: "mastodon-secret"
-
-    enableSearches: true
-    enableS3: false
-    useSecureWebSocket: true
-    local_https: true
-    localDomain: "toot.${SECRET_DOMAIN}"
-    webDomain: "toot.${SECRET_DOMAIN}"
-    defaultLocale: en
-
-    smtp:
-      port: 8025
-      from_address: "notifications@${SECRET_DOMAIN}"
-      domain: "${SECRET_DOMAIN}"
-      delivery_method: smtp
-      openssl_verify_mode: none
-      enable_starttls_auto: true
-      tls: false
-      auth_method: none
-      existingSecret: "mastodon-secret"
-      existingSecretLoginKey: "SMTP_LOGIN"
-      existingSecretPasswordKey: "SMTP_PASSWORD"
-      existingSecretServerKey: "SMTP_SERVER"
-
-    web:
-      replicaCount: 1
-      containerPorts:
-        http: 3000
-      resources:
-        limits:
-          memory: 2048Mi
-        requests:
-          memory: 500Mi
-      podAnnotations:
-        reloader.stakater.com/auto: "true"
-
-      service:
-        type: ClusterIP
+        initContainers:
+          init-db:
+            image:
+              repository: ghcr.io/onedr0p/postgres-init
+              tag: "16.4"
+              pullPolicy: IfNotPresent
+            envFrom:
+              - secretRef:
+                  name: mastodon
+        containers:
+          mastodon:
+            image:
+              repository: lscr.io/linuxserver/mastodon
+              tag: v4.3.1
+            env:
+              PUID: 1000
+              PGID: 1000
+              TZ: Europe/Berlin
+              LOCAL_DOMAIN: ${SECRET_DOMAIN}
+              REDIS_HOST: dragonfly.database.svc.cluster.local
+              REDIS_PORT: 6379
+              DB_HOST: postgres16-v1-rw.database.svc.cluster.local
+              DB_USER: mastodon
+              DB_NAME: mastodon
+              DB_PORT: 5432
+              ES_ENABLED: false
+              ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY: 
+              ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY: 
+              ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT: 
+              SECRET_KEY_BASE: 
+              OTP_SECRET: 
+              VAPID_PRIVATE_KEY: 
+              VAPID_PUBLIC_KEY: 
+              SMTP_SERVER: mail.example.com
+              SMTP_PORT: 25
+              SMTP_LOGIN: 
+              SMTP_PASSWORD: 
+              SMTP_FROM_ADDRESS: notifications@example.com
+              S3_ENABLED: false
+            envFrom:
+              - secretRef:
+                  name: mastodon
+      
+    service:
+      app:
+        controller: *app
         ports:
-          http: 80
+          http:
+            port: 80
 
-    sidekiq:
-      replicaCount: 1
-      resources:
-        limits:
-          memory: 2048Mi
-        requests:
-          memory: 500Mi
-      podAnnotations:
-        reloader.stakater.com/auto: "true"
-
-    streaming:
-      replicaCount: 1
-      containerPorts:
-        http: 8080
-      resources:
-        limits:
-          memory: 1024Mi
-        requests:
-          memory: 500Mi
-
-      podAnnotations:
-        reloader.stakater.com/auto: "true"
-
-      service:
-        type: ClusterIP
-        ports:
-          http: 80
-
-    tootctlMediaManagement:
-      enabled: true
-      removeAttachments: true
-      removeAttachmentsDays: 7
-      removeCustomEmoji: false
-      removePreviewCards: true
-      removePreviewCardsDays: 30
-      removeAvatars: true
-      removeAvatarsDays: 30
-      removeHeaders: true
-      removeHeadersDays: 30
-      removeOrphans: true
-      includeFollows: false
-      cronSchedule: "14 3 * * *"
-      failedJobsHistoryLimit: 3
-      successfulJobsHistoryLimit: 1
-      concurrencyPolicy: Allow
+    ingress:
+      app:
+        className: nginx
+        annotations:
+          hajimari.io/icon: mdi:link
+        hosts:
+          - host: &host "toot.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                service:
+                  identifier: app
+                  port: http
+        tls:
+          - hosts:
+              - *host
 
     persistence:
-      enabled: true
-      existingClaim: *app
-      mountPath: /opt/bitnami/mastodon/public/system
-
-    initJob:
-      migrateAndCreateAdmin:
-        createAdmin: false
-
-    externalDatabase:
-      host: "postgres16-v1-rw.database.svc.cluster.local"
-      port: 5432
-      user: mastodon-user
-      database: *app
-      existingSecret: "mastodon-secret"
-      existingSecretPasswordKey: "DATABASE_PASSWORD"
-
-    externalRedis:
-      host: "dragonfly.databases.svc.cluster.local"
-      port: 6379
-      password: ""
-
-    elasticsearch:
-      enabled: false
-      # sysctlImage:
-      #   enabled: true
-      # security:
-      #   enabled: false
-      #   existingSecret: ""
-      #   tls:
-      #     restEncryption: false
-      # master:
-      #   replicaCount: 1
-      # coordinating:
-      #   replicaCount: 1
-      # data:
-      #   replicaCount: 1
-      # ingest:
-      #   replicaCount: 1
-      # service:
-      #   ports:
-      #     restAPI: 9200
-
-    redis:
-      enabled: false
-    postgresql:
-      enabled: false
-    minio:
-      enabled: false
-
-    apache:
-      enabled: false
+      config:
+        existingClaim: *app
+        globalMounts:
+          - path: /config
