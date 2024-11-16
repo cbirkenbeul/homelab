@@ -39,7 +39,7 @@ spec:
           app:
             image:
               repository: jellyfin/jellyfin
-              tag: 10.10.1
+              tag: 10.10.2
             env:
               TZ: ${TIMEZONE}
               #JELLYFIN_PublishedServerUrl: &loadBalancerIP ${METALLB_JELLYFIN}
