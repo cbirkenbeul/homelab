@@ -216,7 +216,7 @@ endpoints:
       - type: pushover
   - name: Minio
     group: netcup
-    url: "https://s3.teqqnet.de"
+    url: "https://minio.teqqnet.de"
     interval: 5m
     conditions:
       - "[STATUS] == 200"
