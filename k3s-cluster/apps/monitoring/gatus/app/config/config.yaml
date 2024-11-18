@@ -206,33 +206,6 @@ endpoints:
       - "[STATUS] == 200"
     alerts:
       - type: pushover
-  - name: Umami
-    group: netcup
-    url: "https://umami.teqqnet.de"
-    interval: 5m
-    conditions:
-      - "[STATUS] == 200"
-    alerts:
-      - type: pushover
-  - name: Minio
-    group: netcup
-    url: "https://minio.teqqnet.de"
-    interval: 5m
-    conditions:
-      - "[STATUS] == 200"
-    alerts:
-      - type: pushover
-  - name: Shlink
-    group: netcup
-    url: "https://s.teqqy.de"
-    interval: 5m
-    conditions:
-      - "[STATUS] == 200"
-    alerts:
-      - type: pushover
-
-
-
 
   ## Mailserver
   - name: Admin Console
