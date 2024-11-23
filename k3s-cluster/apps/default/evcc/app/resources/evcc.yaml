@@ -26,7 +26,7 @@ modbusproxy:
 meters:
   - name: plenticore
     type: template
-    template: kostal-plenticore
+    template: kostal-plenticore-gen2
     usage: pv
     modbus: tcpip
     id: 71
@@ -50,7 +50,7 @@ meters:
 
   - name: battery
     type: template
-    template: kostal-plenticore
+    template: kostal-plenticore-gen2
     usage: battery
     modbus: tcpip
     id: 71
