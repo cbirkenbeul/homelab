@@ -34,7 +34,7 @@ spec:
           main:
             image:
               repository: evcc/evcc
-              tag: 0.131.7
+              tag: 0.131.8
             envFrom:
               - secretRef:
                   name: evcc-secret
