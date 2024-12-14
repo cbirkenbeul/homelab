@@ -17,5 +17,6 @@
       "description": ["Custom versioning for Postiz"],
       "matchDatasources": ["github-releases"],
       "versioning": "regex:^amd64-(?<major>[0-9]+)$",
+    }
   ]
 }
