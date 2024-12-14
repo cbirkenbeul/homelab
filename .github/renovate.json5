@@ -52,6 +52,15 @@
       "datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)( registryUrl=(?<registryUrl>\\S+))?\n.*?\"(?<currentValue>.*)\"\n"
     ],
     "datasourceTemplate": "{{#if datasource}}{{{datasource}}}{{else}}github-releases{{/if}}"
+  },
+  {
+    "fileMatch": ["^.*\\.yaml$", "^.*\\.yml$", "^.*\\.json$"],
+    "matchStrings": [
+      "amd64-(?<currentValue>[0-9]+)"
+    ],
+    "depNameTemplate": "custom-version",
+    "datasourceTemplate": "docker",
+    "versioning": "regex:^amd64-(?<major>[0-9]+)$"
   }
 ]
 }
