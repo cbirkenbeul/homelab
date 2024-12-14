@@ -12,11 +12,6 @@
       "matchDatasources": ["github-releases"],
       "versioning": "regex:^v(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)(?<compatibility>\\+k3s)(?<build>\\d+)$",
       "matchPackagePatterns": ["k3s"]
-    },
-    {
-      "description": ["Custom versioning for Postiz"],
-      "matchDatasources": ["github-releases"],
-      "versioning": "regex:^amd64-(?<major>[0-9]+)$",
     }
   ]
 }
