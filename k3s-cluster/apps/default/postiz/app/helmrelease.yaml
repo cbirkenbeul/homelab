@@ -45,7 +45,7 @@ spec:
           app:
             image:
               repository: ghcr.io/gitroomhq/postiz-app
-              tag: amd64-1731494298
+              tag: amd64-1731494298@sha256:1be034809227ab48588a58201fb9e258a6772312aa68effcae83dcf70fa905b7
             env:
               MAIN_URL: "https://postiz.${SECRET_DOMAIN}"
               FRONTEND_URL: "https://postiz.${SECRET_DOMAIN}"
