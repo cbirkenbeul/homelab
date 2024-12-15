@@ -5,7 +5,7 @@
       "description": ["Loose versioning for non-semver packages"],
       "matchDatasources": ["docker"],
       "versioning": "loose",
-      "matchPackagePatterns": ["plex"]
+      "matchPackagePatterns": ["plex", "positz", "postiz-app"]
     },
     {
       "description": ["Special config for postiz container"],
