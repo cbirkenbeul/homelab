@@ -4,7 +4,8 @@ kind: Plan
 metadata:
   name: controllers
 spec:
-  version: "v1.31.0+k3s1"
+  # renovate: datasource=github-releases depName=k3s-io/k3s
+  version: v1.31.0+k3s1
   upgrade:
     image: rancher/k3s-upgrade
   serviceAccountName: system-upgrade
@@ -36,7 +37,8 @@ kind: Plan
 metadata:
   name: workers
 spec:
-  version: "v1.31.0+k3s1"
+  # renovate: datasource=github-releases depName=k3s-io/k3s
+  version: v1.31.0+k3s1
   serviceAccountName: system-upgrade
   concurrency: 1
   nodeSelector:
