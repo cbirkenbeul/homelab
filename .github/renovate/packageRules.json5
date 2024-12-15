@@ -5,7 +5,13 @@
       "description": ["Loose versioning for non-semver packages"],
       "matchDatasources": ["docker"],
       "versioning": "loose",
-      "matchPackagePatterns": ["postiz-app"]
+      "matchPackagePatterns": ["plex"]
+    },
+    {
+      "description": ["Special config for postiz container"],
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["postiz-app"],
+      "versioning": "regex:^amd64-(?<number>[0-9]+)$"
     },
     {
       "description": ["Custom versioning for k3s"],
