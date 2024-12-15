@@ -5,7 +5,7 @@
       "description": ["Loose versioning for non-semver packages"],
       "matchDatasources": ["docker"],
       "versioning": "loose",
-      "matchPackagePatterns": ["postiz"]
+      "matchPackagePatterns": ["postiz-app"]
     },
     {
       "description": ["Custom versioning for k3s"],
