@@ -61,6 +61,8 @@ spec:
               PAPERLESS_ENABLE_HTTP_REMOTE_USER: "true"
               PAPERLESS_FILENAME_FORMAT: "{created_year}/{document_type}/{created_year}-{created_month}-{created_day}_{title}"
               PAPERLESS_FILENAME_FORMAT_REMOVE_NONE: "true"
+              PAPERLESS_CONSUMER_ENABLE_BARCODES: 1
+              PAPERLESS_CONSUMER_ENABLE_ASN_BARCODE: 1
             envFrom:
               - secretRef:
                   name: paperless-ngx-secret
