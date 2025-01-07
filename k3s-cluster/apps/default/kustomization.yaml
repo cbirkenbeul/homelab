@@ -13,6 +13,7 @@ resources:
   - ./nextcloud/ks.yaml
   - ./ollama/ks.yaml
   - ./openwebui/ks.yaml
+  - ./paperless-ai/ks.yaml
   - ./paperless-ngx/ks.yaml
   - ./postiz/ks.yaml
   - ./shlink/ks.yaml
