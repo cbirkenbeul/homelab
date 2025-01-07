@@ -73,7 +73,7 @@ spec:
 
     persistence:
       data:
-        existingClaim: paperless-ngx
+        existingClaim: paperless-ai
         globalMounts:
           - subPath: data
             path: /app/data
