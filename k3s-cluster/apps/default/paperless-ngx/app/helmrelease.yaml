@@ -59,7 +59,7 @@ spec:
               PAPERLESS_URL: https://paperless.casalani.de
               PAPERLESS_REDIS: redis://dragonfly.database.svc.cluster.local
               PAPERLESS_ENABLE_HTTP_REMOTE_USER: "true"
-              PAPERLESS_FILENAME_FORMAT: "{{ created_year }}/{{ document_type }}/{{ created_year }}-{{ created_month }}-{{ created_day }}_{{ title }}"
+              PAPERLESS_FILENAME_FORMAT: "{{ '{{ created_year }}/{{ document_type }}/{{ created_year }}-{{ created_month }}-{{ created_day }}_{{ title }} '}}"
               PAPERLESS_FILENAME_FORMAT_REMOVE_NONE: "true"
               PAPERLESS_CONSUMER_ENABLE_BARCODES: 1
               PAPERLESS_CONSUMER_ENABLE_ASN_BARCODE: 1
