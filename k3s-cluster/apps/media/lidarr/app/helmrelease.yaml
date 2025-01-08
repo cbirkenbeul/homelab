@@ -82,7 +82,7 @@ spec:
         annotations:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/icon: lidarr.png
-          gethomepage.dev/name: lidarr
+          gethomepage.dev/name: Lidarr
           gethomepage.dev/widget.type: lidarr
           gethomepage.dev/group: Media
           gethomepage.dev/widget.url: http://lidarr.media.svc.cluster.local:7878
