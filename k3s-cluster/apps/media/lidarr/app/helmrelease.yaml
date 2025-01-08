@@ -48,7 +48,7 @@ spec:
               tag: 2.4.3.4248
             env:
               TZ: ${TIMEZONE}
-              lidarr__PORT: &port 7878
+              lidarr__PORT: &port 8686
             envFrom:
               - secretRef:
                   name: lidarr-secret
