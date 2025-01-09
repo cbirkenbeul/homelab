@@ -16,5 +16,5 @@ spec:
       targetPort: 5432
   selector:
     #postgresql: postgres
-    cnpg.io/cluster: pgvecto
+    cnpg.io/cluster: postgres16-restore-test
     role: primary

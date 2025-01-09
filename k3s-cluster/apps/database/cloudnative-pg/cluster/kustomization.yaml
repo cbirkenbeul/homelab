@@ -9,6 +9,7 @@ resources:
   - ./scheduledbackup.yaml
   - ./prometheusrule.yaml
   - ./service.yaml
+  - ./postgres16-restore-test.yaml
 labels:
   - pairs:
       app.kubernetes.io/name: cloudnative-pg-cluster
