@@ -69,3 +69,10 @@ spec:
         ports:
           http:
             port: &port 11434
+
+    persistence:
+      config:
+        enabled: true
+        existingClaim: ollama
+        globalMounts:
+          - path: /root/.ollama
