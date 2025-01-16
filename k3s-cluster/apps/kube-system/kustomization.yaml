@@ -10,5 +10,6 @@ resources:
   - ./local-path/ks.yaml
   - ./metrics-server/ks.yaml
   - ./node-feature-discovery/ks.yaml
+  - ./reflector/ks.yaml
   - ./reloader/ks.yaml
   # - ./spegel/ks.yaml # Just for Talos
