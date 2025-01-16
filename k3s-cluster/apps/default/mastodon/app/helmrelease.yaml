@@ -80,7 +80,6 @@ spec:
       app:
         className: nginx
         annotations:
-          hajimari.io/icon: mdi:link
           external-dns.alpha.kubernetes.io/target: ingress.${SECRET_SOCIAL_DOMAIN}
         hosts:
           - host: &host "${SECRET_SOCIAL_DOMAIN}"
@@ -92,6 +91,7 @@ spec:
         tls:
           - hosts:
               - *host
+            secretName: ${SECRET_SOCIAL_DOMAIN/./-}-production-tls
 
     persistence:
       config:
