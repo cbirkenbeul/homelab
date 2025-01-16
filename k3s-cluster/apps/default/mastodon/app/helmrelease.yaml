@@ -91,7 +91,7 @@ spec:
         tls:
           - hosts:
               - *host
-            secretName: networking/${SECRET_SOCIAL_DOMAIN/./-}-production-tls
+            secretName: "networking/${SECRET_SOCIAL_DOMAIN/./-}-production-tls"
 
     persistence:
       config:
