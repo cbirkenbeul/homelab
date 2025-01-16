@@ -18,7 +18,11 @@ ingress:
 
   - hostname: "${SECRET_SOCIAL_DOMAIN}"
     service: https://ingress-nginx-controller.networking.svc.cluster.local:443
+    originRequest:
+      originServerName: "ingress.${SECRET_SOCIAL_DOMAIN}"
   - hostname: "*.${SECRET_SOCIAL_DOMAIN}"
     service: https://ingress-nginx-controller.networking.svc.cluster.local:443
+    originRequest:
+      originServerName: "ingress.${SECRET_SOCIAL_DOMAIN}"
 
   - service: http_status:404
