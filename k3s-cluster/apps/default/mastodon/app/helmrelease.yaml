@@ -49,7 +49,7 @@ spec:
               PUID: 1000
               PGID: 1000
               TZ: Europe/Berlin
-              LOCAL_DOMAIN: toot.${SECRET_DOMAIN}
+              LOCAL_DOMAIN: ${SECRET_SOCIAL_DOMAIN}
               REDIS_HOST: dragonfly.database.svc.cluster.local
               REDIS_PORT: "6379"
               DB_HOST: postgres16-v1-rw.database.svc.cluster.local
@@ -59,7 +59,12 @@ spec:
               ES_ENABLED: false
               SMTP_PORT: 25
               SMTP_FROM_ADDRESS: notifications@example.com
-              S3_ENABLED: false
+              S3_ENABLED: true
+              S3_BUCKET: mastodon
+              S3_ENDPOINT: https://s3.teqqnet.de
+              S3_HOSTNAME: s3.teqqnet.de
+              S3_PROTOCOL: https
+              S3_REGION: eu-west-01
             envFrom:
               - secretRef:
                   name: mastodon-secret
@@ -77,7 +82,7 @@ spec:
         annotations:
           hajimari.io/icon: mdi:link
         hosts:
-          - host: &host "toot.${SECRET_DOMAIN}"
+          - host: &host "${SECRET_SOCIAL_DOMAIN}"
             paths:
               - path: /
                 service:
