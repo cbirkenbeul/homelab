@@ -50,12 +50,12 @@ spec:
               PGID: 1000
               TZ: Europe/Berlin
               LOCAL_DOMAIN: ${SECRET_DOMAIN}
-              REDIS_HOST: dragonfly.database.svc.cluster.local.
-              REDIS_PORT: 6379
+              REDIS_HOST: dragonfly.database.svc.cluster.local
+              REDIS_PORT: "6379"
               DB_HOST: postgres16-v1-rw.database.svc.cluster.local
               DB_USER: mastodon
               DB_NAME: mastodon
-              DB_PORT: 5432
+              DB_PORT: "5432"
               ES_ENABLED: false
               SMTP_PORT: 25
               SMTP_FROM_ADDRESS: notifications@example.com
