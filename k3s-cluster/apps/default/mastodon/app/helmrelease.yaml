@@ -57,7 +57,7 @@ spec:
               DB_NAME: mastodon
               DB_PORT: "5432"
               ES_ENABLED: false
-              SMTP_PORT: 25
+              SMTP_PORT: 587
               SMTP_FROM_ADDRESS: notifications@example.com
               S3_ENABLED: true
               S3_BUCKET: mastodon
@@ -81,6 +81,7 @@ spec:
         className: nginx
         annotations:
           hajimari.io/icon: mdi:link
+          external-dns.alpha.kubernetes.io/target: ingress.${SECRET_SOCIAL_DOMAIN}
         hosts:
           - host: &host "${SECRET_SOCIAL_DOMAIN}"
             paths:
