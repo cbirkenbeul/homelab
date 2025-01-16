@@ -17,6 +17,7 @@ spec:
         selector:
           dnsZones:
             - "${SECRET_DOMAIN}"
+            - "${SECRET_SOCIAL_DOMAIN}"
 ---
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
@@ -37,3 +38,4 @@ spec:
         selector:
           dnsZones:
             - "${SECRET_DOMAIN}"
+            - "${SECRET_SOCIAL_DOMAIN}"
