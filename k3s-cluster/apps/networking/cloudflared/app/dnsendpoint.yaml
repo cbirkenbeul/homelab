@@ -11,6 +11,6 @@ spec:
     - dnsName: "ingress.${SECRET_DOMAIN}"
       recordType: CNAME
       targets: ["${SECRET_CLOUDFLARE_TUNNEL_ID}.cfargotunnel.com"]
-    - dnsName: "external.${SECRET_SOCIAL_DOMAIN}"
+    - dnsName: "ingress.${SECRET_SOCIAL_DOMAIN}"
       recordType: CNAME
       targets: ["${SECRET_CLOUDFLARE_TUNNEL_ID}.cfargotunnel.com"]
