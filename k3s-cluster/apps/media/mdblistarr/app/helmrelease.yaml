@@ -64,3 +64,5 @@ spec:
     persistence:
       config:
         existingClaim: *app
+        globalMounts:
+          - path: /usr/src
