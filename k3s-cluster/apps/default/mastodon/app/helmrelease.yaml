@@ -49,7 +49,7 @@ spec:
               PUID: 1000
               PGID: 1000
               TZ: Europe/Berlin
-              LOCAL_DOMAIN: ${SECRET_DOMAIN}
+              LOCAL_DOMAIN: toot.${SECRET_DOMAIN}
               REDIS_HOST: dragonfly.database.svc.cluster.local
               REDIS_PORT: "6379"
               DB_HOST: postgres16-v1-rw.database.svc.cluster.local
