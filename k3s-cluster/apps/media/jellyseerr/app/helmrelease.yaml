@@ -44,7 +44,7 @@ spec:
           app:
             image:
               repository: docker.io/fallenbagel/jellyseerr
-              tag: 2.2.3
+              tag: 2.3.0
             env:
               TZ: "${TIMEZONE}"
               LOG_LEVEL: "info"
