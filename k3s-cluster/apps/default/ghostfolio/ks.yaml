@@ -10,6 +10,8 @@ metadata:
 spec:
   path: ./k3s-cluster/apps/default/ghostfolio/app
   prune: true
+  dependsOn:
+    - name: rook-ceph-cluster
   sourceRef:
     kind: GitRepository
     name: home-kubernetes

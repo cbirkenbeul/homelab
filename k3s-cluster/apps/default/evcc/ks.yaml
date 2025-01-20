@@ -9,6 +9,8 @@ metadata:
     substitution.flux.home.arpa/enabled: "true"
 spec:
   path: ./k3s-cluster/apps/default/evcc/app
+  dependsOn:
+    - name: rook-ceph-cluster
   prune: true
   sourceRef:
     kind: GitRepository
