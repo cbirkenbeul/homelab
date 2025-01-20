@@ -3,5 +3,4 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - ./namespace.yaml
-  - ./network-ups-tools/ks.yaml
-  - ./prometheus-operator-crds/ks.yaml
+  # - ./cert-manager/ks.yaml

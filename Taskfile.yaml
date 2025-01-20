@@ -2,20 +2,22 @@
 version: "3"
 
 vars:
-  PROJECT_DIR:
-    sh: "git rev-parse --show-toplevel"
-  CLUSTER_DIR: "{{.PROJECT_DIR}}/cluster"
-  ANSIBLE_DIR: "{{.PROJECT_DIR}}/provision/ansible"
-  TERRAFORM_DIR: "{{.PROJECT_DIR}}/provision/terraform"
-  KUBERNETES_DIR: "{{.ROOT_DIR}}/kubernetes"
-
+  KUBERNETES_DIR: '{{.ROOT_DIR}}/kubernetes/main'
+  PRIVATE_DIR: '{{.ROOT_DIR}}/.private'
+  SOPS_CONFIG_FILE: '{{.ROOT_DIR}}/.sops.yaml'
+  TALHELPER_CLUSTER_DIR: '{{.KUBERNETES_DIR}}/bootstrap/talos/clusterconfig'
+  TALHELPER_CONFIG_FILE: '{{.KUBERNETES_DIR}}/bootstrap/talos/talconfig.yaml'
+  TALHELPER_SECRET_FILE: '{{.KUBERNETES_DIR}}/bootstrap/talos/talsecret.sops.yaml'
+  TALOSCONFIG: '{{.TALHELPER_CLUSTER_DIR}}/talosconfig'
 # dotenv: [".config.env"]
 
 env:
-  KUBECONFIG: "{{.KUBERNETES_DIR}}/k3s-cluster/kubeconfig:{{.KUBERNETES_DIR}}/kubernetes/storage/kubeconfig:{{.KUBERNETES_DIR}}/kubernetes/vps/kubeconfig"
-  SOPS_AGE_KEY_FILE: "{{.ROOT_DIR}}/age.key"
+  KUBECONFIG: '{{.ROOT_DIR}}/kubeconfig'
+  SOPS_AGE_KEY_FILE: '{{.ROOT_DIR}}/age.key'
+  TALOSCONFIG: '{{.TALOSCONFIG}}'
 
 includes:
+  bootstrap: .taskfiles/Bootstrap
   talos: .taskfiles/Talos
   flux: .taskfiles/Flux
 tasks:

@@ -1,17 +1,17 @@
 ---
 # renovate: datasource=docker depName=ghcr.io/siderolabs/installer
-talosVersion: v1.9.2
+talosVersion: v1.9.0
 # renovate: datasource=docker depName=ghcr.io/siderolabs/kubelet
-kubernetesVersion: v1.32.1
+kubernetesVersion: v1.31.0
 
-clusterName: utility
-endpoint: https://192.168.10.45:6443
+clusterName: teqqKube
+endpoint: https://192.168.10.70:6443
 clusterPodNets:
   - "10.42.0.0/16"
 clusterSvcNets:
   - "10.43.0.0/16"
 additionalApiServerCertSans: &sans
-  - 192.168.10.45
+  - 192.168.10.70
   - 127.0.0.1 # KubePrism
 
 additionalMachineCertSans: *sans
@@ -20,14 +20,44 @@ cniConfig:
   name: none
 
 nodes:
-  - hostname: k3s-utility-01
-    ipAddress: 192.168.10.45
+  - hostname: k3s-test-01
+    ipAddress: 192.168.10.70
     controlPlane: true
-    installDisk: /dev/nvme0n1
+    installDisk: /dev/sda
     networkInterfaces:
       - deviceSelector:
-          hardwareAddr: "00:4e:01:ab:65:04"
+          hardwareAddr: "bc:24:11:06:7b:1a"
         dhcp: true
+        dhcpOptions:
+          ipv6: false
+        # vip:
+        #   ip: 192.168.10.69
+
+  # - hostname: k3s-test-02
+  #   ipAddress: 192.168.10.71
+  #   controlPlane: true
+  #   installDisk: /dev/sda
+  #   networkInterfaces:
+  #     - deviceSelector:
+  #         hardwareAddr: "bc:24:11:2e:aa:72"
+  #       dhcp: true
+  #       dhcpOptions:
+  #         ipv6: false
+  #       vip:
+  #         ip: 192.168.10.69
+
+  # - hostname: k3s-test-03
+  #   ipAddress: 192.168.10.72
+  #   controlPlane: true
+  #   installDisk: /dev/sda
+  #   networkInterfaces:
+  #     - deviceSelector:
+  #         hardwareAddr: "bc:24:11:78:71:8c"
+  #       dhcp: true
+  #       dhcpOptions:
+  #         ipv6: false
+  #       vip:
+  #         ip: 192.168.10.69
 
 patches:
   # Configure containerd
@@ -68,7 +98,8 @@ patches:
       time:
         disabled: false
         servers:
-          - 192.168.10.1
+          - "162.159.200.1"
+          - "162.159.200.123"
 
   # Disable search domain everywhere
   - |-

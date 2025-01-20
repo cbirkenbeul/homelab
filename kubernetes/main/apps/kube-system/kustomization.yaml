@@ -5,8 +5,8 @@ resources:
   - ./namespace.yaml
   - ./cilium/ks.yaml
   - ./coredns/ks.yaml
-  - ./external-secrets/ks.yaml
+  # - ./external-secrets/ks.yaml
   - ./metrics-server/ks.yaml
-  - ./reloader/ks.yaml
+  # - ./reloader/ks.yaml
   - ./kubelet-csr-approver/ks.yaml
-  - ./spegel/ks.yaml
+  # - ./spegel/ks.yaml
