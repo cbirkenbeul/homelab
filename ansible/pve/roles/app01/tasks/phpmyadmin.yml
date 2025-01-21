@@ -2,7 +2,7 @@
 - name: Create phpmyadmin container
   community.docker.docker_container:
     name: phpmyadmin
-    image: phpmyadmin:5.2.1
+    image: phpmyadmin:5.2.2
     pull: true
     state: started
     recreate: true
