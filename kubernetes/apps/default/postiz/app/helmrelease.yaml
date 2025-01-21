@@ -1,0 +1,92 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app postiz
+  namespace: default
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: app-template
+      version: 3.6.1
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  maxHistory: 2
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: uninstall
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    controllers:
+      postiz:
+        annotations:
+          reloader.stakater.com/auto: "true"
+
+        initContainers:
+          01-init-db:
+            image:
+              repository: ghcr.io/onedr0p/postgres-init
+              tag: "16.6"
+            envFrom:
+              - secretRef:
+                  name: postiz-dbinit-secret
+
+        containers:
+          app:
+            image:
+              repository: ghcr.io/gitroomhq/postiz-app
+              tag: v1.26.1-amd64
+            env:
+              MAIN_URL: "https://postiz.${SECRET_DOMAIN}"
+              FRONTEND_URL: "https://postiz.${SECRET_DOMAIN}"
+              NEXT_PUBLIC_BACKEND_URL: "https://postiz.${SECRET_DOMAIN}/api"
+              REDIS_URL: "redis://dragonfly.database.svc.cluster.local:6379"
+              BACKEND_INTERNAL_URL: "http://localhost:3000"
+              IS_GENERAL: "true" # Required for self-hosting.
+              STORAGE_PROVIDER: "local"
+              UPLOAD_DIRECTORY: "/uploads"
+              NEXT_PUBLIC_UPLOAD_DIRECTORY: "/uploads"
+            envFrom:
+              - secretRef:
+                  name: postiz-secret
+
+    service:
+      app:
+        controller: *app
+        ports:
+          http:
+            port: 5000
+
+    ingress:
+      main:
+        enabled: true
+        className: nginx
+        hosts:
+          - host: &host "postiz.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                service:
+                  identifier: app
+                  port: http
+        tls:
+          - hosts:
+              - *host
+
+    persistence:
+      data:
+        existingClaim: postiz
+        globalMounts:
+          - subPath: config
+            path: /config
+          - subPath: uploads
+            path: /uploads

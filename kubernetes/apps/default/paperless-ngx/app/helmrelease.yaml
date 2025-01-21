@@ -1,0 +1,117 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app paperless-ngx
+  namespace: default
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: app-template
+      version: 3.6.1
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  maxHistory: 2
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: uninstall
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    defaultPodOptions:
+      securityContext:
+        fsGroup: 65539
+        fsGroupChangePolicy: OnRootMismatch
+
+    controllers:
+      paperless-ngx:
+        annotations:
+          reloader.stakater.com/auto: "true"
+
+        initContainers:
+          01-init-db:
+            image:
+              repository: ghcr.io/onedr0p/postgres-init
+              tag: "16.6"
+            envFrom:
+              - secretRef:
+                  name: paperless-ngx-dbinit-secret
+
+        containers:
+          app:
+            image:
+              repository: ghcr.io/paperless-ngx/paperless-ngx
+              tag: 2.14.3
+            env:
+              PAPERLESS_CONSUMER_POLLING: 5
+              PAPERLESS_OCR_LANGUAGE: deu
+              PAPERLESS_PORT: 8000
+              PAPERLESS_TIME_ZONE: Europe/Berlin
+              PAPERLESS_URL: https://paperless.casalani.de
+              PAPERLESS_REDIS: redis://dragonfly.database.svc.cluster.local
+              PAPERLESS_ENABLE_HTTP_REMOTE_USER: "true"
+              PAPERLESS_FILENAME_FORMAT: "{{ `{{ created_year }}/{{ document_type }}/{{ created_year }}-{{ created_month }}-{{ created_day }}_{{ title }}` }}"
+              PAPERLESS_FILENAME_FORMAT_REMOVE_NONE: "true"
+              PAPERLESS_CONSUMER_ENABLE_BARCODES: 1
+              PAPERLESS_CONSUMER_ENABLE_ASN_BARCODE: 1
+            envFrom:
+              - secretRef:
+                  name: paperless-ngx-secret
+
+    service:
+      app:
+        controller: *app
+        ports:
+          http:
+            port: 8000
+
+    ingress:
+      main:
+        enabled: true
+        className: nginx
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: Home
+          gethomepage.dev/name: Paperless
+          gethomepage.dev/icon: paperless.png
+          gethomepage.dev/description: Document OCR Software
+        hosts:
+          - host: &host "paperless.casalani.de"
+            paths:
+              - path: /
+                service:
+                  identifier: app
+                  port: http
+        tls:
+          - hosts:
+              - *host
+
+    persistence:
+      data:
+        existingClaim: paperless-ngx
+        globalMounts:
+          - subPath: data
+            path: /usr/src/paperless/data
+          - subPath: media
+            path: /usr/src/paperless/media
+      export:
+        type: nfs
+        server: &nas 'nas.${SECRET_DOMAIN}'
+        path: /mnt/user/app-backup/paperless
+        globalMounts:
+          - path: /usr/src/paperless/export
+      consume:
+        type: nfs
+        server: &nas 'nas.${SECRET_DOMAIN}'
+        path: /mnt/user/dms-import
+        globalMounts:
+          - path: /usr/src/paperless/consume

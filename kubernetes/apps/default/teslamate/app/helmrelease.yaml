@@ -1,0 +1,98 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.devbu.io/helmrelease_v2beta1.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app teslamate
+  namespace: default
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: app-template
+      version: 3.6.1
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  maxHistory: 3
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: uninstall
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    controllers:
+      teslamate:
+        annotations:
+          reloader.stakater.com/auto: "true"
+
+        initContainers:
+          01-init-db:
+            image:
+              repository: ghcr.io/onedr0p/postgres-init
+              tag: "16.6"
+            envFrom:
+              - secretRef:
+                  name: teslamate-dbinit-secret
+
+        containers:
+          app:
+            image:
+              repository: teslamate/teslamate
+              tag: 1.32.0
+            env:
+              TZ: "${TZ}"
+              DISABLE_MQTT: "false"
+              TESLA_API_HOST: "https://api.myteslamate.com"
+              TESLA_AUTH_HOST: "https://api.myteslamate.com"
+              TESLA_AUTH_PATH: "/api/oauth2/v3"
+              TESLA_WSS_HOST: "wss://streaming.myteslamate.com"
+              TESLA_WSS_TLS_ACCEPT_INVALID_CERTS: "true"
+              TESLA_WSS_USE_VIN: "true"
+              POLLING_ASLEEP_INTERVAL: "300"
+              POLLING_CHARGING_INTERVAL: "450"
+              POLLING_DRIVING_INTERVAL: "300"
+              POLLING_ONLINE_INTERVAL: "450"
+              POLLING_DEFAULT_INTERVAL: "120"
+              POLLING_MINIMUM_INTERVAL: "120"
+            envFrom:
+              - secretRef:
+                  name: teslamate-secret
+
+    service:
+      app:
+        controller: *app
+        ports:
+          http:
+            port: 4000
+
+    ingress:
+      main:
+        enabled: true
+        className: "nginx"
+        annotations:
+          hajimari.io/icon: mdi:car-electric
+        hosts:
+          - host: &host "teslamate.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                service:
+                  identifier: app
+                  port: http
+        tls:
+          - hosts:
+              - *host
+
+    resources:
+      requests:
+        memory: 250Mi
+        cpu: 50m
+      limits:
+        memory: 500Mi

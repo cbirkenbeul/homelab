@@ -1,0 +1,100 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/helm.toolkit.fluxcd.io/helmrelease_v2beta2.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app mastodon
+  namespace: default
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: app-template
+      version: 3.6.1
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: uninstall
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    controllers:
+      mastodon:
+        annotations:
+          reloader.stakater.com/auto: "true"
+
+        initContainers:
+          init-db:
+            image:
+              repository: ghcr.io/onedr0p/postgres-init
+              tag: "16.6"
+              pullPolicy: IfNotPresent
+            envFrom:
+              - secretRef:
+                  name: mastodon-secret
+        containers:
+          mastodon:
+            image:
+              repository: lscr.io/linuxserver/mastodon
+              tag: "4.3.3"
+            env:
+              PUID: 1000
+              PGID: 1000
+              TZ: Europe/Berlin
+              LOCAL_DOMAIN: ${SECRET_SOCIAL_DOMAIN}
+              REDIS_HOST: dragonfly.database.svc.cluster.local
+              REDIS_PORT: "6379"
+              DB_HOST: postgres16-v1-rw.database.svc.cluster.local
+              DB_USER: mastodon
+              DB_NAME: mastodon
+              DB_PORT: "5432"
+              ES_ENABLED: false
+              SMTP_PORT: 587
+              SMTP_FROM_ADDRESS: notifications@example.com
+              S3_ENABLED: true
+              S3_BUCKET: mastodon
+              S3_ENDPOINT: https://s3.teqqnet.de
+              S3_HOSTNAME: s3.teqqnet.de
+              S3_PROTOCOL: https
+              S3_REGION: eu-west-01
+            envFrom:
+              - secretRef:
+                  name: mastodon-secret
+      
+    service:
+      app:
+        controller: *app
+        ports:
+          http:
+            port: 80
+
+    ingress:
+      app:
+        className: nginx
+        annotations:
+          external-dns.alpha.kubernetes.io/target: ingress.${SECRET_SOCIAL_DOMAIN}
+        hosts:
+          - host: &host "${SECRET_SOCIAL_DOMAIN}"
+            paths:
+              - path: /
+                service:
+                  identifier: app
+                  port: http
+        tls:
+          - hosts:
+              - *host
+            secretName: ${SECRET_SOCIAL_DOMAIN/./-}-production-tls
+
+    persistence:
+      config:
+        existingClaim: mastodon-config
+        globalMounts:
+          - path: /config
