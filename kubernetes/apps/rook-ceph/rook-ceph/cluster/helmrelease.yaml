@@ -64,20 +64,11 @@ spec:
         urlPrefix: /
         ssl: false
       storage:
-        useAllNodes: false
-        useAllDevices: false
+        useAllNodes: true
+        useAllDevices: true
+        deviceFilter: nvme0n1
         config:
           osdsPerDevice: "1"
-        nodes:
-          - name: k3s-01
-            devices:
-              - name: /dev/disk/by-id/ata-PNY_CS900_120GB_SSD_PNY211821050701027ED
-          - name: k3s-02
-            devices:
-              - name: /dev/disk/by-id/ata-PNY_CS900_120GB_SSD_PNY21222106020101045
-          - name: k3s-03
-            devices:
-              - name: /dev/disk/by-id/ata-PNY_CS900_120GB_SSD_PNY21222106020105287
       resources:
         mgr:
           requests:
