@@ -25,7 +25,7 @@ metadata:
   name: &app external-dns-unifi
   namespace: flux-system
 spec:
-  targetNamespace: networking
+  targetNamespace: network
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
