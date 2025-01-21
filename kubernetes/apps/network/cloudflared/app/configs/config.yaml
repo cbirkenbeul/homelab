@@ -10,19 +10,19 @@ ingress:
   - hostname: "${SECRET_DOMAIN}"
     service: https://ingress-nginx-external-controller.network.svc.cluster.local:443
     originRequest:
-      originServerName: "ingress.${SECRET_DOMAIN}"
+      originServerName: "external.${SECRET_DOMAIN}"
   - hostname: "*.${SECRET_DOMAIN}"
     service: https://ingress-nginx-external-controller.network.svc.cluster.local:443
     originRequest:
-      originServerName: "ingress.${SECRET_DOMAIN}"
+      originServerName: "external.${SECRET_DOMAIN}"
 
   - hostname: "${SECRET_SOCIAL_DOMAIN}"
     service: https://ingress-nginx-external-controller.network.svc.cluster.local:443
     originRequest:
-      originServerName: "ingress.${SECRET_SOCIAL_DOMAIN}"
+      originServerName: "external.${SECRET_SOCIAL_DOMAIN}"
   - hostname: "*.${SECRET_SOCIAL_DOMAIN}"
     service: https://ingress-nginx-external-controller.network.svc.cluster.local:443
     originRequest:
-      originServerName: "ingress.${SECRET_SOCIAL_DOMAIN}"
+      originServerName: "external.${SECRET_SOCIAL_DOMAIN}"
 
   - service: http_status:404
