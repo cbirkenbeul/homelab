@@ -5,6 +5,7 @@ resources:
   - ./namespace.yaml
   - ./cilium/ks.yaml
   - ./coredns/ks.yaml
+  - intel-device-plugin
   - ./external-secrets/ks.yaml
   - ./metrics-server/ks.yaml
   - ./reloader/ks.yaml
