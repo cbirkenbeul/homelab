@@ -20,6 +20,7 @@ includes:
   bootstrap: .taskfiles/Bootstrap
   talos: .taskfiles/Talos
   flux: .taskfiles/Flux
+  kubernetes: .taskfiles/Kubernetes
 tasks:
 
   init:
