@@ -14,9 +14,7 @@ spec:
   path: "./kubernetes/apps/system/volsync/app"
   dependsOn:
     - name: external-secrets-stores
-      namespace: kube-system
     - name: snapshot-controller
-      namespace: storage
   prune: true
   sourceRef:
     kind: GitRepository
