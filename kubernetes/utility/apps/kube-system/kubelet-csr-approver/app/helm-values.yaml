@@ -1,4 +1,0 @@
----
-providerRegex: ^(k3s-utility-01)$
-bypassDnsResolution: true
-replicas: 1

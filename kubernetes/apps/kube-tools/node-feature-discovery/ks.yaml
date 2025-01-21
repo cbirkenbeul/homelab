@@ -1,0 +1,42 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: &app node-feature-discovery
+  namespace: flux-system
+spec:
+  path: ./kubernetes/apps/kube-system/node-feature-discovery/app
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  healthChecks:
+    - apiVersion: helm.toolkit.fluxcd.io/v2beta2
+      kind: HelmRelease
+      name: node-feature-discovery
+      namespace: kube-system
+  interval: 30m
+  retryInterval: 1m
+  timeout: 3m
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: ode-feature-discovery-config
+  namespace: flux-system
+spec:
+  path: ./kubernetes/kube-system/node-feature-discovery/config
+  prune: true
+  dependsOn:
+    - name: cluster-apps-node-feature-discovery
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  healthChecks:
+    - apiVersion: helm.toolkit.fluxcd.io/v2beta2
+      kind: HelmRelease
+      name: node-feature-discovery
+      namespace: kube-system
+  interval: 30m
+  retryInterval: 1m
+  timeout: 3m
