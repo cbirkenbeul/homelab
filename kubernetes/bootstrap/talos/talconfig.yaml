@@ -33,31 +33,31 @@ nodes:
         vip:
           ip: 192.168.10.30
 
-  # - hostname: k3s-test-02
-  #   ipAddress: 192.168.10.71
-  #   controlPlane: true
-  #   installDisk: /dev/sda
-  #   networkInterfaces:
-  #     - deviceSelector:
-  #         hardwareAddr: "bc:24:11:2e:aa:72"
-  #       dhcp: true
-  #       dhcpOptions:
-  #         ipv6: false
-  #       vip:
-  #         ip: 192.168.10.69
+  - hostname: k3s-02
+    ipAddress: 192.168.10.32
+    controlPlane: true
+    installDisk: /dev/sda
+    networkInterfaces:
+      - deviceSelector:
+          hardwareAddr: "a4:bb:6d:80:49:c4"
+        dhcp: true
+        dhcpOptions:
+          ipv6: false
+        vip:
+          ip: 192.168.10.30
 
-  # - hostname: k3s-test-03
-  #   ipAddress: 192.168.10.72
-  #   controlPlane: true
-  #   installDisk: /dev/sda
-  #   networkInterfaces:
-  #     - deviceSelector:
-  #         hardwareAddr: "bc:24:11:78:71:8c"
-  #       dhcp: true
-  #       dhcpOptions:
-  #         ipv6: false
-  #       vip:
-  #         ip: 192.168.10.69
+  - hostname: k3s-03
+    ipAddress: 192.168.10.33
+    controlPlane: true
+    installDisk: /dev/sda
+    networkInterfaces:
+      - deviceSelector:
+          hardwareAddr: "a4:bb:6d:80:49:88"
+        dhcp: true
+        dhcpOptions:
+          ipv6: false
+        vip:
+          ip: 192.168.10.30
 
 patches:
   # Configure containerd
