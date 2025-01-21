@@ -1,0 +1,14 @@
+---
+instance:
+  cluster:
+    networkPolicy: false
+  components:
+    - source-controller
+    - kustomize-controller
+    - helm-controller
+    - notification-controller
+  sync:
+    kind: GitRepository
+    url: "https://github.com/cbirkenbeul/homelab"
+    ref: "refs/heads/main"
+    path: kubernetes/flux/cluster
