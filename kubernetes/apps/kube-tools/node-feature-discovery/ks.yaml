@@ -28,7 +28,7 @@ spec:
   path: ./kubernetes/kube-system/node-feature-discovery/config
   prune: true
   dependsOn:
-    - name: cluster-apps-node-feature-discovery
+    - name: node-feature-discovery
   sourceRef:
     kind: GitRepository
     name: flux-system
