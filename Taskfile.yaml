@@ -2,7 +2,7 @@
 version: "3"
 
 vars:
-  KUBERNETES_DIR: '{{.ROOT_DIR}}/kubernetes/main'
+  KUBERNETES_DIR: '{{.ROOT_DIR}}/kubernetes'
   PRIVATE_DIR: '{{.ROOT_DIR}}/.private'
   SOPS_CONFIG_FILE: '{{.ROOT_DIR}}/.sops.yaml'
   TALHELPER_CLUSTER_DIR: '{{.KUBERNETES_DIR}}/bootstrap/talos/clusterconfig'
