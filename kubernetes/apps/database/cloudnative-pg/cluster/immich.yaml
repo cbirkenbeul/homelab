@@ -17,7 +17,7 @@ spec:
     name: cloudnative-pg-secret
   bootstrap:
     recovery:
-      source: &previous-cluster pgvecto- #This must match backup.barmanObjectStore.serverName from previous backup
+      source: &previous-cluster pgvecto #This must match backup.barmanObjectStore.serverName from previous backup
   postgresql:
     shared_preload_libraries:
       - "vectors.so"
