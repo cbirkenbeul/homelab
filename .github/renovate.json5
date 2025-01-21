@@ -30,13 +30,10 @@
 },
 "helm-values": {
   "fileMatch": [
-    "k3s-cluster/.+\\.ya?ml$",
     "kubernetes/.+\\.ya?ml$"]
 },
 "kubernetes": {
   "fileMatch": [
-    "ansible/.+\\.ya?ml(\\.j2)?$",
-    "k3s-cluster/.+\\.ya?ml$",
     "kubernetes/.+\\.ya?ml$"
   ]
 },
@@ -44,27 +41,12 @@
     {
       "description": "Process various other dependencies",
       "fileMatch": [
-        "ansible/.+\\.ya?ml(\\.j2)?$",
-        "k3s-cluster/.+\\.ya?ml$",
         "kubernetes/.+\\.ya?ml$"
       ],
       "matchStrings": [
         "datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)( registryUrl=(?<registryUrl>\\S+))?\n.*?\"(?<currentValue>.*)\"\n"
       ],
       "datasourceTemplate": "{{#if datasource}}{{{datasource}}}{{else}}github-releases{{/if}}"
-    },
-    {
-      "description": "Handle version strings like amd64-1734177451",
-      "fileMatch": [
-        "ansible/.+\\.ya?ml(\\.j2)?$",
-        "k3s-cluster/.+\\.ya?ml$",
-        "kubernetes/.+\\.ya?ml$"
-      ],
-      "matchStrings": [
-        "image: (?<depName>\\S+):(?<currentValue>amd64-[0-9]+)"
-      ],
-      "datasourceTemplate": "docker",
-      "versioningTemplate": "regex:^amd64-(?<number>[0-9]+)$"
     }
   ]
 }
