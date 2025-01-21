@@ -13,7 +13,7 @@ spec:
   interval: 10m
   path: "./kubernetes/apps/system/volsync/app"
   dependsOn:
-    - name: onepassword-store
+    - name: external-secrets-stores
       namespace: kube-system
     - name: snapshot-controller
       namespace: storage
