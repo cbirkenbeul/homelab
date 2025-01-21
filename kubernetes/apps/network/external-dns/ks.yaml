@@ -10,7 +10,7 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
-  path: ./kubernetes/apps/networking/external-dns/cloudflare
+  path: ./kubernetes/apps/network/external-dns/cloudflare
   prune: true
   sourceRef:
     kind: GitRepository
@@ -29,7 +29,7 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
-  path: ./kubernetes/apps/networking/external-dns/unifi
+  path: ./kubernetes/apps/network/external-dns/unifi
   prune: true
   sourceRef:
     kind: GitRepository
