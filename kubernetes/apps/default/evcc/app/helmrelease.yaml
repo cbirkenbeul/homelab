@@ -54,7 +54,7 @@ spec:
 
     ingress:
       app:
-        className: nginx
+        className: internal
         annotations:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/icon: sh-evcc
