@@ -28,8 +28,8 @@ spec:
     controller:
       service:
         annotations:
-          external-dns.alpha.kubernetes.io/hostname: "external-utility.${SECRET_DOMAIN}"
-          lbipam.cilium.io/ips: "${SVC_INGRESS_EXTERNAL_ADDR}"
+          external-dns.alpha.kubernetes.io/hostname: &hostname external.${SECRET_DOMAIN}
+          lbipam.cilium.io/ips: 192.168.10.81
         externalTrafficPolicy: Cluster
       ingressClassResource:
         name: external

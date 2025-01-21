@@ -22,7 +22,7 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: cluster-apps-node-feature-discovery-config
+  name: ode-feature-discovery-config
   namespace: flux-system
 spec:
   path: ./kubernetes/kube-system/node-feature-discovery/config

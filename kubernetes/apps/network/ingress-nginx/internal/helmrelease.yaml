@@ -26,7 +26,8 @@ spec:
     controller:
       service:
         annotations:
-          lbipam.cilium.io/ips: "${SVC_INGRESS_INTERNAL_ADDR}"
+          external-dns.alpha.kubernetes.io/hostname: &hostname internal.${SECRET_DOMAIN}
+          lbipam.cilium.io/ips: 192.168.10.80
         externalTrafficPolicy: Cluster
       ingressClassResource:
         name: internal
