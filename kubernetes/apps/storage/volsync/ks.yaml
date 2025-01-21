@@ -11,7 +11,7 @@ spec:
     labels:
       app.kubernetes.io/name: *appname
   interval: 10m
-  path: "./kubernetes/apps/system/volsync/app"
+  path: "./kubernetes/apps/storage/volsync/app"
   dependsOn:
     - name: external-secrets-stores
     - name: snapshot-controller
