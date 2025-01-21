@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-    - name: external-dns
+    - name: external-dns-cloudflare
   path: ./kubernetes/apps/network/cloudflared/app
   prune: true
   sourceRef:
