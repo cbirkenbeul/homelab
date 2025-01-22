@@ -52,7 +52,7 @@ spec:
               LOCAL_DOMAIN: ${SECRET_SOCIAL_DOMAIN}
               REDIS_HOST: dragonfly.database.svc.cluster.local
               REDIS_PORT: "6379"
-              DB_HOST: postgres16-v1-rw.database.svc.cluster.local
+              DB_HOST: postgres16-v2-rw.database.svc.cluster.local
               DB_USER: mastodon
               DB_NAME: mastodon
               DB_PORT: "5432"

@@ -14,11 +14,11 @@ spec:
   interval: 30m
   retryInterval: 1m
   timeout: 3m
-  path: ./k3s-cluster/apps/default/mastodon/app
+  path: ./kubernetes/apps/default/mastodon/app
   prune: true
   sourceRef:
     kind: GitRepository
-    name: home-kubernetes
+    name: flux-system
   wait: true
   postBuild:
     substitute:
