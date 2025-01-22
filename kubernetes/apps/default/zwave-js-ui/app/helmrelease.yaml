@@ -66,7 +66,7 @@ spec:
 
         pod:
           nodeSelector:
-            eature.node.kubernetes.io/usb-ff_10c4_ea60.present: "true"
+            feature.node.kubernetes.io/usb-ff_10c4_ea60.present: "true"
 
     service:
       main:
