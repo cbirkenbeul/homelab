@@ -80,7 +80,7 @@ spec:
     ingress:
       main:
         enabled: true
-        className: nginx
+        className: internal
         hosts:
           - host: &host "prowlarr.${SECRET_DOMAIN}"
             paths:
