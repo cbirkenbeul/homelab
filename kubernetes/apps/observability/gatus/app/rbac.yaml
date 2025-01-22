@@ -7,7 +7,7 @@ metadata:
     app.kubernetes.io/managed-by: Helm
   annotations:
     meta.helm.sh/release-name: gatus
-    meta.helm.sh/release-namespace: monitoring
+    meta.helm.sh/release-namespace: observability
 secrets:
   - name: gatus
 ---
@@ -20,7 +20,7 @@ metadata:
     app.kubernetes.io/managed-by: Helm
   annotations:
     meta.helm.sh/release-name: gatus
-    meta.helm.sh/release-namespace: monitoring
+    meta.helm.sh/release-namespace: observability
     kubernetes.io/service-account.name: gatus
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -31,7 +31,7 @@ metadata:
     app.kubernetes.io/managed-by: Helm
   annotations:
     meta.helm.sh/release-name: gatus
-    meta.helm.sh/release-namespace: monitoring
+    meta.helm.sh/release-namespace: observability
 rules:
   - apiGroups: [""]
     resources: ["configmaps", "secrets"]
@@ -45,7 +45,7 @@ metadata:
     app.kubernetes.io/managed-by: Helm
   annotations:
     meta.helm.sh/release-name: gatus
-    meta.helm.sh/release-namespace: monitoring
+    meta.helm.sh/release-namespace: observability
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
@@ -53,4 +53,4 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: gatus
-    namespace: monitoring
+    namespace: observability
