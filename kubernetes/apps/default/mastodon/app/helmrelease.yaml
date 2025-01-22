@@ -78,9 +78,9 @@ spec:
 
     ingress:
       app:
-        className: nginx
+        className: external
         annotations:
-          external-dns.alpha.kubernetes.io/target: ingress.${SECRET_SOCIAL_DOMAIN}
+          external-dns.alpha.kubernetes.io/target: external.${SECRET_SOCIAL_DOMAIN}
         hosts:
           - host: &host "${SECRET_SOCIAL_DOMAIN}"
             paths:
