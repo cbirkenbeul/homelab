@@ -18,7 +18,6 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: "${SECRET_SOCIAL_DOMAIN/./-}-production"
-  namespace: networking
 spec:
   secretName: "${SECRET_SOCIAL_DOMAIN/./-}-production-tls"
   issuerRef:
@@ -31,6 +30,6 @@ spec:
   secretTemplate:
     annotations:
       reflector.v1.k8s.emberstack.com/reflection-allowed: "true"
-      reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "default,storage,flux-system,kube-system,networking"  # Control destination namespaces
+      reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "default,storage,flux-system,kube-system,network"  # Control destination namespaces
       reflector.v1.k8s.emberstack.com/reflection-auto-enabled: "true" # Auto create reflection for matching namespaces
-      reflector.v1.k8s.emberstack.com/reflection-auto-namespaces: "default,storage,flux-system,kube-system,networking" # Control auto-reflection namespaces
+      reflector.v1.k8s.emberstack.com/reflection-auto-namespaces: "default,storage,flux-system,kube-system,network" # Control auto-reflection namespaces
