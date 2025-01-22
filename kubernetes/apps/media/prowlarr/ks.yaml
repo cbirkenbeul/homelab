@@ -12,7 +12,7 @@ spec:
   prune: true
   dependsOn:
     - name: rook-ceph-cluster
-    - name: ingress-nginx-external
+    - name: ingress-nginx-internal
     - name: radarr
     - name: sonarr
   sourceRef:

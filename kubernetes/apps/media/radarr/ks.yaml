@@ -10,7 +10,7 @@ metadata:
 spec:
   dependsOn:
     - name: rook-ceph-cluster
-    - name: ingress-nginx-external
+    - name: ingress-nginx-internal
   path: ./kubernetes/apps/media/radarr/app
   prune: true
   sourceRef:
