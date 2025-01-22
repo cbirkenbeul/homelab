@@ -1,0 +1,257 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: grafana
+  namespace: observability
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: grafana
+      version: 8.8.3
+      sourceRef:
+        kind: HelmRepository
+        name: grafana
+        namespace: flux-system
+  maxHistory: 2
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    annotations:
+      configmap.reloader.stakater.com/reload: grafana
+    deploymentStrategy:
+      type: Recreate
+    admin:
+      existingSecret: grafana-admin-secret
+    env:
+      GF_EXPLORE_ENABLED: true
+      GF_SERVER_ROOT_URL: "https://grafana.${SECRET_DOMAIN}"
+    grafana.ini:
+      analytics:
+        check_for_updates: false
+        check_for_plugin_updates: false
+    dashboardProviders:
+      dashboardproviders.yaml:
+        apiVersion: 1
+        providers:
+          - name: default
+            orgId: 1
+            folder: ""
+            type: file
+            disableDeletion: false
+            editable: true
+            options:
+              path: /var/lib/grafana/dashboards/default
+          - name: "teslamate"
+            orgId: 1
+            folder: Teslamate
+            type: file
+            disableDeletion: false
+            # updateIntervalSeconds: -1
+            allowUiUpdates: true
+            options:
+              path: /var/lib/grafana/dashboards/teslamate
+          - name: ceph
+            orgId: 1
+            folder: Ceph
+            type: file
+            disableDeletion: false
+            editable: true
+            options:
+              path: /var/lib/grafana/dashboards/ceph
+          - name: network
+            orgId: 1
+            folder: Network
+            type: file
+            disableDeletion: false
+            editable: true
+            options:
+              path: /var/lib/grafana/dashboards/network
+    datasources:
+      datasources.yaml:
+        apiVersion: 1
+        datasources:
+          - name: Prometheus
+            type: prometheus
+            access: proxy
+            url: http://kube-prometheus-stack-prometheus.monitoring.svc.cluster.local:9090
+            isDefault: true
+          - name: TeslaMate
+            type: postgres
+            access: proxy
+            user: teslamate
+            database: teslamate
+            url: postgres16-v1-rw.database.svc.cluster.local:5432
+            secureJsonData:
+              password: ${TESLAMATE_POSTGRESS_PASSWORD}
+              sslmode: disable
+            jsonData:
+              postgresVersion: 1000
+              sslmode: disable
+    dashboards:
+      default:
+        cert-manager:
+          url: https://raw.githubusercontent.com/monitoring-mixins/website/master/assets/cert-manager/dashboards/cert-manager.json
+          datasource: Prometheus
+        flux-cluster:
+          url: https://raw.githubusercontent.com/fluxcd/flux2-monitoring-example/main/monitoring/configs/dashboards/cluster.json
+          datasource: Prometheus
+        flux-control-plane:
+          url: https://raw.githubusercontent.com/fluxcd/flux2-monitoring-example/main/monitoring/configs/dashboards/control-plane.json
+          datasource: Prometheus 
+        blocky:
+          # renovate: depName="blocky"
+          gnetId: 13768
+          revision: 5
+          datasource:
+            - { name: DS_PROMETHEUS, value: Prometheus }
+            - { name: VAR_BLOCKY_URL, value: 'https:\/\/blocky.${SECRET_DOMAIN}' }
+        cloudflared:
+          # renovate: depName="Cloudflare Tunnels (cloudflared)"
+          gnetId: 17457
+          revision: 6
+          datasource:
+            - { name: DS_PROMETHEUS, value: Prometheus }
+        spegel:
+          # renovate: depName="Spegel"
+          gnetId: 18089
+          revision: 1
+          datasource:
+            - { name: DS_PROMETHEUS, value: Prometheus }
+        volsync:
+          # renovate: depName="VolSync Dashboard"
+          gnetId: 21356
+          revision: 3
+          datasource:
+            - { name: DS_PROMETHEUS, value: Prometheus }
+            - { name: VAR_REPLICATIONDESTNAME, value: '.*-bootstrap'}
+        nut-exporter:
+          url: https://raw.githubusercontent.com/DRuggeri/nut_exporter/master/dashboard/dashboard.json
+          datasource: 
+            - { name: DS_PROMETHEUS, value: Prometheus }
+      # teslamate:
+      #   charge-level:
+      #     url: https://raw.githubusercontent.com/teslamate-org/teslamate/master/grafana/dashboards/charge-level.json
+      #     # datasource: TeslaMate
+      #   charges:
+      #     url: https://raw.githubusercontent.com/teslamate-org/teslamate/master/grafana/dashboards/charges.json
+      #     # datasource: TeslaMate
+      #   charging-stats:
+      #     url: https://raw.githubusercontent.com/teslamate-org/teslamate/master/grafana/dashboards/charging-stats.json
+      #     # datasource: TeslaMate
+      #   drive-stats:
+      #     url: https://raw.githubusercontent.com/teslamate-org/teslamate/master/grafana/dashboards/drive-stats.json
+      #     # datasource: TeslaMate
+      #   drives:
+      #     url: https://raw.githubusercontent.com/teslamate-org/teslamate/master/grafana/dashboards/drives.json
+      #     # datasource: TeslaMate
+      #   efficiency:
+      #     url: https://raw.githubusercontent.com/teslamate-org/teslamate/master/grafana/dashboards/efficiency.json
+      #     # datasource: TeslaMate
+      #   locations:
+      #     url: https://raw.githubusercontent.com/teslamate-org/teslamate/master/grafana/dashboards/locations.json
+      #     # datasource: TeslaMate
+      #   mileage:
+      #     url: https://raw.githubusercontent.com/teslamate-org/teslamate/master/grafana/dashboards/mileage.json
+      #     # datasource: TeslaMate
+      #   overview:
+      #     url: https://raw.githubusercontent.com/teslamate-org/teslamate/master/grafana/dashboards/overview.json
+      #     # datasource: TeslaMate
+      #   projected-range:
+      #     url: https://raw.githubusercontent.com/teslamate-org/teslamate/master/grafana/dashboards/projected-range.json
+      #     # datasource: TeslaMate
+      #   states:
+      #     url: https://raw.githubusercontent.com/teslamate-org/teslamate/master/grafana/dashboards/states.json
+      #     # datasource: TeslaMate
+      #   statistics:
+      #     url: https://raw.githubusercontent.com/teslamate-org/teslamate/master/grafana/dashboards/statistics.json
+      #     # datasource: TeslaMate
+      #   timeline:
+      #     url: https://raw.githubusercontent.com/teslamate-org/teslamate/master/grafana/dashboards/timeline.json
+      #     # datasource: TeslaMate
+      #   trip:
+      #     url: https://raw.githubusercontent.com/teslamate-org/teslamate/master/grafana/dashboards/trip.json
+      #     # datasource: TeslaMate
+      #   updates:
+      #     url: https://raw.githubusercontent.com/teslamate-org/teslamate/master/grafana/dashboards/updates.json
+      #     # datasource: TeslaMate
+      #   vampire-drain:
+      #     url: https://raw.githubusercontent.com/teslamate-org/teslamate/master/grafana/dashboards/vampire-drain.json
+      #     # datasource: TeslaMate
+      #   visited:
+      #     url: https://raw.githubusercontent.com/teslamate-org/teslamate/master/grafana/dashboards/visited.json
+      #     # datasource: TeslaMate
+      #   charge-details:
+      #     url: https://raw.githubusercontent.com/teslamate-org/teslamate/master/grafana/dashboards/internal/charge-details.json
+      #     # datasource: TeslaMate
+      #   drive-details:
+      #     url: https://raw.githubusercontent.com/teslamate-org/teslamate/master/grafana/dashboards/internal/drive-details.json
+      #     # datasource: TeslaMate
+      #   battery-health:
+      #     url: https://raw.githubusercontent.com/teslamate-org/teslamate/master/grafana/dashboards/battery-health.json
+      #   charging-costs-stats:
+      #     url: https://raw.githubusercontent.com/jheredianet/Teslamate-CustomGrafanaDashboards/main/dashboards/ChargingCostsStats.json
+
+      ceph:
+        ceph-cluster:
+          # renovate: depName="Ceph Cluster"
+          gnetId: 2842
+          revision: 18
+          datasource: Prometheus
+        ceph-osd:
+          # renovate: depName="Ceph - OSD (Single)"
+          gnetId: 5336
+          revision: 9
+          datasource: Prometheus
+        ceph-pools:
+          # renovate: depName="Ceph - Pools"
+          gnetId: 5342
+          revision: 9
+          datasource: Prometheus
+      flux:
+
+    plugins:
+      - natel-discrete-panel
+      - pr0ps-trackmap-panel
+      - grafana-piechart-panel
+      - vonage-status-panel
+      - grafana-worldmap-panel
+      - grafana-clock-panel
+
+    sidecar:
+      dashboards:
+        enabled: true
+        searchNamespace: ALL
+      datasources:
+        enabled: true
+        searchNamespace: ALL
+    serviceMonitor:
+      enabled: true
+    ingress:
+      enabled: true
+      ingressClassName: external
+      annotations:
+        gethomepage.dev/enabled: "true"
+        gethomepage.dev/icon: grafana.png
+        gethomepage.dev/name: Grafana
+        gethomepage.dev/group: Monitoring
+        external-dns.alpha.kubernetes.io/target: "external.${SECRET_DOMAIN}"
+      hosts:
+        - &host "grafana.${SECRET_DOMAIN}"
+      tls:
+        - hosts:
+            - *host
+    persistence:
+      enabled: true
+      storageClassName: ceph-block
+    testFramework:
+      enabled: false
