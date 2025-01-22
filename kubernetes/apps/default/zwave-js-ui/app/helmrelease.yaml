@@ -66,7 +66,7 @@ spec:
 
         pod:
           nodeSelector:
-            feature.node.kubernetes.io/zwave: "true"
+            eature.node.kubernetes.io/usb-ff_10c4_ea60.present: "true"
 
     service:
       main:
@@ -104,10 +104,10 @@ spec:
 
       usb:
         type: hostPath
-        hostPath: /dev/serial/by-id/usb-Silicon_Labs_CP2102N_USB_to_UART_Bridge_Controller_2a8a66d07384ed119097d09f9d1cc348-if00-port0
+        hostPath: /dev/ttyUSB0
         hostPathType: CharDevice
         globalMounts:
-          - path: /dev/serial/by-id/usb-Silicon_Labs_CP2102N_USB_to_UART_Bridge_Controller_2a8a66d07384ed119097d09f9d1cc348-if00-port0
+          - path: /dev/ttyUSB0
 
     securityContext:
       privileged: true

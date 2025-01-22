@@ -21,4 +21,4 @@ resources:
   #- ./teslamate/ks.yaml
   #- ./wallabag/ks.yaml
   #- ./wallos/ks.yaml
-  #- ./zwave-js-ui/ks.yaml
+  - ./zwave-js-ui/ks.yaml
