@@ -119,7 +119,7 @@ spec:
           gethomepage.dev/name: Gatus
           gethomepage.dev/icon: gatus.png
           gethomepage.dev/widget.type: gatus
-          gethomepage.dev/widget.url: http://gatus.monitoring.svc.cluster.local
+          gethomepage.dev/widget.url: http://gatus.observability.svc.cluster.local
         hosts:
           - host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
             paths:
