@@ -3,7 +3,7 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
-  name: pgvecto
+  name: pgvecto-v2
   namespace: database
 spec:
   instances: 3
@@ -36,7 +36,7 @@ spec:
         maxParallel: 8
       destinationPath: s3://cloudnative-pg/
       endpointURL: https://s3.teqqnet.de
-      serverName: &currentCluster pgvecto
+      serverName: &currentCluster pgvecto-v2
       s3Credentials:
         accessKeyId:
           name: cloudnative-pg-secret
