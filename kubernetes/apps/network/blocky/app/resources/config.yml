@@ -22,32 +22,6 @@ conditional:
     168.192.in-addr.arpa: *router
     casalani.de: *router
 
-# customDNS:
-#   zone: |
-#     $TTL 3600
-#     $ORIGIN jory.dev.
-#     ; LAN
-#     unifi      IN A      192.168.1.1
-#     ; Containers
-#     bws-cache  IN A      192.168.1.2
-#     ; Servers
-#     voyager    IN A      10.69.1.100
-#     ; CNAME records
-#     minio      IN CNAME  voyager.jory.dev.
-#     nas        IN CNAME  voyager.jory.dev.
-#     portainer  IN CNAME  voyager.jory.dev.
-#     s3         IN CNAME  voyager.jory.dev.
-    
-#     $TTL 3600
-#     $ORIGIN jory.casa.
-#     ; Containers
-#     traefik    IN A      192.168.1.2
-#     gatus      IN A      192.168.1.2
-#     ; CNAME records
-#     blocky     IN CNAME  traefik.jory.casa.
-#     bws-cache  IN CNAME  traefik.jory.casa.
-#     status     IN CNAME  traefik.jory.casa.
-
 connectIPVersion: v4
 
 caching:
