@@ -5,7 +5,7 @@ metadata:
   name: postgres16-v2-lb
   annotations:
     external-dns.alpha.kubernetes.io/hostname: psql.casalani.de
-    io.cilium/lb-ipam-ips: 192.168.10.89
+    io.cilium/lb-ipam-ips: 192.168.10.99
 spec:
   type: LoadBalancer
   ports:
@@ -15,4 +15,23 @@ spec:
       targetPort: 5432
   selector:
     cnpg.io/cluster: postgres16-v2
+    cnpg.io/instanceRole: primary
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres16-immich-lb
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: psql-immich.casalani.de
+    io.cilium/lb-ipam-ips: 192.168.10.100
+spec:
+  type: LoadBalancer
+  ports:
+    - name: postgres
+      port: 5432
+      protocol: TCP
+      targetPort: 5432
+  selector:
+    cnpg.io/cluster:  postgres17-immich-v1
     cnpg.io/instanceRole: primary
