@@ -3,7 +3,7 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
-  name: pgvecto-v2
+  name: postgres17-immich-v1
   namespace: database
 spec:
   instances: 3
@@ -17,7 +17,7 @@ spec:
     name: cloudnative-pg-secret
   # bootstrap:
   #   recovery:
-  #     source: &previous-cluster pgvecto #This must match backup.barmanObjectStore.serverName from previous backup
+  #     source: &previous-cluster postgres17-immich-v1 #This must match backup.barmanObjectStore.serverName from previous backup
   postgresql:
     shared_preload_libraries:
       - "vectors.so"
@@ -36,7 +36,7 @@ spec:
         maxParallel: 8
       destinationPath: s3://cloudnative-pg/
       endpointURL: https://s3.teqqnet.de
-      serverName: &currentCluster pgvecto-v2
+      serverName: &currentCluster postgres17-immich-v1
       s3Credentials:
         accessKeyId:
           name: cloudnative-pg-secret

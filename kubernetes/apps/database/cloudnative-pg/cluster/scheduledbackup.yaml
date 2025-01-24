@@ -5,9 +5,20 @@ kind: ScheduledBackup
 metadata:
   name: postgres
 spec:
-  schedule: "0 25 21 * * *"
-  # schedule: "@daily"
+  schedule: "@daily"
   immediate: true
   backupOwnerReference: self
   cluster:
-    name: postgres16-v1
+    name: postgres16-v2
+
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: ScheduledBackup
+metadata:
+  name: postgres-immich
+spec:
+  schedule: "@daily"
+  immediate: true
+  backupOwnerReference: self
+  cluster:
+    name: postgres17-immich-v1
