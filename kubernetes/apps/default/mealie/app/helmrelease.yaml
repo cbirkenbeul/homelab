@@ -59,7 +59,9 @@ spec:
     ingress:
       main:
         enabled: true
+        className: "external"
         annotations:
+          external-dns.alpha.kubernetes.io/target: "external.${SECRET_DOMAIN}"
           external-dns.home.arpa/enabled: "true"
           cert-manager.home.arpa/enabled: "true"
           auth.home.arpa/enabled: "true"

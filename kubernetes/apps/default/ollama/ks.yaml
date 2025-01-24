@@ -8,11 +8,13 @@ metadata:
   labels:
     substitution.flux.home.arpa/enabled: "true"
 spec:
-  path: ./k3s-cluster/apps/default/ollama/app
+  path: ./kubernetes/apps/default/ollama/app
   prune: true
+  dependsOn:
+    - name: rook-ceph-cluster
   sourceRef:
     kind: GitRepository
-    name: home-kubernetes
+    name: flux-system
   wait: true
   interval: 30m
   retryInterval: 1m

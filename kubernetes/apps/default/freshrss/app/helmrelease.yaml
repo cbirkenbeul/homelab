@@ -69,13 +69,13 @@ spec:
 
     ingress:
       app:
-        className: nginx
+        className: external
         annotations:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/icon: sh-freshrss
           gethomepage.dev/name: FreshRSS
           gethomepage.dev/group: selfhosted
-          external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
+          external-dns.alpha.kubernetes.io/target: "external.${SECRET_DOMAIN}"
         hosts:
           - host: &host "freshrss.${SECRET_DOMAIN}"
             paths:

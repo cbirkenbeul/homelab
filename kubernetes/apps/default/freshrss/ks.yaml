@@ -10,11 +10,13 @@ metadata:
 spec:
   dependsOn:
     - name: rook-ceph-cluster
-  path: ./k3s-cluster/apps/default/freshrss/app
+    - name: cloudnative-pg-cluster
+    - name: ingress-nginx-external
+  path: ./kubernetes/apps/default/freshrss/app
   prune: true
   sourceRef:
     kind: GitRepository
-    name: home-kubernetes
+    name: flux-system
   healthChecks:
     - apiVersion: helm.toolkit.fluxcd.io/v2beta2
       kind: HelmRelease

@@ -8,11 +8,13 @@ metadata:
   labels:
     substitution.flux.home.arpa/enabled: "true"
 spec:
-  path: ./k3s-cluster/apps/default/homepage/app
+  path: ./kubernetes/apps/default/homepage/app
   prune: true
+  dependsOn:
+    - name: ingress-nginx-external
   sourceRef:
     kind: GitRepository
-    name: home-kubernetes
+    name: flux-system
   wait: true
   interval: 30m
   retryInterval: 1m

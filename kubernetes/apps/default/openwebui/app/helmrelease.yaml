@@ -63,9 +63,7 @@ spec:
     ingress:
       app:
         enabled: true
-        className: nginx
-        annotations:
-          external-dns.alpha.kubernetes.io/target: ingress.${SECRET_DOMAIN}
+        className: "internal"
         hosts:
           - host: &host "ollama.${SECRET_DOMAIN}"
             paths:
