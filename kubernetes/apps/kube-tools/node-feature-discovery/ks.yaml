@@ -20,7 +20,7 @@ metadata:
   name: node-feature-discovery-config
   namespace: flux-system
 spec:
-  path: ./kubernetes/kube-tools/node-feature-discovery/config
+  path: ./kubernetes/apps/kube-tools/node-feature-discovery/config
   prune: true
   dependsOn:
     - name: node-feature-discovery
