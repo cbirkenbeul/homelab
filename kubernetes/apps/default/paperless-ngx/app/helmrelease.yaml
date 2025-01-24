@@ -77,7 +77,7 @@ spec:
     ingress:
       main:
         enabled: true
-        className: nginx
+        className: "internal"
         annotations:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: Home

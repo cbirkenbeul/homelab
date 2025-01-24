@@ -10,14 +10,17 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
+  path: ./kubernetes/apps/default/nextcloud/app
+  prune: true
   dependsOn:
+    - name: rook-ceph-cluster
+    - name: cloudnative-pg-cluster
+    - name: ingress-nginx-external
     - name: dragonfly-cluster
     - name: external-secrets-stores
-  path: ./k3s-cluster/apps/default/nextcloud/app
-  prune: true
   sourceRef:
     kind: GitRepository
-    name: home-kubernetes
+    name: flux-system
   wait: false
   interval: 30m
   retryInterval: 1m

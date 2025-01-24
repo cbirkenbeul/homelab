@@ -6,11 +6,15 @@ metadata:
   name: &app immich
   namespace: flux-system
 spec:
-  path: ./k3s-cluster/apps/default/immich/app
+  path: ./kubernetes/apps/default/immich/app
   prune: true
+  dependsOn:
+    - name: rook-ceph-cluster
+    - name: cloudnative-pg-cluster
+    - name: ingress-nginx-external
   sourceRef:
     kind: GitRepository
-    name: home-kubernetes
+    name: flux-system
   wait: false
   interval: 30m
   retryInterval: 1m

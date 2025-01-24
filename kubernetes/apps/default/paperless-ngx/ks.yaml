@@ -8,16 +8,17 @@ metadata:
   labels:
     substitution.flux.home.arpa/enabled: "true"
 spec:
-  path: ./k3s-cluster/apps/default/paperless-ngx/app
+  path: ./kubernetes/apps/default/paperless-ngx/app
   prune: true
+  dependsOn:
+    - name: rook-ceph-cluster
+    - name: cloudnative-pg-cluster
+    - name: ingress-nginx-internal
+    - name: dragonfly-cluster
+    - name: external-secrets-stores
   sourceRef:
     kind: GitRepository
-    name: home-kubernetes
-  healthChecks:
-    - apiVersion: helm.toolkit.fluxcd.io/v2beta2
-      kind: HelmRelease
-      name: paperless-ngx
-      namespace: default
+    name: flux-system
   interval: 30m
   retryInterval: 1m
   timeout: 3m

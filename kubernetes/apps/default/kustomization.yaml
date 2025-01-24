@@ -5,16 +5,16 @@ resources:
   - ./namespace.yaml
   - ./evcc/ks.yaml
   - ./freshrss/ks.yaml
-  #- ./ghostfolio/ks.yaml
+  - ./ghostfolio/ks.yaml
   - ./homepage/ks.yaml
   - ./immich/ks.yaml
   - ./mastodon/ks.yaml
   - ./mealie/ks.yaml
-  #- ./nextcloud/ks.yaml
+  - ./nextcloud/ks.yaml
   - ./ollama/ks.yaml
   - ./openwebui/ks.yaml
   #- ./paperless-ai/ks.yaml
-  #- ./paperless-ngx/ks.yaml
+  - ./paperless-ngx/ks.yaml
   #- ./postiz/ks.yaml
   #- ./shlink/ks.yaml
   #- ./stirling-pdf/ks.yaml

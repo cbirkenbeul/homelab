@@ -81,7 +81,7 @@ spec:
     externalDatabase:
       enabled: true
       type: postgresql
-      host: postgres16-v1-rw.database.svc.cluster.local.
+      host: postgres16-v2-rw.database.svc.cluster.local.
       database: nextcloud
       existingSecret:
         enabled: true
@@ -90,9 +90,9 @@ spec:
         passwordKey: INIT_POSTGRES_PASS
     ingress:
       enabled: true
-      className: nginx
+      className: "external"
       annotations:
-        external-dns.alpha.kubernetes.io/target: ingress.${SECRET_DOMAIN}
+        external-dns.alpha.kubernetes.io/target: external.${SECRET_DOMAIN}
         nginx.ingress.kubernetes.io/proxy-body-size: "10G"
         nginx.ingress.kubernetes.io/proxy-buffering: "off"
         nginx.ingress.kubernetes.io/proxy-request-buffering: "off"
