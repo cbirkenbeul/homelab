@@ -72,9 +72,9 @@ spec:
             port: 2283
     ingress:
       immich-server:
-        className: nginx
+        className: "external"
         annotations:
-          external-dns.alpha.kubernetes.io/target: ingress.${SECRET_DOMAIN}
+          external-dns.alpha.kubernetes.io/target: external.${SECRET_DOMAIN}
           gethomepage.dev/enabled: "true"
           gethomepage.dev/icon: sh-immich
           gethomepage.dev/name: Immich
