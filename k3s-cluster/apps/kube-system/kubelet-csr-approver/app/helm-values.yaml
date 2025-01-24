@@ -1,4 +1,0 @@
----
-providerRegex: ^(utility-01)$
-bypassDnsResolution: true
-replicas: 1
