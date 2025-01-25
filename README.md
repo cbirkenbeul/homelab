@@ -42,16 +42,12 @@ The following apps are installed on the clusters.
 | [Flux2](https://fluxcd.io)                                                        | GitOps Tool managing the cluster                              |
 | [NGINX Ingress Controller](https://kubernetes.github.io/ingress-nginx)            | Cluster Ingress controller                                    |
 | [Rook-Ceph](https://rook.io/)                                                     | Cloud native distributed block storage for Kubernetes         |
-| [MetalLB](https://metallb.universe.tf)                                            | Bare metal LoadBalancer                                       |
 | [Cert-Manager](https://cert-manager.io)                                           | Letsencrypt certificates with Cloudflare DNS                  |
 | [ExternalDNS](https://github.com/kubernetes-sigs/external-dns)                    | Configure Cloudflare DNS Servers                              |
-| [kube-vip](https://github.com/kube-vip/kube-vip)                                  | Virtual IP Load-Balancer for Control Plane High Availability  |
 | [Kube-Prometheus Stack](https://github.com/prometheus-operator/kube-prometheus)   | Prometheus & Exporters to monitor the cluster                 |
 | [Grafana](https://grafana.com)                                                    | Monitoring & Logging Dashboard                                |
 | [Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager)           | Monitoring Alerts                                             |
 | [Grafana Loki](https://grafana.com/oss/loki)                                      | Log aggregation system                                        |
-| [System Upgrade Controller](https://github.com/rancher/system-upgrade-controller) | Automated k3s upgrades                                        |
-| [Descheduler](https://github.com/kubernetes-sigs/descheduler)                     | Evicts pods to optimize scheduling                            |
 | [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server)    | Source of container resource metrics for Kubernetes           |
 
 ## ☁️ Cloud Dependencies
@@ -74,9 +70,9 @@ While most of my infrastructure and workloads are self-hosted I do rely upon the
 
 | Name  | Device         | CPU       | OS Disk   | Data Disk | RAM  | OS    | Purpose           |
 |-------|----------------|-----------|-----------|-----------|------|-------|-------------------|
-| kube-01 | Dell 5090   | i5-10500T | 256 GB NVME | 128 GB SSD  | 32 GB | Debian 12 | k8s control-plane, worker |
-| kube-02 | Dell 5090   | i5-10500T | 256 GB NVME | 128 GB SSD  | 32 GB | Debian 12 | k8s control-plane, worker |
-| kube-03 | Dell 5090   | i5-10500T | 256 GB NVME | 128 GB SSD  | 32 GB | Debian 12 | k8s control-plane, worker |
+| kube-01 | Dell 5090   | i5-10500T | 256 GB NVME | 128 GB SSD  | 32 GB | Talos | k8s control-plane, worker |
+| kube-02 | Dell 5090   | i5-10500T | 256 GB NVME | 128 GB SSD  | 32 GB | Talos | k8s control-plane, worker |
+| kube-03 | Dell 5090   | i5-10500T | 256 GB NVME | 128 GB SSD  | 32 GB | Talos | k8s control-plane, worker |
 
 ### Networking/UPS Hardware
 
