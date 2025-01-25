@@ -91,5 +91,3 @@ It creates PullRequests when Helm charts or Docker images have newer versions av
 ## :handshake:&nbsp; Thanks
 
 Big shout out to [k8s@home](https://github.com/k8s-at-home) and everyone from [awesome-home-kubernetes](https://github.com/k8s-at-home/awesome-home-kubernetes) for the inspiration :heart:
-
-test
