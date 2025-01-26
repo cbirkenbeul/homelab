@@ -8,3 +8,4 @@ data:
   TIMEZONE: Europe/Berlin
   TZ: Europe/Berlin
   SERVICE_CIDR: 10.43.0.0/16
+  CLUSTER_CIDR: 10.42.0.0/16
