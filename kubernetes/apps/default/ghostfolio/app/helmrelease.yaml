@@ -27,11 +27,6 @@ spec:
       retries: 3
   uninstall:
     keepHistory: false
-  dependsOn:
-    - name: ingress-nginx
-      namespace: networking
-    - name: dragonfly-operator
-      namespace: database
   values:
     controllers:
       ghostfolio:
@@ -73,7 +68,7 @@ spec:
 
     ingress:
       app:
-        className: "nginx"
+        className: "internal"
         annotations:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: Home

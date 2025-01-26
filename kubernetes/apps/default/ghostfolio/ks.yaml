@@ -13,7 +13,7 @@ spec:
   dependsOn:
     - name: rook-ceph-cluster
     - name: cloudnative-pg-cluster
-    - name: ingress-nginx-external
+    - name: ingress-nginx-internal
   sourceRef:
     kind: GitRepository
     name: flux-system
