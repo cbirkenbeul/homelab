@@ -75,9 +75,6 @@ spec:
                 cpu: 10m
               limits:
                 memory: 512Mi
-        pod:
-          nodeSelector:
-            zzh.feature.node.kubernetes.io/zigbee: "true"
     service:
       app:
         controller: zigbee2mqtt
