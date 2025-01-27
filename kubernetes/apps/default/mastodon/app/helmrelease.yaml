@@ -60,11 +60,6 @@ spec:
               SMTP_PORT: 587
               SMTP_FROM_ADDRESS: notifications@example.com
               S3_ENABLED: true
-              S3_BUCKET: mastodon
-              S3_ENDPOINT: https://s3.teqqnet.de
-              S3_HOSTNAME: s3.teqqnet.de
-              S3_PROTOCOL: https
-              S3_REGION: eu-west-01
             envFrom:
               - secretRef:
                   name: mastodon-secret
