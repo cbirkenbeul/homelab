@@ -39,7 +39,7 @@ spec:
           app:
             image:
               repository: jellyfin/jellyfin
-              tag: 10.10.4
+              tag: 10.10.5
             env:
               TZ: ${TIMEZONE}
               JELLYFIN_PublishedServerUrl: https://{{ .Release.Name }}.${SECRET_DOMAIN}
