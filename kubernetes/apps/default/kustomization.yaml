@@ -10,7 +10,6 @@ resources:
   - ./immich/ks.yaml
   - ./mastodon/ks.yaml
   - ./mealie/ks.yaml
-  - ./nextcloud/ks.yaml
   - ./ollama/ks.yaml
   - ./openwebui/ks.yaml
   #- ./paperless-ai/ks.yaml
