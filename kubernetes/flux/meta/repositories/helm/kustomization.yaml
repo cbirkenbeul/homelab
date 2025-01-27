@@ -11,6 +11,7 @@ resources:
   - ./coredns.yaml
   - ./democratic-csi.yaml
   - ./emberstack.yaml
+  - ./emqx.yaml
   - ./external-dns.yaml
   - ./external-secrets.yaml
   - ./grafana.yaml
@@ -18,7 +19,6 @@ resources:
   - ./intel.yaml
   - ./jetstack.yaml
   - ./metrics-server.yaml
-  - ./nextcloud.yaml
   - ./node-feature-discovery-charts.yaml
   - ./openebs.yaml
   - ./piraeus.yaml
