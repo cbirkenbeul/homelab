@@ -8,7 +8,7 @@ metadata:
     gethomepage.dev/enabled: "true"
     gethomepage.dev/icon: emqx.png
     gethomepage.dev/name: Emqx
-    gethomepage.dev/group: Automation
+    gethomepage.dev/group: Home
 spec:
   ingressClassName: internal
   rules:
