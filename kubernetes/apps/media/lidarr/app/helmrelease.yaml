@@ -85,7 +85,7 @@ spec:
           gethomepage.dev/name: Lidarr
           gethomepage.dev/widget.type: lidarr
           gethomepage.dev/group: Media
-          gethomepage.dev/widget.url: http://lidarr.media.svc.cluster.local:7878
+          gethomepage.dev/widget.url: http://lidarr.media.svc.cluster.local:8686
           gethomepage.dev/widget.key: '{{ "{{HOMEPAGE_VAR_LIDARR_API_KEY}}" }}'
         hosts:
           - host: &host "lidarr.${SECRET_DOMAIN}"
