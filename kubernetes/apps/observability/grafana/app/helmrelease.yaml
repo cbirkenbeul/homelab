@@ -129,7 +129,12 @@ spec:
           url: https://raw.githubusercontent.com/DRuggeri/nut_exporter/master/dashboard/dashboard.json
           datasource: 
             - { name: DS_PROMETHEUS, value: Prometheus }
-
+        smartctl-exporter:
+          # renovate: depName="SMARTctl Exporter Dashboard"
+          gnetId: 22604
+          revision: 1
+          datasource:
+            - { name: DS_PROMETHEUS, value: Prometheus }
       ceph:
         ceph-cluster:
           # renovate: depName="Ceph Cluster"
