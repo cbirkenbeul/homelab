@@ -10,7 +10,7 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
-  path: ./kubernetes/apps/network/e1000e_fix/app
+  path: ./kubernetes/apps/network/e1000e-fix/app
   prune: true
   sourceRef:
     kind: GitRepository
