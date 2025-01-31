@@ -104,10 +104,10 @@ tariffs:
 
 # mqtt message broker
 mqtt:
-  broker: 192.168.10.100:1883
+  broker: emqx-listeners.database.svc.cluster.local:1883
   topic: evcc # root topic for publishing, set empty to disable
-  user: {{ .MQTTUSER }}
-  password: {{ .MQTTPASSWORD }}
+  user: {{ .X_EMQX_MQTT_USERNAME }}
+  password: {{ .X_EMQX_MQTT_PASSWORD }}
 
 # influx database
 influx:
