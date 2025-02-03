@@ -23,4 +23,4 @@ spec:
     substitute:
       APP: *app
       GATUS_SUBDOMAIN: audiobookshelf
-      VOLSYNC_CAPACITY: 15Gi
+      VOLSYNC_CAPACITY: 5Gi
