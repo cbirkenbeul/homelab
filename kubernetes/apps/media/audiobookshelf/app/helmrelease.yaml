@@ -63,7 +63,7 @@ spec:
             port: *port
     ingress:
       main:
-        className: public
+        className: external
         hosts:
           - host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
             paths:
