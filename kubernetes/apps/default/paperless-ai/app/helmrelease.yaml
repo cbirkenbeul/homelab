@@ -41,7 +41,7 @@ spec:
           app:
             image:
               repository: clusterzx/paperless-ai
-              tag: 2.4.5
+              tag: 2.5.0
 
     service:
       app:
