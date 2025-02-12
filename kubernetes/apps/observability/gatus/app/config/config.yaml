@@ -46,19 +46,6 @@ endpoints:
       - type: pushover
 
 
-  ## Default
-  - name: teslamate
-    group: default
-    url: "tcp://teslamate.default.svc.cluster.local:4000"
-    interval: 1m
-    ui:
-      hide-hostname: true
-      hide-url: true
-    conditions:
-      - "[CONNECTED] == true"
-    alerts:
-      - type: pushover
-
   ## Media
   - name: sonarr
     group: media
@@ -119,7 +106,7 @@ endpoints:
   ## Database
   - name: postgresql
     group: database
-    url: "tcp://postgres16-v1-rw.database.svc.cluster.local:5432"
+    url: "tcp://postgres16-v2-rw.database.svc.cluster.local:5432"
     interval: 1m
     ui:
       hide-hostname: true
