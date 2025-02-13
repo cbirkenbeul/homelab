@@ -8,11 +8,11 @@ metadata:
   labels:
     substitution.flux.home.arpa/enabled: "true"
 spec:
-  path: ./k3s-cluster/apps/default/postiz/app
+  path: ./kubernetes/apps/default/postiz/app
   prune: true
   sourceRef:
     kind: GitRepository
-    name: home-kubernetes
+    name: flux-system
   wait: true
   interval: 30m
   retryInterval: 1m
