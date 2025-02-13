@@ -70,7 +70,12 @@ spec:
     ingress:
       main:
         enabled: true
-        className: nginx
+        className: internal
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/icon: sh-postiz
+          gethomepage.dev/name: Postiz
+          gethomepage.dev/group: selfhosted
         hosts:
           - host: &host "postiz.${SECRET_DOMAIN}"
             paths:
