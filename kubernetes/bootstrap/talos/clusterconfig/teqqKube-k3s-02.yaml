@@ -133,7 +133,7 @@ cluster:
       rules:
         - level: Metadata
   controllerManager:
-    image: registry.k8s.io/kube-controller-manager:v1.32.1
+    image: registry.k8s.io/kube-controller-manager:v1.32.2
     extraArgs:
       bind-address: 0.0.0.0
   proxy:
