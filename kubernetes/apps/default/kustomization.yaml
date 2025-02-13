@@ -14,7 +14,7 @@ resources:
   - ./openwebui/ks.yaml
   #- ./paperless-ai/ks.yaml
   - ./paperless-ngx/ks.yaml
-  #- ./postiz/ks.yaml
+  - ./postiz/ks.yaml
   #- ./shlink/ks.yaml
   #- ./stirling-pdf/ks.yaml
   #- ./wallabag/ks.yaml
