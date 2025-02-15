@@ -94,7 +94,7 @@ spec:
     persistence:
       config:
         type: configMap
-        name: searxng
+        name: searxng-m4mcmcdf87
         globalMounts:
           - path: /etc/searxng/settings.yml
             subPath: settings.yml
