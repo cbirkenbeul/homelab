@@ -47,6 +47,7 @@ blocking:
         *.androidtvchannels-pa.googleapis.com
         *.androidtvwatsonfe-pa.googleapis.com
       - https://raw.githubusercontent.com/cbirkenbeul/homelab/refs/heads/main/kubernetes/apps/network/blocky/app/resources/blacklist.txt
+      - https://raw.githubusercontent.com/autinerd/anti-axelspringer-hosts/master/axelspringer-hosts
   whiteLists:
     ads:
       - |
