@@ -49,9 +49,9 @@ spec:
       existingSecret:
         enabled: true
         secretName: nextcloud-secret
-        smtpHostKey: smtp-host
-        smtpUsernameKey: smtp-username
-        smtpPasswordKey: smtp-password
+        smtpHostKey: smtp_host
+        smtpUsernameKey: smtp_username
+        smtpPasswordKey: smtp_password
       host: &host cloud.${CLUSTER_DOMAIN}
       mail:
         enabled: true
