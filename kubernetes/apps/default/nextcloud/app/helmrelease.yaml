@@ -52,11 +52,11 @@ spec:
         smtpHostKey: smtp_host
         smtpUsernameKey: smtp_username
         smtpPasswordKey: smtp_password
-      host: &host cloud.${CLUSTER_DOMAIN}
+      host: &host cloud.${SECRET_DOMAIN}
       mail:
         enabled: true
         fromAddress: admin
-        domain: ${CLUSTER_DOMAIN}
+        domain: ${SECRET_DOMAIN}
       securityContext:
         runAsUser: 1022
         runAsGroup: 1022
@@ -93,7 +93,7 @@ spec:
       enabled: true
       className: external
       annotations:
-        external-dns.alpha.kubernetes.io/target: external.${CLUSTER_DOMAIN}
+        external-dns.alpha.kubernetes.io/target: external.${SECRET_DOMAIN}
         hajimari.io/icon: mdi:dropbox
         nginx.ingress.kubernetes.io/proxy-body-size: "10G"
         nginx.ingress.kubernetes.io/proxy-buffering: "off"
