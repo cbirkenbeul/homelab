@@ -123,9 +123,9 @@ spec:
           }
       path: /
       pathType: Prefix
-      tls:
-      - hosts:
-        - cloud.${SECRET_DOMAIN}
+      # tls:
+      # - hosts:
+      #   - cloud.${SECRET_DOMAIN}
     persistence:
       enabled: true
       existingClaim: nextcloud
