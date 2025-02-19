@@ -70,7 +70,12 @@ spec:
           $CONFIG = array (
             'trusted_proxies' => array(
               0 => '127.0.0.1',
-              1 => '${CLUSTER_CIDR}',
+              1 => '10.43.0.0/16',
+              2 => '10.42.0.0/16',
+            ),
+            'trusted_domains' => array(
+              0 => '127.0.0.1',
+              1 => 'cloud.${SECRET_DOMAIN}',
             ),
             'forwarded_for_headers' => array('HTTP_X_FORWARDED_FOR'),
           ); ?>
