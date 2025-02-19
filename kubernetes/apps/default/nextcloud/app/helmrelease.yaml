@@ -91,7 +91,7 @@ spec:
         passwordKey: INIT_POSTGRES_PASS
     ingress:
       enabled: true
-      className: external
+      className: "external"
       annotations:
         external-dns.alpha.kubernetes.io/target: external.${SECRET_DOMAIN}
         hajimari.io/icon: mdi:dropbox
@@ -124,6 +124,9 @@ spec:
           }
       path: /
       pathType: Prefix
+      tls:
+      - hosts:
+        - cloud.${SECRET_DOMAIN}
     persistence:
       enabled: true
       existingClaim: nextcloud
