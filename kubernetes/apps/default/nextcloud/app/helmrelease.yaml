@@ -127,7 +127,7 @@ spec:
       pathType: Prefix
     persistence:
       enabled: true
-      existingClaim: ${VOLSYNC_CLAIM}
+      existingClaim: nextcloud
       nextcloudData:
         enabled: true
         existingClaim: nextcloud-nfs

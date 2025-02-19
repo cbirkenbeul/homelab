@@ -19,7 +19,6 @@ spec:
     substitute:
       APP: *app
       GATUS_SUBDOMAIN: cloud
-      VOLSYNC_CLAIM: nextcloud-config
       VOLSYNC_CAPACITY: 5Gi
       VOLSYNC_UID: "1022"
       VOLSYNC_GID: "1022"
