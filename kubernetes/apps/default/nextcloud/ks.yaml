@@ -7,7 +7,7 @@ metadata:
   namespace: flux-system
 spec:
   targetNamespace: default
-  path: ./kubernetes/main/apps/default/nextcloud/app
+  path: ./kubernetes/apps/default/nextcloud/app
   prune: true
   sourceRef:
     kind: GitRepository
