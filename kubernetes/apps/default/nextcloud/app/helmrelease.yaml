@@ -30,7 +30,10 @@ spec:
       namespace: storage
   values:
     image:
+      repository: nextcloud
       flavor: fpm-alpine
+      tag: 30.0.5-fpm-alpine
+      pullPolicy: IfNotPresent
     nginx:
       enabled: true
     nextcloud:
