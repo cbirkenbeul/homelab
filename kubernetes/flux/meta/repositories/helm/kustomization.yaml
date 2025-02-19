@@ -19,6 +19,7 @@ resources:
   - ./intel.yaml
   - ./jetstack.yaml
   - ./metrics-server.yaml
+  - ./nextcloud.yaml
   - ./node-feature-discovery-charts.yaml
   - ./openebs.yaml
   - ./piraeus.yaml
