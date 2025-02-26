@@ -48,7 +48,7 @@ spec:
         storage:
           volumeClaimTemplate:
             spec:
-              storageClassName: ceph-blockpool
+              storageClassName: ceph-block
               resources:
                 requests:
                   storage: 1Gi
