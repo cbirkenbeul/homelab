@@ -62,16 +62,6 @@ spec:
           http:
             port: 8096
 
-    serviceMonitor:
-      app:
-        serviceName: jellyfin
-        endpoints:
-          - port: http
-            scheme: http
-            path: /metrics
-            interval: 1m
-            scrapeTimeout: 10s
-
     ingress:
       main:
         enabled: true
