@@ -34,80 +34,24 @@ spec:
     cleanPrometheusOperatorObjectNames: true
 
     alertmanager:
-      enabled: false
-      # global:
-      #   resolve_timeout: 5m
-      # route:
-      #   group_by: ["alertname", "job"]
-      #   group_interval: 10m
-      #   group_wait: 1m
-      #   receiver: pushover
-      #   repeat_interval: 12h
-      #   routes:
-      #     - receiver: "null"
-      #       matchers:
-      #         - alertname =~ "InfoInhibitor|Watchdog"
-      #     - receiver: pushover
-      #       continue: true
-      #       matchers:
-      #         - severity = "critical"
-      # inhibit_rules:
-      #   - equal: ["alertname", "namespace"]
-      #     source_matchers:
-      #       - severity = "critical"
-      #     target_matchers:
-      #       - severity = "warning"
-      # receivers:
-      #   - name: "null"
-      #   - name: pushover
-      #     pushover_configs:
-      #       - html: true
-      #         message: |-
-      #           {{ "{{-" }} range .Alerts {{ "}}" }}
-      #             {{ "{{-" }} if ne .Annotations.description "" {{ "}}" }}
-      #               {{ "{{" }} .Annotations.description {{ "}}" }}
-      #             {{ "{{-" }} else if ne .Annotations.summary "" {{ "}}" }}
-      #               {{ "{{" }} .Annotations.summary {{ "}}" }}
-      #             {{ "{{-" }} else if ne .Annotations.message "" {{ "}}" }}
-      #               {{ "{{" }} .Annotations.message {{ "}}" }}
-      #             {{ "{{-" }} else {{ "}}" }}
-      #               Alert description not available
-      #             {{ "{{-" }} end {{ "}}" }}
-      #             {{ "{{-" }} if gt (len .Labels.SortedPairs) 0 {{ "}}" }}
-      #               <small>
-      #               {{ "{{-" }} range .Labels.SortedPairs {{ "}}" }}
-      #                 <b>{{ "{{" }} .Name {{ "}}" }}:</b> {{ "{{" }} .Value {{ "}}" }}
-      #               {{ "{{-" }} end {{ "}}" }}
-      #               </small>
-      #             {{ "{{-" }} end {{ "}}" }}
-      #           {{ "{{-" }} end {{ "}}" }}
-      #         priority: |-
-      #           {{ "{{" }} if eq .Status "firing" {{ "}}" }}1{{ "{{" }} else {{ "}}" }}0{{ "{{" }} end {{ "}}" }}
-      #         send_resolved: true
-      #         title: >-
-      #           {{ "{{" }} .CommonLabels.alertname {{ "}}" }}
-      #           [{{ "{{" }} .Status | toUpper {{ "}}" }}{{ "{{" }} if eq .Status "firing" {{ "}}" }}:{{ "{{" }} .Alerts.Firing | len {{ "}}" }}{{ "{{" }} end {{ "}}" }}]
-      #         token: ${SECRET_PUSHOVER_API_KEY}
-      #         url_title: View in Alertmanager
-      #         user_key: ${SECRET_PUSHOVER_USER_KEY}
-      # ingress:
-      #   enabled: true
-      #   pathType: Prefix
-      #   ingressClassName: nginx
-      #   hosts:
-      #     - &host alertmanager.${SECRET_DOMAIN}
-      #   tls:
-      #     - hosts:
-      #         - *host
-      # alertmanagerSpec:
-      #   replicas: 1
-      #   storage:
-      #     volumeClaimTemplate:
-      #       spec:
-      #         storageClassName: ceph-block
-      #         resources:
-      #           requests:
-      #             storage: 1Gi
+      ingress:
+        enabled: true
+        ingressClassName: internal
+        hosts: ["alerts.${SECRET_DOMAIN}"]
+        pathType: Prefix
+      alertmanagerSpec:
+        alertmanagerConfiguration:
+          name: alertmanager
+          global:
+            resolveTimeout: 5m
+        externalUrl: https://alerts.${SECRET_DOMAIN}
+        storage:
+          volumeClaimTemplate:
+            spec:
+              storageClassName: ceph-block
+              resources:
+                requests:
+                  storage: 1Gi
 
     kube-state-metrics:
       metricLabelsAllowlist:
