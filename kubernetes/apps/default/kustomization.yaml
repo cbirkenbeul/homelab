@@ -11,6 +11,7 @@ resources:
   - ./mastodon/ks.yaml
   - ./mealie/ks.yaml
   - ./nextcloud/ks.yaml
+  - ./obsidian-livesync/ks.yaml
   - ./ollama/ks.yaml
   - ./openwebui/ks.yaml
   #- ./paperless-ai/ks.yaml
