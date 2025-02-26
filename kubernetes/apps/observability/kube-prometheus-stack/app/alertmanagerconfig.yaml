@@ -66,8 +66,8 @@ spec:
           ttl: 86400s
           token:
             name: &secret prometheus-secrets
-            key: ALERTMANAGER_PUSHOVER_TOKEN
+            key: SECRET_PUSHOVER_API_KEY
           userKey:
             name: *secret
-            key: PUSHOVER_USER_KEY
+            key: SECRET_PUSHOVER_USER_KEY
           urlTitle: View in Alertmanager
