@@ -65,7 +65,7 @@ spec:
             {{ .CommonLabels.alertname }}
           ttl: 86400s
           token:
-            name: &secret alertmanager-secret
+            name: &secret prometheus-secrets
             key: ALERTMANAGER_PUSHOVER_TOKEN
           userKey:
             name: *secret
