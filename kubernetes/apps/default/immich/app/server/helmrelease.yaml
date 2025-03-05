@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 3.7.1
+      version: 3.7.2
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -57,7 +57,7 @@ spec:
           immich-server:
             image:
               repository: ghcr.io/immich-app/immich-server
-              tag: v1.128.0
+              tag: v1.129.0
               pullPolicy: IfNotPresent
             envFrom:
               - secretRef:
