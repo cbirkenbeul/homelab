@@ -28,4 +28,4 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: silence-operator
-    namespace: monitoring
+    namespace: observability
