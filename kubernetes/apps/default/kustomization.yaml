@@ -6,7 +6,6 @@ resources:
   - ./actual/ks.yaml
   - ./evcc/ks.yaml
   - ./freshrss/ks.yaml
-  - ./ghostfolio/ks.yaml
   - ./homepage/ks.yaml
   - ./immich/ks.yaml
   - ./mastodon/ks.yaml
