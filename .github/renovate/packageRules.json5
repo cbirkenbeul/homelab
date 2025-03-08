@@ -11,7 +11,7 @@
       "description": ["Special config for postiz container"],
       "matchDatasources": ["docker"],
       "matchPackageNames": ["postiz-app"],
-      "versioning": "regex:^amd64-(?<number>[0-9]+)$"
+      "versioning": "regex:^(?<number>[0-9]+)-amd64$"
     },
     {
       "description": ["Custom versioning for k3s"],
