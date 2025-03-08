@@ -1,0 +1,71 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/helm.toolkit.fluxcd.io/helmrelease_v2beta2.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app actual
+  namespace: default
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: app-template
+      version: 3.7.2
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: uninstall
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    controllers:
+      actual:
+        annotations:
+          reloader.stakater.com/auto: "true"
+        containers:
+          main:
+            image:
+              repository: ghcr.io/actualbudget/actual-server
+              tag: "25.3.1"
+
+    service:
+      app:
+        controller: *app
+        ports:
+          http:
+            port: 5006
+
+    ingress:
+      app:
+        className: internal
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/icon: sh-actual
+          gethomepage.dev/name: actual
+          gethomepage.dev/group: Home
+        hosts:
+          - host: &host "actual.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                service:
+                  identifier: app
+                  port: http
+        tls:
+          - hosts:
+              - *host
+
+    persistence:
+      data:
+        existingClaim: actual
+        advancedMounts:
+          actual:
+            app:
+              - path: /data
