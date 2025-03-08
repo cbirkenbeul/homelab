@@ -17,7 +17,6 @@ resources:
   - ./paperless-ngx/ks.yaml
   - ./postiz/ks.yaml
   - ./searxng/ks.yaml
-  #- ./shlink/ks.yaml
-  #- ./stirling-pdf/ks.yaml
+  - ./stirling-pdf/ks.yaml
   #- ./wallabag/ks.yaml
   - ./zwave-js-ui/ks.yaml
