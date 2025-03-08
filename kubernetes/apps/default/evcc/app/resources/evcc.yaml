@@ -111,6 +111,7 @@ tariffs:
     template: solcast
     site: {{ .SOLCASTSITE }}
     token: {{ .SOLCASTAPIKEY }}
+    interval: 24h
 
   co2:
     # co2 tariff provides co2 intensity forecast and is for co2-optimized target charging if no variable grid tariff is specified
