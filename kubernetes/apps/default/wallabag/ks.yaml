@@ -10,16 +10,13 @@ metadata:
 spec:
   dependsOn:
     - name: rook-ceph-cluster
-  path: ./k3s-cluster/apps/default/wallabag/app
+    - name: cloudnative-pg-cluster
+    - name: ingress-nginx-external
+  path: ./kubernetes/apps/default/wallabag/app
   prune: true
   sourceRef:
     kind: GitRepository
-    name: home-kubernetes
-  healthChecks:
-    - apiVersion: helm.toolkit.fluxcd.io/v2beta2
-      kind: HelmRelease
-      name: wallabag
-      namespace: default
+    name: flux-system
   interval: 30m
   retryInterval: 1m
   timeout: 3m

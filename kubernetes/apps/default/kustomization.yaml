@@ -18,5 +18,5 @@ resources:
   - ./postiz/ks.yaml
   - ./searxng/ks.yaml
   - ./stirling-pdf/ks.yaml
-  #- ./wallabag/ks.yaml
+  - ./wallabag/ks.yaml
   - ./zwave-js-ui/ks.yaml
