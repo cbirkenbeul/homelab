@@ -47,7 +47,7 @@ spec:
             env:
               SYMFONY__ENV__DOMAIN_NAME: https://wallabag.${SECRET_DOMAIN}
               SYMFONY__ENV__SERVER_NAME: Wallabag
-              SYMFONY__ENV__FOSUSER_REGISTRATION: "false"
+              SYMFONY__ENV__FOSUSER_REGISTRATION: "true"
               SYMFONY__ENV__FOSUSER_CONFIRMATION: "false"
               POPULATE_DATABASE: "false"
             envFrom:
