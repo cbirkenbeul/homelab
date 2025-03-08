@@ -74,6 +74,15 @@ vehicles:
     clientsecret: {{ .TRONITYCLIENTSECRET }}
     capacity: 74
 
+  - name: ET5
+    type: template
+    template: tronity
+    title: ET5
+    capacity: 100
+    clientid: {{ .TRONITYCLIENTID }}
+    clientsecret: {{ .TRONITYCLIENTSECRET }}
+    vin: {{ .TRONITYET5VIN }}
+
 # site describes the EVU connection, PV and home battery
 site:
   - title: Zuhause
