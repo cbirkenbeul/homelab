@@ -57,13 +57,13 @@ meters:
     host: 192.168.50.10
     port: 1502 # Port 
 
-chargers:
-  - name: easee
-    type: template
-    template: easee
-    user: {{ .EASEEUSER }}
-    password: {{ .EASEEPASSWORD }}
-    charger: {{ .EASEECHARGER }}
+# chargers:
+#   - name: easee
+#     type: template
+#     template: easee
+#     user: {{ .EASEEUSER }}
+#     password: {{ .EASEEPASSWORD }}
+#     charger: {{ .EASEECHARGER }}
 
 vehicles:
   - name: teqqCar
@@ -95,11 +95,11 @@ site:
       battery:
         - battery
 
-loadpoints:
-  - title: CASA LANI
-    charger: easee
-    vehicle: teqqCar
-    mode: pv
+# loadpoints:
+#   - title: CASA LANI
+#     charger: easee
+#     vehicle: teqqCar
+#     mode: pv
 
 tariffs:
   currency: EUR
