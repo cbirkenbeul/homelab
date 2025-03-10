@@ -85,15 +85,15 @@ vehicles:
     vin: {{ .TRONITYET5VIN }}
 
 # site describes the EVU connection, PV and home battery
-site:
-  - title: Zuhause
-    meters:
-      grid: grid
-      pv:
-        - plenticore
-        - pico
-      battery:
-        - battery
+# site:
+#   - title: Zuhause
+#     meters:
+#       grid: grid
+#       pv:
+#         - plenticore
+#         - pico
+#       battery:
+#         - battery
 
 # loadpoints:
 #   - title: CASA LANI
