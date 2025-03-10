@@ -78,10 +78,10 @@ spec:
         existingClaim: evcc
         globalMounts:
           - path: /root/.evcc
-      # config-file:
-      #   type: secret
-      #   name: evcc-secret
-      #   globalMounts:
-      #     - path: /etc/evcc.yaml
-      #       subPath: evcc.yaml
-      #       readOnly: false
+      config-file:
+        type: secret
+        name: evcc-secret
+        globalMounts:
+          - path: /etc/evcc.yaml
+            subPath: evcc.yaml
+            readOnly: false
