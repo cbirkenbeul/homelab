@@ -24,20 +24,20 @@ modbusproxy:
   #    # readonly: true # use `deny` to raise modbus errors
 
 meters:
-  - name: plenticore
-    type: template
-    template: kostal-plenticore-gen2
-    usage: pv
-    modbus: tcpip
-    id: 71
-    host: 192.168.50.10
-    port: 1502 # Port 
+  # - name: plenticore
+  #   type: template
+  #   template: kostal-plenticore-gen2
+  #   usage: pv
+  #   modbus: tcpip
+  #   id: 71
+  #   host: 192.168.50.10
+  #   port: 1502 # Port 
 
-  - name: pico
-    type: template
-    template: kostal-piko-mp-plus
-    usage: pv
-    host: 192.168.50.11
+  # - name: pico
+  #   type: template
+  #   template: kostal-piko-mp-plus
+  #   usage: pv
+  #   host: 192.168.50.11
 
   - name: grid
     type: template
@@ -48,14 +48,14 @@ meters:
     host: 192.168.50.12
     port: 502 # Port 
 
-  - name: battery
-    type: template
-    template: kostal-plenticore-gen2
-    usage: battery
-    modbus: tcpip
-    id: 71
-    host: 192.168.50.10
-    port: 1502 # Port 
+  # - name: battery
+  #   type: template
+  #   template: kostal-plenticore-gen2
+  #   usage: battery
+  #   modbus: tcpip
+  #   id: 71
+  #   host: 192.168.50.10
+  #   port: 1502 # Port 
 
 # chargers:
 #   - name: easee
