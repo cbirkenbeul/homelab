@@ -35,9 +35,9 @@ spec:
             image:
               repository: evcc/evcc
               tag: 0.200.8
-            # envFrom:
-            #   - secretRef:
-            #       name: evcc-secret
+            envFrom:
+              - secretRef:
+                  name: evcc-secret
             resources:
               limits: &resources
                 memory: 128Mi
@@ -78,10 +78,10 @@ spec:
         existingClaim: evcc
         globalMounts:
           - path: /root/.evcc
-      # config-file:
-      #   type: secret
-      #   name: evcc-secret
-      #   globalMounts:
-      #     - path: /etc/evcc.yaml
-      #       subPath: evcc.yaml
-      #       readOnly: false
+      config-file:
+        type: secret
+        name: evcc-secret
+        globalMounts:
+          - path: /etc/evcc.yaml
+            subPath: evcc.yaml
+            readOnly: false
