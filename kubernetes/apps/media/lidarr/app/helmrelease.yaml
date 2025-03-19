@@ -45,7 +45,7 @@ spec:
           app:
             image:
               repository: ghcr.io/home-operations/lidarr
-              tag: 2.4.3.4248
+              tag: 2.10.1.4589
             env:
               TZ: ${TIMEZONE}
               lidarr__PORT: &port 8686
