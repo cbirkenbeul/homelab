@@ -36,7 +36,7 @@ spec:
           init-db:
             image:
               repository: ghcr.io/home-operations/postgres-init
-              tag: 16
+              tag: 17@sha256:a9f405688344a8a6f718e2c344438342ad21540986aeb5ab5fa781831eb2c597
             envFrom:
               - secretRef:
                   name: sonarr-dbinit-secret
