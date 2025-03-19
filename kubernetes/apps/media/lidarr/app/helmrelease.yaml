@@ -35,7 +35,7 @@ spec:
         initContainers:
           init-db:
             image:
-              repository: ghcr.io/onedr0p/postgres-init
+              repository: ghcr.io/home-operations/postgres-init
               tag: 16
             envFrom:
               - secretRef:
@@ -44,7 +44,7 @@ spec:
         containers:
           app:
             image:
-              repository: ghcr.io/onedr0p/lidarr
+              repository: ghcr.io/home-operations/lidarr
               tag: 2.4.3.4248
             env:
               TZ: ${TIMEZONE}
