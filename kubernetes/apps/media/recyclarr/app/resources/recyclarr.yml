@@ -92,7 +92,7 @@ sonarr:
     base_url: http://sonarr:8989
     api_key: !env_var SONARR_API_KEY
     delete_old_custom_formats: true
-    replace_existing_custom_formats: true
+    replace_existing_custom_formats: false
     quality_definition:
       type: series
     custom_formats:
@@ -159,6 +159,3 @@ sonarr:
           - d84935abd3f8556dcd51d4f27e22d0a6 # WEB Tier 03
         quality_profiles:
           - name: Any
-        assign_scores_to:
-          - name: German DL
-            score: 10001
