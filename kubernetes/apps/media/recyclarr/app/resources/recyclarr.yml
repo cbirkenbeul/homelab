@@ -159,3 +159,6 @@ sonarr:
           - d84935abd3f8556dcd51d4f27e22d0a6 # WEB Tier 03
         quality_profiles:
           - name: Any
+        assign_scores_to:
+          - name: German DL
+            score: 10001
