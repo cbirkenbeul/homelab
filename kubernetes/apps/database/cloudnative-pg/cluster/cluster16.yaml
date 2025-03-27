@@ -8,7 +8,6 @@ metadata:
 spec:
   instances: 3
   imageName: ghcr.io/cloudnative-pg/postgresql:16.6
-  logLevel: "debug"
   primaryUpdateStrategy: unsupervised
   storage:
     size: 20Gi
@@ -16,9 +15,7 @@ spec:
   superuserSecret:
     name: cloudnative-pg-secret
   enableSuperuserAccess: true
-  bootstrap:
-    recovery:
-      source: &previousCluster postgres16-v2
+
   postgresql:
     parameters:
       max_connections: "300"
@@ -43,7 +40,16 @@ spec:
         secretAccessKey:
           name: cloudnative-pg-secret
           key: aws-secret-access-key
+
+
   # Note: externalClusters is needed when recovering from an existing cnpg cluster
+  bootstrap:
+    recovery:
+      source: &previousCluster postgres16-v2
+      recoveryTarget:
+        # Time base target for the recovery
+        targetTime: "2025-03-25 18:07:30.00000+02"
+
   externalClusters:
     - name: *previousCluster
       barmanObjectStore:
