@@ -8,7 +8,6 @@ spec:
   path: ./kubernetes/apps/observability/grafana/app
   prune: true
   dependsOn:
-    - name: cloudnative-pg-cluster
     - name: external-secrets-stores
     - name: kube-prometheus-stack
   sourceRef:

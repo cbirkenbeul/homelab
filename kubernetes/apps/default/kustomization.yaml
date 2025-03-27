@@ -9,7 +9,7 @@ resources:
   - ./homepage/ks.yaml
   # - ./immich/ks.yaml
   # - ./mastodon/ks.yaml
-  - ./mealie/ks.yaml
+  # - ./mealie/ks.yaml
   # - ./nextcloud/ks.yaml
   - ./ollama/ks.yaml
   - ./openwebui/ks.yaml
