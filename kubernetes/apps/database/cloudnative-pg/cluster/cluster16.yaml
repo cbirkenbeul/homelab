@@ -18,7 +18,7 @@ spec:
   enableSuperuserAccess: true
   bootstrap:
     recovery:
-      source: &previous-cluster postgres16-v2
+      source: &previousCluster postgres16-v2
   postgresql:
     parameters:
       max_connections: "300"
@@ -27,7 +27,7 @@ spec:
     enablePodMonitor: true
   backup:
     retentionPolicy: 30d
-    barmanObjectStore:
+    barmanObjectStore: &barmanObjectStore
       data:
         compression: bzip2
       wal:
@@ -45,17 +45,7 @@ spec:
           key: aws-secret-access-key
   # Note: externalClusters is needed when recovering from an existing cnpg cluster
   externalClusters:
-    - name: postgres16-v2
+    - name: *previousCluster
       barmanObjectStore:
-        wal:
-          compression: bzip2
-          maxParallel: 8
-        destinationPath: s3://cloudnative-pg/
-        endpointURL: https://383c55c9b441c987c66faf09fdc25e4e.r2.cloudflarestorage.com/k3s-cnpg
-        s3Credentials:
-          accessKeyId:
-            name: cloudnative-pg-secret
-            key: aws-access-key-id
-          secretAccessKey:
-            name: cloudnative-pg-secret
-            key: aws-secret-access-key
+        <<: *barmanObjectStore
+        serverName: *previousCluster
