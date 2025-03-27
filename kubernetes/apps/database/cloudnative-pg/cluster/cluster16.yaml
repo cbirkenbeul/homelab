@@ -3,7 +3,7 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
-  name: postgres16-v3
+  name: postgres16-v2
   namespace: database
 spec:
   instances: 3
@@ -17,7 +17,7 @@ spec:
   enableSuperuserAccess: true
   bootstrap:
     recovery:
-      source: postgres16-v2
+      source: &previous-cluster postgres16-v2
   postgresql:
     parameters:
       max_connections: "300"
@@ -44,7 +44,7 @@ spec:
           key: aws-secret-access-key
   # Note: externalClusters is needed when recovering from an existing cnpg cluster
   externalClusters:
-    - name: postgres16-v2
+    - name: *previous-cluster
       barmanObjectStore:
         wal:
           compression: bzip2
