@@ -3,7 +3,7 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
-  name: postgres16-v3
+  name: postgres16
   namespace: database
 spec:
   instances: 3
@@ -47,7 +47,6 @@ spec:
   externalClusters:
     - name: postgres16-v2
       barmanObjectStore:
-        serverName: postgres16-v2
         wal:
           compression: bzip2
           maxParallel: 8
