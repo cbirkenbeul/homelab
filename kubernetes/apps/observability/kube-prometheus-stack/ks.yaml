@@ -7,6 +7,8 @@ metadata:
 spec:
   path: ./kubernetes/apps/observability/kube-prometheus-stack/app
   prune: true
+  dependsOn:
+    - name: rook-ceph-cluster
   sourceRef:
     kind: GitRepository
     name: flux-system

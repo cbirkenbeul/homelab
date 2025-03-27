@@ -9,7 +9,7 @@ spec:
   immediate: true
   backupOwnerReference: self
   cluster:
-    name: postgres16-v2
+    name: postgres16-v3
 
 ---
 apiVersion: postgresql.cnpg.io/v1

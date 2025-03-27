@@ -3,7 +3,7 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
-  name: postgres16-v2
+  name: postgres16-v3
   namespace: database
 spec:
   instances: 3
@@ -17,7 +17,7 @@ spec:
   enableSuperuserAccess: true
   bootstrap:
     recovery:
-      source: &previous-cluster postgres16-v1
+      source: &previous-cluster postgres16-v2
   postgresql:
     parameters:
       max_connections: "300"
@@ -34,7 +34,7 @@ spec:
         maxParallel: 8
       destinationPath: s3://cloudnative-pg/
       endpointURL: https://383c55c9b441c987c66faf09fdc25e4e.r2.cloudflarestorage.com/k3s-cnpg
-      serverName: &currentCluster postgres16-v2
+      serverName: &currentCluster postgres16-v3
       s3Credentials:
         accessKeyId:
           name: cloudnative-pg-secret

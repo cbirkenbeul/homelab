@@ -10,6 +10,8 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
+  dependsOn:
+    - name: kube-prometheus-stack
   path: ./kubernetes/apps/observability/kromgo/app
   prune: true
   sourceRef:
