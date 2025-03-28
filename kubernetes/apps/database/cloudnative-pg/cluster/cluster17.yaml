@@ -3,7 +3,7 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
-  name: postgres17-media
+  name: postgres17
   namespace: database
 spec:
   instances: 3
@@ -32,8 +32,8 @@ spec:
         compression: bzip2
         maxParallel: 8
       destinationPath: s3://cloudnative-pg/
-      endpointURL: https://383c55c9b441c987c66faf09fdc25e4e.r2.cloudflarestorage.com/postgres-media
-      serverName: &currentCluster postgres17-media-001
+      endpointURL: https://383c55c9b441c987c66faf09fdc25e4e.r2.cloudflarestorage.com/postgres
+      serverName: &currentCluster postgres17-001
       s3Credentials:
         accessKeyId:
           name: cloudnative-pg-secret
@@ -46,7 +46,7 @@ spec:
   # Note: externalClusters is needed when recovering from an existing cnpg cluster
   # bootstrap:
   #   recovery:
-  #     source: &previousCluster postgres17-media-001
+  #     source: &previousCluster postgres17-001
 
   # externalClusters:
   #   - name: *previousCluster
