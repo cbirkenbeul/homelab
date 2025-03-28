@@ -3,11 +3,12 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
-  name: postgres16
+  name: cnpg-mastodon
   namespace: database
 spec:
   instances: 3
-  imageName: ghcr.io/cloudnative-pg/postgresql:16.6
+  # renovate: datasource=docker depName=ghcr.io/cloudnative-pg/postgresql repository=ghcr.io
+  imageName: ghcr.io/cloudnative-pg/postgresql:17.4
   primaryUpdateStrategy: unsupervised
   storage:
     size: 20Gi
@@ -30,9 +31,9 @@ spec:
       wal:
         compression: bzip2
         maxParallel: 8
-      destinationPath: s3://cloudnative-pg/
+      destinationPath: s3://mastodon/
       endpointURL: https://383c55c9b441c987c66faf09fdc25e4e.r2.cloudflarestorage.com/k3s-cnpg
-      serverName: &currentCluster postgres16-v3
+      serverName: &currentCluster cnpg-mastodon-001
       s3Credentials:
         accessKeyId:
           name: cloudnative-pg-secret
@@ -45,7 +46,7 @@ spec:
   # Note: externalClusters is needed when recovering from an existing cnpg cluster
   # bootstrap:
   #   recovery:
-  #     source: &previousCluster postgres16-v2
+  #     source: &previousCluster cnpg-mastodon-001
 
   # externalClusters:
   #   - name: *previousCluster

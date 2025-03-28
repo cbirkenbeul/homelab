@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: postgres16-lb
+  name: postgres17-lb
   annotations:
     external-dns.alpha.kubernetes.io/hostname: psql.casalani.de
     io.cilium/lb-ipam-ips: 192.168.10.99
@@ -14,7 +14,7 @@ spec:
       protocol: TCP
       targetPort: 5432
   selector:
-    cnpg.io/cluster: postgres16
+    cnpg.io/cluster: postgres17
     cnpg.io/instanceRole: primary
 
 ---
