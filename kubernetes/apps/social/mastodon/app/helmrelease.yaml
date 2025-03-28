@@ -57,7 +57,7 @@ spec:
               DB_USER: mastodon
               DB_NAME: mastodon
               DB_PORT: "5432"
-              ES_ENABLED: "true"
+              ES_ENABLED: "false"
               ES_HOST: mastodon-elasticsearch.social.svc.cluster.local
               ES_PORT: "9200"
               SMTP_PORT: 587
