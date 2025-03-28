@@ -65,7 +65,7 @@ spec:
               S3_BUCKET: mastodon
               S3_ALIAS_HOST: cdn.teqqy.social
               S3_PROTOCOL: https
-              S3_PERMISSION: private
+              S3_PERMISSION: # Has to be empty for Cloudflare R2
             envFrom:
               - secretRef:
                   name: mastodon-secret
