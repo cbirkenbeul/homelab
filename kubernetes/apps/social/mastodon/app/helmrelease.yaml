@@ -4,7 +4,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: &app mastodon
-  namespace: default
+  namespace: social
 spec:
   interval: 30m
   chart:
@@ -56,9 +56,11 @@ spec:
               DB_USER: mastodon
               DB_NAME: mastodon
               DB_PORT: "5432"
-              ES_ENABLED: false
+              ES_ENABLED: "true"
+              ES_HOST: mastodon-elasticsearch.social.svc.cluster.local
+              ES_PORT: "9200"
               SMTP_PORT: 587
-              SMTP_FROM_ADDRESS: notifications@example.com
+              SMTP_FROM_ADDRESS: notifications@teqqy.social
               S3_ENABLED: true
               S3_BUCKET: mastodon
               S3_ALIAS_HOST: cdn.teqqy.social
