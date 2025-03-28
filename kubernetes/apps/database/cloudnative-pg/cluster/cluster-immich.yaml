@@ -3,7 +3,7 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
-  name: postgres17-immich-v1
+  name: postgres16-immich
   namespace: database
 spec:
   instances: 3
@@ -15,9 +15,6 @@ spec:
   enableSuperuserAccess: true
   superuserSecret:
     name: cloudnative-pg-secret
-  bootstrap:
-    recovery:
-      source: &previous-cluster postgres17-immich-v1 #This must match backup.barmanObjectStore.serverName from previous backup
   postgresql:
     shared_preload_libraries:
       - "vectors.so"
@@ -36,7 +33,7 @@ spec:
         maxParallel: 8
       destinationPath: s3://cloudnative-pg/
       endpointURL: https://383c55c9b441c987c66faf09fdc25e4e.r2.cloudflarestorage.com/k3s-cnpg
-      serverName: &currentCluster postgres17-immich-v2
+      serverName: &currentCluster postgres16-immich-002
       s3Credentials:
         accessKeyId:
           name: cloudnative-pg-secret
@@ -44,19 +41,14 @@ spec:
         secretAccessKey:
           name: cloudnative-pg-secret
           key: aws-secret-access-key
+
   # Note: externalClusters is needed when recovering from an existing cnpg cluster
+  bootstrap:
+    recovery:
+      source: &previousCluster postgres17-immich-v1
+
   externalClusters:
-    - name: *previous-cluster
+    - name: *previousCluster
       barmanObjectStore:
-        wal:
-          compression: bzip2
-          maxParallel: 8
-        destinationPath: s3://cloudnative-pg/
-        endpointURL: https://383c55c9b441c987c66faf09fdc25e4e.r2.cloudflarestorage.com/k3s-cnpg
-        s3Credentials:
-          accessKeyId:
-            name: cloudnative-pg-secret
-            key: aws-access-key-id
-          secretAccessKey:
-            name: cloudnative-pg-secret
-            key: aws-secret-access-key
+        <<: *barmanObjectStore
+        serverName: *previousCluster
