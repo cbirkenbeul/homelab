@@ -50,6 +50,7 @@ spec:
               PGID: 1000
               TZ: Europe/Berlin
               LOCAL_DOMAIN: ${SECRET_SOCIAL_DOMAIN}
+              WEB_DOMAIN: ${SECRET_SOCIAL_DOMAIN}
               REDIS_HOST: dragonfly.database.svc.cluster.local
               REDIS_PORT: "6379"
               DB_HOST: postgres17-mastodon-rw.database.svc.cluster.local
