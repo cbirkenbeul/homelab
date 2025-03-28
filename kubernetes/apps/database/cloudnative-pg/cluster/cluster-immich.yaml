@@ -23,17 +23,18 @@ spec:
       shared_buffers: 512MB
   monitoring:
     enablePodMonitor: true
+
   backup:
     retentionPolicy: 30d
-    barmanObjectStore:
+    barmanObjectStore: &barmanObjectStore
       data:
         compression: bzip2
       wal:
         compression: bzip2
         maxParallel: 8
-      destinationPath: s3://cloudnative-pg/
+      destinationPath: s3://immich
       endpointURL: https://383c55c9b441c987c66faf09fdc25e4e.r2.cloudflarestorage.com/k3s-cnpg
-      serverName: &currentCluster postgres16-immich-002
+      serverName: &currentCluster postgres17-001
       s3Credentials:
         accessKeyId:
           name: cloudnative-pg-secret
