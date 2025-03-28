@@ -54,5 +54,5 @@ spec:
   timeout: 5m
   postBuild:
     substitute:
-      APP: *app
+      APP: mastodon-elasticsearch
       VOLSYNC_CAPACITY: 30Gi
