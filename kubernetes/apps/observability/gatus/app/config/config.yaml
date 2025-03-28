@@ -24,16 +24,6 @@ connectivity:
     target: 1.1.1.1:53
     interval: 1m
 endpoints:
-#   - name: status
-#     group: external
-#     url: https://status.devbu.io
-#     interval: 1m
-#     client:
-#       dns-resolver: tcp://1.1.1.1:53
-#     conditions:
-#       - "[STATUS] == 200"
-#     alerts:
-#       - type: pushover
   - name: flux-webhook
     group: external
     url: https://flux-webhook.casalani.de
@@ -42,89 +32,6 @@ endpoints:
       dns-resolver: tcp://1.1.1.1:53
     conditions:
       - "[STATUS] == 404"
-    alerts:
-      - type: pushover
-
-
-  ## Media
-  - name: sonarr
-    group: media
-    url: "tcp://sonarr.media.svc.cluster.local:8989"
-    interval: 1m
-    ui:
-      hide-hostname: true
-      hide-url: true
-    conditions:
-      - "[CONNECTED] == true"
-    alerts:
-      - type: pushover
-  - name: radarr
-    group: media
-    url: "tcp://radarr.media.svc.cluster.local:7878"
-    interval: 1m
-    ui:
-      hide-hostname: true
-      hide-url: true
-    conditions:
-      - "[CONNECTED] == true"
-    alerts:
-      - type: pushover
-  - name: sabnzbd
-    group: media
-    url: "tcp://sabnzbd.media.svc.cluster.local:8080"
-    interval: 1m
-    ui:
-      hide-hostname: true
-      hide-url: true
-    conditions:
-      - "[CONNECTED] == true"
-    alerts:
-      - type: pushover
-  - name: prowlarr
-    group: media
-    url: "tcp://prowlarr.media.svc.cluster.local:9696"
-    interval: 1m
-    ui:
-      hide-hostname: true
-      hide-url: true
-    conditions:
-      - "[CONNECTED] == true"
-    alerts:
-      - type: pushover
-  - name: jellyseerr
-    group: media
-    url: "tcp://jellyseerr.media.svc.cluster.local:8080"
-    interval: 1m
-    ui:
-      hide-hostname: true
-      hide-url: true
-    conditions:
-      - "[CONNECTED] == true"
-    alerts:
-      - type: pushover
-
-  ## Database
-  - name: postgresql
-    group: database
-    url: "tcp://postgres16-v2-rw.database.svc.cluster.local:5432"
-    interval: 1m
-    ui:
-      hide-hostname: true
-      hide-url: true
-    conditions:
-      - "[CONNECTED] == true"
-    alerts:
-      - type: pushover
-
-  - name: redis
-    group: database
-    url: "tcp://dragonfly.database.svc.cluster.local:6379"
-    interval: 1m
-    ui:
-      hide-hostname: true
-      hide-url: true
-    conditions:
-      - "[CONNECTED] == true"
     alerts:
       - type: pushover
 

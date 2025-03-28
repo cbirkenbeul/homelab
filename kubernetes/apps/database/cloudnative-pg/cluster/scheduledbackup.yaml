@@ -9,7 +9,7 @@ spec:
   immediate: true
   backupOwnerReference: self
   cluster:
-    name: postgres17-001
+    name: postgres17
 
 ---
 apiVersion: postgresql.cnpg.io/v1
@@ -22,3 +22,15 @@ spec:
   backupOwnerReference: self
   cluster:
     name: postgres17-immich-v1
+
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: ScheduledBackup
+metadata:
+  name: postgres17-mastodon
+spec:
+  schedule: "@daily"
+  immediate: true
+  backupOwnerReference: self
+  cluster:
+    name: postgres17-mastodon
