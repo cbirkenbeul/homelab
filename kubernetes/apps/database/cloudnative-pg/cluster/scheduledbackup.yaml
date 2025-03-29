@@ -21,7 +21,7 @@ spec:
   immediate: true
   backupOwnerReference: self
   cluster:
-    name: postgres17-immich-v1
+    name: postgres16-immich
 
 ---
 apiVersion: postgresql.cnpg.io/v1
