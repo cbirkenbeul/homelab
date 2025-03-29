@@ -76,18 +76,20 @@ spec:
             access: proxy
             url: http://kube-prometheus-stack-prometheus.observability.svc.cluster.local:9090
             isDefault: true
-          - name: TeslaMate
-            type: postgres
+          - name: Loki
+            type: loki
+            uid: loki
             access: proxy
-            user: teslamate
-            database: teslamate
-            url: postgres16-v1-rw.database.svc.cluster.local:5432
-            secureJsonData:
-              password: ${TESLAMATE_POSTGRESS_PASSWORD}
-              sslmode: disable
+            url: http://loki-headless.observability.svc.cluster.local:3100
             jsonData:
-              postgresVersion: 1000
-              sslmode: disable
+              maxLines: 250
+          - name: Alertmanager
+            type: alertmanager
+            uid: alertmanager
+            access: proxy
+            url: http://alertmanager-operated.observability.svc.cluster.local:9093
+            jsonData:
+              implementation: prometheus
     dashboards:
       default:
         cert-manager:
