@@ -7,8 +7,8 @@ resources:
   - ./grafana/ks.yaml
   - ./kromgo/ks.yaml
   - ./kube-prometheus-stack/ks.yaml
-  #- ./loki/ks.yaml
+  - ./loki/ks.yaml
   - ./prometheus-operator-crds/ks.yaml
-  #- ./promtail/ks.yaml
+  - ./promtail/ks.yaml
   - ./silence-operator/ks.yaml
   - ./smartctl-exporter/ks.yaml
