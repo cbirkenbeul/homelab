@@ -9,6 +9,32 @@
 # https://github.com/rcdailey/trash-updater/wiki/Configuration-Reference
 
 radarr:
+  sqp-1-1080p:
+    base_url: http://radarr:7878
+    api_key: !env_var RADARR_API_KEY
+
+    quality_profiles:
+      - name: SQP-1 (1080p)
+      # Uncomment the below line if you don't have access to top-tier indexers
+      # min_format_score: 10
+
+    include:
+      # Comment out any of the following includes to disable them
+      - template: radarr-quality-definition-sqp-streaming
+      - template: radarr-quality-profile-sqp-1-1080p
+      - template: radarr-custom-formats-sqp-1-1080p
+
+# Custom Formats: https://recyclarr.dev/wiki/yaml/config-reference/custom-formats/
+    custom_formats:
+      # Movie Versions
+      - trash_ids:
+          - 86bc3115eb4e9873ac96904a4a68e19e # German
+          - 6aad77771dabe9d3e9d7be86f310b867 # German DL (undefined)
+          - 4eadb75fb23d09dfc0a8e3f687e72287 # Not German or English
+        assign_scores_to:
+          - name: SQP-1 (1080p)
+
+
   sqp-1-2160p:
     base_url: http://radarr:7878
     api_key: !env_var RADARR_API_KEY
@@ -17,13 +43,6 @@ radarr:
       - name: SQP-1 (2160p)
         # Uncomment the below line if you don't have access to top-tier indexers
         # min_format_score: 10
-        reset_unmatched_scores:
-          enabled: true
-          except:
-            - German DL
-            - German DL 2
-            - Language Not ENGGER
-
 
     include:
       # Comment out any of the following includes to disable them
