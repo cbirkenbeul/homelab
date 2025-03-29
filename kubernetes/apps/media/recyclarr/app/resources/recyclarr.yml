@@ -9,20 +9,21 @@
 # https://github.com/rcdailey/trash-updater/wiki/Configuration-Reference
 
 radarr:
-  sqp-1-1080p:
+  main:
     base_url: http://radarr:7878
     api_key: !env_var RADARR_API_KEY
 
     quality_profiles:
       - name: SQP-1 (1080p)
-      # Uncomment the below line if you don't have access to top-tier indexers
-      # min_format_score: 10
+      - name: SQP-1 (2160p)
 
     include:
       # Comment out any of the following includes to disable them
       - template: radarr-quality-definition-sqp-streaming
       - template: radarr-quality-profile-sqp-1-1080p
       - template: radarr-custom-formats-sqp-1-1080p
+      - template: radarr-quality-definition-sqp-streaming
+      - template: radarr-quality-profile-sqp-1-2160p-default
 
 # Custom Formats: https://recyclarr.dev/wiki/yaml/config-reference/custom-formats/
     custom_formats:
@@ -34,32 +35,6 @@ radarr:
         assign_scores_to:
           - name: SQP-1 (1080p)
 
-
-  sqp-1-2160p:
-    base_url: http://radarr:7878
-    api_key: !env_var RADARR_API_KEY
-
-    quality_profiles:
-      - name: SQP-1 (2160p)
-        # Uncomment the below line if you don't have access to top-tier indexers
-        # min_format_score: 10
-
-    include:
-      # Comment out any of the following includes to disable them
-      - template: radarr-quality-definition-sqp-streaming
-
-      # Choose *one* of the following four options to determine quality profile preference
-      # IMAX-E options also require uncommenting the IMAX Enhanced custom format below
-      # Comment out all four options to disable quality profile sync
-      - template: radarr-quality-profile-sqp-1-2160p-default
-      # - template: radarr-quality-profile-sqp-1-2160p-imax-e
-      # - template: radarr-quality-profile-sqp-1-2160p-4k-only-default
-      # - template: radarr-quality-profile-sqp-1-2160p-4k-only-imax-e
-
-      - template: radarr-custom-formats-sqp-1-2160p
-
-# Custom Formats: https://recyclarr.dev/wiki/yaml/config-reference/custom-formats/
-    custom_formats:
       # Movie Versions
       - trash_ids:
           # Uncomment the next line if you prefer 1080p/2160p WEBDL with IMAX Enhanced
