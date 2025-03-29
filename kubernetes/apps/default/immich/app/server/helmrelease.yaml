@@ -57,7 +57,7 @@ spec:
           immich-server:
             image:
               repository: ghcr.io/immich-app/immich-server
-              tag: v1.129.0
+              tag: v1.130.3
               pullPolicy: IfNotPresent
             envFrom:
               - secretRef:
