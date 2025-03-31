@@ -26,7 +26,6 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    fullnameOverride: *app
     provider: 
       name: cloudflare
     env:
