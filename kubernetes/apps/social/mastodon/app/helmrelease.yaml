@@ -50,7 +50,7 @@ spec:
               PGID: 1000
               TZ: Europe/Berlin
               LOCAL_DOMAIN: ${SECRET_SOCIAL_DOMAIN}
-              WEB_DOMAIN: ${SECRET_SOCIAL_DOMAIN}
+              # WEB_DOMAIN: ${SECRET_SOCIAL_DOMAIN}
               REDIS_HOST: dragonfly.database.svc.cluster.local
               REDIS_PORT: "6379"
               DB_HOST: postgres17-mastodon-rw.database.svc.cluster.local
@@ -67,7 +67,7 @@ spec:
               S3_ALIAS_HOST: cdn.teqqy.social
               S3_PROTOCOL: https
               S3_PERMISSION: # Has to be empty for Cloudflare R2
-              ALLOWED_PRIVATE_ADDRESSES: 10.43.0.0/16, 10.42.1.0/24
+              # ALLOWED_PRIVATE_ADDRESSES: 10.43.0.0/16, 10.42.1.0/24
             envFrom:
               - secretRef:
                   name: mastodon-secret
