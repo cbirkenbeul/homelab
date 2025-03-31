@@ -27,7 +27,7 @@ spec:
     keepHistory: false
   values:
     controllers:
-      mastodon:
+      mastodon-server:
         annotations:
           reloader.stakater.com/auto: "true"
 
@@ -41,7 +41,7 @@ spec:
               - secretRef:
                   name: mastodon-secret
         containers:
-          mastodon:
+          mastodon-server:
             image:
               repository: lscr.io/linuxserver/mastodon
               tag: "4.3.6"
