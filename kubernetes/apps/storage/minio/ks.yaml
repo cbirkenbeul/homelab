@@ -9,7 +9,7 @@ spec:
   targetNamespace: storage
   commonMetadata:
     labels:
-      app.kubernetes.io/name: *appname
+      app.kubernetes.io/name: *app
   interval: 10m
   path: "./kubernetes/apps/storage/minio/app"
   dependsOn:
