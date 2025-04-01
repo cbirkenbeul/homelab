@@ -32,16 +32,16 @@ spec:
       wal:
         compression: bzip2
         maxParallel: 8
-      destinationPath: s3://cnpg/
-      endpointURL: https://383c55c9b441c987c66faf09fdc25e4e.r2.cloudflarestorage.com/k3s-cnpg
-      serverName: &currentCluster postgres17-001
+      destinationPath: s3://postgresql/
+      endpointURL: https://s3.${SECRET_DOMAIN}
+      serverName: &currentCluster postgres16-immich-001
       s3Credentials:
         accessKeyId:
           name: cloudnative-pg-secret
-          key: aws-access-key-id
+          key: minio-access-key-id
         secretAccessKey:
           name: cloudnative-pg-secret
-          key: aws-secret-access-key
+          key: minio-secret-access-key
 
   # Note: externalClusters is needed when recovering from an existing cnpg cluster
   # bootstrap:
