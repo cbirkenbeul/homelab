@@ -32,7 +32,7 @@ spec:
         compression: bzip2
         maxParallel: 8
       destinationPath: s3://teqqy-cnpg-backup-cluster17/
-      endpointURL: s3.us-west-002.backblazeb2.com
+      endpointURL: https://s3.us-west-002.backblazeb2.com
       serverName: &currentCluster postgres17-001
       s3Credentials:
         accessKeyId:
