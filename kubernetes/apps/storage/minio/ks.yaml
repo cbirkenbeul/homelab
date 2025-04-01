@@ -3,7 +3,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: &appname minio
+  name: &app minio
   namespace: flux-system
 spec:
   targetNamespace: storage
@@ -20,3 +20,6 @@ spec:
     name: flux-system
   wait: false
   timeout: 2m
+  postBuild:
+    substitute:
+      APP: *app
