@@ -114,8 +114,6 @@ spec:
                   port: s3
     persistence:
       config:
-        type: nfs
-        server: &nas 'nas.${SECRET_DOMAIN}'
-        path: /mnt/user/minio
+        existingClaim: minio
         globalMounts:
           - path: /data
