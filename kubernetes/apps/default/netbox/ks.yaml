@@ -9,9 +9,9 @@ metadata:
     substitution.flux.home.arpa/enabled: "true"
 spec:
   targetNamespace: default
-  dependsOn:
-    - name: cloudnative-pg-cluster
-    - name: ingress-nginx-internal
+  # dependsOn:
+  #   - name: cloudnative-pg-cluster
+  #   - name: ingress-nginx-internal
   path: ./kubernetes/apps/default/netbox/app
   prune: true
   sourceRef:
