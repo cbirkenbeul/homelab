@@ -47,7 +47,7 @@ spec:
     externalDatabase:
       host: postgres17-rw.database.svc.cluster.local
       port: 5432
-      database: netbox_db
+      database: netbox
       username: netbox
       existingSecretName: "netbox-secret"
       existingSecretKey: "NETBOX_PG_PASS"
