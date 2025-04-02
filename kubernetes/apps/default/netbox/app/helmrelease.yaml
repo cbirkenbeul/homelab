@@ -1,0 +1,101 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app netbox
+spec:
+  interval: 1h
+  chartRef:
+    kind: OCIRepository
+    name: netbox
+  values:
+    podAnnotations:
+      reloader.stakater.com/auto: "true"
+    image:
+      repository: ghcr.io/netbox-community/netbox
+      tag: v4.2.6
+    superuser:
+      name: teqqy
+      email: netbox@${SECRET_DOMAIN}
+    admins:
+      - ["teqqy", "netbox@${SECRET_DOMAIN}"]
+    loginRequired: true
+    timeZone: ${TIMEZONE}
+    dateFormat: "j. F, Y"
+    shortDateFormat: "j.m.Y"
+    timeFormat: "G:i"
+    shortTimeFormat: "H:i:s"
+    dateTimeFormat: "j. F, Y g:i a"
+    shortDateTimeFormat: "j.m.Y H:i"
+    storageBackend: s3.${SECRET_DOMAIN}
+    storageConfig:
+      AWS_STORAGE_BUCKET_NAME: "netbox"
+      AWS_S3_ENDPOINT_URL: "https://s3.${SECRET_DOMAIN}"
+      AWS_S3_REGION_NAME: "eu-central-01"
+    existingSecret: netbox-secret
+    metricsEnabled: true
+    postgresql:
+      enabled: false
+    redis:
+      enabled: false
+    tasksRedis:
+      host: dragonfly.database.svc.cluster.local
+      database: 3
+    cachingRedis:
+      host: dragonfly.database.svc.cluster.local
+      database: 4
+    externalDatabase:
+      host: postgres17-rw.database.svc.cluster.local
+      port: 5432
+      database: netbox_db
+      username: netbox
+      existingSecretName: "netbox-secret"
+      existingSecretKey: "NETBOX_PG_PASS"
+    persistence:
+      enabled: false
+    readinessProbe:
+      enabled: true
+      initialDelaySeconds: 60
+      timeoutSeconds: 1
+      periodSeconds: 10
+      successThreshold: 1
+    commonLabels:
+      teleport: enabled
+    service:
+      annotations:
+        teleport.dev/name: *app
+    ingress:
+      enabled: true
+      className: internal
+      hosts:
+        - host: &host "netbox.${SECRET_DOMAIN}"
+          paths:
+            - path: /
+              pathType: Prefix
+              backend:
+                service:
+                  name: netbox
+                  port:
+                    number: 80
+      tls:
+        - hosts:
+            - *host
+          secretName: "${SECRET_DOMAIN/./-}-production-tls"
+
+
+    extraConfig:
+      - secret:
+          secretName: netbox-secret
+    housekeeping:
+      enabled: false
+    worker:
+      enabled: false
+  valuesFrom:
+    - targetPath: storageConfig.AWS_ACCESS_KEY_ID
+      kind: Secret
+      name: netbox-secret
+      valuesKey: AWS_ACCESS_KEY_ID
+    - targetPath: storageConfig.AWS_SECRET_ACCESS_KEY
+      kind: Secret
+      name: netbox-secret
+      valuesKey: AWS_SECRET_ACCESS_KEY

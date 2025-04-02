@@ -7,6 +7,7 @@ resources:
   # - ./freshrss/ks.yaml
   - ./homepage/ks.yaml
   - ./immich/ks.yaml
+  - ./netbox/ks.yaml
   # - ./nextcloud/ks.yaml
   - ./ollama/ks.yaml
   - ./openwebui/ks.yaml
