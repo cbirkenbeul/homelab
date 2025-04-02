@@ -8,6 +8,7 @@ metadata:
   labels:
     substitution.flux.home.arpa/enabled: "true"
 spec:
+  targetNamespace: default
   dependsOn:
     - name: cloudnative-pg-cluster
     - name: ingress-nginx-internal
