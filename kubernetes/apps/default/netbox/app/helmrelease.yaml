@@ -51,6 +51,7 @@ spec:
       username: netbox
       existingSecretName: "netbox-secret"
       existingSecretKey: "NETBOX_PG_PASS"
+    dbWaitDebug: true
     persistence:
       enabled: false
     readinessProbe:
