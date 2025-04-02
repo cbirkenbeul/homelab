@@ -34,6 +34,7 @@ spec:
       AWS_S3_REGION_NAME: "eu-central-01"
     existingSecret: netbox-secret
     metricsEnabled: true
+    replicaCount: 1
     postgresql:
       enabled: false
     redis:
