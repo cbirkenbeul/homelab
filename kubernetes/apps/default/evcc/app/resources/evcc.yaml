@@ -60,15 +60,6 @@ chargers:
     charger: {{ .EASEECHARGER }}
 
 vehicles:
-  - name: teqqCar
-    type: template
-    template: tronity
-    title: teqqCar
-    clientid: {{ .TRONITYCLIENTID }}
-    clientsecret: {{ .TRONITYCLIENTSECRET }}
-    vin: {{ .TRONITYM3VIN }}
-    capacity: 74
-
   - name: ET5
     type: template
     template: tronity
