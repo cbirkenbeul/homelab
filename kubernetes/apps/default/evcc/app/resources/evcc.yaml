@@ -83,7 +83,7 @@ site:
 loadpoints:
   - title: CASA LANI
     charger: easee
-    vehicle: teqqCar
+    vehicle: ET5
     mode: pv
 
 tariffs:
