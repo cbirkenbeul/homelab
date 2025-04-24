@@ -30,14 +30,6 @@ spec:
     - name: dragonfly-operator
       namespace: database
   values:
-    defaultPodOptions:
-      topologySpreadConstraints:
-        - maxSkew: 1
-          topologyKey: kubernetes.io/hostname
-          whenUnsatisfiable: DoNotSchedule
-          labelSelector:
-            matchLabels:
-              app.kubernetes.io/name: *app
     controllers:
       main:
         replicas: 1
@@ -79,6 +71,7 @@ spec:
           gethomepage.dev/icon: sh-immich
           gethomepage.dev/name: Immich
           gethomepage.dev/group: selfhosted
+          nginx.ingress.kubernetes.io/proxy-body-size: "0"
         hosts:
           - host: &host photos.${SECRET_DOMAIN}
             paths:
