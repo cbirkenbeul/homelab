@@ -59,6 +59,9 @@ spec:
     service:
       immich-server:
         controller: main
+        type: LoadBalancer
+        annotations:
+          lbipam.cilium.io/ips: 192.168.10.86
         ports:
           http:
             port: 2283
