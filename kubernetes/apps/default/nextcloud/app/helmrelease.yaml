@@ -29,6 +29,8 @@ spec:
     - name: volsync
       namespace: storage
   values:
+    deploymentAnnotations:
+      reloader.stakater.com/auto: 'true'
     image:
       repository: nextcloud
       flavor: fpm-alpine
@@ -71,6 +73,7 @@ spec:
             'overwriteprotocol' => 'https',
             'overwrite.cli.url' => 'https://cloud.${SECRET_DOMAIN}',
             'overewritehost' => 'cloud.${SECRET_DOMAIN}',
+            'check_data_directory_permissions' => false,
             'filelocking.enabled' => 'true',
             'default_phone_region' => 'DE',
             'loglevel' => '2',
