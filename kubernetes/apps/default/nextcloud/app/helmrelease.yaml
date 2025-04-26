@@ -60,7 +60,7 @@ spec:
       host: &host cloud.${SECRET_DOMAIN}
       mail:
         enabled: true
-        fromAddress: admin
+        fromAddress: no-reply
         domain: ${SECRET_DOMAIN}
       securityContext:
         runAsUser: 1022
