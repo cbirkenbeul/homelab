@@ -3,7 +3,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: nextcloud
+  name: &app nextcloud
 spec:
   timeout: 15m
   interval: 30m
