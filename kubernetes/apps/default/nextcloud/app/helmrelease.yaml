@@ -83,27 +83,12 @@ spec:
                 1 => '10.42.0.0/16',
                 2 => '10.43.0.0/16',
               ),
-          );
-        proxy.config.php: |-
-          <?php
-          $CONFIG = array (
-            'trusted_proxies' => array(
-              0 => '127.0.0.1',
-              1 => '10.43.0.0/16',
-              2 => '10.42.0.0/16',
-            ),
             'trusted_domains' => array(
               0 => '127.0.0.1',
               1 => 'cloud.${SECRET_DOMAIN}',
             ),
             'forwarded_for_headers' => array('HTTP_X_FORWARDED_FOR'),
-          ); ?>
-        misc.config.php: |-
-          <?php
-          $CONFIG = array (
-            'default_phone_region' => 'DE',
-            'maintenance_window_start' => 2,
-          ); ?>
+          );
       phpConfigs:
         uploadLimit.ini: |
           upload_max_filesize = 16G
@@ -145,7 +130,7 @@ spec:
     externalDatabase:
       enabled: true
       type: postgresql
-      host: postgres16-v2-rw.database.svc.cluster.local.
+      host: postgres17-rw.database.svc.cluster.local.
       database: nextcloud
       existingSecret:
         enabled: true
