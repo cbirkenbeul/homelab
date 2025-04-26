@@ -39,6 +39,9 @@ spec:
               requests:
                 cpu: 25m
                 memory: 50Mi
+            env:
+              LOG_TARGETS: stdout
+              HOMEPAGE_ALLOWED_HOSTS: apps.${SECRET_DOMAIN}
             envFrom:
               - secretRef:
                   name: homepage-secret
