@@ -65,6 +65,25 @@ spec:
         runAsGroup: 1022
         runAsNonRoot: true
       configs:
+        custom.config.php: |-
+          <?php
+          $CONFIG = array (
+            'overwriteprotocol' => 'https',
+            'overwrite.cli.url' => 'https://cloud.${SECRET_DOMAIN}',
+            'overewritehost' => 'cloud.${SECRET_DOMAIN}',
+            'filelocking.enabled' => 'true',
+            'default_phone_region' => 'DE',
+            'loglevel' => '2',
+            'enable_previews' => true,
+            'log_type' => 'syslog',
+            'maintenance_window_start' => 1,
+            'trusted_proxies' =>
+              array (
+                0 => '127.0.0.1',
+                1 => '10.42.0.0/16',
+                2 => '10.43.0.0/16',
+              ),
+          );
         proxy.config.php: |-
           <?php
           $CONFIG = array (
@@ -85,6 +104,42 @@ spec:
             'default_phone_region' => 'DE',
             'maintenance_window_start' => 2,
           ); ?>
+      phpConfigs:
+        uploadLimit.ini: |
+          upload_max_filesize = 16G
+          post_max_size = 16G
+          max_input_time = 3600
+          max_execution_time = 3600
+        www.conf: |
+          [www]
+          user = www-data
+          group = www-data
+          listen = 127.0.0.1:9000
+          pm = dynamic
+          pm.max_children = 57
+          pm.start_servers = 14
+          pm.min_spare_servers = 14
+          pm.max_spare_servers = 42
+          pm.max_requests = 500
+          pm.process_idle_timeout = 10s
+      hooks:
+        post-installation: |-
+          printf "Add missing DB indices\n"
+          php occ db:add-missing-indices
+        before-starting: |-
+          # disable unneceserry apps
+          for appname in activity circles systemtags federation privacy \
+              nextcloud_announcements announcementcenter support survey_client \
+              user_status weather_status dashboard
+            do
+            php occ app:disable "$appname"
+          done
+        post-upgrade: |-
+          # based on https://github.com/nextcloud/all-in-one/blob/25c580bca370eaead5f1fad9d3842a9c49562dff/Containers/nextcloud/entrypoint.sh#L451-L457
+          php occ maintenance:repair --include-expensive
+          php occ db:add-missing-indices
+          php occ db:add-missing-columns
+          php occ db:add-missing-primary-keys
     internalDatabase:
       enabled: false
     externalDatabase:
@@ -136,11 +191,8 @@ spec:
       #   - cloud.${SECRET_DOMAIN}
     persistence:
       enabled: true
-      existingClaim: nextcloud
-      nextcloudData:
-        enabled: true
-        existingClaim: nextcloud-nfs
-        accessMode: ReadWriteMany
+      existingClaim: *app
+
     # this seems to be required for nextcloud initialization which takes a long time
     startupProbe:
       enabled: true
