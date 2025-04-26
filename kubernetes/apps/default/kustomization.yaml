@@ -4,7 +4,7 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   - ./evcc/ks.yaml
-  # - ./freshrss/ks.yaml
+  - ./freshrss/ks.yaml
   - ./homepage/ks.yaml
   - ./immich/ks.yaml
   - ./netbox/ks.yaml
