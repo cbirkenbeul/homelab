@@ -29,7 +29,7 @@ spec:
     keepHistory: false
   values:
     controllers:
-      freshrss:
+      wanderer:
         annotations:
           reloader.stakater.com/auto: "true"
 
@@ -57,7 +57,7 @@ spec:
 
     service:
       app:
-        controller: wanderer-web
+        controller: wanderer
         ports:
           http:
             port: 3000
