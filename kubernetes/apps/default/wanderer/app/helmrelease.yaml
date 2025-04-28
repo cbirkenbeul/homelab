@@ -75,14 +75,14 @@ spec:
             port: 7700
 
     ingress:
-      app:
+      wanderer-web:
         className: internal
         hosts:
           - host: &host "wanderer.${SECRET_DOMAIN}"
             paths:
               - path: /
                 service:
-                  identifier: app
+                  identifier: wanderer-web
                   port: http
         tls:
           - hosts:
