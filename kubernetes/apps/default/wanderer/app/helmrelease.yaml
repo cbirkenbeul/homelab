@@ -29,20 +29,20 @@ spec:
     keepHistory: false
   values:
     controllers:
-      wanderer-search:
+      search:
         annotations:
           reloader.stakater.com/auto: "true"
         containers:
-          wanderer-search:
+          search:
             image:
               repository: getmeili/meilisearch
               tag: v1.11.3
 
-      wanderer-db:
+      db:
         annotations:
           reloader.stakater.com/auto: "true"
         containers:
-          wanderer-db:
+          db:
             image:
               repository: flomp/wanderer-db
               tag: v0.16.5
@@ -50,11 +50,11 @@ spec:
               - secretRef:
                   name: wanderer-secret
 
-      wanderer-web:
+      web:
         annotations:
           reloader.stakater.com/auto: "true"
         containers:
-          wanderer-web:
+          web:
             image:
               repository: flomp/wanderer-web
               tag: v0.16.5
@@ -63,37 +63,43 @@ spec:
                   name: wanderer-secret
 
     service:
-      wanderer-web:
-        controller: wanderer-web
+      db:
+        controller: db
+        ports:
+          http:
+            port: 8090
+
+      web:
+        controller: web
         ports:
           http:
             port: 3000
-      wanderer-search:
-        controller: wanderer-search
+      search:
+        controller: search
         ports:
           http:
             port: 7700
 
     ingress:
-      wanderer-web:
+      web:
         className: internal
         hosts:
           - host: &host "wanderer.${SECRET_DOMAIN}"
             paths:
               - path: /
                 service:
-                  identifier: wanderer-web
+                  identifier: web
                   port: http
         tls:
           - hosts:
               - *host
 
     persistence:
-      wanderer-db:
+      db:
         existingClaim: wanderer-db
         globalMounts:
           - path: /pb_data
-      wanderer-web:
+      web:
         existingClaim: wanderer-web
         globalMounts:
           - path: /app/uploads
