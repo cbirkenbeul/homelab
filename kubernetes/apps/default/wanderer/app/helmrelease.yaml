@@ -29,16 +29,19 @@ spec:
     keepHistory: false
   values:
     controllers:
-      wanderer:
+      wanderer-search:
         annotations:
           reloader.stakater.com/auto: "true"
-
         containers:
           wanderer-search:
             image:
               repository: getmeili/meilisearch
               tag: v1.11.3
 
+      wanderer-db:
+        annotations:
+          reloader.stakater.com/auto: "true"
+        containers:
           wanderer-db:
             image:
               repository: flomp/wanderer-db
@@ -47,6 +50,10 @@ spec:
               - secretRef:
                   name: wanderer-secret
 
+      wanderer-web:
+        annotations:
+          reloader.stakater.com/auto: "true"
+        containers:
           wanderer-web:
             image:
               repository: flomp/wanderer-web
@@ -56,11 +63,16 @@ spec:
                   name: wanderer-secret
 
     service:
-      app:
-        controller: wanderer
+      wanderer-web:
+        controller: wanderer-web
         ports:
           http:
             port: 3000
+      wanderer-search:
+        controller: wanderer-search
+        ports:
+          http:
+            port: 7700
 
     ingress:
       app:
