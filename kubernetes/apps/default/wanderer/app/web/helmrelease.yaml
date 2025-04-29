@@ -3,7 +3,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: &app wanderer
+  name: &app wanderer-web
   namespace: default
 spec:
   interval: 15m
@@ -29,31 +29,6 @@ spec:
     keepHistory: false
   values:
     controllers:
-
-      search:
-        annotations:
-          reloader.stakater.com/auto: "true"
-        containers:
-          search:
-            image:
-              repository: getmeili/meilisearch
-              tag: v1.14.0
-            envFrom:
-              - secretRef:
-                  name: wanderer-secret
-
-      db:
-        annotations:
-          reloader.stakater.com/auto: "true"
-        containers:
-          db:
-            image:
-              repository: flomp/wanderer-db
-              tag: v0.16.5
-            envFrom:
-              - secretRef:
-                  name: wanderer-secret
-
       web:
         annotations:
           reloader.stakater.com/auto: "true"
@@ -67,22 +42,11 @@ spec:
                   name: wanderer-secret
 
     service:
-      db:
-        controller: db
-        ports:
-          http:
-            port: 8090
-
       web:
         controller: web
         ports:
           http:
             port: 3000
-      search:
-        controller: search
-        ports:
-          http:
-            port: 7700
 
     ingress:
       web:
@@ -99,10 +63,6 @@ spec:
               - *host
 
     persistence:
-      db:
-        existingClaim: wanderer-db
-        globalMounts:
-          - path: /pb_data
       web:
         existingClaim: wanderer-web
         globalMounts:
