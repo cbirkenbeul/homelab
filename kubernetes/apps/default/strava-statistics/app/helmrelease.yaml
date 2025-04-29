@@ -33,7 +33,7 @@ spec:
           app:
             image:
               repository: robiningelbrecht/strava-statistics
-              tag: latest
+              tag: v1.3.1
             env:
               UNIT_SYSTEM: metric
               MANIFEST_APP_URL: "https://strava.${SECRET_DOMAIN}"
@@ -45,8 +45,8 @@ spec:
               ACTIVITIES_TO_SKIP_DURING_IMPORT: "[]"
               ACTIVITY_VISIBILITIES_TO_IMPORT: "[]"
               SKIP_ACTIVITIES_RECORDED_BEFORE: ""
-              # PUID: 1000
-              # PGID: 1000
+              PUID: 1000
+              PGID: 1000
             envFrom:
               - secretRef:
                   name: strava-statistics-secret
