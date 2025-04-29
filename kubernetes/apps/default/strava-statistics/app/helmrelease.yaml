@@ -44,7 +44,7 @@ spec:
               FTP_HISTORY: "[]"
               ACTIVITIES_TO_SKIP_DURING_IMPORT: "[]"
               ACTIVITY_VISIBILITIES_TO_IMPORT: "[]"
-              SKIP_ACTIVITIES_RECORDED_BEFORE: ""
+              SKIP_ACTIVITIES_RECORDED_BEFORE: "2024-01-01"
               # PUID: 1000
               # PGID: 1000
             envFrom:
