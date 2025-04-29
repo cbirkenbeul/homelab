@@ -32,7 +32,7 @@ spec:
         containers:
           app:
             image:
-              repository: foxxmd/strava-statistics
+              repository: robiningelbrecht/strava-statistics
               tag: latest
             env:
               UNIT_SYSTEM: metric
