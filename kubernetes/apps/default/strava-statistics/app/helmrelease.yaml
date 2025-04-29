@@ -36,6 +36,11 @@ spec:
               tag: latest
             env:
               UNIT_SYSTEM: metric
+              MANIFEST_APP_URL: strava.${SECRET_DOMAIN}
+              NUMBER_OF_NEW_ACTIVITIES_TO_PROCESS_PER_IMPORT: 250
+              IMPORT_AND_BUILD_SCHEDULE: "5 4 * * *"
+              TZ: ${TIMEZONE}
+              LOCALE: de_DE
               # PUID: 1000
               # PGID: 1000
             envFrom:
