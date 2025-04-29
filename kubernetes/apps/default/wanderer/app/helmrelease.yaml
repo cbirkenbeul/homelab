@@ -29,6 +29,7 @@ spec:
     keepHistory: false
   values:
     controllers:
+
       search:
         annotations:
           reloader.stakater.com/auto: "true"
@@ -37,6 +38,9 @@ spec:
             image:
               repository: getmeili/meilisearch
               tag: v1.11.3
+            envFrom:
+              - secretRef:
+                  name: wanderer-secret
 
       db:
         annotations:
