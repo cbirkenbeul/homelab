@@ -81,9 +81,9 @@ spec:
                   port: http
         tls:
           - hosts: [*host]
-    # persistence:
-    #   resources:
-    #     existingClaim: *app
-    #     globalMounts:
-    #       - path: /var/www
-    #         readOnly: false
+    persistence:
+      resources:
+        existingClaim: *app
+        globalMounts:
+          - path: /var/www
+            readOnly: false
