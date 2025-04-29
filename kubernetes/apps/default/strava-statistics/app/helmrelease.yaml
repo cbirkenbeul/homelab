@@ -33,7 +33,7 @@ spec:
           app:
             image:
               repository: foxxmd/strava-statistics
-              tag: runfix
+              tag: latest
             env:
               UNIT_SYSTEM: metric
               # PUID: 1000
@@ -85,5 +85,5 @@ spec:
       resources:
         existingClaim: *app
         globalMounts:
-          - path: /var/www
+          - path: /var/www/storage
             readOnly: false
