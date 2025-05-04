@@ -51,6 +51,7 @@ spec:
       global:
         bdev_enable_discard: "true" # quote
         bdev_async_discard_threads: "1" # quote
+        mon_max_pg_per_osd: 275
       network:
         provider: host
         connections:
