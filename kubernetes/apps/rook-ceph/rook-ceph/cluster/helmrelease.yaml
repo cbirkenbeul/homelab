@@ -47,13 +47,18 @@ spec:
               - *host
     toolbox:
       enabled: true
+    configOverride: |
+      [global]
+      bdev_enable_discard = true
+      bdev_async_discard = true
+      osd_class_update_on_start = false
+      mon_max_pg_per_osd = "275"
     cephClusterSpec:
-      global:
-        bdev_enable_discard: "true" # quote
-        bdev_async_discard_threads: "1" # quote
-        mon_max_pg_per_osd: 275
-        bluestore_slow_ops_warn_lifetime: "10"
-        bluestore_slow_ops_warn_threshold: "5"
+      ## Fixes "OSD(s) experiencing slow operations in BlueStore"
+      cephConfig:
+        global:
+          bdev_enable_discard: "true"
+          bdev_async_discard_threads: "1"
       network:
         provider: host
         connections:
