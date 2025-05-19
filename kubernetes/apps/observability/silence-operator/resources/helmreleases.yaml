@@ -1,0 +1,65 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.mcf.io/helm.toolkit.fluxcd.io/helmrelease_v2.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: silence-operator
+spec:
+  interval: 12h
+  maxHistory: 3
+  chartRef:
+    kind: OCIRepository
+    name: silence-operator
+  install:
+    remediation:
+      retries: -1
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  values:
+    image:
+      name: quay.io/giantswarm/silence-operator
+    operator:
+      config:
+        alertmanager:
+          service:
+            address: http://kube-prometheus-stack-alertmanager:9093
+    rbac:
+      create: true
+    extraDeploy:
+      - apiVersion: monitoring.giantswarm.io/v1alpha1
+        kind: Silence
+        metadata:
+          name: ceph-node-nfsmount-diskspace-warning
+          namespace: observability
+        spec:
+          matchers:
+            - name: alertname
+              value: CephNodeDiskspaceWarning
+              isRegex: false
+            - name: mountpoint
+              value: /etc/nfsmount.conf
+              isRegex: false
+      - apiVersion: monitoring.giantswarm.io/v1alpha1
+        kind: Silence
+        metadata:
+          name: ceph-node-local-diskspace-warning
+          namespace: observability
+        spec:
+          matchers:
+            - name: alertname
+              value: CephNodeDiskspaceWarning
+              isRegex: false
+            - name: device
+              value: /dev/sd.*
+              isRegex: true
+      - apiVersion: monitoring.giantswarm.io/v1alpha1
+        kind: Silence
+        metadata:
+          name: cephnodenetworkpacketerrors
+        spec:
+          matchers:
+            - name: alertname
+              value: CephNodeNetworkPacketErrors
+              isRegex: false

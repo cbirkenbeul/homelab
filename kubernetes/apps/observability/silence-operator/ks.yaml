@@ -1,42 +1,52 @@
 ---
-# yaml-language-server: $schema=https://github.com/fluxcd-community/flux2-schemas/raw/main/kustomization-kustomize-v1.json
+# yaml-language-server: $schema=https://kubernetes-schemas.mcf.io/kustomize.toolkit.fluxcd.io/kustomization_v1.json
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: &app silence-operator
-  namespace: flux-system
+  name: &appname silence-operator
+  namespace: &namespace observability
 spec:
-  targetNamespace: observability
+  targetNamespace: *namespace
   commonMetadata:
     labels:
-      app.kubernetes.io/name: *app
-  path: ./kubernetes/apps/observability/silence-operator/app
-  prune: true
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-  wait: true
-  interval: 10m
-  timeout: 5m
----
-# yaml-language-server: $schema=https://github.com/fluxcd-community/flux2-schemas/raw/main/kustomization-kustomize-v1.json
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: &app silence-operator-silences
-  namespace: flux-system
-spec:
-  targetNamespace: observability
-  commonMetadata:
-    labels:
-      app.kubernetes.io/name: *app
-  path: ./kubernetes/apps/observability/silence-operator/silences
-  prune: true
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-  wait: false
+      app.kubernetes.io/name: *appname
   dependsOn:
-    - name: silence-operator
-  interval: 10m
+    - name: silence-operator-crds
+      namespace: *namespace
+  interval: 12h
+  path: ./apps/observability/silence-operator/resources
+  prune: true
+  retryInterval: 2m
+  sourceRef:
+    kind: OCIRepository
+    name: cluster-manifests
+    namespace: flux-system
+  timeout: 5m
+  wait: false
+---
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.mcf.io/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: &appname silence-operator-crds
+  namespace: &namespace monitoring
+spec:
+  targetNamespace: *namespace
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *appname
+  healthChecks:
+    - apiVersion: helm.toolkit.fluxcd.io/v2
+      kind: HelmRelease
+      name: *appname
+      namespace: *namespace
+  interval: 12h
+  path: ./apps/observability/silence-operator/crds
+  prune: true
+  retryInterval: 2m
+  sourceRef:
+    kind: OCIRepository
+    name: cluster-manifests
+    namespace: flux-system
   timeout: 5m
