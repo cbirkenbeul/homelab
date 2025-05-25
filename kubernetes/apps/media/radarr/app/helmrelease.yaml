@@ -36,7 +36,7 @@ spec:
           app:
             image:
               repository: ghcr.io/home-operations/radarr
-              tag: 5.23.3.9987
+              tag: 5.24.0.10006
             env:
               TZ: ${TIMEZONE}
               RADARR__PORT: &port 7878
