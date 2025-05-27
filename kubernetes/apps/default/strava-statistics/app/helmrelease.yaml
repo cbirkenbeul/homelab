@@ -33,7 +33,7 @@ spec:
           app:
             image:
               repository: robiningelbrecht/strava-statistics
-              tag: v1.3.6
+              tag: v2.0.2
             env:
               UNIT_SYSTEM: metric
               MANIFEST_APP_URL: "https://strava.${SECRET_DOMAIN}"
