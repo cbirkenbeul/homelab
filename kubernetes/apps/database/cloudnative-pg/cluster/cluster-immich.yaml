@@ -7,7 +7,7 @@ metadata:
   namespace: database
 spec:
   instances: 3
-  imageName: ghcr.io/tensorchord/cloudnative-pgvecto.rs:16.4-v0.3.0
+  imageName: ghcr.io/tensorchord/cloudnative-vectorchord.rs:16.4-v0.3.0
   primaryUpdateStrategy: unsupervised
   storage:
     size: 10Gi
@@ -17,7 +17,7 @@ spec:
     name: cloudnative-pg-secret
   postgresql:
     shared_preload_libraries:
-      - "vectors.so"
+      - "vchord.so"
     parameters:
       max_connections: "600"
       shared_buffers: 512MB
