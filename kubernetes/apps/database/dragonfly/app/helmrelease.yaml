@@ -102,4 +102,4 @@ spec:
             scrapeTimeout: 10s
 
     serviceAccount:
-      homepage: {}
+      dragonfly-operator: {}
