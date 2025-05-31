@@ -81,7 +81,7 @@ spec:
                 matchLabels:
                   app.kubernetes.io/name: *app
         serviceAccount:
-          identifier: *app
+          identifier: dragonfly-operator
 
     service:
       app:
