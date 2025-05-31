@@ -6,7 +6,7 @@ namespace: observability
 resources:
   - ./externalsecret.yaml
   - ./rbac.yaml
-  # - ./helmrelease.yaml
+  - ./helmrelease.yaml
 configMapGenerator:
   - name: gatus-configmap
     files:

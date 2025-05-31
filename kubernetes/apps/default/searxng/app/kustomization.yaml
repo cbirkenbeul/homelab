@@ -5,7 +5,7 @@ kind: Kustomization
 namespace: default
 resources:
   - ./externalsecret.yaml
-  # - ./helmrelease.yaml
+  - ./helmrelease.yaml
 configMapGenerator:
   - name: searxng
     files:
