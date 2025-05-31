@@ -45,6 +45,8 @@ spec:
             envFrom:
               - secretRef:
                   name: homepage-secret
+        serviceAccount:
+          identifier: homepage
 
     service:
       app:
@@ -89,4 +91,4 @@ spec:
             path: /app/config/widgets.yaml
 
     serviceAccount:
-      create: true
+      homepage: {}
