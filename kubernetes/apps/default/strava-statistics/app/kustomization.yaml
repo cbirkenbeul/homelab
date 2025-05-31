@@ -8,3 +8,7 @@ resources:
   - ./helmrelease.yaml
   - ../../../../templates/volsync
   - ../../../../templates/gatus/guarded
+configMapGenerator:
+  - name: strva-stistics-configmap
+    files:
+      - config.yaml=./resources/config.yaml

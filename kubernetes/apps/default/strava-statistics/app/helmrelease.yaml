@@ -33,18 +33,10 @@ spec:
           app:
             image:
               repository: robiningelbrecht/strava-statistics
-              tag: v1.3.6
+              tag: v2.0.2
             env:
-              UNIT_SYSTEM: metric
-              MANIFEST_APP_URL: "https://strava.${SECRET_DOMAIN}"
-              NUMBER_OF_NEW_ACTIVITIES_TO_PROCESS_PER_IMPORT: 250
-              IMPORT_AND_BUILD_SCHEDULE: "5 4 * * *"
               TZ: ${TIMEZONE}
               LOCALE: de_DE
-              FTP_HISTORY: "[]"
-              ACTIVITIES_TO_SKIP_DURING_IMPORT: "[]"
-              ACTIVITY_VISIBILITIES_TO_IMPORT: "[]"
-              SKIP_ACTIVITIES_RECORDED_BEFORE: ""
               PUID: 1000
               PGID: 1000
             envFrom:
