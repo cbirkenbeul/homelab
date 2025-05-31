@@ -20,7 +20,13 @@ general:
     #    "2025-01-10": 193
     # History of weight (in kg or pounds, depending on UNIT_SYSTEM). Needed to calculate relative w/kg.
     # Check https://github.com/robiningelbrecht/statistics-for-strava/wiki for more info.
-    weight_history: {{ .ATHLETE_WEIGHT_HISTORY}}
+    weight_history: 
+      "2025-05-29": 73.4
+      "2025-01-01": 72.0
+      "2024-01-01": 73.0
+      "2023-01-01": 73.2
+      "2022-01-01": 75.0
+      "2021-01-01": 76.0
     # Optional, history of FTP. Needed to calculate activity stress level.
     # Check https://github.com/robiningelbrecht/statistics-for-strava/wiki for more info. Example:
     # ftp_history
