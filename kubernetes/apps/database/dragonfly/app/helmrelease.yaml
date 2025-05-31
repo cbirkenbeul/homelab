@@ -80,6 +80,9 @@ spec:
               labelSelector:
                 matchLabels:
                   app.kubernetes.io/name: *app
+        serviceAccount:
+          identifier: *app
+
     service:
       app:
         controller: *app
@@ -97,6 +100,6 @@ spec:
             path: /metrics
             interval: 1m
             scrapeTimeout: 10s
+
     serviceAccount:
-      create: true
-      name: *app
+      homepage: {}
