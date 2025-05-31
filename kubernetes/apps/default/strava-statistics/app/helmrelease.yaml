@@ -93,5 +93,5 @@ spec:
         name: strava-statistics-secret
         globalMounts:
           - path: /var/www/config/app/config.yaml
-            subPath: evcc.yaml
+            subPath: config.yaml
             readOnly: false
