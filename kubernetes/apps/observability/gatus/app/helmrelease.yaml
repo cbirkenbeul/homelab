@@ -91,6 +91,9 @@ spec:
             runAsGroup: 568
             fsGroup: 568
             fsGroupChangePolicy: OnRootMismatch
+        serviceAccount:
+          identifier: gatus
+
 
     service:
       app:
@@ -132,8 +135,7 @@ spec:
               - *host
     
     serviceAccount:
-      create: true
-      name: gatus
+      gatus: {}
 
     persistence:
       config:
