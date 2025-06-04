@@ -1,0 +1,80 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app huntarr
+  namespace: media
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: app-template
+      version: 4.0.1
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  maxHistory: 3
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: uninstall
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    controllers:
+      huntarr:
+
+        annotations:
+          reloader.stakater.com/auto: "true"
+
+        containers:
+          app:
+            image:
+              repository: huntarr/huntarr
+              tag: 7.5.6@sha256:4fd9d691441bcf7b691e87b5f7bfd928e8de366e18058f9856392134abc589fe
+            env:
+              TZ: ${TIMEZONE}
+
+    service:
+      app:
+        controller: *app
+        ports:
+          http:
+            port: 9705
+
+    ingress:
+      main:
+        enabled: true
+        className: internal
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/icon: huntarr.png
+          gethomepage.dev/name: huntarr
+          gethomepage.dev/widget.type: huntarr
+          gethomepage.dev/group: Media
+        hosts:
+          - host: &host "huntarr.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                service:
+                  identifier: app
+                  port: http
+        tls:
+          - hosts:
+              - *host
+
+    defaultPodOptions:
+      securityContext:
+        runAsUser: 568 # ${APP_UID}
+        runAsGroup: 568 # ${APP_GID}
+        fsGroup: 568 # ${APP_GID}
+        fsGroupChangePolicy: "OnRootMismatch"
+
+    persistence:
+      config:
+        existingClaim: *app
