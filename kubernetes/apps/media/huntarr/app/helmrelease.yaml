@@ -55,7 +55,6 @@ spec:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/icon: huntarr.png
           gethomepage.dev/name: huntarr
-          gethomepage.dev/widget.type: huntarr
           gethomepage.dev/group: Media
         hosts:
           - host: &host "huntarr.${SECRET_DOMAIN}"
