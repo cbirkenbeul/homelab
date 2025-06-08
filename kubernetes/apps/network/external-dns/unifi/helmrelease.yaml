@@ -58,7 +58,7 @@ spec:
     policy: sync
     sources: ["ingress", "service"]
     txtOwnerId: k8s
-    txtPrefix: edns.
+    txtPrefix: k8s.
     domainFilters:
       - "${SECRET_DOMAIN}"
     serviceMonitor:
