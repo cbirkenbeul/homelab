@@ -29,7 +29,7 @@ spec:
     keepHistory: false
   values:
     controllers:
-      freshrss:
+      mealie:
         annotations:
           reloader.stakater.com/auto: "true"
 
