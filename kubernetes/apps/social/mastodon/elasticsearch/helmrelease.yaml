@@ -77,8 +77,6 @@ spec:
     ingress:
       app:
         className: internal
-        annotations:
-          external-dns.alpha.kubernetes.io/target: internal.${SECRET_DOMAIN}
         hosts:
           - host: &host "elasticsearch-mastodon.${SECRET_DOMAIN}"
             paths:
