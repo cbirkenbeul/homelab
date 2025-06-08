@@ -1,0 +1,99 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.devbu.io/helmrelease_v2beta1.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app mealie
+  namespace: default
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: app-template
+      version: 4.0.1
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  maxHistory: 3
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: uninstall
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    controllers:
+      freshrss:
+        annotations:
+          reloader.stakater.com/auto: "true"
+
+        initContainers:
+          init-db:
+            image:
+              repository: ghcr.io/home-operations/postgres-init
+              tag: 17
+            envFrom: &envFrom
+              - secretRef:
+                  name: mealie-secret
+
+        containers:
+          app:
+            image:
+              repository: ghcr.io/mealie-recipes/mealie
+              tag: v2.8.0
+            env:
+              BASE_URL: https://mealie.${SECRET_DOMAIN}
+              ALLOW_SIGNUP: true
+              API_DOCS: false
+              TZ: ${TZ}
+              # Default Values
+              WORKERS_PER_CORE: 1
+              MAX_WORKERS: 1
+              WEB_CONCURRENCY: 1
+
+              DB_ENGINE: postgres
+
+            envFrom: *envFrom
+            resources:
+              requests:
+                cpu: 10m
+              limits:
+                memory: 512M
+
+    service:
+      app:
+        controller: *app
+        ports:
+          http:
+            port: 80
+
+    ingress:
+      app:
+        className: internal
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/icon: sh-mealie
+          gethomepage.dev/name: Mealie
+          gethomepage.dev/group: selfhosted
+        hosts:
+          - host: &host "mealie.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                service:
+                  identifier: app
+                  port: http
+        tls:
+          - hosts:
+              - *host
+
+    persistence:
+      config:
+        existingClaim: mealie
+        globalMounts:
+          - path: /app/data
