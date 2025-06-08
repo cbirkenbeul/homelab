@@ -1,3 +1,4 @@
+---
 general:
   # The URL on which the app will be hosted. This URL will be used in the manifest file. 
   # This will allow you to install the web app as a native app on your device.
