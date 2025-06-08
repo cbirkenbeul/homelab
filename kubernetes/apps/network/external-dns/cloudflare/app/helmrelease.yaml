@@ -35,13 +35,13 @@ spec:
             name: external-dns-secret
             key: api-token
     extraArgs:
-      - --annotation-filter=external-dns.alpha.kubernetes.io/target
+      - --ingress-class=external
       - --cloudflare-proxied
       - --crd-source-apiversion=externaldns.k8s.io/v1alpha1
       - --crd-source-kind=DNSEndpoint
     policy: sync
     sources: ["crd", "ingress"]
-    txtPrefix: k3s-cluster.
+    txtPrefix: k8s.
     txtOwnerId: default
     domainFilters: ["${SECRET_DOMAIN}","${SECRET_SOCIAL_DOMAIN}"]
     serviceMonitor:
