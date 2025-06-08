@@ -60,7 +60,6 @@ spec:
           gethomepage.dev/icon: sh-stirling-pdf
           gethomepage.dev/name: Stirling PDF
           gethomepage.dev/group: selfhosted
-          external-dns.alpha.kubernetes.io/target: "external.${SECRET_DOMAIN}"
         hosts:
           - host: &host "pdf.${SECRET_DOMAIN}"
             paths:
