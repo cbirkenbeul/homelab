@@ -14,13 +14,12 @@ upstreams:
       - tcp-tls:1.0.0.1:853
 
 clientLookup:
-  upstream: &router 192.168.10.1
+  upstream: tcp+udp:${ROUTER_IP}
 
 conditional:
-  fallbackUpstream: false
   mapping:
-    168.192.in-addr.arpa: *router
-    casalani.de: *router
+    168.192.in-addr.arpa: tcp+udp:${ROUTER_IP}
+    casalani.de: tcp+udp:${ROUTER_IP}
 
 connectIPVersion: v4
 
