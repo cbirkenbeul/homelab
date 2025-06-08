@@ -90,7 +90,7 @@ spec:
             readOnly: false
       config:
         type: configMap
-        name: trava-stistics-configmap
+        name: strava-stistics-configmap
         globalMounts:
           - path: /var/www/config/app/config.yaml
             subPath: config.yaml
