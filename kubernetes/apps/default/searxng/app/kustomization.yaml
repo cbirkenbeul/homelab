@@ -6,6 +6,7 @@ namespace: default
 resources:
   - ./externalsecret.yaml
   - ./helmrelease.yaml
+  - ../../../../templates/gatus/external
 configMapGenerator:
   - name: searxng
     files:
