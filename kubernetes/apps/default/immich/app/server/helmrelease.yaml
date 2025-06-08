@@ -74,6 +74,7 @@ spec:
           gethomepage.dev/name: Immich
           gethomepage.dev/group: selfhosted
           nginx.ingress.kubernetes.io/proxy-body-size: "0"
+          external-dns.alpha.kubernetes.io/target: "external.${SECRET_DOMAIN}"
         hosts:
           - host: &host photos.${SECRET_DOMAIN}
             paths:
