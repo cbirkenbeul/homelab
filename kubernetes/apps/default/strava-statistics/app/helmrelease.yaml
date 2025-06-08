@@ -88,10 +88,10 @@ spec:
         globalMounts:
           - path: /var/www/storage
             readOnly: false
-      config-file:
-        type: secret
+      config:
+        type: configMap
         name: strava-statistics-secret
         globalMounts:
           - path: /var/www/config/app/config.yaml
             subPath: config.yaml
-            readOnly: false
+            readOnly: true
