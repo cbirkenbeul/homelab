@@ -10,9 +10,6 @@ data:
   bookmarks.yaml: |
     ---
     - self hosted:
-        - Gitea:
-            - icon: gitea.png
-              href: https://git.${SECRET_DOMAIN}
         - Mailcow:
             - icon: mailcow.png
               href: https://mail.teqqnet.de

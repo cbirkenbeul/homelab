@@ -80,7 +80,7 @@ spec:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/icon: sh-mealie
           gethomepage.dev/name: Mealie
-          gethomepage.dev/group: selfhosted
+          gethomepage.dev/group: Home
         hosts:
           - host: &host "mealie.${SECRET_DOMAIN}"
             paths:

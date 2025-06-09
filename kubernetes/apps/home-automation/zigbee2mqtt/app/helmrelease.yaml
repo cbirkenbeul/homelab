@@ -84,6 +84,12 @@ spec:
     ingress:
       app:
         className: internal
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/icon: sh-zigbee2mqtt
+          gethomepage.dev/name: Zigbee2MQTT
+          gethomepage.dev/group: Home
+
         hosts:
           - host: zigbee.casalani.de
             paths:

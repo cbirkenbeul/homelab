@@ -145,6 +145,10 @@ spec:
       className: "external"
       annotations:
         external-dns.alpha.kubernetes.io/target: "external.${SECRET_DOMAIN}"
+        gethomepage.dev/enabled: "true"
+        gethomepage.dev/icon: sh-nextcloud
+        gethomepage.dev/name: Nextcloud
+        gethomepage.dev/group: selfhosted
         nginx.ingress.kubernetes.io/proxy-body-size: "10G"
         nginx.ingress.kubernetes.io/proxy-buffering: "off"
         nginx.ingress.kubernetes.io/proxy-request-buffering: "off"
