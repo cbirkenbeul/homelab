@@ -3,6 +3,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - ./namespace.yaml
+  - ./adventurer/ks.yaml
   - ./evcc/ks.yaml
   - ./freshrss/ks.yaml
   - ./homepage/ks.yaml
