@@ -102,6 +102,8 @@ spec:
     ingress:
       frontend:
         className: external
+        annotations:
+          external-dns.alpha.kubernetes.io/target: "external.${SECRET_DOMAIN}"
         hosts:
           - host: adventurelog.${SECRET_DOMAIN}
             paths:
@@ -112,6 +114,9 @@ spec:
                   port: http
       backend:
         className: external
+        annotations:
+          external-dns.alpha.kubernetes.io/target: "external.${SECRET_DOMAIN}"
+
         hosts:
           - host: adventurelog-backend.${SECRET_DOMAIN}
             paths:
