@@ -3,7 +3,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: &app adventurer
+  name: &app adventurelog
   namespace: flux-system
   labels:
     substitution.flux.home.arpa/enabled: "true"
@@ -12,7 +12,7 @@ spec:
     - name: rook-ceph-cluster
     - name: cloudnative-pg-cluster
     - name: ingress-nginx-external
-  path: ./kubernetes/apps/default/adventurer/app
+  path: ./kubernetes/apps/default/adventurelog/app
   prune: true
   sourceRef:
     kind: GitRepository
