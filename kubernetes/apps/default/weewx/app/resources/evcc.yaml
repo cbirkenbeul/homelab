@@ -1,0 +1,111 @@
+# trial token, valid until 2024-06-27
+sponsortoken: {{ .SPONSORTOKEN }}
+plant: {{ .PLANT }}
+
+network:
+  schema: http
+  host: evcc.local
+  port: 7070
+
+interval: 30s # control cycle interval. Interval <30s can lead to unexpected behavior, see https://docs.evcc.io/docs/reference/configuration/interval
+
+log: info
+levels:
+  site: debug
+  lp-1: debug
+  lp-2: debug
+  cache: error
+  db: error
+
+meters:
+  - name: plenticore
+    type: template
+    template: kostal-plenticore-gen2
+    usage: pv
+    modbus: tcpip
+    id: 71
+    host: 192.168.50.10
+    port: 1502 # Port 
+
+  - name: pico
+    type: template
+    template: kostal-piko-mp-plus
+    usage: pv
+    host: 192.168.50.11
+
+  - name: grid
+    type: template
+    template: kostal-ksem
+    usage: grid
+    modbus: tcpip
+    id: 71
+    host: 192.168.50.12
+    port: 502 # Port 
+
+  - name: battery
+    type: template
+    template: kostal-plenticore-gen2
+    usage: battery
+    modbus: tcpip
+    id: 71
+    host: 192.168.50.10
+    port: 1502 # Port 
+
+chargers:
+  - name: easee
+    type: template
+    template: easee
+    user: {{ .EASEEUSER }}
+    password: {{ .EASEEPASSWORD }}
+    charger: {{ .EASEECHARGER }}
+
+vehicles:
+  - name: ET5
+    type: template
+    template: tronity
+    title: ET5
+    capacity: 100
+    clientid: {{ .TRONITYCLIENTID }}
+    clientsecret: {{ .TRONITYCLIENTSECRET }}
+    vin: {{ .TRONITYET5VIN }}
+
+# site describes the EVU connection, PV and home battery
+site:
+  title: Zuhause
+  meters:
+    grid: grid
+    pv:
+      - plenticore
+      - pico
+    battery:
+      - battery
+
+loadpoints:
+  - title: CASA LANI
+    charger: easee
+    vehicle: ET5
+    mode: pv
+
+tariffs:
+  currency: EUR
+  grid:
+    type: tibber
+    token: {{ .TIBBERTOKEN }}
+  solar:
+    type: template
+    template: solcast
+    site: {{ .SOLCASTSITE }}
+    token: {{ .SOLCASTAPIKEY }}
+    interval: 24h
+
+  co2:
+    # co2 tariff provides co2 intensity forecast and is for co2-optimized target charging if no variable grid tariff is specified
+    type: grünstromindex # GrünStromIndex (Germany only)
+    zip: 55437
+
+# mqtt message broker
+mqtt:
+  broker: emqx-listeners.database.svc.cluster.local:1883
+  topic: evcc # root topic for publishing, set empty to disable
+  user: {{ .X_EMQX_MQTT_USERNAME }}
+  password: {{ .X_EMQX_MQTT_PASSWORD }}
