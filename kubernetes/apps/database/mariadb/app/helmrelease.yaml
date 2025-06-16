@@ -1,0 +1,46 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: mariadb
+  namespace: data
+spec:
+  interval: 10m0s
+  chart:
+    spec:
+      # renovate: registryUrl=https://charts.bitnami.com/bitnami
+      chart: mariadb
+      version: 15.2.0
+      sourceRef:
+        kind: HelmRepository
+        name: bitnami-charts
+        namespace: flux-system
+  maxHistory: 3
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    auth:
+      usePasswordFiles: false
+      existingSecret: mariadb-secret
+    metrics:
+      enabled: true
+      resourcesPreset: small
+      serviceMonitor:
+        enabled: true
+    primary:
+      resourcesPreset: small
+      persistence:
+        enabled: true
+        existingClaim: *app
+    initdbScripts:
+      create-weewx.sql: |
+        CREATE DATABASE IF NOT EXISTS weewx;
+        CREATE USER 'weewx'@'localhost' IDENTIFIED BY '${WEEWX_MARIADB_PASSWORD}';
+        GRANT select, update, create, delete, insert, alter, drop ON weewx.* TO weewx@localhost;
