@@ -48,7 +48,7 @@ spec:
               repository: ghcr.io/seanmorley15/adventurelog-backend
               tag: beta@sha256:2f0acbd7cd7d6510028d1967ca504f97c20f85460ddb491fa3c2eae59464d75a
             env:
-              PUBLIC_URL: http://adventurelog-backend:8000
+              PUBLIC_URL: https://adventurelog-backend.${SECRET_DOMAIN}
               FRONTEND_URL: https://adventurelog.${SECRET_DOMAIN}
               CSRF_TRUSTED_ORIGINS: https://adventurelog-backend.${SECRET_DOMAIN},https://adventurelog.${SECRET_DOMAIN}
               DEBUG: True
