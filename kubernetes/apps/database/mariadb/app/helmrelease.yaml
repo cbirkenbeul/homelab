@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: mariadb
+  name: &app mariadb
   namespace: data
 spec:
   interval: 10m0s
@@ -13,7 +13,7 @@ spec:
       version: 15.2.0
       sourceRef:
         kind: HelmRepository
-        name: bitnami-charts
+        name: bitnami
         namespace: flux-system
   maxHistory: 3
   install:
