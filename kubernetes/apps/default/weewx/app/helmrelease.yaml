@@ -35,9 +35,9 @@ spec:
             image:
               repository: ghcr.io/felddy/weewx
               tag: 5.1.0
-            envFrom:
-              - secretRef:
-                  name: weewx-secret
+            # envFrom:
+            #   - secretRef:
+            #       name: weewx-secret
             resources:
               limits: &resources
                 memory: 128Mi
