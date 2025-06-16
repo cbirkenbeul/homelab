@@ -80,10 +80,10 @@ spec:
         existingClaim: weewx
         globalMounts:
           - path: /data
-      # config-file:
-      #   type: secret
-      #   name: evcc-secret
-      #   globalMounts:
-      #     - path: /etc/evcc.yaml
-      #       subPath: evcc.yaml
-      #       readOnly: false
+      config-file:
+        type: secret
+        name: weewx-secret
+        globalMounts:
+          - path: /data/weewx.conf
+            subPath: weewx.conf
+            readOnly: false

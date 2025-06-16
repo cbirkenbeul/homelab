@@ -4,14 +4,14 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: default
 resources:
-  # - ./externalsecret.yaml
+  - ./externalsecret.yaml
   - ./helmrelease.yaml
   - ../../../../templates/volsync
   - ../../../../templates/gatus/guarded
-# configMapGenerator:
-#   - name: evcc-configmap
-#     files:
-#       - evcc.yaml=./resources/evcc.yaml
+configMapGenerator:
+  - name: weewx-configmap
+    files:
+      - weewx.conf=./resources/weewx.conf
 generatorOptions:
   disableNameSuffixHash: true
   annotations:
