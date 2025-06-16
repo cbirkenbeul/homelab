@@ -52,6 +52,14 @@ spec:
           http:
             port: 80
 
+    defaultPodOptions:
+      securityContext:
+        runAsUser: 1000 # ${APP_UID}
+        runAsGroup: 1000 # ${APP_GID}
+        fsGroup: 1000 # ${APP_GID}
+        fsGroupChangePolicy: "OnRootMismatch"
+
+
     ingress:
       app:
         className: internal
