@@ -17,5 +17,4 @@ resources:
   - ./stirling-pdf/ks.yaml
   - ./strava-statistics/ks.yaml
   - ./wanderer/ks.yaml
-  - ./weewx/ks.yaml
   - ./zwave-js-ui/ks.yaml
