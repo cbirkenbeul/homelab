@@ -63,6 +63,16 @@
         "separateMinorPatch": true,
       },
       {
+        "description": "Wanderer Group",
+        "groupName": "Wanderer",
+        "matchPackagePatterns": ["wanderer"],
+        "matchDatasources": ["docker"],
+        "group": {
+          "commitMessageTopic": "{{{groupName}}} group",
+        },
+        "separateMinorPatch": true,
+      },
+      {
         "description": ["System Upgrade Controller Group"],
         "groupName": "System Upgrade Controller",
         "matchPackagePatterns": ["system-upgrade-controller"],
