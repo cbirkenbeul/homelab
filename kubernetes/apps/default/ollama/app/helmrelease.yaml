@@ -38,7 +38,7 @@ spec:
           app:
             image:
               repository: docker.io/ollama/ollama
-              tag: 0.9.5
+              tag: 0.9.6
 
             env:
               TZ: UTC
