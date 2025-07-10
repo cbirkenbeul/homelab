@@ -77,13 +77,16 @@ spec:
         controller: *app
         ports:
           http:
-            port: 80
+            ports: 443
+            protocol: HTTPS
+
 
     ingress:
       app:
         className: external
         annotations:
           external-dns.alpha.kubernetes.io/target: external.${SECRET_DOMAIN}
+          nginx.ingress.kubernetes.io/backend-protocol: HTTPS
           # nginx.ingress.kubernetes.io/ssl-redirect: "false"
         hosts:
           - host: &host "${SECRET_SOCIAL_DOMAIN}"
