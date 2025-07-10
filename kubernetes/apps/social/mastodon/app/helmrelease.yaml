@@ -77,7 +77,7 @@ spec:
         controller: *app
         ports:
           http:
-            ports: 443
+            port: 443
             protocol: HTTPS
 
 
