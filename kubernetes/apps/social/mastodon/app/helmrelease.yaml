@@ -84,7 +84,7 @@ spec:
         className: external
         annotations:
           external-dns.alpha.kubernetes.io/target: external.${SECRET_SOCIAL_DOMAIN}
-          nginx.ingress.kubernetes.io/ssl-redirect: "false"
+          # nginx.ingress.kubernetes.io/ssl-redirect: "false"
         hosts:
           - host: &host "${SECRET_SOCIAL_DOMAIN}"
             paths:
