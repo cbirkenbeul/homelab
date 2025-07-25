@@ -44,7 +44,7 @@ spec:
           mastodon-server:
             image:
               repository: lscr.io/linuxserver/mastodon
-              tag: "4.4.1"
+              tag: "4.4.2"
             env:
               PUID: 1000
               PGID: 1000
