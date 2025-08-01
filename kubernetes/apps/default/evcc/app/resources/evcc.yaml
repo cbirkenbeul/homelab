@@ -74,7 +74,7 @@ vehicles:
     user: {{ .R5USERNAME }}
     password: {{ .R5PASSWORD }}
     title: R5
-    capacity: 40 # Akkukapazität (kWh), optional
+    capacity: 43 # Akkukapazität (kWh), optional
 
 # site describes the EVU connection, PV and home battery
 site:
@@ -90,7 +90,6 @@ site:
 loadpoints:
   - title: CASA LANI
     charger: easee
-    vehicle: ET5
     mode: pv
 
 tariffs:
