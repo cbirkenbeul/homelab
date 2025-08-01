@@ -72,7 +72,7 @@ spec:
           app:
             image:
               repository: ghcr.io/seanmorley15/adventurelog-frontend
-              tag: beta@sha256:87b81097d156a368af9dc0ea7442bd63cc609d2f80591bc4d9bd601c142e85c9
+              tag: beta@sha256:28f611f99786262d058d86f3c15f3abb5c645b23d49d6d68a0eab8573885d99a
             envFrom: *envFrom
             env:
               PUBLIC_SERVER_URL: "http://adventurelog-backend.default.svc.cluster.local:8000"
