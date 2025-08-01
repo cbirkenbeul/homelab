@@ -68,6 +68,13 @@ vehicles:
     clientid: {{ .TRONITYCLIENTID }}
     clientsecret: {{ .TRONITYCLIENTSECRET }}
     vin: {{ .TRONITYET5VIN }}
+  - name: R5
+    type: template
+    template: renault
+    user: {{ .R5USERNAME }}
+    password: {{ .R5PASSWORD }}
+    title: R5
+    capacity: 40 # Akkukapazität (kWh), optional
 
 # site describes the EVU connection, PV and home battery
 site:
