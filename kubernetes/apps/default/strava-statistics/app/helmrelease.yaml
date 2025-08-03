@@ -103,8 +103,12 @@ spec:
       resources:
         existingClaim: *app
         globalMounts:
-          - path: /var/www/storage
-            readOnly: false
+          - subPath: build
+            path: /var/www/build
+          - subPath: database
+            path: /var/www/storage/database
+          - subPath: files
+            path: /var/www/storage/files
       config:
         type: configMap
         name: strava-stistics-configmap
