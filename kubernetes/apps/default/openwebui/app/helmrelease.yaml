@@ -71,3 +71,9 @@ spec:
                 service:
                   identifier: app
                   port: http
+
+    persistence:
+      config:
+        existingClaim: openwebui
+        globalMounts:
+          - path: /app/backend/
