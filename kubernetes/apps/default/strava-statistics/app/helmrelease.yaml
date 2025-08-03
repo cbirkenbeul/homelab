@@ -54,11 +54,11 @@ spec:
       refresh-strava:
         type: cronjob
         cronjob:
-          schedule: "* */2 * * *"
+          schedule: "0 0 * * *"
           backoffLimit: 0
           concurrencyPolicy: Forbid
-          successfulJobsHistory: 5
-          failedJobsHistory: 5
+          successfulJobsHistory: 1
+          failedJobsHistory: 2
           ttlSecondsAfterFinished: 86400
         containers:
           refresh:
