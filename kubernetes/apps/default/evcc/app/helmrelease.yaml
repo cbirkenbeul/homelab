@@ -30,6 +30,7 @@ spec:
       evcc:
         annotations:
           reloader.stakater.com/auto: "true"
+          configmap.reloader.stakater.com/reload: "evcc-configmap"
         containers:
           main:
             image:
