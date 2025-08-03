@@ -63,7 +63,7 @@ import:
   # Optional, the date (YYYY-MM-DD) from which you want to start importing activities. 
   # Any activity recorded before this date, will not be imported.
   # This can be used if you want to skip the import of older activities. Leave empty to disable.
-  skip_activities_recorded_before: null
+  skip_activities_recorded_before: "2024-01-01"
   # An array of activity ids to skip during import. 
   # This allows you to skip specific activities during import.
   # ["123456789", "987654321"]
