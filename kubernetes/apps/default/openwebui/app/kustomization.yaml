@@ -5,6 +5,8 @@ kind: Kustomization
 namespace: default
 resources:
   - ./helmrelease.yaml
+  - ../../../../templates/volsync
+
 generatorOptions:
   disableNameSuffixHash: true
   annotations:
