@@ -51,14 +51,31 @@ spec:
             ports:
               - name: http
                 containerPort: &port 8080
-    # defaultPodOptions:
-    #   securityContext:
-    #     # runAsNonRoot: true
-    #     runAsUser: 1000
-    #     runAsGroup: 1000
-    #     fsGroup: 1000
-    #     fsGroupChangePolicy: OnRootMismatch
-    #     seccompProfile: { type: RuntimeDefault }
+      refresh-strava:
+        type: cronjob
+        cronjob:
+          schedule: "*/5 * * * *"
+          backoffLimit: 0
+          concurrencyPolicy: Forbid
+          successfulJobsHistory: 5
+          failedJobsHistory: 5
+          ttlSecondsAfterFinished: 86400
+        containers:
+          refresh:
+            image:
+              repository: robiningelbrecht/strava-statistics
+              tag: latest
+              pullPolicy: Always
+            envFrom:
+              - secretRef:
+                  name: strava-statistics-secret
+            command:
+              - /bin/bash
+            args:
+              - -c
+              - |
+                bin/console app:strava:import-data
+                bin/console app:strava:build-files
     service:
       app:
         controller: *app
