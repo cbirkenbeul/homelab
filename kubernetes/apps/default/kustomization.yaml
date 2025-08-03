@@ -11,7 +11,7 @@ resources:
   - ./mealie/ks.yaml
   - ./nextcloud/ks.yaml
   - ./ollama/ks.yaml
-  - ./openwebui/ks.yaml
+  #- ./openwebui/ks.yaml
   - ./paperless-ngx/ks.yaml
   - ./searxng/ks.yaml
   - ./stirling-pdf/ks.yaml
