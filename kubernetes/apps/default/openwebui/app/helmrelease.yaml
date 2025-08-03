@@ -76,4 +76,4 @@ spec:
       config:
         existingClaim: openwebui
         globalMounts:
-          - path: /app/backend/
+          - path: /app/backend/data
