@@ -75,6 +75,7 @@ vehicles:
     password: {{ .R5PASSWORD }}
     title: R5
     capacity: 43 # Akkukapazität (kWh), optional
+    wakeupmode: MY24
 
 # site describes the EVU connection, PV and home battery
 site:
