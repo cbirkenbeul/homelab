@@ -73,3 +73,11 @@ zwift:
   level: null
   # Optional, your Zwift racing score (0 - 1000). Will be used to add to your Zwift badge if ZWIFT_LEVEL is filled out.
   racing_score: null
+
+integrations:
+  ai:
+    enabled: true
+    provider: 'ollama'
+    configuration:
+      url: 'http://ollama.default.svc:11434/api'
+      model: 'llama3.2:latest'
