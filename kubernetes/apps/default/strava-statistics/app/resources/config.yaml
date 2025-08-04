@@ -78,7 +78,7 @@ integrations:
   ai:
     enabled: true
     enableUI: true
-    provider: 'ollama'
+    provider: 'chatgpt'
     configuration:
-      url: 'http://ollama.default.svc:11434/api'
-      model: 'llama3.2:latest'
+      key: {{ .CHATGPTAPIKEY }}
+      model: 'GPT-4o'
