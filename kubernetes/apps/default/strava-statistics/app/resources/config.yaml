@@ -80,5 +80,5 @@ integrations:
     enableUI: true
     provider: 'chatgpt'
     configuration:
-      key: {{ .CHATGPTAPIKEY }}
+      key: !env_var CHATGPTAPIKEY
       model: 'GPT-4o'
