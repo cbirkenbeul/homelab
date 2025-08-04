@@ -110,8 +110,8 @@ spec:
           - subPath: files
             path: /var/www/storage/files
       config:
-        type: configMap
-        name: strava-statistics-configmap
+        type: secret
+        name: strava-statistics-secret
         globalMounts:
           - path: /var/www/config/app/config.yaml
             subPath: config.yaml
