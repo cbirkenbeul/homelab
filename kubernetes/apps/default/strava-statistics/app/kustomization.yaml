@@ -9,7 +9,7 @@ resources:
   - ../../../../templates/volsync
   - ../../../../templates/gatus/guarded
 configMapGenerator:
-  - name: strava-stistics-configmap
+  - name: strava-statistics-configmap
     files:
       - config.yaml=./resources/config.yaml
 generatorOptions:

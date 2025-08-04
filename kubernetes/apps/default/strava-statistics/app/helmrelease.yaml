@@ -111,7 +111,7 @@ spec:
             path: /var/www/storage/files
       config:
         type: configMap
-        name: strava-stistics-configmap
+        name: strava-statistics-configmap
         globalMounts:
           - path: /var/www/config/app/config.yaml
             subPath: config.yaml
