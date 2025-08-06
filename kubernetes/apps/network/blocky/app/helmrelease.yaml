@@ -92,7 +92,7 @@ spec:
             protocol: UDP
     serviceMonitor:
       app:
-        serviceName: *app
+        serviceName: app
         endpoints:
           - port: http
             scheme: http
