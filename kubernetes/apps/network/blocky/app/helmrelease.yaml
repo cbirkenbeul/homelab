@@ -74,12 +74,12 @@ spec:
               app.kubernetes.io/name: *app
     service:
       app:
-        controller: *app
+        controller: blocky
         ports:
           http:
             port: 4000
       dns:
-        controller: *app
+        controller: blocky
         type: LoadBalancer
         annotations:
           lbipam.cilium.io/ips: "192.168.10.85"
@@ -92,7 +92,7 @@ spec:
             protocol: UDP
     serviceMonitor:
       app:
-        serviceName: app
+        serviceName: blocky
         endpoints:
           - port: http
             scheme: http
