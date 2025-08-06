@@ -89,10 +89,10 @@ spec:
           lbipam.cilium.io/ips: "192.168.10.85"
         ports:
           dns-tcp:
-            port: *port
+            port: 53
             protocol: TCP
           dns-udp:
-            port: *port
+            port: 53
             protocol: UDP
     serviceMonitor:
       app:
