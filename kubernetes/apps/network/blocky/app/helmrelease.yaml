@@ -29,37 +29,6 @@ spec:
         strategy: RollingUpdate
         annotations:
           reloader.stakater.com/auto: "true"
-        containers:
-          app:
-            image:
-              repository: ghcr.io/0xerr0r/blocky
-              tag: v0.26@sha256:b259ada3f943e73283f1fc5e84ac39a791afec7de86515d1aeccc03d2c39e595
-            env:
-              TZ: ${TIMEZONE}
-            probes:
-              liveness: &probes
-                enabled: true
-                custom: true
-                spec:
-                  tcpSocket:
-                    port: &port 53
-                  initialDelaySeconds: 15
-                  periodSeconds: 30
-                  failureThreshold: 3
-              readiness: *probes
-            resources:
-              requests:
-                cpu: 10m
-              limits:
-                memory: 512Mi
-            securityContext:
-              allowPrivilegeEscalation: false
-              readOnlyRootFilesystem: true
-              capabilities:
-                add:
-                  - NET_BIND_SERVICE
-                drop:
-                  - ALL
         pod:
           securityContext:
             runAsNonRoot: true
@@ -73,6 +42,40 @@ spec:
               labelSelector:
                 matchLabels:
                   app.kubernetes.io/name: blocky
+        containers:
+          app:
+            image:
+              repository: ghcr.io/0xerr0r/blocky
+              tag: v0.26@sha256:b259ada3f943e73283f1fc5e84ac39a791afec7de86515d1aeccc03d2c39e595
+            env:
+              TZ: ${TIMEZONE}
+            resources:
+              requests:
+                cpu: 10m
+                memory: 128Mi
+              limits:
+                memory: 512Mi
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities:
+                add: ["NET_BIND_SERVICE"]
+                drop: ["ALL"]
+            probes:
+              liveness: &probes
+                enabled: true
+                custom: true
+                spec:
+                  exec:
+                    command:
+                      - /app/blocky
+                      - healthcheck
+                  initialDelaySeconds: 15
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
+
     service:
       app:
         controller: blocky
