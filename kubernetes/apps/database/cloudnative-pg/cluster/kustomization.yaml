@@ -6,7 +6,6 @@ namespace: database
 resources:
   - ./cluster17.yaml
   - ./cluster-immich.yaml
-  # - ./cluster-mastodon.yaml
   - ./cluster-postgis.yaml
   - ./scheduledbackup.yaml
   - ./prometheusrule.yaml
