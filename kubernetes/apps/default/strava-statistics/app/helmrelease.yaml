@@ -33,7 +33,7 @@ spec:
           app:
             image:
               repository: robiningelbrecht/strava-statistics
-              tag: v3.2.0
+              tag: v3.2.1
             env:
               TZ: ${TIMEZONE}
               LOCALE: de_DE
@@ -64,7 +64,7 @@ spec:
           refresh:
             image:
               repository: robiningelbrecht/strava-statistics
-              tag: v3.2.0
+              tag: v3.2.1
               pullPolicy: Always
             envFrom:
               - secretRef:
