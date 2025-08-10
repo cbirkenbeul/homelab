@@ -11,5 +11,5 @@ resources:
   - ./loki/ks.yaml
   - ./prometheus-operator-crds/ks.yaml
   - ./promtail/ks.yaml
-  - ./silence-operator/ks.yaml
+  # - ./silence-operator/ks.yaml
   - ./smartctl-exporter/ks.yaml
