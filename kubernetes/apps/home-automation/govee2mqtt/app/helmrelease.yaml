@@ -37,16 +37,6 @@ spec:
             envFrom:
               - secretRef:
                   name: govee2mqtt-secret
-            probes:
-              liveness:
-                enabled: true
-              readiness:
-                enabled: true
-              startup:
-                enabled: true
-                spec:
-                  failureThreshold: 30
-                  periodSeconds: 10
             securityContext:
               privileged: true
             resources:
