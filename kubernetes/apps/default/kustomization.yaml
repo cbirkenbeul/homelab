@@ -15,6 +15,6 @@ resources:
   - ./paperless-ngx/ks.yaml
   - ./searxng/ks.yaml
   - ./stirling-pdf/ks.yaml
-  #- ./strava-statistics/ks.yaml
+  - ./strava-statistics/ks.yaml
   - ./wanderer/ks.yaml
   - ./zwave-js-ui/ks.yaml
