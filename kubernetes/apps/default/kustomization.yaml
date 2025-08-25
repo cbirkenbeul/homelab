@@ -15,5 +15,5 @@ resources:
   - ./paperless-ngx/ks.yaml
   - ./searxng/ks.yaml
   - ./stirling-pdf/ks.yaml
-  - ./wanderer/ks.yaml
+  #- ./wanderer/ks.yaml
   - ./zwave-js-ui/ks.yaml
