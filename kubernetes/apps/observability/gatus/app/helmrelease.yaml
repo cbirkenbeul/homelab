@@ -44,7 +44,7 @@ spec:
             dependsOn: init-db
             image: &configSyncImage
               repository: ghcr.io/kiwigrid/k8s-sidecar
-              tag: 1.30.9
+              tag: 1.30.10
               pullPolicy: IfNotPresent
             env:
               FOLDER: /config
