@@ -37,7 +37,7 @@ spec:
           db:
             image:
               repository: flomp/wanderer-db
-              tag: v0.18.2
+              tag: v0.18.3
             envFrom:
               - secretRef:
                   name: wanderer-secret
