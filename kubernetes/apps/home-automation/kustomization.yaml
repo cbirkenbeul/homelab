@@ -7,5 +7,4 @@ resources:
   - ./namespace.yaml
   # Flux-Kustomizations
   - ./govee2mqtt/ks.yaml
-  - ./n8n/ks.yaml
   - ./zigbee2mqtt/ks.yaml
