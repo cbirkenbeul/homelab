@@ -3,12 +3,12 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - ./namespace.yaml
-  - ./huntarr/ks.yaml
+  #- ./huntarr/ks.yaml
   - ./jellyfin/ks.yaml
   - ./jellyseerr/ks.yaml
-  - ./lidarr/ks.yaml
-  - ./prowlarr/ks.yaml
-  - ./radarr/ks.yaml
-  - ./recyclarr/ks.yaml
-  - ./sabnzbd/ks.yaml
-  - ./sonarr/ks.yaml
+  #- ./lidarr/ks.yaml
+  #- ./prowlarr/ks.yaml
+  #- ./radarr/ks.yaml
+  #- ./recyclarr/ks.yaml
+  #- ./sabnzbd/ks.yaml
+  #- ./sonarr/ks.yaml
