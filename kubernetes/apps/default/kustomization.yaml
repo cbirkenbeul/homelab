@@ -10,5 +10,5 @@ resources:
   # - ./mealie/ks.yaml
   - ./nextcloud/ks.yaml
   - ./paperless-ngx/ks.yaml
-  - ./wanderer/ks.yaml
+  # - ./wanderer/ks.yaml
   - ./zwave-js-ui/ks.yaml
