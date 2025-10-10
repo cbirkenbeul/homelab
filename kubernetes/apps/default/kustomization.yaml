@@ -8,7 +8,7 @@ resources:
   - ./homepage/ks.yaml
   # - ./immich/ks.yaml
   # - ./mealie/ks.yaml
-  - ./nextcloud/ks.yaml
+  # - ./nextcloud/ks.yaml
   - ./paperless-ngx/ks.yaml
   # - ./wanderer/ks.yaml
   - ./zwave-js-ui/ks.yaml
