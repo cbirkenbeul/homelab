@@ -4,8 +4,8 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   #- ./huntarr/ks.yaml
-  - ./jellyfin/ks.yaml
-  - ./jellyseerr/ks.yaml
+  #- ./jellyfin/ks.yaml
+  #- ./jellyseerr/ks.yaml
   #- ./lidarr/ks.yaml
   #- ./prowlarr/ks.yaml
   #- ./radarr/ks.yaml
