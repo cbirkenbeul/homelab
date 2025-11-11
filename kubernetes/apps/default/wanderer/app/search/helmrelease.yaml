@@ -37,7 +37,7 @@ spec:
           search:
             image:
               repository: getmeili/meilisearch
-              tag: v1.22.3
+              tag: v1.25.0
             envFrom:
               - secretRef:
                   name: wanderer-secret
